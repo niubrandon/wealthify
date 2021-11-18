@@ -1,0 +1,11 @@
+Started GET "/" for ::1 at 2021-11-18 12:54:59 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/brandonniu/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/brandonniu/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.1ms | Allocations: 482)
+Completed 200 OK in 26ms (Views: 11.9ms | ActiveRecord: 0.0ms | Allocations: 4252)
+
+
+Started GET "/favicon.ico" for ::1 at 2021-11-18 12:55:00 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
