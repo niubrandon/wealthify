@@ -4,22 +4,21 @@ import './App.scss';
 import axios from 'axios';
 
 function App() {
-
-  const options = {
-    method: 'GET',
-    url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
-    params: {symbols: 'AAPL,ETH-USD'},
-    headers: {
-      'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
-      'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct'
-    }
-  };
+  // const options = {
+  //   method: 'GET',
+  //   url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
+  //   params: {symbols: 'AAPL,ETH-USD'},
+  //   headers: {
+  //     'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
+  //     'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct'
+  //   }
+  // };
   
-  axios.request(options).then(function (response) {
-    console.log(response.data);
-  }).catch(function (error) {
-    console.error(error);
-  });
+  // axios.request(options).then(function (response) {
+  //   console.log(response.data);
+  // }).catch(function (error) {
+  //   console.error(error);
+  // });
   return (
     <div className="App">
         <h1>Welcome to React Router!</h1>

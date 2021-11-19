@@ -9,3 +9,28 @@ Started GET "/favicon.ico" for ::1 at 2021-11-18 12:55:00 -0500
   
 ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
   
+Started GET "/" for ::1 at 2021-11-18 16:47:27 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/aarontenn/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/aarontenn/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.4ms | Allocations: 482)
+Completed 200 OK in 18ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 4249)
+
+
+Started GET "/" for ::1 at 2021-11-18 16:57:08 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/aarontenn/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/aarontenn/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.2ms | Allocations: 309)
+Completed 200 OK in 18ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 2472)
+
+
+Started GET "/favicon.ico" for ::1 at 2021-11-18 16:57:08 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/" for ::1 at 2021-11-18 17:02:24 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/aarontenn/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/aarontenn/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.1ms | Allocations: 309)
+Completed 200 OK in 13ms (Views: 7.9ms | ActiveRecord: 0.0ms | Allocations: 2472)
+
+
