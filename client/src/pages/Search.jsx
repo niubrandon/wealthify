@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Card from './Card';
+import Card from '../components/Card';
+import '../styles/pages/search.scss';
 
 const stockData = [
   {
@@ -35,7 +36,7 @@ const stockData = [
 ];
 
 const Search = (props) => {
-    const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('');
   const [response, setResponse] = useState([]);
 
   const handleInput = (e) => {
@@ -106,6 +107,5 @@ const Search = (props) => {
     </>
   );
 };
-}
 
 export default Search;
