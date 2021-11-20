@@ -9,7 +9,7 @@ import Portfolio from './pages/Portfolio';
 import Signup from './pages/Signup';
 import Search from './pages/Search';
 import Stock from './pages/Stock';
-import Model from './components/Model';
+import Modal from './components/Modal';
 
 function App() {
   return (
