@@ -82,12 +82,12 @@ const Search = (props) => {
   useEffect(() => {
     axios
       .request(options)
-      .then(function (response) {
+      .then((response) => {
         console.log(response.data);
         setResponse(response.data.ResultSet.Result);
         console.log(response.data.ResultSet.Result);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.error(error);
       });
   }, [query]);
