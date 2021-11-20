@@ -1,0 +1,28 @@
+// V A R I A B L E S
+// font
+$font-title: 'Retrocycles';
+$font-main: 'Open Sans', sans-serif;
+
+// colours
+$black: #231c1a;
+$light: #fefaeb;
+$grey: #9c9c9c;
+
+$danger: #e44d3a;
+$success: #16c172;
+
+// MIXINS
+//  flex center
+@mixin flex-center($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin title {
+  font-size: 1.5rem;
+  // font-family: $font-title;
+  color: $black;
+  letter-spacing: 2px;
+}
