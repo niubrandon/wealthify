@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_19_185026) do
+ActiveRecord::Schema.define(version: 2021_11_20_014456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2021_11_19_185026) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.integer "referral_bonus"
+    t.boolean "signup_bonus"
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
@@ -33,6 +35,14 @@ ActiveRecord::Schema.define(version: 2021_11_19_185026) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "account_id", null: false
     t.index ["account_id"], name: "index_portfolios_on_account_id"
+  end
+
+  create_table "referrals", force: :cascade do |t|
+    t.string "recipient_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_referrals_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -53,9 +63,11 @@ ActiveRecord::Schema.define(version: 2021_11_19_185026) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "referral_code"
   end
 
   add_foreign_key "accounts", "users"
   add_foreign_key "portfolios", "accounts"
+  add_foreign_key "referrals", "users"
   add_foreign_key "transactions", "accounts"
 end
