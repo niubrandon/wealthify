@@ -2,7 +2,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import './App.scss';
 import axios from 'axios';
 import React from 'react';
-import Nav from './components/Nav';
+import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Portfolio from './pages/Portfolio';
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav />
+      <Sidebar />
         <h1>Welcome to React Router!</h1>
       <Routes>
         <Route path="/" element={<Home />} />

@@ -1,5 +1,5 @@
 import { Line } from "react-chartjs-2";
-import Navbar from "./Nav";
+
 // const days = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday" }
 const fake_data = {
   timestamp: [1636986600, 1637073000, 1637159400, 1637245800, 1637338247],
