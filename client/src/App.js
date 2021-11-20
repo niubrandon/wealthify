@@ -21,14 +21,9 @@ function App() {
         <Route path='portfolio' element={<Portfolio />} />
         <Route path='search' element={<Search />} />
         <Route path='stock'>
-          {/* <Route path=':name' element={<Stock />}>
-            
-            <Route path='buy' element={<Model />} />
-            <Route path='sell' element={<Model />} />
-          </Route> */}
           <Route path=':name' element={<Stock />} />
-          <Route path=':name/buy' element={<Model />} />
-          <Route path=':name/sell' element={<Model />} />
+          <Route path=':name/buy' element={<Modal />} />
+          <Route path=':name/sell' element={<Modal />} />
         </Route>
       </Routes>
     </div>

@@ -83,16 +83,16 @@ const Search = (props) => {
     setQuery('a');
   }, []);
 
-  useEffect(() => {
-    axios
-      .request(options)
-      .then((response) => {
-        setResponse(response.data.ResultSet.Result);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [query]);
+  // useEffect(() => {
+  //   axios
+  //     .request(options)
+  //     .then((response) => {
+  //       setResponse(response.data.ResultSet.Result);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, [query]);
 
   // replace stockData with response
   const searchResults = stockData.map((item, index) => {
