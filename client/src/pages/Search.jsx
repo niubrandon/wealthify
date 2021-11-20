@@ -12,7 +12,7 @@ const stockData = [
   {
     symbol: 'AMZ',
     name: 'Amazon',
-    exchDisp: 'NSDQ',
+    exchDisp: 'NASDQ',
   },
   {
     symbol: 'PWL',
@@ -43,11 +43,7 @@ const stockData = [
     name: 'Amazon',
     exchDisp: 'NSDQ',
   },
-  {
-    symbol: 'PWL',
-    name: 'PowerLaw',
-    exchDisp: 'ABC',
-  },
+
   {
     symbol: 'JK',
     name: 'Just Kidding',
@@ -57,10 +53,6 @@ const stockData = [
     symbol: 'LOL',
     name: 'laugh Out Loud',
     exchDisp: 'HAH',
-  },
-  {
-    symbol: 'AWW',
-    name: 'Cute Stuff',
   },
 ];
 
@@ -108,6 +100,8 @@ const Search = (props) => {
         name={item.name}
         symbol={item.symbol}
         exchDisp={item.exchDisp}
+        regMP={12}
+        regMCP={122}
       />
     );
   });
