@@ -56,7 +56,7 @@ const stockData = [
   },
 ];
 
-const Search = (props) => {
+const Search = () => {
   const API_KEY = `${process.env.REACT_APP_API_KEY}`;
   const API_HOST = `${process.env.REACT_APP_API_HOST}`;
   const API_AUTOCOMPLETE = `${process.env.REACT_APP_API_AUTOCOMPLETE}`;
@@ -83,18 +83,18 @@ const Search = (props) => {
     setQuery('a');
   }, []);
 
-  useEffect(() => {
-    axios
-      .request(options)
-      .then((response) => {
-        setResponse(response.data.ResultSet.Result);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [query]);
+  // useEffect(() => {
+  //   axios
+  //     .request(options)
+  //     .then((response) => {
+  //       setResponse(response.data.ResultSet.Result);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, [query]);
 
-  const searchResults = response.map((item, index) => {
+  const searchResults = stockData.map((item, index) => {
     return (
       <Card
         key={index}
@@ -103,6 +103,7 @@ const Search = (props) => {
         exchDisp={item.exchDisp}
         regMP={null}
         regMCP={null}
+        coinImg={null}
       />
     );
   });
