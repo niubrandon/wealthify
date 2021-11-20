@@ -33,6 +33,35 @@ const stockData = [
     symbol: 'AWW',
     name: 'Cute Stuff',
   },
+  {
+    symbol: 'AAPL',
+    name: 'Apple',
+    exchDisp: 'TSX',
+  },
+  {
+    symbol: 'AMZ',
+    name: 'Amazon',
+    exchDisp: 'NSDQ',
+  },
+  {
+    symbol: 'PWL',
+    name: 'PowerLaw',
+    exchDisp: 'ABC',
+  },
+  {
+    symbol: 'JK',
+    name: 'Just Kidding',
+    exchDisp: 'TMI',
+  },
+  {
+    symbol: 'LOL',
+    name: 'laugh Out Loud',
+    exchDisp: 'HAH',
+  },
+  {
+    symbol: 'AWW',
+    name: 'Cute Stuff',
+  },
 ];
 
 const Search = (props) => {
@@ -71,16 +100,7 @@ const Search = (props) => {
       });
   }, [query]);
 
-  // const responseList = response.map((item, index) => {
-  //   return (
-  //     <div key={index}>
-  //       <h1>{item.symbol}</h1>
-  //       <p>{item.name}</p>
-  //       <p>{item.exchDisp}</p>
-  //     </div>
-  //   );
-  // });
-
+  // replace stockData with response
   const searchResults = stockData.map((item, index) => {
     return (
       <Card
@@ -93,18 +113,19 @@ const Search = (props) => {
   });
 
   return (
-    <>
+    <section id='search' className='page'>
       <form>
         <input
-          placeholder='Begin typing to search'
+          id='search-bar'
+          placeholder='begin typing to search...'
           type='search'
           onChange={handleInput}
           autoFocus
           required
         />
       </form>
-      {searchResults}
-    </>
+      <div id='cards'>{searchResults}</div>
+    </section>
   );
 };
 

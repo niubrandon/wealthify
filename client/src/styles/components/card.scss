@@ -1,0 +1,23 @@
+@import '../_variables';
+
+#cards {
+  @include flex-center(row);
+  flex-wrap: wrap;
+  width: 60%;
+  height: auto;
+  margin: 2rem;
+
+  .card-container {
+    border-radius: 20px;
+    margin: 20px;
+    padding: 25px;
+    height: 200px;
+    width: 200px;
+    box-shadow: 3px 6px 30px rgba(22, 19, 24, 0.2);
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+  }
+}
