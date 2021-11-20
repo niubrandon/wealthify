@@ -70,11 +70,11 @@ const Search = (props) => {
 
   var options = {
     method: 'GET',
-    // url: API_AUTOCOMPLETE,
+    url: API_AUTOCOMPLETE,
     params: { query: `${query}`, lang: 'en', region: 'US' },
     headers: {
-      // 'x-rapidapi-host': API_HOST,
-      // 'x-rapidapi-key': API_KEY,
+      'x-rapidapi-host': API_HOST,
+      'x-rapidapi-key': API_KEY,
     },
   };
 
@@ -83,19 +83,18 @@ const Search = (props) => {
     setQuery('a');
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .request(options)
-  //     .then((response) => {
-  //       setResponse(response.data.ResultSet.Result);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, [query]);
+  useEffect(() => {
+    axios
+      .request(options)
+      .then((response) => {
+        setResponse(response.data.ResultSet.Result);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [query]);
 
-  // replace stockData with response
-  const searchResults = stockData.map((item, index) => {
+  const searchResults = response.map((item, index) => {
     return (
       <Card
         key={index}
