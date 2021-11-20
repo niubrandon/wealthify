@@ -41,6 +41,12 @@
     ]
   },
   "devDependencies": {
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.0"
+  },
+  "jest" : {
+    "moduleNameMapper": {
+      "^.+\\.(css|less|scss)$": "identity-obj-proxy"
+    }
   }
 }

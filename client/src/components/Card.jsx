@@ -1,5 +1,7 @@
 import '../styles/components/card.scss';
 import { Link } from 'react-router-dom';
+import React from 'react';
+
 
 // props
 // name, symbol, exchDisp, regMP, regMCP
