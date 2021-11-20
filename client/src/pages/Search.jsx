@@ -100,8 +100,8 @@ const Search = (props) => {
         name={item.name}
         symbol={item.symbol}
         exchDisp={item.exchDisp}
-        regMP={12}
-        regMCP={122}
+        regMP={null}
+        regMCP={null}
       />
     );
   });
