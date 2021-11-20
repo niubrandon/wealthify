@@ -15,9 +15,9 @@ const stockData = [
     exchDisp: 'NASDQ',
   },
   {
-    symbol: 'PWL',
-    name: 'PowerLaw',
-    exchDisp: 'ABC',
+    symbol: 'AMC',
+    name: 'AMC Entertainment Holdings, Inc.',
+    exchDisp: 'NYSE',
   },
   {
     symbol: 'JK',
@@ -57,6 +57,10 @@ const stockData = [
 ];
 
 const Search = (props) => {
+  const API_KEY = `${process.env.REACT_APP_API_KEY}`;
+  const API_HOST = `${process.env.REACT_APP_API_HOST}`;
+  const API_AUTOCOMPLETE = `${process.env.REACT_APP_API_AUTOCOMPLETE}`;
+
   const [query, setQuery] = useState('');
   const [response, setResponse] = useState([]);
 
@@ -66,11 +70,11 @@ const Search = (props) => {
 
   var options = {
     method: 'GET',
-    // url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/autocomplete',
+    // url: API_AUTOCOMPLETE,
     params: { query: `${query}`, lang: 'en', region: 'US' },
     headers: {
-      'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
-      'x-rapidapi-key': '50021f6fa7msh7c5aa3a1b99700dp1fad37jsn02095460d420',
+      // 'x-rapidapi-host': API_HOST,
+      // 'x-rapidapi-key': API_KEY,
     },
   };
 
@@ -83,9 +87,7 @@ const Search = (props) => {
     axios
       .request(options)
       .then((response) => {
-        console.log(response.data);
         setResponse(response.data.ResultSet.Result);
-        console.log(response.data.ResultSet.Result);
       })
       .catch((error) => {
         console.error(error);
