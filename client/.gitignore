@@ -21,8 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-<<<<<<< HEAD
-=======
 
 const options = {
     method: 'GET',
@@ -55,4 +53,3 @@ const options = {
   // }).catch(function (error) {
   //   console.error(error);
   // });
->>>>>>> dd5faf0 (created pages and components)
