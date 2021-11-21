@@ -17,5 +17,12 @@ export const SidebarData = [
   icon: <AiIcons.AiFillProfile />,
 	iconClosed: <RiIcons.RiArrowDownSFill />,
 	iconOpened: <RiIcons.RiArrowUpSFill />,
+},
+{
+  title: "Search",
+  path: "/search",
+  icon: <AiIcons.AiOutlineSearch />,
+	iconClosed: <RiIcons.RiArrowDownSFill />,
+	iconOpened: <RiIcons.RiArrowUpSFill />,
 }
 ];

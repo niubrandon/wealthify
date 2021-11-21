@@ -25,9 +25,27 @@ import { Line } from "react-chartjs-2";
 //   ]
 // }
 
+
+
 const StockGraph = (props) => {
-  const {xAxis, yAxis} = props
-  const currTimes = xAxis.map(time => new Date(Number(time) * 1000).toLocaleDateString());
+  const {xAxis, yAxis, range} = props
+
+  const handleRange = function(range) {
+    const x = xAxis
+    let returnArr = []
+    if (range === "5d") {
+      returnArr = x.map(time => new Date(Number(time) * 1000).toLocaleDateString())
+    }
+    else if (range === "1d") {
+      returnArr = x.map(time => new Date(Number(time) * 1000).toLocaleTimeString())
+    }
+    else {
+      returnArr = x.map(time => new Date(Number(time) * 1000).toLocaleDateString())
+    }
+    return returnArr;
+  }
+
+  const currTimes = handleRange(range)
 
   const state = {
     labels: currTimes,
@@ -46,7 +64,6 @@ const StockGraph = (props) => {
 
   return (
     <>
-    <h1>AAPL</h1>
       <div style={{ position: "relative", margin: "auto", width: "80vw" }}>
       <Line
           data={state}
