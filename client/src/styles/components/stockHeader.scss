@@ -1,0 +1,25 @@
+@import '../_variables';
+
+#stock-header {
+  @include title();
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: auto;
+  padding: 20px;
+
+  button {
+    border: none;
+    padding: 10px 18px;
+    font-size: 1.2rem;
+    margin-left: 1em;
+    border-radius: 8px;
+    color: white;
+    background-color: $logo;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $logodark;
+    }
+  }
+}
