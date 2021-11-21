@@ -19,6 +19,74 @@ const topData = [
     shortName: 'Newegg Commerce, Inc.',
     fullExchangeName: 'NasdaqCM',
     regularMarketPrice: 17.38,
+    regularMarketChangePercent: -3.0842142,
+  },
+  {
+    quoteType: 'CRYPTOCURRENCY',
+    symbol: 'ETH-USD',
+    shortName: 'Ethereum USD',
+    fullExchangeName: 'CCC',
+    regularMarketPrice: 4410.3423,
+    regularMarketChangePercent: 3.0420144,
+    coinImageUrl: 'https://s.yimg.com/uc/fin/img/reports-thumbnails/1027.png',
+  },
+  {
+    quoteType: 'EQUITY',
+    symbol: 'NEGG',
+    shortName: 'Newegg Commerce, Inc.',
+    fullExchangeName: 'NasdaqCM',
+    regularMarketPrice: 17.38,
+    regularMarketChangePercent: 3.0842142,
+  },
+  {
+    quoteType: 'CRYPTOCURRENCY',
+    symbol: 'ETH-USD',
+    shortName: 'Ethereum USD',
+    fullExchangeName: 'CCC',
+    regularMarketPrice: 4410.3423,
+    regularMarketChangePercent: 3.0420144,
+    coinImageUrl: 'https://s.yimg.com/uc/fin/img/reports-thumbnails/1027.png',
+  },
+  {
+    quoteType: 'EQUITY',
+    symbol: 'NEGG',
+    shortName: 'Newegg Commerce, Inc.',
+    fullExchangeName: 'NasdaqCM',
+    regularMarketPrice: 17.38,
+    regularMarketChangePercent: 3.0842142,
+  },
+  {
+    quoteType: 'CRYPTOCURRENCY',
+    symbol: 'ETH-USD',
+    shortName: 'Ethereum USD',
+    fullExchangeName: 'CCC',
+    regularMarketPrice: 4410.3423,
+    regularMarketChangePercent: 3.0420144,
+    coinImageUrl: 'https://s.yimg.com/uc/fin/img/reports-thumbnails/1027.png',
+  },
+  {
+    quoteType: 'EQUITY',
+    symbol: 'NEGG',
+    shortName: 'Newegg Commerce, Inc.',
+    fullExchangeName: 'NasdaqCM',
+    regularMarketPrice: 17.38,
+    regularMarketChangePercent: 3.0842142,
+  },
+  {
+    quoteType: 'CRYPTOCURRENCY',
+    symbol: 'ETH-USD',
+    shortName: 'Ethereum USD',
+    fullExchangeName: 'CCC',
+    regularMarketPrice: 4410.3423,
+    regularMarketChangePercent: 3.0420144,
+    coinImageUrl: 'https://s.yimg.com/uc/fin/img/reports-thumbnails/1027.png',
+  },
+  {
+    quoteType: 'EQUITY',
+    symbol: 'NEGG',
+    shortName: 'Newegg Commerce, Inc.',
+    fullExchangeName: 'NasdaqCM',
+    regularMarketPrice: 17.38,
     regularMarketChangePercent: 3.0842142,
   },
 ];
@@ -32,7 +100,7 @@ const Home = () => {
 
   var options = {
     method: 'GET',
-    // url: API_TOPSTOCKS,
+    url: API_TOPSTOCKS,
     params: {
       symbols: 'ETH-USD,AMSC,DOT1-USD,BTC-USD,SHOP,TLRY,CGC,TWLO,NEGG,DKNG',
       lang: 'en',
@@ -48,13 +116,27 @@ const Home = () => {
     axios
       .request(options)
       .then((response) => {
-        console.log(response.data);
         setResponse(response.data.quoteResponse.result);
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
+
+  useEffect(() => {
+    const callTopStocks = setInterval(() => {
+      axios
+        .request(options)
+        .then((response) => {
+          setResponse(response.data.quoteResponse.result);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 15000);
+
+    return () => clearInterval(callTopStocks);
+  }, [response]);
 
   const topStocksResults = response.map((item, index) => {
     return (
@@ -65,18 +147,18 @@ const Home = () => {
         exchDisp={item.fullExchangeName}
         regMP={item.regularMarketPrice}
         regMCP={item.regularMarketChangePercent}
-        coinImg={item.coinImageUrl}
+        quoteType={item.quoteType}
       />
     );
   });
   return (
-    <>
-      <h1>
-        Welcome to <span>Wealthify</span>!
+    <section id='home' className='page'>
+      <h1 className='home-title'>
+        Top 10 on <span>Wealthify</span>
       </h1>
-      <p>These stocks are trending right now... Click to learn more.</p>
+      <p className='message'>Click to learn more</p>
       <div id='cards'>{topStocksResults}</div>
-    </>
+    </section>
   );
 };
 

@@ -1,0 +1,15 @@
+@import '../_variables';
+
+#home {
+  @include flex-center(column);
+  .home-title {
+    @include title;
+    span {
+      color: $logo;
+    }
+  }
+  .message {
+    font-size: 1.3rem;
+    margin-top: 10px;
+  }
+}

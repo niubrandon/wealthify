@@ -5,11 +5,16 @@ $font-main: 'Open Sans', sans-serif;
 
 // colours
 $black: #231c1a;
-$light: #fefaeb;
+$white: #fefaeb;
 $grey: #9c9c9c;
 
 $danger: #e44d3a;
 $success: #16c172;
+
+$dangerlight: #ffb5b0;
+$successlight: #a7ffc1;
+
+$logo: blueviolet;
 
 // MIXINS
 //  flex center
@@ -21,8 +26,8 @@ $success: #16c172;
 }
 
 @mixin title {
-  font-size: 1.5rem;
-  // font-family: $font-title;
+  font-size: 2rem;
+  font-family: $font-main;
   color: $black;
   letter-spacing: 2px;
 }
