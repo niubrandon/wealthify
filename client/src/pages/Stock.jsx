@@ -55,7 +55,9 @@ const Stock = (props) => {
 
   return (
     <section className='page'>
-      <StockHeader name={name} />
+      {/* <StockHeader name={name} regMP={detail.regularMarketPrice} /> */}
+
+      <StockHeader name={name} regMP={155.07} />
       <StockGraph xAxis={graphx} yAxis={graphy} />
       <span>Stats</span>
       <table className='table'>

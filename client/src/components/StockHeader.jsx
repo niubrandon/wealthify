@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import '../styles/components/stockHeader.scss';
 import Modal from '../components/Modal';
 
 // props
-// name
+// name (aka ticker)
 
 const StockHeader = (props) => {
-  const { name } = props;
+  const { name, regMP } = props;
 
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState('');
@@ -30,7 +31,14 @@ const StockHeader = (props) => {
           </button>
         </div>
       </header>
-      {isOpen && <Modal modalType={modal} setIsOpen={setIsOpen} name={name} />}
+      {isOpen && (
+        <Modal
+          modalType={modal}
+          setIsOpen={setIsOpen}
+          name={name}
+          regMP={regMP}
+        />
+      )}
     </>
   );
 };

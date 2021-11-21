@@ -33,8 +33,6 @@ function App() {
         <Route path='search' element={<Search />} />
         <Route path='stock'>
           <Route path=':name' element={<Stock />} />
-          <Route path=':name/buy' element={<Modal />} />
-          <Route path=':name/sell' element={<Modal />} />
         </Route>
       </Routes>
     </div>
