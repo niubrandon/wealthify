@@ -43,7 +43,7 @@ class UsersController < ApplicationController
    
     if @user.save
       auth_token = JsonWebToken.encode(user_id: @user.id)
-      render json: { auth_token: auth_token }, status: :created
+      render json: { auth_token: auth_token, user_id: @user.id, user_email: @user.email }, status: :created
     else
       puts @user.errors.inspect
       render json: @user.errors, status: :unprocessable_entity

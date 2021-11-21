@@ -17,4 +17,14 @@ class User < ApplicationRecord
 
 
   #need after_create to create account for new user and give 10000 for starting
+
+  after_create do
+    self.accounts.create!({
+      :cash_balance => 10000,
+      :stock_balance => 0,
+      :total_balance => 10000 
+    })
+
+  end
+
 end
