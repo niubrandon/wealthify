@@ -868,3 +868,19 @@ Completed 404 Not Found in 6ms (ActiveRecord: 0.5ms | Allocations: 543)
 ActiveRecord::RecordNotFound (Couldn't find User with 'id'=all):
   
 app/controllers/users_controller.rb:44:in `set_user'
+Started GET "/" for ::1 at 2021-11-21 11:42:19 -0500
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/wavyadri/.rvm/gems/ruby-2.6.6/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/wavyadri/.rvm/gems/ruby-2.6.6/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 34.7ms | Allocations: 308)
+Completed 200 OK in 53ms (Views: 39.9ms | ActiveRecord: 0.0ms | Allocations: 2488)
+
+
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (6.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (73.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "server_development"[0m
+  [1m[35m (17.4ms)[0m  [1m[35mCREATE DATABASE "server_development" ENCODING = 'unicode'[0m

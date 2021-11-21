@@ -1,11 +1,10 @@
-
-export default Stock;
-import StockGraph from "../components/StockGraph";
-import "./Stock.scss"
-import { useParams } from 'react-router-dom'
+import StockGraph from '../components/StockGraph';
+import StockHeader from '../components/StockHeader';
+import './Stock.scss';
+import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 
-const axios = require("axios").default;
+const axios = require('axios').default;
 
 const Stock = (props) => {
   const [graphx, setGraphx] = useState([]);
@@ -16,14 +15,14 @@ const Stock = (props) => {
 
   var options = {
     method: 'GET',
-    url: `https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/${ticker}`,
-    params: {range: '3mo', interval: '1d'},
+    url: `https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/${name}`,
+    params: { range: '3mo', interval: '1d' },
     headers: {
       'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
-      'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct'
-    }
+      'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct',
+    },
   };
-  
+
   // useEffect(() => {
   //   axios.request(options).then(function (response) {
 
@@ -39,11 +38,11 @@ const Stock = (props) => {
   const options2 = {
     method: 'GET',
     url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
-    params: {symbols: ticker},
+    params: { symbols: name },
     headers: {
       'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
-      'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct'
-    }
+      'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct',
+    },
   };
 
   // useEffect(() => {
@@ -54,16 +53,12 @@ const Stock = (props) => {
   //   });
   // }, [])
 
-  
   return (
     <section className='page'>
       <StockHeader name={name} />
-      <StockGraph 
-        xAxis={graphx}
-        yAxis={graphy}
-      />
+      <StockGraph xAxis={graphx} yAxis={graphy} />
       <span>Stats</span>
-      <table class="table">
+      <table class='table'>
         {/* <thead>
           <tr>
             <th scope="col">Name</th>
@@ -119,7 +114,6 @@ const Stock = (props) => {
 
 export default Stock;
 
-
 // const detail = {
 //   regularMarketPrice: 160.55,
 //   regularMarketChange: 2.680008,
@@ -148,18 +142,18 @@ export default Stock;
 // regularMarketChangePercent, marketCap fmt, regularMarketDayHigh, regularMarketDayLow, regularMarketVolume fmt, regularMarketPreviousClose fmt,
 // exchangeName, regularMarketOpen fmt, industry, sector, website, longBusinessSummary
 
-  // const options = {
-  //   method: 'GET',
-  //   url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
-  //   params: {symbols: 'AAPL'},
-  //   headers: {
-  //     'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
-  //     'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct'
-  //   }
-  // };
+// const options = {
+//   method: 'GET',
+//   url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
+//   params: {symbols: 'AAPL'},
+//   headers: {
+//     'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
+//     'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct'
+//   }
+// };
 
-  // axios.request(options).then(function (response) {
-  //   console.log(response.data);
-  // }).catch(function (error) {
-  //   console.error(error);
-  // });
+// axios.request(options).then(function (response) {
+//   console.log(response.data);
+// }).catch(function (error) {
+//   console.error(error);
+// });

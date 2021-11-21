@@ -1,20 +1,30 @@
 @import '../_variables';
 
-a {
+.card-link {
   text-decoration: none;
   color: $black;
+
+  &:hover {
+    color: $black;
+  }
 }
+
 #cards {
   @include flex-center(row);
   flex-wrap: wrap;
   width: 60%;
   height: auto;
-  margin: 1.5rem;
+  margin: 1.5em;
+
+  h1,
+  p {
+    margin-bottom: 0;
+  }
 
   .card-container {
     border-radius: 20px;
     margin: 25px;
-    padding: 25px;
+    padding: 15px;
     height: 200px;
     width: 200px;
     box-shadow: 3px 6px 30px rgba(22, 19, 24, 0.2);
@@ -30,9 +40,17 @@ a {
     }
 
     .card-name {
-      font-size: 1rem;
       display: flex;
       justify-content: space-between;
+
+      .text {
+        h1 {
+          font-size: 2em;
+        }
+        p {
+          font-size: 1em;
+        }
+      }
 
       img {
         width: 30px;

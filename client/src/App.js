@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import axios from 'axios';
 import React from 'react';
@@ -15,14 +15,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   //authuser set to null when it is logout, set to jwt when it's login
-  const [ authuser, setAuthuser ] = useState(null);
+  const [authuser, setAuthuser] = useState(null);
   return (
     <div className='App'>
       <Sidebar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path="/login" element={<Login authuser={authuser} setAuthuser={setAuthuser} />} />
-        <Route path="/signup" element={<Signup authuser={authuser} setAuthuser={setAuthuser} />} />
+        <Route
+          path='/login'
+          element={<Login authuser={authuser} setAuthuser={setAuthuser} />}
+        />
+        <Route
+          path='/signup'
+          element={<Signup authuser={authuser} setAuthuser={setAuthuser} />}
+        />
         <Route path='portfolio' element={<Portfolio />} />
         <Route path='search' element={<Search />} />
         <Route path='stock'>
