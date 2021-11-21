@@ -3,7 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import './App.scss';
 import axios from 'axios';
 import React from 'react';
-import Nav from './components/Nav';
+import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Portfolio from './pages/Portfolio';
@@ -11,8 +11,6 @@ import Signup from './pages/Signup';
 import Search from './pages/Search';
 import Stock from './pages/Stock';
 import Modal from './components/Modal';
-
-function App() {
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -20,6 +18,7 @@ function App() {
   const [ authuser, setAuthuser ] = useState(null);
   return (
     <div className='App'>
+      <Sidebar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path="/login" element={<Login authuser={authuser} setAuthuser={setAuthuser} />} />
