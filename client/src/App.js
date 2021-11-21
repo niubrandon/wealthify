@@ -1,4 +1,5 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Routes, Route, Link } from "react-router-dom";
 import './App.scss';
 import axios from 'axios';
 import React from 'react';
@@ -12,12 +13,17 @@ import Stock from './pages/Stock';
 import Modal from './components/Modal';
 
 function App() {
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+function App() {
+  //authuser set to null when it is logout, set to jwt when it's login
+  const [ authuser, setAuthuser ] = useState(null);
   return (
     <div className='App'>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='login' element={<Login />} />
-        <Route path='signup' element={<Signup />} />
+        <Route path="/login" element={<Login authuser={authuser} setAuthuser={setAuthuser} />} />
+        <Route path="/signup" element={<Signup authuser={authuser} setAuthuser={setAuthuser} />} />
         <Route path='portfolio' element={<Portfolio />} />
         <Route path='search' element={<Search />} />
         <Route path='stock'>
