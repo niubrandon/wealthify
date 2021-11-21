@@ -14,13 +14,6 @@ export const SidebarData = [
 	iconOpened: <RiIcons.RiArrowUpSFill />,
 },
 {
-  title: "Stock",
-  path: "/stock",
-  icon: <AiIcons.AiOutlineStock />,
-	iconClosed: <RiIcons.RiArrowDownSFill />,
-	iconOpened: <RiIcons.RiArrowUpSFill />,
-},
-{
   title: "Portfolio",
   path: "/portfolio",
   icon: <AiIcons.AiFillProfile />,

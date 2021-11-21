@@ -16,14 +16,14 @@ function App() {
   return (
     <div className="App">
       <Sidebar />
-        <h1>Welcome to React Router!</h1>
+        {/* <h1>Welcome to React Router!</h1> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/stock" element={<Stock />} />
+        <Route path="/stock/:ticker" element={<Stock />} />
         <Route path="/stockgraph" element={<StockGraph />} /> 
       </Routes>
     </div>

@@ -1,8 +1,10 @@
 import StockGraph from "../components/StockGraph";
 import "./Stock.scss"
+import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
 
 const axios = require("axios").default;
-const appleStockData = {
+const detail = {
   regularMarketPrice: 160.55,
   regularMarketChange: 2.680008,
   regularMarketChangePercent: 1.6976044,
@@ -15,72 +17,107 @@ const appleStockData = {
   regularMarketOpen: 157.65,
 };
 const Stock = (props) => {
-  // const options = {
-  //   method: 'GET',
-  //   url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
-  //   params: {symbols: 'AAPL'},
-  //   headers: {
-  //     'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
-  //     'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct'
-  //   }
-  // };
+  const [graphx, setGraphx] = useState([]);
+  const [graphy, setGraphy] = useState([]);
+  const [detail, setDetail] = useState([]);
 
-  // axios.request(options).then(function (response) {
-  //   console.log(response.data);
-  // }).catch(function (error) {
-  //   console.error(error);
-  // });
+  const { ticker } = useParams();
 
+  var options = {
+    method: 'GET',
+    url: `https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/${ticker}`,
+    params: {range: '3mo', interval: '1d'},
+    headers: {
+      'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
+      'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct'
+    }
+  };
+  
+  // useEffect(() => {
+  //   axios.request(options).then(function (response) {
+
+  //     setGraphx(response.data.chart.result[0].timestamp)
+
+  //     setGraphy(response.data.chart.result[0].indicators.adjclose[0].adjclose)
+
+  //   }).catch(function (error) {
+  //     console.error(error);
+  //   });
+  // }, [])
+
+  const options2 = {
+    method: 'GET',
+    url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
+    params: {symbols: ticker},
+    headers: {
+      'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
+      'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct'
+    }
+  };
+
+  // useEffect(() => {
+  //   axios.request(options2).then(function (response) {
+  //     setDetail(response.data.quoteResponse.result[0])
+  //   }).catch(function (error) {
+  //     console.error(error);
+  //   });
+  // }, [])
+
+  
   return (
     <>
-      <StockGraph />
+      <StockGraph 
+        xAxis={graphx}
+        yAxis={graphy}
+      />
+      <span>Stats</span>
       <table class="table">
-        <thead>
+        {/* <thead>
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Value</th>
           </tr>
-        </thead>
+        </thead> */}
         <tbody>
           <tr>
             <td>Market Price</td>
-            <td>{appleStockData.regularMarketPrice}</td>
+            <td>{detail.regularMarketPrice}</td>
           </tr>
           <tr>
             <td>Market Change</td>
-            <td>{appleStockData.regularMarketChange}</td>
+            <td>{detail.regularMarketChange}</td>
           </tr>
           <tr>
             <td>Market Change Percent</td>
-            <td>{appleStockData.regularMarketChangePercent}</td>
+            <td>{detail.regularMarketChangePercent}</td>
           </tr>
           <tr>
             <td>MarketCap</td>
-            <td>{appleStockData.marketCap}</td>
+            <td>{detail.marketCap}</td>
           </tr>
           <tr>
             <td>Market Day High</td>
-            <td>{appleStockData.regularMarketDayHigh}</td>
+            <td>{detail.regularMarketDayHigh}</td>
           </tr>
           <tr>
             <td>Market Day Low</td>
-            <td>{appleStockData.regularMarketDayLow}</td>
+            <td>{detail.regularMarketDayLow}</td>
           </tr>
           <tr>
             <td>Market Volume</td>
-            <td>{appleStockData.regularMarketVolume}</td>
+            <td>{detail.regularMarketVolume}</td>
           </tr>
           <tr>
             <td>Market Previous Close</td>
-            <td>{appleStockData.regularMarketPreviousClose}</td>
+            <td>{detail.regularMarketPreviousClose}</td>
           </tr>
           <tr>
-            <td>Exchange Name?</td>
-            <td>{appleStockData.exchangeTimezoneName}</td>
+            <td>Exchange</td>
+            <td>{detail.exchangeTimezoneName}</td>
           </tr>
           <tr>
             <td>Market Open</td>
-            <td>{appleStockData.regularMarketOpen}</td>
+            <td>{detail.regularMarketOpen}</td>
           </tr>
         </tbody>
       </table>
@@ -104,3 +141,19 @@ export default Stock;
 // Symbol, regularMarketPrice, regularMarketChange,
 // regularMarketChangePercent, marketCap fmt, regularMarketDayHigh, regularMarketDayLow, regularMarketVolume fmt, regularMarketPreviousClose fmt,
 // exchangeName, regularMarketOpen fmt, industry, sector, website, longBusinessSummary
+
+  // const options = {
+  //   method: 'GET',
+  //   url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
+  //   params: {symbols: 'AAPL'},
+  //   headers: {
+  //     'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
+  //     'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct'
+  //   }
+  // };
+
+  // axios.request(options).then(function (response) {
+  //   console.log(response.data);
+  // }).catch(function (error) {
+  //   console.error(error);
+  // });
