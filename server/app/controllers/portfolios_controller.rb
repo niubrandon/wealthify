@@ -8,23 +8,12 @@ class PortfoliosController < ApplicationController
     render json: @portfolios
   end
 
-  # GET /portfolios/1
+  # GET portfolio from acctount 1
   def show
     #render json: @portfolio
+    @portfolios = Portfolio.all.where("account_id = #{params[:id]}" )
     
-    admin_portfolio = [
-      {:ticker => 'AAPL',
-      :quantity => 20,
-      :current_spot_price => 158,
-      :account_id => 1
-    },
-      {:ticker => 'ETH-USD',
-      :quantity => 1.5,
-      :current_spot_price => 4271,
-      :account_id => 1} 
-    ]
-    
-    render json: admin_portfolio
+    render json: @portfolios
 
   end
 

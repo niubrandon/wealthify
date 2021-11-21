@@ -133,7 +133,7 @@ const Home = () => {
         .catch((error) => {
           console.error(error);
         });
-    }, 15000);
+    }, 1500000);
 
     return () => clearInterval(callTopStocks);
   }, [response]);
