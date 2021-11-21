@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import './App.scss';
 import axios from 'axios';
@@ -9,26 +10,29 @@ import Portfolio from './pages/Portfolio';
 import Signup from './pages/Signup';
 import Search from './pages/Search';
 import Stock from './pages/Stock';
-import StockGraph from "./components/StockGraph";
+import Modal from './components/Modal';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-
+  //authuser set to null when it is logout, set to jwt when it's login
+  const [ authuser, setAuthuser ] = useState(null);
   return (
-    <div className="App">
+    <div className='App'>
       <Sidebar />
-        {/* <h1>Welcome to React Router!</h1> */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/stock/:ticker" element={<Stock />} />
-        <Route path="/stockgraph" element={<StockGraph />} /> 
+        <Route path='/' element={<Home />} />
+        <Route path="/login" element={<Login authuser={authuser} setAuthuser={setAuthuser} />} />
+        <Route path="/signup" element={<Signup authuser={authuser} setAuthuser={setAuthuser} />} />
+        <Route path='portfolio' element={<Portfolio />} />
+        <Route path='search' element={<Search />} />
+        <Route path='stock'>
+          <Route path=':name' element={<Stock />} />
+          <Route path=':name/buy' element={<Modal />} />
+          <Route path=':name/sell' element={<Modal />} />
+        </Route>
       </Routes>
     </div>
   );
 }
-
 
 export default App;

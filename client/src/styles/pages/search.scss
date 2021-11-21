@@ -1,0 +1,16 @@
+@import '../_variables';
+
+#search {
+  @include flex-center(column);
+  #search-bar {
+    @include title;
+    border: none;
+    border-bottom: 2px solid $black;
+    padding: 0px 10px 5px 10px;
+    width: 500px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
