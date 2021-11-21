@@ -817,3 +817,54 @@ FOREIGN KEY ("user_id")
   [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4709995827031202925)[0m
   [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2021-11-20 22:38:29 -0500
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/wavyadri/.rvm/gems/ruby-2.6.6/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/wavyadri/.rvm/gems/ruby-2.6.6/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 29.0ms | Allocations: 308)
+Completed 200 OK in 54ms (Views: 34.4ms | ActiveRecord: 0.0ms | Allocations: 2463)
+
+
+Started GET "/favicon.ico" for ::1 at 2021-11-20 22:38:30 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/user/login" for ::1 at 2021-11-20 22:38:36 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/user/login"):
+  
+Started GET "/api/user/login" for ::1 at 2021-11-20 22:38:47 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/api/user/login"):
+  
+Started GET "/api/users/login" for ::1 at 2021-11-20 22:38:58 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"login"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `set_user'
+Completed 404 Not Found in 53ms (ActiveRecord: 24.4ms | Allocations: 3900)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=login):
+  
+app/controllers/users_controller.rb:44:in `set_user'
+Started GET "/api/users/" for ::1 at 2021-11-20 22:39:15 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.2ms | Allocations: 716)
+
+
+Started GET "/api/users/all" for ::1 at 2021-11-20 22:39:21 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"all"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `set_user'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.5ms | Allocations: 543)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=all):
+  
+app/controllers/users_controller.rb:44:in `set_user'
