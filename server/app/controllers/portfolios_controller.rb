@@ -10,10 +10,8 @@ class PortfoliosController < ApplicationController
 
   # GET portfolio from acctount 1
   def show
-    #render json: @portfolio
-    @portfolios = Portfolio.all.where("account_id = #{params[:id]}" )
     
-    render json: @portfolios
+    render json: @portfolio
 
   end
 
