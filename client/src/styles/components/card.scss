@@ -9,7 +9,7 @@ a {
   flex-wrap: wrap;
   width: 60%;
   height: auto;
-  margin: 2rem;
+  margin: 1.5rem;
 
   .card-container {
     border-radius: 20px;
@@ -31,6 +31,35 @@ a {
 
     .card-name {
       font-size: 1rem;
+      display: flex;
+      justify-content: space-between;
+
+      img {
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+      }
+    }
+
+    .card-details {
+      p {
+        margin-top: 5px;
+      }
+      .label {
+        font-size: 0.8rem;
+        color: $grey;
+      }
+
+      .green {
+        background-color: $successlight;
+        padding: 2px 6px;
+        border-radius: 8px;
+      }
+      .red {
+        background-color: $dangerlight;
+        padding: 2px 6px;
+        border-radius: 8px;
+      }
     }
   }
 }

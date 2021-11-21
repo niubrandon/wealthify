@@ -56,7 +56,7 @@ const stockData = [
   },
 ];
 
-const Search = (props) => {
+const Search = () => {
   const API_KEY = `${process.env.REACT_APP_API_KEY}`;
   const API_HOST = `${process.env.REACT_APP_API_HOST}`;
   const API_AUTOCOMPLETE = `${process.env.REACT_APP_API_AUTOCOMPLETE}`;
@@ -103,6 +103,7 @@ const Search = (props) => {
         exchDisp={item.exchDisp}
         regMP={null}
         regMCP={null}
+        quoteType={null}
       />
     );
   });
