@@ -58,7 +58,7 @@ const Stock = (props) => {
       <StockHeader name={name} />
       <StockGraph xAxis={graphx} yAxis={graphy} />
       <span>Stats</span>
-      <table class='table'>
+      <table className='table'>
         {/* <thead>
           <tr>
             <th scope="col">Name</th>

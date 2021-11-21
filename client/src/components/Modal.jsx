@@ -1,3 +1,5 @@
+import ReactDOM from 'react-dom';
+
 // props
 // needs the stock name
 
@@ -14,6 +16,7 @@ const Model = (props) => {
         </div>
       </div>
     </aside>
+    // document.getElementById('portal')
   );
 };
 
