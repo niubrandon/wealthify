@@ -30,7 +30,7 @@ const StockHeader = (props) => {
           </button>
         </div>
       </header>
-      {isOpen && <Modal modalType={modal} setIsOpen={setIsOpen} />}
+      {isOpen && <Modal modalType={modal} setIsOpen={setIsOpen} name={name} />}
     </>
   );
 };
