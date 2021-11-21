@@ -4,18 +4,7 @@ import { useParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 
 const axios = require("axios").default;
-const detail = {
-  regularMarketPrice: 160.55,
-  regularMarketChange: 2.680008,
-  regularMarketChangePercent: 1.6976044,
-  marketCap: 2634047553536,
-  regularMarketDayHigh: 161.02,
-  regularMarketDayLow: 156.5328,
-  regularMarketVolume: 117305597,
-  regularMarketPreviousClose: 157.87,
-  exchangeTimezoneName: "America/New_York",
-  regularMarketOpen: 157.65,
-};
+
 const Stock = (props) => {
   const [graphx, setGraphx] = useState([]);
   const [graphy, setGraphy] = useState([]);
@@ -126,6 +115,20 @@ const Stock = (props) => {
 };
 
 export default Stock;
+
+
+// const detail = {
+//   regularMarketPrice: 160.55,
+//   regularMarketChange: 2.680008,
+//   regularMarketChangePercent: 1.6976044,
+//   marketCap: 2634047553536,
+//   regularMarketDayHigh: 161.02,
+//   regularMarketDayLow: 156.5328,
+//   regularMarketVolume: 117305597,
+//   regularMarketPreviousClose: 157.87,
+//   exchangeTimezoneName: "America/New_York",
+//   regularMarketOpen: 157.65,
+// };
 
 // regularMarketPrice: 160.55
 // regularMarketChange: 2.680008
