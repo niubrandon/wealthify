@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     #authenticate method from has_secure_password helper
     if user&.authenticate(user_params[:password])
       auth_token = JsonWebToken.encode(user_id: user.id)
-      render json: { auth_token: auth_token }, status: :ok
+      render json: { auth_token: auth_token, user_id: user.id, user_email: user.email }, status: :ok
     else
       render json: { error: 'Invalid username/password' }, status: :unauthorized
     end

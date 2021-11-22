@@ -12,7 +12,7 @@ user1 = User.create!({
   :first_name => 'wealthify',
   :last_name => 'wealthify',
   :email => 'admon@wealthify.com',
-  :password_digest => 'Super12345'
+  :password_digest => '$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS'
 })
 
 
@@ -55,7 +55,7 @@ user2 = User.create!({
   :first_name => 'Adriana',
   :last_name => 'Calvo-Matos',
   :email => 'adriana@wealthify.com',
-  :password_digest => 'adriana'
+  :password_digest => '$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS'
 })
 
 account2 = user2.accounts.create!({
@@ -94,7 +94,7 @@ user3 = User.create!({
   :first_name => 'Aaron',
   :last_name => 'Tenn',
   :email => 'aaron@gmail.com',
-  :password_digest => '123456'
+  :password_digest => '$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS'
 })
 
 account3 = user3.accounts.create!({
@@ -160,7 +160,7 @@ user4 = User.create!({
   :first_name => 'Brandon',
   :last_name => 'Niu',
   :email => 'niubrandon@gmail.com',
-  :password_digest => 'Super12345'
+  :password_digest => '$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS'
 })
 
 
