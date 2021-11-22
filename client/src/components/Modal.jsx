@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../styles/components/modal.scss';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { BsCalendar4Week } from 'react-icons/bs';
+import { GoCheck } from 'react-icons/go';
 import { useState, useEffect } from 'react';
 import {
   currentTime,
@@ -22,20 +23,37 @@ const Modal = (props) => {
   const [totalPrice, setTotalPrice] = useState(regMP);
 
   // Post request
-  const [transaction, setTransaction] = useState({ transaction: null });
+  const [transaction, setTransaction] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let trade = modalType === 'buy' ? 1 : -1;
+
     setTransaction({
       transaction: {
         ticker: name,
-        trade: 1, // -1 for sell, 1 for buy
-        quantity: quantity,
-        settled_price: totalPrice,
-        account_id: null,
+        trade: trade,
+        quantity: Number(quantity),
+        settled_price: Number(totalPrice),
+        account_id: 1,
       },
     });
   };
+
+  useEffect(() => {
+    console.log(transaction);
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/api/transactions',
+      data: transaction,
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [transaction]);
 
   useEffect(() => {
     setTime(currentTime);
@@ -58,43 +76,53 @@ const Modal = (props) => {
           <AiFillCloseCircle />
         </button>
 
-        <h1>
-          {modalType} {name}
-        </h1>
+        <div className='modal-title'>
+          <h1>{modalType}</h1>
+          <h1>{name}</h1>
+        </div>
 
-        <form className='transaction-details'>
-          <p>{name}</p>
-          <div className='time'>
-            <BsCalendar4Week />
-            <p>{time}</p>
-          </div>
-          <div className='price'>
-            <p>{regMP}</p>
-            <p>/ share</p>
-          </div>
-          <input
-            type='number'
-            step='0.1'
-            min='0'
-            value={quantity}
-            id='price'
-            name='price'
-            onChange={(e) => setQuantity(e.target.value)}
-          ></input>
-          <div className='total'>
-            <p>Total</p>
-            <p>
-              <span>$</span>
-              {totalPrice}
+        {transaction ? (
+          <h2 className='complete'>
+            <GoCheck className='check' />
+            Transaction complete
+          </h2>
+        ) : (
+          <form className='transaction-details'>
+            <div className='time'>
+              <BsCalendar4Week className='icon' />
+              <p>{time}</p>
+            </div>
+            <p className='price'>
+              <span> $</span> {regMP} <span className='label'> /share</span>
             </p>
-          </div>
-          <input
-            type='submit'
-            name='submit'
-            value={modalType}
-            onClick={(e) => handleSubmit(e)}
-          />
-        </form>
+            <div className='quantity'>
+              <p>Qty:</p>
+              <input
+                type='number'
+                step='0.1'
+                min='0'
+                value={quantity}
+                className='price-select'
+                onChange={(e) => setQuantity(e.target.value)}
+              ></input>
+            </div>
+
+            <div className='total'>
+              <p>Total</p>
+              <p className='total-price'>
+                <span>$</span>
+                {totalPrice}
+              </p>
+            </div>
+            <div className='quantity'></div>
+            <input
+              type='submit'
+              className='submit'
+              value={modalType}
+              onClick={(e) => handleSubmit(e)}
+            />
+          </form>
+        )}
       </div>
     </aside>,
     document.getElementById('portal')

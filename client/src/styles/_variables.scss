@@ -5,8 +5,8 @@ $font-main: 'Open Sans', sans-serif;
 
 // colours
 $black: #231c1a;
-$white: #fefaeb;
-$grey: #9c9c9c;
+$white: #ffffff;
+$grey: #8f8f8f;
 
 $danger: #e44d3a;
 $success: #16c172;
@@ -17,6 +17,7 @@ $dangerlight: #ffb5b0;
 $successlight: #a7ffc1;
 $greylight: #e4e4e4;
 $logolight: rgb(177, 94, 255);
+$greylight: #e2e2e2;
 
 $logodark: rgb(94, 28, 156);
 
@@ -34,4 +35,10 @@ $logodark: rgb(94, 28, 156);
   font-family: $font-main;
   color: $black;
   letter-spacing: 2px;
+}
+
+@mixin form-field {
+  background-color: $greylight;
+  padding: 8px 10px;
+  border-radius: 8px;
 }

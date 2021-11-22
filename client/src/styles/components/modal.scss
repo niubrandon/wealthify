@@ -11,12 +11,118 @@
 
   .modal-container {
     width: 500px;
-    height: 500px;
+    min-height: 550px;
     border-radius: 12px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
     padding: 25px;
+
+    .close {
+      background-color: transparent;
+      border: none;
+      font-size: 2.3em;
+      display: flex;
+      align-self: flex-end;
+      color: $logo;
+
+      &:hover {
+        color: $logodark;
+      }
+    }
+
+    .modal-title {
+      @include flex-center(row);
+      h1 {
+        text-transform: capitalize;
+        margin-right: 15px;
+      }
+    }
+
+    .complete {
+      @include flex-center(row);
+      @include form-field();
+      text-transform: capitalize;
+      margin-top: 1em;
+      .check {
+        color: $success;
+        margin-right: 15px;
+      }
+    }
+
+    .transaction-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      font-size: 1.2em;
+      .time {
+        display: flex;
+        @include form-field();
+        .icon {
+          font-size: 1.3em;
+        }
+        p {
+          margin-left: 10px;
+          margin-bottom: 0;
+        }
+      }
+      .price {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+        @include form-field();
+        p {
+          margin-bottom: 0;
+        }
+        .label {
+          margin-bottom: 0;
+          font-size: 0.8rem;
+          color: $grey;
+          margin-left: 5px;
+        }
+      }
+
+      .quantity {
+        display: flex;
+        align-items: center;
+
+        p {
+          margin-bottom: 0;
+          margin-right: 10px;
+        }
+        .price-select {
+          @include form-field();
+          border: 3px solid $black;
+          outline: none;
+          width: 100%;
+        }
+      }
+      .total {
+        @include form-field();
+        p {
+          margin-bottom: 0;
+        }
+
+        .total-price {
+          font-size: 2em;
+        }
+      }
+      .submit {
+        font-size: 1.3em;
+        width: 100%;
+        background-color: $logo;
+        color: $white;
+        border: none;
+        text-transform: capitalize;
+        padding: 10px 0;
+        border-radius: 8px;
+
+        &:hover {
+          background-color: $logodark;
+        }
+      }
+    }
   }
 }

@@ -2359,3 +2359,2325 @@ Started GET "/api/users/login" for ::1 at 2021-11-21 16:13:47 -0500
   
 ActionController::RoutingError (No route matches [GET] "/api/users/login"):
   
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/transactions" for ::1 at 2021-11-21 17:29:36 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/transactions"):
+  
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/transactions" for ::1 at 2021-11-21 17:30:05 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/transactions"):
+  
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/transactions" for ::1 at 2021-11-21 17:31:09 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/transactions"):
+  
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/transactions" for ::1 at 2021-11-21 17:31:23 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/transactions"):
+  
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/transactions" for ::1 at 2021-11-21 17:31:29 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/transactions"):
+  
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:31:55 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"NEGG", "trade"=>1, "quantity"=>"2", "settled_price"=>"310.14", "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 32ms (Views: 11.2ms | ActiveRecord: 5.7ms | Allocations: 12317)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:31:59 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"NEGG", "trade"=>1, "quantity"=>"2", "settled_price"=>"310.14", "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 8ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 849)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:33:14 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"NEGG", "trade"=>1, "quantity"=>"2", "settled_price"=>"310.14", "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 669)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:33:35 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"NEGG", "trade"=>1, "quantity"=>"2.3", "settled_price"=>"356.66", "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 6ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:33:53 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"NEGG", "trade"=>1, "quantity"=>"2.3", "settled_price"=>"356.66", "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 2ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:34:02 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>""}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 123)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:34:08 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"NEGG", "trade"=>-1, "quantity"=>"1.7", "settled_price"=>"263.62", "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 9ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:35:26 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"NEGG", "trade"=>-1, "quantity"=>"1.7", "settled_price"=>"263.62", "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 3ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:35:50 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"NEGG", "trade"=>-1, "quantity"=>"1.7", "settled_price"=>"263.62", "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 21ms (Views: 19.5ms | ActiveRecord: 0.0ms | Allocations: 663)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:36:01 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"NEGG", "trade"=>-1, "quantity"=>1.7, "settled_price"=>263.62, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 5ms (Views: 1.9ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:37:04 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:37:10 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:39:13 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:39:28 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 118)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:39:40 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1.3, "settled_price"=>201.59, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 3ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:41:01 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:41:10 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:41:51 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:42:12 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:42:18 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:42:25 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>-1, "quantity"=>1.6, "settled_price"=>248.11, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 3ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Started GET "/api/transactions" for ::1 at 2021-11-21 17:42:54 -0500
+Processing by TransactionsController#index as HTML
+  [1m[36mTransaction Load (2.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  ↳ app/controllers/transactions_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 5.1ms | ActiveRecord: 2.1ms | Allocations: 2175)
+
+
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:51:18 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:51:23 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:51:36 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:51:39 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:51:43 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 2ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:51:47 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:51:52 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:58:19 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:58:21 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 3ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:58:45 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:58:47 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 17:59:04 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:05:42 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:05:45 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:07:02 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:07:10 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:08:31 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:08:35 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1, "settled_price"=>155.07, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 29ms (Views: 0.6ms | ActiveRecord: 6.3ms | Allocations: 3816)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:09:08 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:09:18 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:09:20 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:09:25 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:09:44 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:09:48 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:11:29 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:13:15 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:13:21 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:17:28 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:18:18 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:20:29 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:20:36 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:20:42 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:21:29 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:21:36 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:21:42 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:21:47 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:23:06 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:23:40 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:23:45 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:23:48 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:25:00 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:25:41 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:42:28 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:42:32 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:42:36 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:42:59 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:43:00 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1, "settled_price"=>155.07, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 56ms (Views: 4.7ms | ActiveRecord: 15.7ms | Allocations: 3765)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:43:02 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:44:20 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:46:12 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:46:15 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:46:24 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:47:03 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:47:25 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:47:30 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:47:42 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:47:47 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:47:52 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:49:55 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:50:20 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:51:15 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:51:28 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:51:30 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:51:44 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1.4, "settled_price"=>217.1, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 30ms (Views: 0.6ms | ActiveRecord: 5.7ms | Allocations: 3766)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:51:48 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:52:31 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:52:53 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:53:02 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:54:58 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:55:08 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:55:15 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:55:18 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:55:22 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1, "settled_price"=>155.07, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 3ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:55:46 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1, "settled_price"=>155.07, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:57:05 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1, "settled_price"=>155.07, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:59:50 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 18:59:52 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1, "settled_price"=>155.07, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:00:25 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:00:26 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1, "settled_price"=>155.07, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 6ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:01:01 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:01:02 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1, "settled_price"=>155.07, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 3ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:02:50 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1, "settled_price"=>155.07, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 3ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:03:07 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1, "settled_price"=>155.07, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 2ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:03:19 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1, "settled_price"=>155.07, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 2ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:04:38 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:04:42 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:04:44 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:04:50 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:04:51 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1, "settled_price"=>155.07, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 18ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:04:56 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:04:59 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:05:02 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 9ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:05:05 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:05:09 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 6ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:05:10 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"ETH-USD", "trade"=>1, "quantity"=>1, "settled_price"=>155.07, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 11ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:05:13 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:05:35 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:06:07 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"APPL", "trade"=>1, "quantity"=>1.4, "settled_price"=>217.1, "account_id"=>1}}
+[31mUnpermitted parameter: :account_id[0m
+Completed 422 Unprocessable Entity in 3ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 659)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:07:15 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:07:34 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:07:39 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:07:41 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:07:44 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 5ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-21 19:07:47 -0500
+Processing by TransactionsController#create as HTML
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:49:in `transaction_params'
+app/controllers/transactions_controller.rb:18:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}

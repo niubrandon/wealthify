@@ -12,7 +12,7 @@ const Card = (props) => {
   const regMCPRound = regMCP && regMCP.toFixed(2);
 
   return (
-    <Link to={`/stock/${symbol}`} class='card-link'>
+    <Link to={`/stock/${symbol}`} className='card-link'>
       <div className='card-container'>
         <div className='card-name'>
           <div className='text'>
