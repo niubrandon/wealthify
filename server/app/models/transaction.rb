@@ -29,7 +29,7 @@ class Transaction < ApplicationRecord
 
       new_quantity = account_portfolio.quantity + quantity * trade_type
 
-      # yes: update inc/dec qty
+      # update inc/dec qty
       account_portfolio.update(quantity: new_quantity)
 
       # destroy if 0 qty
@@ -38,7 +38,7 @@ class Transaction < ApplicationRecord
       end
     else 
       puts "****** No portfolio. Create new****"
-      # no: create
+      # create
       Portfolio.create({ticker: ticker, quantity: quantity, current_spot_price: settled_price, account_id: account_id})
     end
 
