@@ -12,13 +12,15 @@ import Search from './pages/Search';
 import Stock from './pages/Stock';
 import Modal from './components/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from './components/NavBar';
 
 function App() {
   //authuser set to null when it is logout, set to jwt when it's login
   const [ authuser, setAuthuser ] = useState(null);
   return (
     <div className='App'>
-      <Sidebar />
+      <NavBar />
+      {/* <Sidebar /> */}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path="/login" element={<Login authuser={authuser} setAuthuser={setAuthuser} />} />
