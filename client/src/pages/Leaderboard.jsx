@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import LeaderboardTable from "../components/LeaderboardTable";
 
 const findEmailById = (id, users) => {
   for (const user of users) {
@@ -41,7 +42,11 @@ const Leaderboard = (props) => {
     const email = findEmailById(account.user_id, users);
     return (
       <tr>
-        <td>{email}</td>
+        <td>
+        <Link to={`/account/${account.user_id}`}>
+        {email}
+        </Link>
+        </td>
         <td>{account.total_balance}</td>
       </tr>
     );
@@ -50,15 +55,9 @@ const Leaderboard = (props) => {
   return (
     <>
       <h1>Leaderboard</h1>
-      <Table striped condensed hover>
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>Total Value</th>
-          </tr>
-        </thead>
-        <tbody>{sortedAccounts}</tbody>
-      </Table>
+      <LeaderboardTable
+        sortedAccounts={sortedAccounts}
+      />
     </>
   );
 };
