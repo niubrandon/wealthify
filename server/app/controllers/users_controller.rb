@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   
 
   #jwt implementation, except crete or login
-  before_action :authenticate_request!, except: [:create, :login] 
+  # before_action :authenticate_request!, except: [:create, :login]
 
   before_action :set_user, only: [:show, :update, :destroy]
 

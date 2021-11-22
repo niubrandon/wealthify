@@ -3,16 +3,16 @@ class AccountsController < ApplicationController
 
   # GET /accounts
   def index
-    admin_account = {
-      :cash_balance => 2000,
-      :stock_balance => 10000,
-      :user_id => 1
-    }
+    # admin_account = {
+    #   :cash_balance => 2000,
+    #   :stock_balance => 10000,
+    #   :user_id => 1
+    # }
 
-    render json: admin_account
-    #@accounts = Account.all
-
-    #render json: @accounts
+    # render json: admin_account
+    @accounts = Account.all
+    @users = User.all
+    render json: {accounts: @accounts, users: @users}
   end
 
   # GET /accounts/1

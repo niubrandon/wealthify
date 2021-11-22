@@ -9,6 +9,7 @@ const NavBar = (props) => {
         <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="/search">Search</Nav.Link>
         <Nav.Link href="/portfolio">Portfolio</Nav.Link>
+        <Nav.Link href="/leaderboard">Leaderboard</Nav.Link>
         <Nav.Link href="/login">Login?Signup</Nav.Link>
       </Nav>
     </>

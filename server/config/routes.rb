@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+    
   resources :referrals
   scope '/api' do
   resources :portfolios

@@ -13,6 +13,7 @@ import Stock from './pages/Stock';
 import Modal from './components/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar';
+import Leaderboard from './pages/Leaderboard';
 
 function App() {
   //authuser set to null when it is logout, set to jwt when it's login
@@ -27,6 +28,7 @@ function App() {
         <Route path="/signup" element={<Signup authuser={authuser} setAuthuser={setAuthuser} />} />
         <Route path='portfolio' element={<Portfolio authuser={authuser} setAuthuser={setAuthuser} />} />
         <Route path='search' element={<Search />} />
+        <Route path='leaderboard' element={<Leaderboard />} />
         <Route path='stock'>
           <Route path=':name' element={<Stock />} />
           <Route path=':name/buy' element={<Modal />} />
