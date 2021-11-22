@@ -22,7 +22,7 @@ const Modal = (props) => {
   const [quantity, setQuantity] = useState(1);
   const [time, setTime] = useState(null);
   const [totalPrice, setTotalPrice] = useState(regMP);
-  const [responseStatus, setResponseStatus] = useState(false);
+  const [responseStatus, setResponseStatus] = useState(null);
 
   // Post request
   const [transaction, setTransaction] = useState(null);
@@ -36,7 +36,7 @@ const Modal = (props) => {
         ticker: name,
         trade: trade,
         quantity: Number(quantity),
-        settled_price: Number(totalPrice),
+        settled_price: Number(regMP),
         account_id: 1,
       },
     });
@@ -50,7 +50,7 @@ const Modal = (props) => {
     console.log(transaction);
     axios({
       method: 'post',
-      url: 'http://localhost:3000/api/transacs',
+      url: 'http://localhost:3000/api/transactions',
       data: transaction,
     })
       .then((response) => {
@@ -61,6 +61,7 @@ const Modal = (props) => {
       })
       .catch((error) => {
         console.log(error);
+        setResponseStatus(false);
       });
   }, [transaction]);
 
@@ -103,11 +104,10 @@ const Modal = (props) => {
                 Transaction failed
               </h2>
             )}
-
             {responseStatus ? (
               <p className='summary'>
                 You just {modalType === 'buy' ? 'bought' : 'sold'} {quantity}{' '}
-                {quantity === 1 ? 'share' : 'shares'} of {name}.{' '}
+                {quantity === 1 ? 'share' : 'shares'} of {name}.
               </p>
             ) : (
               <p className='summary'>Please try again.</p>
