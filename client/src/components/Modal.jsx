@@ -47,21 +47,19 @@ const Modal = (props) => {
       return;
     }
 
-    console.log(transaction);
     axios({
       method: 'post',
       url: 'http://localhost:3000/api/transactions',
       data: transaction,
     })
       .then((response) => {
-        console.log(response);
         if (response.status < 300 && response.status > 199) {
-          setResponseStatus(true);
+          setResponseStatus('complete');
         }
       })
       .catch((error) => {
         console.log(error);
-        setResponseStatus(false);
+        setResponseStatus('error');
       });
   }, [transaction]);
 
@@ -93,24 +91,26 @@ const Modal = (props) => {
 
         {transaction ? (
           <div className='transaction-msg'>
-            {responseStatus ? (
-              <h2 className='complete'>
-                <GoCheck className='check' />
-                Transaction complete
-              </h2>
-            ) : (
-              <h2 className='complete'>
-                <MdOutlineClose className='bad' />
-                Transaction failed
-              </h2>
+            {responseStatus === 'complete' && (
+              <div className='msg'>
+                <h2 className='complete'>
+                  <GoCheck className='check' />
+                  Transaction complete
+                </h2>
+                <p className='summary'>
+                  You just {modalType === 'buy' ? 'bought' : 'sold'} {quantity}{' '}
+                  {quantity === 1 ? 'share' : 'shares'} of {name}.
+                </p>
+              </div>
             )}
-            {responseStatus ? (
-              <p className='summary'>
-                You just {modalType === 'buy' ? 'bought' : 'sold'} {quantity}{' '}
-                {quantity === 1 ? 'share' : 'shares'} of {name}.
-              </p>
-            ) : (
-              <p className='summary'>Please try again.</p>
+            {responseStatus === 'error' && (
+              <div className='msg'>
+                <h2 className='complete'>
+                  <MdOutlineClose className='bad' />
+                  Transaction failed
+                </h2>
+                <p className='summary'>Please try again.</p>
+              </div>
             )}
           </div>
         ) : (

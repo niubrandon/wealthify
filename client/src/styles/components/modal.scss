@@ -40,7 +40,7 @@
       }
     }
 
-    .transaction-msg {
+    .msg {
       @include flex-center(column);
 
       .complete {
