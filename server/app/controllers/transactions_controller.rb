@@ -15,6 +15,8 @@ class TransactionsController < ApplicationController
 
   # POST /transactions
   def create
+    puts "%%%receving post request from front end%%%%"
+    puts params
     @transaction = Transaction.new(transaction_params)
 
     if @transaction.save
@@ -46,6 +48,6 @@ class TransactionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def transaction_params
-      params.require(:transaction).permit(:ticker, :trade, :quantity, :settled_price)
+      params.require(:transaction).permit(:ticker, :trade, :quantity, :settled_price, :account_id)
     end
 end

@@ -40,14 +40,33 @@
       }
     }
 
-    .complete {
-      @include flex-center(row);
-      @include form-field();
-      text-transform: capitalize;
-      margin-top: 1em;
-      .check {
-        color: $success;
-        margin-right: 15px;
+    .transaction-msg {
+      @include flex-center(column);
+
+      .complete {
+        @include flex-center(row);
+        @include form-field();
+        text-transform: capitalize;
+        margin-top: 1em;
+        width: 100%;
+
+        .check {
+          color: $success;
+          margin-right: 10px;
+        }
+
+        .bad {
+          color: $danger;
+          margin-right: 10px;
+        }
+      }
+
+      .summary {
+        @include form-field();
+        width: 100%;
+        margin-top: 1em;
+        font-size: 1.3em;
+        text-align: center;
       }
     }
 

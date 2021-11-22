@@ -4,6 +4,7 @@ import '../styles/components/modal.scss';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { BsCalendar4Week } from 'react-icons/bs';
 import { GoCheck } from 'react-icons/go';
+import { MdOutlineClose } from 'react-icons/md';
 import { useState, useEffect } from 'react';
 import {
   currentTime,
@@ -21,6 +22,7 @@ const Modal = (props) => {
   const [quantity, setQuantity] = useState(1);
   const [time, setTime] = useState(null);
   const [totalPrice, setTotalPrice] = useState(regMP);
+  const [responseStatus, setResponseStatus] = useState(false);
 
   // Post request
   const [transaction, setTransaction] = useState(null);
@@ -41,14 +43,21 @@ const Modal = (props) => {
   };
 
   useEffect(() => {
+    if (!transaction) {
+      return;
+    }
+
     console.log(transaction);
     axios({
       method: 'post',
-      url: 'http://localhost:3000/api/transactions',
+      url: 'http://localhost:3000/api/transacs',
       data: transaction,
     })
       .then((response) => {
         console.log(response);
+        if (response.status < 300 && response.status > 199) {
+          setResponseStatus(true);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -82,10 +91,28 @@ const Modal = (props) => {
         </div>
 
         {transaction ? (
-          <h2 className='complete'>
-            <GoCheck className='check' />
-            Transaction complete
-          </h2>
+          <div className='transaction-msg'>
+            {responseStatus ? (
+              <h2 className='complete'>
+                <GoCheck className='check' />
+                Transaction complete
+              </h2>
+            ) : (
+              <h2 className='complete'>
+                <MdOutlineClose className='bad' />
+                Transaction failed
+              </h2>
+            )}
+
+            {responseStatus ? (
+              <p className='summary'>
+                You just {modalType === 'buy' ? 'bought' : 'sold'} {quantity}{' '}
+                {quantity === 1 ? 'share' : 'shares'} of {name}.{' '}
+              </p>
+            ) : (
+              <p className='summary'>Please try again.</p>
+            )}
+          </div>
         ) : (
           <form className='transaction-details'>
             <div className='time'>
@@ -103,6 +130,7 @@ const Modal = (props) => {
                 min='0'
                 value={quantity}
                 className='price-select'
+                autoFocus
                 onChange={(e) => setQuantity(e.target.value)}
               ></input>
             </div>
