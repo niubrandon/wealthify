@@ -23,7 +23,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path="/login" element={<Login authuser={authuser} setAuthuser={setAuthuser} />} />
         <Route path="/signup" element={<Signup authuser={authuser} setAuthuser={setAuthuser} />} />
-        <Route path='portfolio' element={<Portfolio />} />
+        <Route path='portfolio' element={<Portfolio authuser={authuser} setAuthuser={setAuthuser} />} />
         <Route path='search' element={<Search />} />
         <Route path='stock'>
           <Route path=':name' element={<Stock />} />
