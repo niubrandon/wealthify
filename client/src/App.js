@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import axios from 'axios';
 import React from 'react';
@@ -16,21 +16,28 @@ import NavBar from './components/NavBar';
 
 function App() {
   //authuser set to null when it is logout, set to jwt when it's login
-  const [ authuser, setAuthuser ] = useState(null);
+  const [authuser, setAuthuser] = useState(null);
   return (
     <div className='App'>
       <NavBar />
       {/* <Sidebar /> */}
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path="/login" element={<Login authuser={authuser} setAuthuser={setAuthuser} />} />
-        <Route path="/signup" element={<Signup authuser={authuser} setAuthuser={setAuthuser} />} />
-        <Route path='portfolio' element={<Portfolio authuser={authuser} setAuthuser={setAuthuser} />} />
+        <Route
+          path='/login'
+          element={<Login authuser={authuser} setAuthuser={setAuthuser} />}
+        />
+        <Route
+          path='/signup'
+          element={<Signup authuser={authuser} setAuthuser={setAuthuser} />}
+        />
+        <Route
+          path='portfolio'
+          element={<Portfolio authuser={authuser} setAuthuser={setAuthuser} />}
+        />
         <Route path='search' element={<Search />} />
         <Route path='stock'>
           <Route path=':name' element={<Stock />} />
-          <Route path=':name/buy' element={<Modal />} />
-          <Route path=':name/sell' element={<Modal />} />
         </Route>
       </Routes>
     </div>

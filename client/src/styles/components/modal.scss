@@ -1,0 +1,147 @@
+@import '../_variables';
+#modal {
+  @include flex-center(column);
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  .modal-container {
+    width: 500px;
+    min-height: 550px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+
+    .close {
+      background-color: transparent;
+      border: none;
+      font-size: 2.3em;
+      display: flex;
+      align-self: flex-end;
+      color: $logo;
+
+      &:hover {
+        color: $logodark;
+      }
+    }
+
+    .modal-title {
+      @include flex-center(row);
+      h1 {
+        text-transform: capitalize;
+        margin-right: 15px;
+      }
+    }
+
+    .msg {
+      @include flex-center(column);
+
+      .complete {
+        @include flex-center(row);
+        @include form-field();
+        text-transform: capitalize;
+        margin-top: 1em;
+        width: 100%;
+
+        .check {
+          color: $success;
+          margin-right: 10px;
+        }
+
+        .bad {
+          color: $danger;
+          margin-right: 10px;
+        }
+      }
+
+      .summary {
+        @include form-field();
+        width: 100%;
+        margin-top: 1em;
+        font-size: 1.3em;
+        text-align: center;
+      }
+    }
+
+    .transaction-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      font-size: 1.2em;
+      .time {
+        display: flex;
+        @include form-field();
+        .icon {
+          font-size: 1.3em;
+        }
+        p {
+          margin-left: 10px;
+          margin-bottom: 0;
+        }
+      }
+      .price {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+        @include form-field();
+        p {
+          margin-bottom: 0;
+        }
+        .label {
+          margin-bottom: 0;
+          font-size: 0.8rem;
+          color: $grey;
+          margin-left: 5px;
+        }
+      }
+
+      .quantity {
+        display: flex;
+        align-items: center;
+
+        p {
+          margin-bottom: 0;
+          margin-right: 10px;
+        }
+        .price-select {
+          @include form-field();
+          border: 3px solid $black;
+          outline: none;
+          width: 100%;
+        }
+      }
+      .total {
+        @include form-field();
+        p {
+          margin-bottom: 0;
+        }
+
+        .total-price {
+          font-size: 2em;
+        }
+      }
+      .submit {
+        font-size: 1.3em;
+        width: 100%;
+        background-color: $logo;
+        color: $white;
+        border: none;
+        text-transform: capitalize;
+        padding: 10px 0;
+        border-radius: 8px;
+
+        &:hover {
+          background-color: $logodark;
+        }
+      }
+    }
+  }
+}

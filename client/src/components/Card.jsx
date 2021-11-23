@@ -12,7 +12,7 @@ const Card = (props) => {
   const regMCPRound = regMCP && regMCP.toFixed(2);
 
   return (
-    <Link to={`/stock/${symbol}`}>
+    <Link to={`/stock/${symbol}`} className='card-link'>
       <div className='card-container'>
         <div className='card-name'>
           <div className='text'>
@@ -23,6 +23,7 @@ const Card = (props) => {
           {quoteType === 'CRYPTOCURRENCY' && (
             <img
               src={`https://styles.redditmedia.com/t5_2wlj3/styles/communityIcon_7jxh2j4ouky41.png`}
+              alt='cryptocurrency symbol'
             ></img>
           )}
         </div>
