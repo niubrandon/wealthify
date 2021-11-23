@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+  require 'securerandom'  
 
   #jwt implementation, except crete or login
   before_action :authenticate_request!, except: [:create, :login, :index] 
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     #authenticate method from has_secure_password helper
     if user&.authenticate(user_params[:password])
       auth_token = JsonWebToken.encode(user_id: user.id)
+      ########################## get referral code
       render json: { auth_token: auth_token, user_id: user.id, user_email: user.email }, status: :ok
     else
       render json: { error: 'Invalid username/password' }, status: :unauthorized
@@ -40,6 +41,11 @@ class UsersController < ApplicationController
 
     @user = User.new(user_params)
     puts user_params
+
+    # # create referral code - replace used code with new user code to store in db
+    # user_referral_code = SecureRandom.alphanumeric(6)
+    # @user.update(referral_code: user_referral_code)
+
    
     if @user.save
       auth_token = JsonWebToken.encode(user_id: @user.id)
@@ -73,6 +79,6 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through. updated paramas to follow bcrypt style
     def user_params
    
-      params.require(:user).permit(:first_name, :last_name, :email, :password)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :referral_code)
     end
 end

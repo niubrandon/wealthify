@@ -15,17 +15,17 @@ import {
 
 const Signup = (props) => {
   console.log(props.authUser);
-  const [user, setUser] = useState({ user: '' });
+  const [user, setUser] = useState(null);
   //const [ jwt, setJWT ] = useState({jwt: null});
 
   let navigate = useNavigate();
   let location = useLocation();
   //let from = location.state?.from?.pathname || "/";
-  let from = '/';
+  //let from = "/portfolio"
 
   useEffect(() => {
     console.log('user is', user);
-    if (!user.user) {
+    if (!user) {
       return;
     }
 
@@ -43,8 +43,11 @@ const Signup = (props) => {
           user_id: response.data.user_id,
           user_email: response.data.user_email,
         });
+
+        //reset user to null
+
         //navigate to page
-        // navigate(from, { replace: true });
+        //navigate(from, { replace: true });
         navigate('/portfolio');
       })
       .catch(function (error) {
@@ -77,8 +80,6 @@ const Signup = (props) => {
 
   return (
     <div style={flexWrapperVertical}>
-      {props.authUser && navigate('portfolio', { replace: true })}
-
       <Form className='w-50' onSubmit={(e) => onSignUp(e)}>
         <Form.Group className='mb-3' controlId='formFristName'>
           <Form.Label>First Name</Form.Label>
