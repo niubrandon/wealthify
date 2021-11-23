@@ -13,13 +13,14 @@ const findEmailById = (id, users) => {
 
 const LeaderboardCard = ((props) => {
   const { accounts, users } = props
-  const [donut, setDonut] = useState(false)
-  const onClick = () => setDonut(!donut)
+  const [donut, setDonut] = useState()
+  
   const leaderboardCards = accounts.map((account, index) => {
+    const onClick = () => donut === account.id ? setDonut(null) : setDonut(account.id)
     const place = index + 1
     const email = findEmailById(account.user_id, users)
     return (
-    <Card key={index} className="w-50 text-center" >
+    <Card key={index} className="w-70 text-center" >
       <Card.Header as="h5">{place} {email}</Card.Header>
       <Card.Body>
         <Card.Title>Total Balance: {account.total_balance}</Card.Title>
@@ -28,9 +29,8 @@ const LeaderboardCard = ((props) => {
         </Card.Text>
         <Button variant="primary" onClick={onClick}>View Summary</Button>
       </Card.Body>
-    {donut ? <PortfolioDonutChart /> : null}
+    {donut === account.id ? <PortfolioDonutChart /> : null}
     </Card>
-
     )
 
   })

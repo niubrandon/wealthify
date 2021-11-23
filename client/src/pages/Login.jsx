@@ -9,18 +9,18 @@ import {
 } from "react-router-dom";
 
 const Login = (props) => {
-  const [user, setUser] = useState({user: ""});
+  const [user, setUser] = useState(null);
   //const [ jwt, setJWT ] = useState({jwt: null});
 
   //navigate react routers
   let navigate = useNavigate();
   let location = useLocation();
   //let from = location.state?.from?.pathname || "/";
-  let from = "/";
+  let from = "/portfolio";
 
   useEffect(() => {
     //console.log("user is", user)
-    if (!user.user) {
+    if (!user) {
       return;
     }
 
@@ -38,6 +38,7 @@ const Login = (props) => {
         user_email: response.data.user_email})
 
         //navigate
+       //navigate(from, { replace: true });
        navigate('/portfolio')
   })
   .catch(function (error) {
