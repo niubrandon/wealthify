@@ -4,8 +4,8 @@ class AccountsController < ApplicationController
   # GET /accounts
   def index
     @accounts = Account.all
-
-    render json: @accounts
+    @users = User.all
+    render json: {accounts: @accounts, users: @users}
   end
 
   def index

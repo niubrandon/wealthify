@@ -5,9 +5,8 @@ import PortfolioCard from "../components/PortfolioCard";
 import Transactions from "../components/Transactions";
 
 const Portfolio = (props) => {
+  console.log("printing from portfolio", props.authUser)
 
-  //const [ account, setAccount ] = useState(null)
-  //use hardcoded jwt token first
   useEffect(() => {
   /*   if (!account) {
       return
@@ -37,6 +36,7 @@ const Portfolio = (props) => {
 
   return (
     <>
+    
     <div style={flexWrapperVertical} >
     { props.account && <PortfolioDonutChart />}
     { props.account && <PortfolioCard account={props.account} />}

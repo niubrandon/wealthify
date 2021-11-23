@@ -3,12 +3,26 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
+import {
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+  useLocation,
+  Navigate,
+  Outlet
+} from "react-router-dom";
 
 
 const Signup = (props) => {
-  console.log(props.authuser)
+  console.log(props.authUser)
   const [ user, setUser ] = useState({user: ''});
   //const [ jwt, setJWT ] = useState({jwt: null});
+  
+  let navigate = useNavigate();
+  let location = useLocation();
+  //let from = location.state?.from?.pathname || "/";
+  let from = "/"
 
   useEffect(() => {
     console.log("user is", user)
@@ -25,16 +39,21 @@ const Signup = (props) => {
   .then(function (response) {
       console.log(response.data);
       //setJWT({jwt: response.data.auth_token})
-      props.setAuthuser({
+      props.setAuthUser({
         jwt: response.data.auth_token,
         user_id: response.data.user_id,
         user_email: response.data.user_email
       })
+      //navigate to page
+      navigate(from, { replace: true });
+  
   })
   .catch(function (error) {
       console.log(error);
   });
   }, [user])
+
+
 
 
   const onSignUp = (e) => {
@@ -61,6 +80,8 @@ const Signup = (props) => {
 
   return (
     <div style={flexWrapperVertical}>
+      { props.authUser && navigate("portfolio", { replace: true})}
+
     <Form className="w-50" onSubmit={ (e) => onSignUp(e) }>
       <Form.Group className="mb-3" controlId="formFristName">
         <Form.Label >First Name</Form.Label>
@@ -83,7 +104,7 @@ const Signup = (props) => {
         <Form.Control type="password" name="password" placeholder="Password" required/>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="formReferralCode">
         <Form.Label>Referral code</Form.Label>
         <Form.Control type="text" name="referral_code" placeholder="Refferal code" />
       </Form.Group>

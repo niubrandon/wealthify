@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 
 const PortfolioCard = ((props) => {
 
-  const portfolio_cards = props.account && props.account.portfolio.map((item, index) => {
+  const portfolioCards = props.account && props.account.portfolio.map((item, index) => {
     return (
     <Card key={index} className="w-50 text-center" >
       <Card.Header as="h5">{item.ticker}</Card.Header>
@@ -22,7 +22,7 @@ const PortfolioCard = ((props) => {
   })
   return (
     <>
-     {props.account && portfolio_cards}
+     {props.account && portfolioCards}
     </>
   )
 })
