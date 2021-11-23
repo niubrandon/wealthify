@@ -4,11 +4,13 @@ import { Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 
+
 const NavBar = (props) => {
   console.log("print from navbar", props.authUser)
 
   const onLogout = ((e) => {
     props.setAuthUser(null)
+    props.setAccount(null)
   });
 
   return (

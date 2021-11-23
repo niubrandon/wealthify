@@ -43,6 +43,7 @@ class UsersController < ApplicationController
    
     if @user.save
       auth_token = JsonWebToken.encode(user_id: @user.id)
+
       render json: { auth_token: auth_token, user_id: @user.id, user_email: @user.email }, status: :created
     else
       puts @user.errors.inspect
@@ -73,6 +74,6 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through. updated paramas to follow bcrypt style
     def user_params
    
-      params.require(:user).permit(:first_name, :last_name, :email, :password)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :referral_code)
     end
 end
