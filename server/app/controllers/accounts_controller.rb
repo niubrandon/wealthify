@@ -2,18 +2,11 @@ class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :update, :destroy]
 
   # GET /accounts
-  # def index
-  #   admin_account = {
-  #     :cash_balance => 2000,
-  #     :stock_balance => 10000,
-  #     :user_id => 1
-  #   }
+  def index
+    @accounts = Account.all
 
-  #   render json: admin_account
-  #   #@accounts = Account.all
-
-  #   #render json: @accounts
-  # end
+    render json: @accounts
+  end
 
   def index
     @accounts = Account.all

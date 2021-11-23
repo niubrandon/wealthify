@@ -51,7 +51,16 @@ const Signup = (props) => {
     })
   };
 
+  const flexWrapperVertical = {
+    display:'flex', 
+    flexDirection:'column', 
+    justifyContent:'center', 
+    alignItems:'center', 
+    gap:'10px'
+  }
+
   return (
+    <div style={flexWrapperVertical}>
     <Form className="w-50" onSubmit={ (e) => onSignUp(e) }>
       <Form.Group className="mb-3" controlId="formFristName">
         <Form.Label >First Name</Form.Label>
@@ -83,6 +92,7 @@ const Signup = (props) => {
         SignUp
       </Button>
     </Form>
+    </div>
   )
 }
 

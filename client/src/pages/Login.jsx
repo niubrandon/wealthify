@@ -46,9 +46,21 @@ const Login = (props) => {
     });
   };
 
+ 
+  const flexWrapperVertical = {
+    display:'flex', 
+    flexDirection:'column', 
+    justifyContent:'center', 
+    alignItems:'center', 
+    gap:'10px'
+  }
+
+
   return (
-    <Form className='w-50' onSubmit={(e) => onLogIn(e)}>
-      <Form.Group className='mb-3' controlId='formBasicEmail'>
+    <div style={flexWrapperVertical}>
+    <Form className="w-50" onSubmit={ (e) => onLogIn(e) }>
+
+      <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
           type='email'
@@ -72,7 +84,11 @@ const Login = (props) => {
         Login
       </Button>
     </Form>
-  );
-};
+    </div>  
+    
+    
+    
+    )
+}
 
 export default Login;

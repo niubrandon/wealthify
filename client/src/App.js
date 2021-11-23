@@ -16,25 +16,17 @@ import NavBar from './components/NavBar';
 
 function App() {
   //authuser set to null when it is logout, set to jwt when it's login
-  const [authuser, setAuthuser] = useState(null);
+  const [ authuser, setAuthuser ] = useState(null);
+  const [ account, setAccount ] = useState(null)
   return (
     <div className='App'>
       <NavBar />
       {/* <Sidebar /> */}
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route
-          path='/login'
-          element={<Login authuser={authuser} setAuthuser={setAuthuser} />}
-        />
-        <Route
-          path='/signup'
-          element={<Signup authuser={authuser} setAuthuser={setAuthuser} />}
-        />
-        <Route
-          path='portfolio'
-          element={<Portfolio authuser={authuser} setAuthuser={setAuthuser} />}
-        />
+        <Route path="/login" element={<Login authuser={authuser} setAuthuser={setAuthuser} />} />
+        <Route path="/signup" element={<Signup authuser={authuser} setAuthuser={setAuthuser} />} />
+        <Route path='portfolio' element={<Portfolio authuser={authuser} setAuthuser={setAuthuser} account={account} setAccount={setAccount} />} />
         <Route path='search' element={<Search />} />
         <Route path='stock'>
           <Route path=':name' element={<Stock />} />
