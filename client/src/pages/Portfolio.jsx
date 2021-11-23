@@ -6,15 +6,15 @@ import Transactions from "../components/Transactions";
 
 const Portfolio = (props) => {
   console.log("printing from portfolio", props.authUser)
-
+ 
   useEffect(() => {
   /*   if (!account) {
       return
     } */
-    const url = "http://localhost:3000/api/accounts/4";
+    const url = `http://localhost:3000/api/accounts/${props.authUser.user_id}`;
     const config = {
       headers: {
-        Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MzgxMzMzNTksImlzcyI6Imlzc3Vlcl9uYW1lIiwiYXVkIjoiY2xpZW50IiwidXNlcl9pZCI6NH0.bt5pZyy7RzYDsV1TEJV66fjy5xrqsJFGnUnr-JpCB50"
+        Authorization: "Bearer " + props.authUser.jwt
       }
     }
     axios.get(url, config).then( (response) => {

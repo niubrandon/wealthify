@@ -4,13 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 import {
-  Routes,
-  Route,
-  Link,
   useNavigate,
   useLocation,
-  Navigate,
-  Outlet
 } from "react-router-dom";
 
 const Login = (props) => {
