@@ -21,8 +21,13 @@ class AccountsController < ApplicationController
   end
   
   # GET /accounts/1
+  #also show all the transactions and portforlio for account 1
+  #add auth process later verify jwt
   def show
-    render json: @account
+ 
+    @account_portfolios = Portfolio.all.where("account_id = #{params[:id]}" )
+    @account_transactions = Transaction.all.where("account_id = #{params[:id]}")
+    render json: {account: @account, portfolio: @account_portfolios, transactions: @account_transactions}
   end
 
   # POST /accounts
