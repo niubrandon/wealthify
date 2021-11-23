@@ -1,0 +1,38 @@
+@import '../_variables';
+
+#referral-portfolio {
+  @include flex-center(column);
+  background-color: $greylight;
+  width: 100%;
+  border-radius: 8px;
+  color: $black;
+  padding: 1rem 0;
+
+  p {
+    font-size: 1.5em;
+    margin-bottom: 0;
+  }
+
+  .highlight {
+    color: $logo;
+    font-size: 1.2em;
+  }
+
+  .code {
+    @include flex-center(row);
+    margin-top: 1rem;
+    .user-code {
+      margin: 0 1rem;
+      padding: 5px 40px;
+      border: 2px solid $logo;
+      border-radius: 8px;
+    }
+    .icon {
+      font-size: 2em;
+      color: $logo;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

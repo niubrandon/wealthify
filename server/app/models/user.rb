@@ -26,11 +26,7 @@ class User < ApplicationRecord
       :stock_balance => 0,
       :total_balance => 10000 
     })
-<<<<<<< HEAD
-    end
-=======
   end
->>>>>>> main
 
   end
 
