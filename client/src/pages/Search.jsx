@@ -84,25 +84,25 @@ const Search = (props) => {
     setQuery('a');
   }, []);
 
-  useEffect(() => {
-    if (authUser) {
-      options['config'] = {
-        headers: {
-          Authorization: 'Bearer ' + authUser.jwt,
-        },
-      };
-    }
-    axios
-      .request(options)
-      .then((response) => {
-        setResponse(response.data.ResultSet.Result);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [query]);
+  // useEffect(() => {
+  //   if (authUser) {
+  //     options['config'] = {
+  //       headers: {
+  //         Authorization: 'Bearer ' + authUser.jwt,
+  //       },
+  //     };
+  //   }
+  //   axios
+  //     .request(options)
+  //     .then((response) => {
+  //       setResponse(response.data.ResultSet.Result);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, [query]);
 
-  const searchResults = response.map((item, index) => {
+  const searchResults = stockData.map((item, index) => {
     return (
       <Card
         key={index}

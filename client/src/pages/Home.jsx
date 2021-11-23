@@ -114,40 +114,47 @@ const Home = (props) => {
     },
   };
 
-  useEffect(() => {
-    if (authUser) {
-      options['config'] = {
-        headers: {
-          Authorization: 'Bearer ' + authUser.jwt,
-        },
-      };
-    }
-    axios
-      .request(options)
-      .then((response) => {
-        setResponse(response.data.quoteResponse.result);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   if (authUser) {
+  //     options['config'] = {
+  //       headers: {
+  //         Authorization: 'Bearer ' + authUser.jwt,
+  //       },
+  //     };
+  //   }
+  //   axios
+  //     .request(options)
+  //     .then((response) => {
+  //       setResponse(response.data.quoteResponse.result);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, []);
 
-  useEffect(() => {
-    const callTopStocks = setInterval(() => {
-      axios
-        .request(options)
-        .then((response) => {
-          setResponse(response.data.quoteResponse.result);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }, 15000);
+  // useEffect(() => {
+  //   if (authUser) {
+  //     options['config'] = {
+  //       headers: {
+  //         Authorization: 'Bearer ' + authUser.jwt,
+  //       },
+  //     };
+  //   }
+  //   const callTopStocks = setInterval(() => {
+  //     axios
+  //       .request(options)
+  //       .then((response) => {
+  //         setResponse(response.data.quoteResponse.result);
+  //       })
+  //       .catch((error) => {
+  //         console.error(error);
+  //       });
+  //   }, 15000);
 
-    return () => clearInterval(callTopStocks);
-  }, [response]);
+  //   return () => clearInterval(callTopStocks);
+  // }, [response]);
 
-  const topStocksResults = response.map((item, index) => {
+  const topStocksResults = topData.map((item, index) => {
     return (
       <Card
         key={index}
