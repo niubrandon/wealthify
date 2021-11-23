@@ -38,7 +38,7 @@ const Login = (props) => {
         user_email: response.data.user_email})
 
         //navigate
-       navigate(from, { replace: true });
+       navigate('/portfolio')
   })
   .catch(function (error) {
       console.log(error);

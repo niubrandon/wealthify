@@ -45,7 +45,7 @@ const Signup = (props) => {
         user_email: response.data.user_email
       })
       //navigate to page
-      navigate(from, { replace: true });
+      navigate('/portfolio')
   
   })
   .catch(function (error) {

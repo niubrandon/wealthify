@@ -14,7 +14,7 @@ import Modal from './components/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar';
 import Leaderboard from './pages/Leaderboard';
-
+import { Container, Row, Col } from "react-bootstrap";
 
 let AuthContext = React.createContext();
 
@@ -30,8 +30,13 @@ function App() {
 
   return (
     <div className='App'>
-      <NavBar authUser={authUser} setAuthUser={setAuthUser} />
+      <Container>
+        <Row>
+          <Col xs={2}>
+            <NavBar authUser={authUser} setAuthUser={setAuthUser} />
+          </Col>
       {/* <Sidebar /> */}
+      <Col xs={10}>
       <Routes>
         <Route path='/' element={<Home authUser={authUser} setAuthUser={setAuthUser} />} />
         <Route path="/login" element={<Login authUser={authUser} setAuthUser={setAuthUser} />} />
@@ -43,6 +48,9 @@ function App() {
           <Route path=':name' element={<Stock authUser={authUser} />} />
         </Route>
       </Routes>
+      </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
