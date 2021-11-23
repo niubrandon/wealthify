@@ -91,7 +91,9 @@ const topData = [
   },
 ];
 
-const Home = () => {
+const Home = (props) => {
+  const { authUser } = props;
+  console.log(authUser);
   const API_KEY = `${process.env.REACT_APP_API_KEY}`;
   const API_HOST = `${process.env.REACT_APP_API_HOST}`;
   const API_TOPSTOCKS = `${process.env.REACT_APP_API_TOPSTOCKS}`;
@@ -113,6 +115,13 @@ const Home = () => {
   };
 
   useEffect(() => {
+    if (authUser) {
+      options['config'] = {
+        headers: {
+          Authorization: 'Bearer ' + authUser.jwt,
+        },
+      };
+    }
     axios
       .request(options)
       .then((response) => {

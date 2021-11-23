@@ -16093,3 +16093,57 @@ Completed 200 OK in 11ms (Views: 7.2ms | ActiveRecord: 1.3ms | Allocations: 3092
 
 
 {"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users/login
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users/login
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/users/login" for ::1 at 2021-11-23 13:31:38 -0500
+Processing by UsersController#login as HTML
+  Parameters: {"user"=>{"email"=>"adriana@wealthify.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "adriana@wealthify.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `login'
+Completed 200 OK in 228ms (Views: 0.2ms | ActiveRecord: 5.0ms | Allocations: 8057)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/2" for ::1 at 2021-11-23 13:31:38 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:54:in `set_account'
+  [1m[36mPortfolio Load (0.7ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE (account_id = 2)[0m
+  ↳ app/controllers/accounts_controller.rb:23:in `show'
+  [1m[36mTransaction Load (0.6ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE (account_id = 2)[0m
+  ↳ app/controllers/accounts_controller.rb:23:in `show'
+Completed 200 OK in 41ms (Views: 15.8ms | ActiveRecord: 1.8ms | Allocations: 16586)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}

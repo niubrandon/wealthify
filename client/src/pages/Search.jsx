@@ -56,7 +56,8 @@ const stockData = [
   },
 ];
 
-const Search = () => {
+const Search = (props) => {
+  const { authUser } = props;
   const API_KEY = `${process.env.REACT_APP_API_KEY}`;
   const API_HOST = `${process.env.REACT_APP_API_HOST}`;
   const API_AUTOCOMPLETE = `${process.env.REACT_APP_API_AUTOCOMPLETE}`;
@@ -83,18 +84,25 @@ const Search = () => {
     setQuery('a');
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .request(options)
-  //     .then((response) => {
-  //       setResponse(response.data.ResultSet.Result);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, [query]);
+  useEffect(() => {
+    if (authUser) {
+      options['config'] = {
+        headers: {
+          Authorization: 'Bearer ' + authUser.jwt,
+        },
+      };
+    }
+    axios
+      .request(options)
+      .then((response) => {
+        setResponse(response.data.ResultSet.Result);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [query]);
 
-  const searchResults = stockData.map((item, index) => {
+  const searchResults = response.map((item, index) => {
     return (
       <Card
         key={index}
