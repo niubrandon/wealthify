@@ -14175,3 +14175,29 @@ Completed 200 OK in 16ms (Views: 7.1ms | ActiveRecord: 1.9ms | Allocations: 2659
 
 
 {"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts" for ::1 at 2021-11-23 14:57:02 -0500
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (13.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:8:in `index'
+  [1m[36mUser Load (7.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/accounts_controller.rb:8:in `index'
+Completed 200 OK in 156ms (Views: 146.8ms | ActiveRecord: 80.7ms | Allocations: 5302)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}

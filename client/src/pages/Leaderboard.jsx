@@ -1,17 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import LeaderboardTable from "../components/LeaderboardTable";
 import LeaderboardCard from "../components/LeaderboardCard";
-
-const findEmailById = (id, users) => {
-  for (const user of users) {
-    if (user.id === id) {
-      return user.email;
-    }
-  }
-};
 
 const Leaderboard = (props) => {
   const [accounts, setAccounts] = useState([]);

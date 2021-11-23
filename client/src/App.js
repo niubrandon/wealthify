@@ -30,7 +30,8 @@ function App() {
 
   return (
     <div className='App'>
-      <Container>
+
+      <Container fluid>
         <Row>
           <Col xs={2}>
             <NavBar authUser={authUser} setAuthUser={setAuthUser} />
@@ -51,6 +52,7 @@ function App() {
       </Col>
         </Row>
       </Container>
+      
     </div>
   );
 }
