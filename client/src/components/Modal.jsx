@@ -17,7 +17,7 @@ import {
 // setIsOpen
 
 const Modal = (props) => {
-  const { modalType, setIsOpen, name, regMP } = props;
+  const { modalType, setIsOpen, name, regMP, authUser, account } = props;
 
   const [quantity, setQuantity] = useState(1);
   const [time, setTime] = useState(null);
@@ -37,7 +37,7 @@ const Modal = (props) => {
         trade: trade,
         quantity: Number(quantity),
         settled_price: Number(regMP),
-        account_id: 1,
+        account_id: account.account.id,
       },
     });
   };
@@ -51,6 +51,11 @@ const Modal = (props) => {
       method: 'post',
       url: 'http://localhost:3000/api/transactions',
       data: transaction,
+      config: {
+        headers: {
+          Authorization: 'Bearer ' + authUser.jwt,
+        },
+      },
     })
       .then((response) => {
         if (response.status < 300 && response.status > 199) {

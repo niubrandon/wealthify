@@ -36,7 +36,8 @@ const Login = (props) => {
         });
 
         //navigate
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
+        navigate('/portfolio');
       })
       .catch(function (error) {
         console.log(error);

@@ -55,7 +55,10 @@ function App() {
         />
         <Route path='search' element={<Search authUser={authUser} />} />
         <Route path='stock'>
-          <Route path=':name' element={<Stock authUser={authUser} />} />
+          <Route
+            path=':name'
+            element={<Stock authUser={authUser} account={account} />}
+          />
         </Route>
       </Routes>
     </div>

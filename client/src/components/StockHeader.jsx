@@ -6,7 +6,7 @@ import Modal from '../components/Modal';
 // name (aka ticker)
 
 const StockHeader = (props) => {
-  const { name, regMP } = props;
+  const { name, regMP, authUser, account } = props;
 
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState('');
@@ -35,6 +35,8 @@ const StockHeader = (props) => {
           setIsOpen={setIsOpen}
           name={name}
           regMP={regMP}
+          authUser={authUser}
+          account={account}
         />
       )}
     </>
