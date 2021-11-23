@@ -3,17 +3,25 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
+import {
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 
 const Login = (props) => {
-  console.log("from login page", props.authuser)
   const [user, setUser] = useState({user: ""});
   //const [ jwt, setJWT ] = useState({jwt: null});
 
+  //navigate react routers
+  let navigate = useNavigate();
+  let location = useLocation();
+  //let from = location.state?.from?.pathname || "/";
+  let from = "/";
 
   useEffect(() => {
-    console.log("user is", user)
+    //console.log("user is", user)
     if (!user.user) {
-      return
+      return;
     }
 
     axios({
@@ -24,10 +32,13 @@ const Login = (props) => {
   .then(function (response) {
       console.log(response);
       //setJWT({jwt: response.data.auth_token})
-      props.setAuthuser({
+      props.setAuthUser({
         jwt: response.data.auth_token,
         user_id: response.data.user_id,
         user_email: response.data.user_email})
+
+        //navigate
+       navigate(from, { replace: true });
   })
   .catch(function (error) {
       console.log(error);
@@ -39,39 +50,56 @@ const Login = (props) => {
 
 
   const onLogIn = (e) => {
-    console.log("onSignUp invoked")
+    console.log('onSignUp invoked');
     e.preventDefault();
 
-    setUser({ user: {
-      email: e.target.email.value,
-      password: e.target.password.value
-    }
-
-    })
+    setUser({
+      user: {
+        email: e.target.email.value,
+        password: e.target.password.value,
+      },
+    });
   };
 
  
-
+  const flexWrapperVertical = {
+    display:'flex', 
+    flexDirection:'column', 
+    justifyContent:'center', 
+    alignItems:'center', 
+    gap:'10px'
+  }
 
 
   return (
- 
+    <div style={flexWrapperVertical}>
     <Form className="w-50" onSubmit={ (e) => onLogIn(e) }>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" name="email" placeholder="Enter email" required />
+        <Form.Control
+          type='email'
+          name='email'
+          placeholder='Enter email'
+          required
+        />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className='mb-3' controlId='formBasicPassword'>
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" name="password" placeholder="Password" required />
+        <Form.Control
+          type='password'
+          name='password'
+          placeholder='Password'
+          required
+        />
       </Form.Group>
-    
-      <Button variant="primary" type="submit">
+
+      <Button variant='primary' type='submit'>
         Login
       </Button>
-    </Form>  
+    </Form>
+    </div>  
     
     
     

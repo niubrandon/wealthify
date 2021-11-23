@@ -3,18 +3,16 @@ class AccountsController < ApplicationController
 
   # GET /accounts
   def index
-    # admin_account = {
-    #   :cash_balance => 2000,
-    #   :stock_balance => 10000,
-    #   :user_id => 1
-    # }
-
-    # render json: admin_account
     @accounts = Account.all
     @users = User.all
     render json: {accounts: @accounts, users: @users}
   end
 
+  def index
+    @accounts = Account.all
+    render json: @accounts
+  end
+  
   # GET /accounts/1
   #also show all the transactions and portforlio for account 1
   #add auth process later verify jwt

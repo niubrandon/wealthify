@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import './App.scss';
 import axios from 'axios';
@@ -15,24 +15,31 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar';
 import Leaderboard from './pages/Leaderboard';
 
+
+let AuthContext = React.createContext();
+
 function App() {
-  //authuser set to null when it is logout, set to jwt when it's login
-  const [ authuser, setAuthuser ] = useState(null);
+  //authUser set to null when it is logout, set to jwt when it's login
+  const [ authUser, setAuthUser ] = useState(null);
+  const [ account, setAccount ] = useState(null)
+  useEffect(() => {
+    console.log(`%%%%%%%verify state from homepage ${ authUser }%%%%%%%%%`)
+    console.log('authUser', authUser);
+  },[authUser])
+
+
   return (
     <div className='App'>
-      <NavBar />
+      <NavBar authUser={authUser} setAuthUser={setAuthUser} />
       {/* <Sidebar /> */}
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path="/login" element={<Login authuser={authuser} setAuthuser={setAuthuser} />} />
-        <Route path="/signup" element={<Signup authuser={authuser} setAuthuser={setAuthuser} />} />
-        <Route path='portfolio' element={<Portfolio authuser={authuser} setAuthuser={setAuthuser} />} />
-        <Route path='search' element={<Search />} />
-        <Route path='leaderboard' element={<Leaderboard />} />
+        <Route path='/' element={<Home authUser={authUser} setAuthUser={setAuthUser} />} />
+        <Route path="/login" element={<Login authUser={authUser} setAuthUser={setAuthUser} />} />
+        <Route path="/signup" element={<Signup authUser={authUser} setAuthUser={setAuthUser} />} />
+        <Route path='portfolio' element={<Portfolio authUser={authUser} setAuthUser={setAuthUser} account={account} setAccount={setAccount} />} />
+        <Route path='search' element={<Search authUser={authUser} />} />
         <Route path='stock'>
-          <Route path=':name' element={<Stock />} />
-          <Route path=':name/buy' element={<Modal />} />
-          <Route path=':name/sell' element={<Modal />} />
+          <Route path=':name' element={<Stock authUser={authUser} />} />
         </Route>
       </Routes>
     </div>

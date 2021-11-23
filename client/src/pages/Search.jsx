@@ -83,18 +83,18 @@ const Search = () => {
     setQuery('a');
   }, []);
 
-  useEffect(() => {
-    axios
-      .request(options)
-      .then((response) => {
-        setResponse(response.data.ResultSet.Result);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [query]);
+  // useEffect(() => {
+  //   axios
+  //     .request(options)
+  //     .then((response) => {
+  //       setResponse(response.data.ResultSet.Result);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, [query]);
 
-  const searchResults = response.map((item, index) => {
+  const searchResults = stockData.map((item, index) => {
     return (
       <Card
         key={index}
