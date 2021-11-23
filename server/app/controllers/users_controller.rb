@@ -39,13 +39,18 @@ class UsersController < ApplicationController
   # POST /users
   def create
 
+    signup_referral_code = user_params[:referral_code]
+
     @user = User.new(user_params)
     puts user_params
 
-    # # create referral code - replace used code with new user code to store in db
-    # user_referral_code = SecureRandom.alphanumeric(6)
-    # @user.update(referral_code: user_referral_code)
-
+    # check if code exists
+    if !User.find_by(referral_code: signup_referral_code)
+      puts "*****INVALID CODE****"
+      puts @user.errors.inspect
+      render json: { error: 'Invalid referral code' }, status: :unprocessable_entity   
+      return
+    end
    
     if @user.save
       auth_token = JsonWebToken.encode(user_id: @user.id)

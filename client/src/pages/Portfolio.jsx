@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import PortfolioDonutChart from '../components/PortfolioDonutChart';
 import PortfolioCard from '../components/PortfolioCard';
 import Transactions from '../components/Transactions';
+import Referral from '../components/Referral';
 
 const Portfolio = (props) => {
   console.log('printing from portfolio', props.authUser);
@@ -38,14 +39,15 @@ const Portfolio = (props) => {
   };
 
   return (
-    <>
+    <section className='page'>
       <div style={flexWrapperVertical}>
         {!props.account && <p>you don't have any holdings</p>}
         {props.account && <PortfolioDonutChart />}
         {props.account && <PortfolioCard account={props.account} />}
         {props.account && <Transactions account={props.account} />}
+        <Referral account={props.account} />
       </div>
-    </>
+    </section>
   );
 };
 

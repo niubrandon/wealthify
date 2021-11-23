@@ -19,7 +19,7 @@ class User < ApplicationRecord
   #need after_create to create account for new user and give 10000 for starting
 
   after_create do
-    puts "****after create. ** self: #{self} ** self.id: #{self.id}****"
+    puts "******AFTER*****"
     #check if the account is in the seeds or not, if not in seeds create a new account
 
     # self.accounts.create!({
@@ -30,28 +30,29 @@ class User < ApplicationRecord
     #   :signup_bonus => false
     # })
 
+    # if self.referral_code == ''
+    #   puts "*****NO no code, no extra money**"
+    #   self.accounts.create!({
+    #     :cash_balance => 10000,
+    #     :stock_balance => 0,
+    #     :signup_bonus => false,
+    #     :referral_bonus => 0,
+    #     :total_balance => 10000,
+    #   })
+    # else
+    #   puts "*****YES signed up with a referral code*****"
+    #   self.accounts.create!({
+    #     :cash_balance => 10250,
+    #     :stock_balance => 0,
+    #     :signup_bonus => true,
+    #     :referral_bonus => 0,
+    #     :total_balance => 10250,
+    #   })
+    # end
 
-      # if self.referral_code != nil
-      #   puts "*****YES signed up with a referral code*****"
-      #   self.accounts.create!({
-      #     :cash_balance => 10000,
-      #     :stock_balance => 0,
-      #     :signup_bonus => true,
-      #     :referral_bonus => 0,
-      #     :total_balance => 10250,
-      #     # :user_id => self.id
-      #   })
-      # else
-      #   puts "*****NO no code, no extra money**"
-      #   self.accounts.create!({
-      #     :cash_balance => 10000,
-      #     :stock_balance => 0,
-      #     :signup_bonus => false,
-      #     :referral_bonus => 0,
-      #     :total_balance => 10000,
-      #     # :user_id => self.id
-      #   })
-      # end
+    # # create referral code - replace used code with new user code to store in db
+    # user_referral_code = SecureRandom.alphanumeric(6)
+    # self.update(referral_code: user_referral_code)
   end
 
 end
