@@ -37,6 +37,7 @@ function App() {
         <Route path="/login" element={<Login authUser={authUser} setAuthUser={setAuthUser} />} />
         <Route path="/signup" element={<Signup authUser={authUser} setAuthUser={setAuthUser} />} />
         <Route path='portfolio' element={<Portfolio authUser={authUser} setAuthUser={setAuthUser} account={account} setAccount={setAccount} />} />
+        <Route path='leaderboard' element={<Leaderboard authUser={authUser} setAuthUser={setAuthUser} account={account} setAccount={setAccount} />} />
         <Route path='search' element={<Search authUser={authUser} />} />
         <Route path='stock'>
           <Route path=':name' element={<Stock authUser={authUser} />} />

@@ -8,10 +8,10 @@ class AccountsController < ApplicationController
     render json: {accounts: @accounts, users: @users}
   end
 
-  def index
-    @accounts = Account.all
-    render json: @accounts
-  end
+  # def index
+  #   @accounts = Account.all
+  #   render json: @accounts
+  # end
   
   # GET /accounts/1
   #also show all the transactions and portforlio for account 1

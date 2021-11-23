@@ -16,6 +16,7 @@ const NavBar = (props) => {
       <Nav variant="pills" className="flex-column">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/search">Search</NavLink>
+        <NavLink to="/leaderboard">Leaderboard</NavLink>
         <NavLink to="/portfolio">Portfolio</NavLink>
         { props.authUser ? <NavLink onClick={onLogout} to="/">Logout</NavLink> : <NavLink to="/login">Login</NavLink>}
         {!props.authUser && <NavLink to="/signup">SignUp</NavLink>}
