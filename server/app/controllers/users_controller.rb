@@ -45,16 +45,16 @@ class UsersController < ApplicationController
     puts user_params
 
     # check if code exists
-    if !User.find_by(referral_code: signup_referral_code)
+    if signup_referral_code != '' && !User.find_by(referral_code: signup_referral_code)
       puts "*****INVALID CODE****"
       puts @user.errors.inspect
       render json: { error: 'Invalid referral code' }, status: :unprocessable_entity   
       return
     end
-   
+    
     if @user.save
       auth_token = JsonWebToken.encode(user_id: @user.id)
-      render json: { auth_token: auth_token, user_id: @user.id, user_email: @user.email }, status: :created
+      render json: { auth_token: auth_token, user_id: @user.id, user_email: @user.email}, status: :created
     else
       puts @user.errors.inspect
       render json: @user.errors, status: :unprocessable_entity
