@@ -11,15 +11,18 @@ puts "Seeding data..."
 user1 = User.create!({
   :first_name => 'wealthify',
   :last_name => 'wealthify',
-  :email => 'admon@wealthify.com',
-  :password_digest => '$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS'
+  :email => 'admin@wealthify.com',
+  :password_digest => '$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS',
+  :referral_code => 'aX6b7e'
 })
 
 
 account1 = user1.accounts.create!({
   :cash_balance => 2000,
   :stock_balance => 9566,
-  :total_balance => 12000  
+  :total_balance => 12000,
+  :referral_bonus => false,
+  :signup_bonus => 0  
 })
 
 account1.portfolios.create!({
@@ -55,19 +58,22 @@ user2 = User.create!({
   :first_name => 'Adriana',
   :last_name => 'Calvo-Matos',
   :email => 'adriana@wealthify.com',
-  :password_digest => '$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS'
+  :password_digest => '$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS',
+  :referral_code => 'ac6b9h'
 })
 
 account2 = user2.accounts.create!({
-  :cash_balance => 150,
-  :stock_balance => 9850,
-  :total_balance => 10000
+  :cash_balance => 1770,
+  :stock_balance => 8230,
+  :total_balance => 10000,
+  :referral_bonus => false,
+  :signup_bonus => 0
 })
 
 account2.portfolios.create!({
   :ticker => 'SHOP',
   :quantity => 3,
-  :current_spot_price => 2140,
+  :current_spot_price => 1600,
 })
 
 account2.portfolios.create!({
@@ -80,7 +86,7 @@ account2.transactions.create!({
   :ticker => 'SHOP',
   :trade => 1,
   :quantity => 3,
-  :settled_price => 2140
+  :settled_price => 1600
 })
 account2.transactions.create!({
   :ticker => 'MSFT',
@@ -94,13 +100,16 @@ user3 = User.create!({
   :first_name => 'Aaron',
   :last_name => 'Tenn',
   :email => 'aaron@gmail.com',
-  :password_digest => '$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS'
+  :password_digest => '$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS',
+  :referral_code => 'hz6b9e'
 })
 
 account3 = user3.accounts.create!({
   :cash_balance => 4515,
   :stock_balance => 5485,
-  :total_balance => 10000
+  :total_balance => 10000,
+  :referral_bonus => false,
+  :signup_bonus => 0
 })
 
 account3.portfolios.create!({
@@ -160,14 +169,17 @@ user4 = User.create!({
   :first_name => 'Brandon',
   :last_name => 'Niu',
   :email => 'niubrandon@gmail.com',
-  :password_digest => '$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS'
+  :password_digest => '$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS',
+  :referral_code => 'z16b7z'
 })
 
 
 account4 = user4.accounts.create!({
   :cash_balance => 5.5,
   :stock_balance => 9994.5,
-  :total_balance => 10000 
+  :total_balance => 10000,
+  :referral_bonus => false,
+  :signup_bonus => 0
 })
 
 account4.portfolios.create!({
