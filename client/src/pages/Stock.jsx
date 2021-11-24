@@ -33,11 +33,9 @@ const Stock = (props) => {
       .request(options)
       .then(function (response) {
         console.log('graph called');
+        
         setGraphx(response.data.chart.result[0].timestamp);
-
-        setGraphy(
-          response.data.chart.result[0].indicators.adjclose[0].adjclose
-        );
+        range === '1d' ? setGraphy(response.data.chart.result[0].indicators.quote[0].close) : setGraphy(response.data.chart.result[0].indicators.adjclose[0].adjclose);
       })
       .catch(function (error) {
         console.error(error);
