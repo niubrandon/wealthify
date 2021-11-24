@@ -41,7 +41,9 @@ const Portfolio = (props) => {
       <div style={flexWrapperVertical}>
         {!props.account && <p>you don't have any holdings</p>}
         {props.account && <PortfolioDonutChart />}
-        {props.account && <PortfolioCard account={props.account} />}
+        {props.account && (
+          <PortfolioCard account={props.account} authUser={props.authUser} />
+        )}
         {props.account && <Transactions account={props.account} />}
         <Referral account={props.account} authUser={props.authUser} />
       </div>
