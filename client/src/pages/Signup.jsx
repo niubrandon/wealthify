@@ -14,13 +14,11 @@ import {
 } from 'react-router-dom';
 
 const Signup = (props) => {
-<<<<<<< HEAD
+
   console.log(props.authUser);
   const [user, setUser] = useState(null);
-=======
-  console.log(props.authUser)
-  const [ user, setUser ] = useState(null);
->>>>>>> 1e21e71f6a8f4e0c9e57ddee2c5cbff542909764
+
+
   //const [ jwt, setJWT ] = useState({jwt: null});
 
   let navigate = useNavigate();
@@ -29,14 +27,6 @@ const Signup = (props) => {
   //let from = "/portfolio"
 
   useEffect(() => {
-<<<<<<< HEAD
-    console.log('user is', user);
-    if (!user) {
-      return;
-    }
-
-    console.log(`printing the current state of ${user.user.email}`);
-=======
     console.log("user is", user)
     if (!user) {
       return
@@ -44,7 +34,6 @@ const Signup = (props) => {
 
 
     console.log(`printing the current state of ${user.user.email}`)
->>>>>>> 1e21e71f6a8f4e0c9e57ddee2c5cbff542909764
     axios({
       method: 'post',
       url: 'http://localhost:3000/users',
