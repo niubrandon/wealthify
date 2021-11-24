@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if user&.authenticate(user_params[:password])
       auth_token = JsonWebToken.encode(user_id: user.id)
       ########################## get referral code
-      render json: { auth_token: auth_token, user_id: user.id, user_email: user.email, referral_code: user.referral_code }, status: :ok
+      render json: { auth_token: auth_token, user_id: user.id, user_email: user.email }, status: :ok
     else
       render json: { error: 'Invalid username/password' }, status: :unauthorized
     end
@@ -40,21 +40,11 @@ class UsersController < ApplicationController
   def create
 
     signup_referral_code = user_params[:referral_code].strip
+    puts "***SIGNUP REFFERAL CODE :::: #{signup_referral_code}****"
 
-    @user = User.new(user_params)
-    @user.save
-    puts user_params
-
-    # check if code exists
-    if signup_referral_code != '' && !User.find_by(referral_code: signup_referral_code.strip)
-      puts "*****INVALID CODE****"
-      puts @user.errors.inspect
-      render json: { error: 'Invalid referral code' }, status: :unprocessable_entity   
-      return
-    end
-
-
-    if @user.referral_code == ''
+    if signup_referral_code == ''
+      @user = User.new(user_params)
+      @user.save
       puts "*****NO no code, no extra money**"
       @user.accounts.create!({
         :cash_balance => 10000,
@@ -63,7 +53,9 @@ class UsersController < ApplicationController
         :referral_bonus => 0,
         :total_balance => 10000,
       })
-    else
+    elsif signup_referral_code != '' && User.find_by(referral_code: signup_referral_code)
+      @user = User.new(user_params)
+      @user.save
       puts "*****YES signed up with a referral code*****"
       @user.accounts.create!({
         :cash_balance => 10250,
@@ -84,15 +76,30 @@ class UsersController < ApplicationController
 
       # create referral table for this relationship
       Referral.create({:recipient_id => @user.id, :user_id => owner.id})
+    else
+      puts "*****INVALID CODE****"
     end
+      
+  
 
-    # create referral code - replace used code with new user code to store in db
-    user_referral_code = SecureRandom.alphanumeric(6)
-    @user.update(referral_code: user_referral_code)
-    
+    # # check if code exists
+    # if signup_referral_code != '' && !User.find_by(referral_code: signup_referral_code)
+    #   puts "*****INVALID CODE****"
+    #   puts @user.errors.inspect
+    #   render json: { error: 'Invalid referral code' }, status: :unprocessable_entity   
+    #   return
+    # end
+
+    # @user = User.new(user_params)
+    # puts user_params
+
+     # create referral code - replace used code with new user code to store in db
+     user_referral_code = SecureRandom.alphanumeric(6)
+     @user.update(referral_code: user_referral_code)
+   
     if @user.save
       auth_token = JsonWebToken.encode(user_id: @user.id)
-      render json: { auth_token: auth_token, user_id: @user.id, user_email: @user.email, referral_code: user_referral_code}, status: :created
+      render json: { auth_token: auth_token, user_id: @user.id, user_email: @user.email, referral_code: @user.referral_code }, status: :created
     else
       puts @user.errors.inspect
       render json: @user.errors, status: :unprocessable_entity

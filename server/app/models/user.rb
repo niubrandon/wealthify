@@ -18,8 +18,8 @@ class User < ApplicationRecord
 
   #need after_create to create account for new user and give 10000 for starting
 
-  # after_create do
-    # puts "******AFTER*****"
+  after_create do
+    puts "******AFTER*****"
     #check if the account is in the seeds or not, if not in seeds create a new account
 
     # if self.referral_code == ''
@@ -58,6 +58,6 @@ class User < ApplicationRecord
     # user_referral_code = SecureRandom.alphanumeric(6)
     # self.update(referral_code: user_referral_code)
 
-  # end
+  end
 
 end
