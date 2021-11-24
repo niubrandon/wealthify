@@ -6,9 +6,6 @@ import Transactions from '../components/Transactions';
 import Referral from '../components/Referral';
 
 const Portfolio = (props) => {
-  console.log('print authUser from portfolio', props.authUser);
-  console.log('print account from portfolio', props.account);
-
   useEffect(() => {
     if (!props.authUser) {
       return;
@@ -22,7 +19,6 @@ const Portfolio = (props) => {
     axios
       .get(url, config)
       .then((response) => {
-        // console.log(response.data);
         props.setAccount(response.data);
       })
       .catch((err) => {

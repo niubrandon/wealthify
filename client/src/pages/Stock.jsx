@@ -13,8 +13,8 @@ const Stock = (props) => {
   const [graphx, setGraphx] = useState([]);
   const [graphy, setGraphy] = useState([]);
   const [detail, setDetail] = useState([]);
-  const [range, setRange] = useState('5d');
-  const [interval, setInterval] = useState('1d');
+  const [range, setRange] = useState('1d');
+  const [interval, setInterval] = useState('15m');
 
   const { name } = useParams();
 

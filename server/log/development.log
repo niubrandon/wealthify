@@ -16785,3 +16785,815 @@ Completed 200 OK in 42ms (Views: 1.9ms | ActiveRecord: 6.8ms | Allocations: 1946
 
 
 {"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts" for ::1 at 2021-11-24 12:41:54 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:73:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 5]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:12:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/accounts_controller.rb:12:in `index'
+Completed 200 OK in 74ms (Views: 2.7ms | ActiveRecord: 10.8ms | Allocations: 36731)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users/login
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users/login
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/users/login" for ::1 at 2021-11-24 12:42:02 -0500
+Processing by UsersController#login as HTML
+  Parameters: {"user"=>{"email"=>"a@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `login'
+Completed 200 OK in 214ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1082)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/5" for ::1 at 2021-11-24 12:42:02 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:93:in `set_account'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:73:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.1ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.1ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 5]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+Completed 200 OK in 37ms (Views: 2.3ms | ActiveRecord: 4.8ms | Allocations: 15144)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-24 12:42:09 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"AAPL", "trade"=>1, "quantity"=>1, "settled_price"=>161.2429, "account_id"=>5}}
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:26:in `create'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 5], ["ticker", "AAPL"], ["trade", 1]]
+  ↳ app/controllers/transactions_controller.rb:32:in `create'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 5], ["ticker", "AAPL"], ["trade", -1]]
+  ↳ app/controllers/transactions_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mAccount Update (0.4ms)[0m  [1m[33mUPDATE "accounts" SET "cash_balance" = $1, "stock_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["cash_balance", 9838], ["stock_balance", 161], ["updated_at", "2021-11-24 17:42:09.739314"], ["id", 5]]
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mPortfolio Load (0.5ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 5], ["ticker", "AAPL"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:65:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:81:in `create'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:81:in `create'
+  [1m[36mPortfolio Create (0.6ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "AAPL"], ["quantity", 1.0], ["current_spot_price", 161], ["created_at", "2021-11-24 17:42:09.759753"], ["updated_at", "2021-11-24 17:42:09.759753"], ["account_id", 5]]
+  ↳ app/controllers/transactions_controller.rb:81:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:81:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mTransaction Create (0.5ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "AAPL"], ["trade", 1], ["quantity", 1.0], ["settled_price", 161], ["created_at", "2021-11-24 17:42:09.771654"], ["updated_at", "2021-11-24 17:42:09.771654"], ["account_id", 5]]
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+Completed 201 Created in 77ms (Views: 1.2ms | ActiveRecord: 14.6ms | Allocations: 15446)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/5" for ::1 at 2021-11-24 12:42:11 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:93:in `set_account'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:73:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 5]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.3ms)[0m  [1m[33mUPDATE "accounts" SET "total_balance" = $1, "updated_at" = $2 WHERE "accounts"."id" = $3[0m  [["total_balance", 9999], ["updated_at", "2021-11-24 17:42:11.764522"], ["id", 5]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+Completed 200 OK in 55ms (Views: 5.2ms | ActiveRecord: 7.5ms | Allocations: 15509)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts" for ::1 at 2021-11-24 12:42:40 -0500
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:73:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (1.5ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 5]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:12:in `index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/accounts_controller.rb:12:in `index'
+Completed 200 OK in 70ms (Views: 2.5ms | ActiveRecord: 6.0ms | Allocations: 15167)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/5" for ::1 at 2021-11-24 12:42:53 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:93:in `set_account'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:73:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.9ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.5ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 5]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.5ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+  [1m[36mTransaction Load (1.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+Completed 200 OK in 45ms (Views: 3.2ms | ActiveRecord: 7.3ms | Allocations: 14868)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/5" for ::1 at 2021-11-24 12:43:20 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:93:in `set_account'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:73:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.5ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.5ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 5]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+Completed 200 OK in 40ms (Views: 2.9ms | ActiveRecord: 9.6ms | Allocations: 14868)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/5" for ::1 at 2021-11-24 12:43:32 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:93:in `set_account'
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:73:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.5ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 5]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+Completed 200 OK in 44ms (Views: 2.3ms | ActiveRecord: 14.0ms | Allocations: 14893)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/5" for ::1 at 2021-11-24 12:43:37 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:93:in `set_account'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:73:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 5]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+Completed 200 OK in 32ms (Views: 3.6ms | ActiveRecord: 4.7ms | Allocations: 14868)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/5" for ::1 at 2021-11-24 12:43:45 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:93:in `set_account'
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:73:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.7ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (3.9ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.5ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (4.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 5]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (1.0ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+Completed 200 OK in 74ms (Views: 2.9ms | ActiveRecord: 22.3ms | Allocations: 14869)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users/login
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users/login
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/users/login" for ::1 at 2021-11-24 12:44:44 -0500
+Processing by UsersController#login as HTML
+  Parameters: {"user"=>{"email"=>"a@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `login'
+Completed 200 OK in 211ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 855)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/5" for ::1 at 2021-11-24 12:44:44 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:93:in `set_account'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:73:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 5]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+Completed 200 OK in 38ms (Views: 2.6ms | ActiveRecord: 6.2ms | Allocations: 14868)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
