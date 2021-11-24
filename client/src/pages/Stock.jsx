@@ -93,21 +93,21 @@ const Stock = (props) => {
       <StockHeader name={name} regMP={155.07} />
       <button
         type='button'
-        class='btn btn-outline-info'
+        className='btn btn-outline-info'
         onClick={(e) => daily(e)}
       >
         Daily
       </button>
       <button
         type='button'
-        class='btn btn-outline-info'
+        className='btn btn-outline-info'
         onClick={(e) => weekly(e)}
       >
         Weekly
       </button>
       <button
         type='button'
-        class='btn btn-outline-info'
+        className='btn btn-outline-info'
         onClick={(e) => yearly(e)}
       >
         Yearly

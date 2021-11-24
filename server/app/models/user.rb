@@ -20,13 +20,13 @@ class User < ApplicationRecord
 
   after_create do
     #check if the account is in the seeds or not, if not in seeds create a new account
-    if !self.accounts
+    # if !self.accounts
     self.accounts.create!({
       :cash_balance => 10000,
       :stock_balance => 0,
       :total_balance => 10000 
     })
-  end
+  # end
 
   end
 

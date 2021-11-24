@@ -3,7 +3,6 @@ import { Routes, Route, Link } from "react-router-dom";
 import './App.scss';
 import axios from 'axios';
 import React from 'react';
-import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Portfolio from './pages/Portfolio';
@@ -33,7 +32,7 @@ function App() {
 
       <Container fluid>
         <Row>
-          <Col xs={2}>
+          <Col xs={2} className="nav-column">
             <NavBar authUser={authUser} setAuthUser={setAuthUser} />
           </Col>
       {/* <Sidebar /> */}
