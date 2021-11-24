@@ -18,8 +18,6 @@ import {
 
 const Modal = (props) => {
   const { modalType, setIsOpen, name, regMP, authUser, account } = props;
-  console.log('print authUser from Modal', authUser);
-  console.log('print account from Modal', account);
 
   const [quantity, setQuantity] = useState(1);
   const [time, setTime] = useState(null);

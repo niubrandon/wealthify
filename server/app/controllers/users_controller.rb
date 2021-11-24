@@ -80,22 +80,9 @@ class UsersController < ApplicationController
       puts "*****INVALID CODE****"
     end
       
-  
-
-    # # check if code exists
-    # if signup_referral_code != '' && !User.find_by(referral_code: signup_referral_code)
-    #   puts "*****INVALID CODE****"
-    #   puts @user.errors.inspect
-    #   render json: { error: 'Invalid referral code' }, status: :unprocessable_entity   
-    #   return
-    # end
-
-    # @user = User.new(user_params)
-    # puts user_params
-
-     # create referral code - replace used code with new user code to store in db
-     user_referral_code = SecureRandom.alphanumeric(6)
-     @user.update(referral_code: user_referral_code)
+    # create referral code - replace used code with new user code to store in db
+    user_referral_code = SecureRandom.alphanumeric(6)
+    @user.update(referral_code: user_referral_code)
    
     if @user.save
       auth_token = JsonWebToken.encode(user_id: @user.id)
