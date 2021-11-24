@@ -36,12 +36,13 @@ const Signup = (props) => {
       data: user,
     })
       .then(function (response) {
-        console.log(response.data);
+        console.log('**********RESPONSE:', response.data);
         //setJWT({jwt: response.data.auth_token})
         props.setAuthUser({
           jwt: response.data.auth_token,
           user_id: response.data.user_id,
           user_email: response.data.user_email,
+          referral_code: response.data.referral_code,
         });
 
         //reset user to null

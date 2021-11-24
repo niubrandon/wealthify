@@ -6,8 +6,8 @@ import Transactions from '../components/Transactions';
 import Referral from '../components/Referral';
 
 const Portfolio = (props) => {
-  console.log('printing from portfolio', props.authUser);
-  console.log('print from portfolio for account', props.account);
+  console.log('print authUser from portfolio', props.authUser);
+  console.log('print account from portfolio', props.account);
 
   useEffect(() => {
     if (!props.authUser) {
@@ -22,7 +22,7 @@ const Portfolio = (props) => {
     axios
       .get(url, config)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         props.setAccount(response.data);
       })
       .catch((err) => {
@@ -36,6 +36,8 @@ const Portfolio = (props) => {
     justifyContent: 'center',
     alignItems: 'center',
     gap: '10px',
+    width: '60%',
+    margin: 'auto',
   };
 
   return (
@@ -45,7 +47,7 @@ const Portfolio = (props) => {
         {props.account && <PortfolioDonutChart />}
         {props.account && <PortfolioCard account={props.account} />}
         {props.account && <Transactions account={props.account} />}
-        <Referral account={props.account} />
+        <Referral account={props.account} authUser={props.authUser} />
       </div>
     </section>
   );
