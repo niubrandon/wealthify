@@ -55,7 +55,7 @@ class AccountsController < ApplicationController
 
 
   def adjust_portfolio_spot_price
-    adjust_portfolio_spot_price
+    
 
     @live_price = get_live_price
     @portfolios = Portfolio.all
@@ -68,6 +68,9 @@ class AccountsController < ApplicationController
   end
 
   def adjust_accounts_balance_from_updated_portfolios
+
+    adjust_portfolio_spot_price
+    
     @accounts = Account.all
 
     @accounts.each do |account|
