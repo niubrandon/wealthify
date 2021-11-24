@@ -9,50 +9,24 @@ import {
 } from "react-router-dom";
 
 const Login = (props) => {
-<<<<<<< HEAD
-  console.log('from login page', props.authuser);
-  const [user, setUser] = useState({ user: '' });
-  //const [ jwt, setJWT ] = useState({jwt: null});
-
-  useEffect(() => {
-    console.log('user is', user);
-=======
-  const [user, setUser] = useState({user: ""});
+  const [user, setUser] = useState(null);
   //const [ jwt, setJWT ] = useState({jwt: null});
 
   //navigate react routers
   let navigate = useNavigate();
   let location = useLocation();
   //let from = location.state?.from?.pathname || "/";
-  let from = "/";
+  let from = "/portfolio";
 
   useEffect(() => {
     //console.log("user is", user)
->>>>>>> 51502cc (fixed the nav react router links and integrated user auth)
-    if (!user.user) {
+    if (!user) {
       return;
     }
 
     axios({
       method: 'post',
       url: 'http://localhost:3000/users/login',
-<<<<<<< HEAD
-      data: user,
-    })
-      .then(function (response) {
-        console.log(response);
-        //setJWT({jwt: response.data.auth_token})
-        props.setAuthuser({
-          jwt: response.data.auth_token,
-          user_id: response.data.user_id,
-          user_email: response.data.user_email,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, [user]);
-=======
       data: user
   })
   .then(function (response) {
@@ -64,7 +38,8 @@ const Login = (props) => {
         user_email: response.data.user_email})
 
         //navigate
-       navigate(from, { replace: true });
+       //navigate(from, { replace: true });
+       navigate('/portfolio')
   })
   .catch(function (error) {
       console.log(error);
@@ -74,7 +49,6 @@ const Login = (props) => {
   }, [user])
 
 
->>>>>>> 51502cc (fixed the nav react router links and integrated user auth)
 
   const onLogIn = (e) => {
     console.log('onSignUp invoked');

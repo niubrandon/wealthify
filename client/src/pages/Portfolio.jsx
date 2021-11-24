@@ -6,11 +6,12 @@ import Transactions from "../components/Transactions";
 
 const Portfolio = (props) => {
   console.log("printing from portfolio", props.authUser)
+  console.log("print from portfolio for account", props.account)
  
   useEffect(() => {
-  /*   if (!account) {
+     if (!props.authUser) {
       return
-    } */
+    } 
     const url = `http://localhost:3000/api/accounts/${props.authUser.user_id}`;
     const config = {
       headers: {
@@ -24,7 +25,7 @@ const Portfolio = (props) => {
       console.log(err)
     })
 
-  }, [])
+  }, [props.authUser])
 
   const flexWrapperVertical = {
     display:'flex', 
@@ -38,6 +39,7 @@ const Portfolio = (props) => {
     <>
     
     <div style={flexWrapperVertical} >
+    { !props.account && <p>you don't have any holdings</p> }
     { props.account && <PortfolioDonutChart />}
     { props.account && <PortfolioCard account={props.account} />}
     { props.account && <Transactions account={props.account} />}

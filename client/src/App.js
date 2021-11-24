@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
-=======
 import { useEffect, useState, createContext } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
->>>>>>> 51502cc (fixed the nav react router links and integrated user auth)
 import './App.scss';
 import axios from 'axios';
 import React from 'react';
@@ -29,18 +24,19 @@ function App() {
   useEffect(() => {
     console.log(`%%%%%%%verify state from homepage ${ authUser }%%%%%%%%%`)
     console.log('authUser', authUser);
-  },[authUser])
+    console.log('account', account)
+  },[authUser, account])
 
 
   return (
     <div className='App'>
-      <NavBar authUser={authUser} setAuthUser={setAuthUser} />
+      <NavBar authUser={authUser} setAuthUser={setAuthUser} account={account} setAccount={setAccount} />
       {/* <Sidebar /> */}
       <Routes>
         <Route path='/' element={<Home authUser={authUser} setAuthUser={setAuthUser} />} />
         <Route path="/login" element={<Login authUser={authUser} setAuthUser={setAuthUser} />} />
         <Route path="/signup" element={<Signup authUser={authUser} setAuthUser={setAuthUser} />} />
-        <Route path='portfolio' element={<Portfolio authUser={authUser} setAuthUser={setAuthUser} account={account} setAccount={setAccount} />} />
+        <Route path='/portfolio' element={<Portfolio authUser={authUser} setAuthUser={setAuthUser} account={account} setAccount={setAccount} />} />
         <Route path='search' element={<Search authUser={authUser} />} />
         <Route path='stock'>
           <Route path=':name' element={<Stock authUser={authUser} />} />
