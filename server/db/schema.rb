@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_011257) do
+ActiveRecord::Schema.define(version: 2021_11_24_171346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.integer "cash_balance"
-    t.integer "stock_balance"
-    t.integer "total_balance"
+    t.float "cash_balance"
+    t.float "stock_balance"
+    t.float "total_balance"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_011257) do
   create_table "portfolios", force: :cascade do |t|
     t.string "ticker"
     t.float "quantity"
-    t.integer "current_spot_price"
+    t.float "current_spot_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "account_id", null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_011257) do
     t.string "ticker"
     t.integer "trade"
     t.float "quantity"
-    t.integer "settled_price"
+    t.float "settled_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "account_id", null: false
