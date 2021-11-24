@@ -15970,3 +15970,818 @@ FOREIGN KEY ("account_id")
   [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   [1m[36mPortfolio Create (0.5ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "ETH-USD"], ["quantity", 1.5], ["current_spot_price", 4271], ["created_at", "2021-11-24 16:03:12.628430"], ["updated_at", "2021-11-24 16:03:12.628430"], ["account_id", 1]]
   [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (69.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "server_development"[0m
+  [1m[35m (34.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "server_test"[0m
+  [1m[35m (364.0ms)[0m  [1m[35mCREATE DATABASE "server_development" ENCODING = 'unicode'[0m
+  [1m[35m (358.1ms)[0m  [1m[35mCREATE DATABASE "server_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "accounts" CASCADE[0m
+  [1m[35m (25.2ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "cash_balance" integer, "stock_balance" integer, "total_balance" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL, "referral_bonus" integer, "signup_bonus" boolean)[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_user_id" ON "accounts" ("user_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "portfolios" CASCADE[0m
+  [1m[35m (19.4ms)[0m  [1m[35mCREATE TABLE "portfolios" ("id" bigserial primary key, "ticker" character varying, "quantity" float, "current_spot_price" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "account_id" bigint NOT NULL)[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE INDEX "index_portfolios_on_account_id" ON "portfolios" ("account_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "referrals" CASCADE[0m
+  [1m[35m (17.8ms)[0m  [1m[35mCREATE TABLE "referrals" ("id" bigserial primary key, "recipient_id" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL)[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE INDEX "index_referrals_on_user_id" ON "referrals" ("user_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "transactions" CASCADE[0m
+  [1m[35m (16.8ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "ticker" character varying, "trade" integer, "quantity" float, "settled_price" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "account_id" bigint NOT NULL)[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_account_id" ON "transactions" ("account_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (18.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "referral_code" character varying)[0m
+  [1m[35m (6.5ms)[0m  [1m[35mALTER TABLE "accounts" ADD CONSTRAINT "fk_rails_b1e30bebc8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (4.4ms)[0m  [1m[35mALTER TABLE "portfolios" ADD CONSTRAINT "fk_rails_ccd37f55ab"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  [1m[35m (4.9ms)[0m  [1m[35mALTER TABLE "referrals" ADD CONSTRAINT "fk_rails_1bb2ba0c15"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (5.8ms)[0m  [1m[35mALTER TABLE "transactions" ADD CONSTRAINT "fk_rails_01f020e267"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  [1m[35m (16.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20211123011257)[0m
+  [1m[35m (2.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20211119163009),
+(20211119163542),
+(20211119163721),
+(20211119163903),
+(20211119170947),
+(20211119184501),
+(20211119185026),
+(20211120012622),
+(20211120013655),
+(20211120014208),
+(20211120014456);
+
+[0m
+  [1m[35m (15.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-11-24 16:04:42.514210"], ["updated_at", "2021-11-24 16:04:42.514210"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "04162b41bbcf24a28f89e1e396f1cc02612b9186"], ["created_at", "2021-11-24 16:04:42.542268"], ["updated_at", "2021-11-24 16:04:42.542268"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "accounts" CASCADE[0m
+  [1m[35m (22.4ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "cash_balance" integer, "stock_balance" integer, "total_balance" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL, "referral_bonus" integer, "signup_bonus" boolean)[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_user_id" ON "accounts" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "portfolios" CASCADE[0m
+  [1m[35m (17.1ms)[0m  [1m[35mCREATE TABLE "portfolios" ("id" bigserial primary key, "ticker" character varying, "quantity" float, "current_spot_price" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "account_id" bigint NOT NULL)[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE INDEX "index_portfolios_on_account_id" ON "portfolios" ("account_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "referrals" CASCADE[0m
+  [1m[35m (16.2ms)[0m  [1m[35mCREATE TABLE "referrals" ("id" bigserial primary key, "recipient_id" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL)[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE INDEX "index_referrals_on_user_id" ON "referrals" ("user_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "transactions" CASCADE[0m
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "ticker" character varying, "trade" integer, "quantity" float, "settled_price" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "account_id" bigint NOT NULL)[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_account_id" ON "transactions" ("account_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (27.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "referral_code" character varying)[0m
+  [1m[35m (7.2ms)[0m  [1m[35mALTER TABLE "accounts" ADD CONSTRAINT "fk_rails_b1e30bebc8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (5.9ms)[0m  [1m[35mALTER TABLE "portfolios" ADD CONSTRAINT "fk_rails_ccd37f55ab"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  [1m[35m (6.8ms)[0m  [1m[35mALTER TABLE "referrals" ADD CONSTRAINT "fk_rails_1bb2ba0c15"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (4.1ms)[0m  [1m[35mALTER TABLE "transactions" ADD CONSTRAINT "fk_rails_01f020e267"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  [1m[35m (14.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20211123011257)[0m
+  [1m[35m (2.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20211119163009),
+(20211119163542),
+(20211119163721),
+(20211119163903),
+(20211119170947),
+(20211119184501),
+(20211119185026),
+(20211120012622),
+(20211120013655),
+(20211120014208),
+(20211120014456);
+
+[0m
+  [1m[35m (15.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-11-24 16:04:42.848293"], ["updated_at", "2021-11-24 16:04:42.848293"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (1.0ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2021-11-24 16:04:42.871537"], ["key", "environment"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "04162b41bbcf24a28f89e1e396f1cc02612b9186"], ["created_at", "2021-11-24 16:04:42.889451"], ["updated_at", "2021-11-24 16:04:42.889451"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "admon@wealthify.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.9ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "wealthify"], ["last_name", "wealthify"], ["email", "admon@wealthify.com"], ["password_digest", "$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS"], ["created_at", "2021-11-24 16:04:43.010506"], ["updated_at", "2021-11-24 16:04:43.010506"]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.6ms)[0m  [1m[32mINSERT INTO "accounts" ("cash_balance", "stock_balance", "total_balance", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["cash_balance", 2000], ["stock_balance", 9566], ["total_balance", 12000], ["created_at", "2021-11-24 16:04:43.059054"], ["updated_at", "2021-11-24 16:04:43.059054"], ["user_id", 1]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (1.1ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "AAPL"], ["quantity", 20.0], ["current_spot_price", 158], ["created_at", "2021-11-24 16:04:43.092416"], ["updated_at", "2021-11-24 16:04:43.092416"], ["account_id", 1]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.7ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "ETH-USD"], ["quantity", 1.5], ["current_spot_price", 4271], ["created_at", "2021-11-24 16:04:43.104119"], ["updated_at", "2021-11-24 16:04:43.104119"], ["account_id", 1]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "AAPL"], ["trade", 1], ["quantity", 20.0], ["settled_price", 158], ["created_at", "2021-11-24 16:04:43.121561"], ["updated_at", "2021-11-24 16:04:43.121561"], ["account_id", 1]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "ETH-USD"], ["trade", 1], ["quantity", 1.5], ["settled_price", 4271], ["created_at", "2021-11-24 16:04:43.128958"], ["updated_at", "2021-11-24 16:04:43.128958"], ["account_id", 1]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "adriana@wealthify.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Adriana"], ["last_name", "Calvo-Matos"], ["email", "adriana@wealthify.com"], ["password_digest", "$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS"], ["created_at", "2021-11-24 16:04:43.135322"], ["updated_at", "2021-11-24 16:04:43.135322"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("cash_balance", "stock_balance", "total_balance", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["cash_balance", 150], ["stock_balance", 9850], ["total_balance", 10000], ["created_at", "2021-11-24 16:04:43.142266"], ["updated_at", "2021-11-24 16:04:43.142266"], ["user_id", 2]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.4ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "SHOP"], ["quantity", 3.0], ["current_spot_price", 2140], ["created_at", "2021-11-24 16:04:43.149254"], ["updated_at", "2021-11-24 16:04:43.149254"], ["account_id", 2]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.4ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "MSFT"], ["quantity", 10.0], ["current_spot_price", 343], ["created_at", "2021-11-24 16:04:43.168761"], ["updated_at", "2021-11-24 16:04:43.168761"], ["account_id", 2]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "SHOP"], ["trade", 1], ["quantity", 3.0], ["settled_price", 2140], ["created_at", "2021-11-24 16:04:43.175069"], ["updated_at", "2021-11-24 16:04:43.175069"], ["account_id", 2]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.5ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "MSFT"], ["trade", 1], ["quantity", 10.0], ["settled_price", 343], ["created_at", "2021-11-24 16:04:43.181726"], ["updated_at", "2021-11-24 16:04:43.181726"], ["account_id", 2]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "aaron@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Aaron"], ["last_name", "Tenn"], ["email", "aaron@gmail.com"], ["password_digest", "$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS"], ["created_at", "2021-11-24 16:04:43.187935"], ["updated_at", "2021-11-24 16:04:43.187935"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("cash_balance", "stock_balance", "total_balance", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["cash_balance", 4515], ["stock_balance", 5485], ["total_balance", 10000], ["created_at", "2021-11-24 16:04:43.193974"], ["updated_at", "2021-11-24 16:04:43.193974"], ["user_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.4ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "WISH"], ["quantity", 50.0], ["current_spot_price", 4], ["created_at", "2021-11-24 16:04:43.200041"], ["updated_at", "2021-11-24 16:04:43.200041"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "AMSC"], ["quantity", 5.0], ["current_spot_price", 15], ["created_at", "2021-11-24 16:04:43.205960"], ["updated_at", "2021-11-24 16:04:43.205960"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "AAPL"], ["quantity", 20.0], ["current_spot_price", 158], ["created_at", "2021-11-24 16:04:43.211854"], ["updated_at", "2021-11-24 16:04:43.211854"], ["account_id", 3]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "AMC"], ["quantity", 50.0], ["current_spot_price", 41], ["created_at", "2021-11-24 16:04:43.222966"], ["updated_at", "2021-11-24 16:04:43.222966"], ["account_id", 3]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "WISH"], ["trade", 1], ["quantity", 50.0], ["settled_price", 4], ["created_at", "2021-11-24 16:04:43.230811"], ["updated_at", "2021-11-24 16:04:43.230811"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTransaction Create (2.8ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "AMSC"], ["trade", 1], ["quantity", 5.0], ["settled_price", 15], ["created_at", "2021-11-24 16:04:43.237448"], ["updated_at", "2021-11-24 16:04:43.237448"], ["account_id", 3]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "AAPL"], ["trade", 1], ["quantity", 20.0], ["settled_price", 158], ["created_at", "2021-11-24 16:04:43.247409"], ["updated_at", "2021-11-24 16:04:43.247409"], ["account_id", 3]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "AMC"], ["trade", 1], ["quantity", 50.0], ["settled_price", 41], ["created_at", "2021-11-24 16:04:43.254255"], ["updated_at", "2021-11-24 16:04:43.254255"], ["account_id", 3]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "niubrandon@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Brandon"], ["last_name", "Niu"], ["email", "niubrandon@gmail.com"], ["password_digest", "$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS"], ["created_at", "2021-11-24 16:04:43.260426"], ["updated_at", "2021-11-24 16:04:43.260426"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("cash_balance", "stock_balance", "total_balance", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["cash_balance", 5], ["stock_balance", 9994], ["total_balance", 10000], ["created_at", "2021-11-24 16:04:43.268046"], ["updated_at", "2021-11-24 16:04:43.268046"], ["user_id", 4]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "ETH-USD"], ["quantity", 0.5], ["current_spot_price", 3999], ["created_at", "2021-11-24 16:04:43.274753"], ["updated_at", "2021-11-24 16:04:43.274753"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "BTC-USD"], ["quantity", 0.01], ["current_spot_price", 57500], ["created_at", "2021-11-24 16:04:43.280601"], ["updated_at", "2021-11-24 16:04:43.280601"], ["account_id", 4]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.6ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "DOT1-USD"], ["quantity", 100.0], ["current_spot_price", 38], ["created_at", "2021-11-24 16:04:43.296815"], ["updated_at", "2021-11-24 16:04:43.296815"], ["account_id", 4]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.4ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "TLRY"], ["quantity", 300.0], ["current_spot_price", 10], ["created_at", "2021-11-24 16:04:43.308661"], ["updated_at", "2021-11-24 16:04:43.308661"], ["account_id", 4]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.4ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "CGC"], ["quantity", 30.0], ["current_spot_price", 12], ["created_at", "2021-11-24 16:04:43.317404"], ["updated_at", "2021-11-24 16:04:43.317404"], ["account_id", 4]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "ETH-USD"], ["trade", 1], ["quantity", 0.5], ["settled_price", 3999], ["created_at", "2021-11-24 16:04:43.325905"], ["updated_at", "2021-11-24 16:04:43.325905"], ["account_id", 4]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "BTC-USD"], ["trade", 1], ["quantity", 0.01], ["settled_price", 57500], ["created_at", "2021-11-24 16:04:43.333498"], ["updated_at", "2021-11-24 16:04:43.333498"], ["account_id", 4]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.6ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "DOT1-USD"], ["trade", 1], ["quantity", 100.0], ["settled_price", 38], ["created_at", "2021-11-24 16:04:43.347437"], ["updated_at", "2021-11-24 16:04:43.347437"], ["account_id", 4]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "TLRY"], ["trade", 1], ["quantity", 300.0], ["settled_price", 10], ["created_at", "2021-11-24 16:04:43.358718"], ["updated_at", "2021-11-24 16:04:43.358718"], ["account_id", 4]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "CGC"], ["trade", 1], ["quantity", 30.0], ["settled_price", 12], ["created_at", "2021-11-24 16:04:43.367263"], ["updated_at", "2021-11-24 16:04:43.367263"], ["account_id", 4]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4709995827031202925)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4709995827031202925)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (82.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "server_development"[0m
+  [1m[35m (39.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "server_test"[0m
+  [1m[35m (372.7ms)[0m  [1m[35mCREATE DATABASE "server_development" ENCODING = 'unicode'[0m
+  [1m[35m (371.7ms)[0m  [1m[35mCREATE DATABASE "server_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "accounts" CASCADE[0m
+  [1m[35m (18.4ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "cash_balance" integer, "stock_balance" integer, "total_balance" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL, "referral_bonus" integer, "signup_bonus" boolean)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_user_id" ON "accounts" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "portfolios" CASCADE[0m
+  [1m[35m (12.6ms)[0m  [1m[35mCREATE TABLE "portfolios" ("id" bigserial primary key, "ticker" character varying, "quantity" float, "current_spot_price" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "account_id" bigint NOT NULL)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE INDEX "index_portfolios_on_account_id" ON "portfolios" ("account_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "referrals" CASCADE[0m
+  [1m[35m (18.9ms)[0m  [1m[35mCREATE TABLE "referrals" ("id" bigserial primary key, "recipient_id" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL)[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE INDEX "index_referrals_on_user_id" ON "referrals" ("user_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "transactions" CASCADE[0m
+  [1m[35m (17.9ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "ticker" character varying, "trade" integer, "quantity" float, "settled_price" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "account_id" bigint NOT NULL)[0m
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_account_id" ON "transactions" ("account_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (23.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "referral_code" character varying)[0m
+  [1m[35m (9.9ms)[0m  [1m[35mALTER TABLE "accounts" ADD CONSTRAINT "fk_rails_b1e30bebc8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (7.2ms)[0m  [1m[35mALTER TABLE "portfolios" ADD CONSTRAINT "fk_rails_ccd37f55ab"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  [1m[35m (6.8ms)[0m  [1m[35mALTER TABLE "referrals" ADD CONSTRAINT "fk_rails_1bb2ba0c15"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (14.6ms)[0m  [1m[35mALTER TABLE "transactions" ADD CONSTRAINT "fk_rails_01f020e267"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  [1m[35m (19.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20211123011257)[0m
+  [1m[35m (4.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20211119163009),
+(20211119163542),
+(20211119163721),
+(20211119163903),
+(20211119170947),
+(20211119184501),
+(20211119185026),
+(20211120012622),
+(20211120013655),
+(20211120014208),
+(20211120014456);
+
+[0m
+  [1m[35m (14.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-11-24 16:04:51.400618"], ["updated_at", "2021-11-24 16:04:51.400618"]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "04162b41bbcf24a28f89e1e396f1cc02612b9186"], ["created_at", "2021-11-24 16:04:51.416424"], ["updated_at", "2021-11-24 16:04:51.416424"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "accounts" CASCADE[0m
+  [1m[35m (20.5ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "cash_balance" integer, "stock_balance" integer, "total_balance" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL, "referral_bonus" integer, "signup_bonus" boolean)[0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_user_id" ON "accounts" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "portfolios" CASCADE[0m
+  [1m[35m (15.2ms)[0m  [1m[35mCREATE TABLE "portfolios" ("id" bigserial primary key, "ticker" character varying, "quantity" float, "current_spot_price" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "account_id" bigint NOT NULL)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE INDEX "index_portfolios_on_account_id" ON "portfolios" ("account_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "referrals" CASCADE[0m
+  [1m[35m (12.6ms)[0m  [1m[35mCREATE TABLE "referrals" ("id" bigserial primary key, "recipient_id" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL)[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE INDEX "index_referrals_on_user_id" ON "referrals" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "transactions" CASCADE[0m
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "ticker" character varying, "trade" integer, "quantity" float, "settled_price" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "account_id" bigint NOT NULL)[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_account_id" ON "transactions" ("account_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (17.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "referral_code" character varying)[0m
+  [1m[35m (5.6ms)[0m  [1m[35mALTER TABLE "accounts" ADD CONSTRAINT "fk_rails_b1e30bebc8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.9ms)[0m  [1m[35mALTER TABLE "portfolios" ADD CONSTRAINT "fk_rails_ccd37f55ab"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  [1m[35m (4.2ms)[0m  [1m[35mALTER TABLE "referrals" ADD CONSTRAINT "fk_rails_1bb2ba0c15"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (5.9ms)[0m  [1m[35mALTER TABLE "transactions" ADD CONSTRAINT "fk_rails_01f020e267"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20211123011257)[0m
+  [1m[35m (2.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20211119163009),
+(20211119163542),
+(20211119163721),
+(20211119163903),
+(20211119170947),
+(20211119184501),
+(20211119185026),
+(20211120012622),
+(20211120013655),
+(20211120014208),
+(20211120014456);
+
+[0m
+  [1m[35m (16.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-11-24 16:04:51.670692"], ["updated_at", "2021-11-24 16:04:51.670692"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.9ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2021-11-24 16:04:51.690896"], ["key", "environment"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "04162b41bbcf24a28f89e1e396f1cc02612b9186"], ["created_at", "2021-11-24 16:04:51.707088"], ["updated_at", "2021-11-24 16:04:51.707088"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "admon@wealthify.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "wealthify"], ["last_name", "wealthify"], ["email", "admon@wealthify.com"], ["password_digest", "$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS"], ["created_at", "2021-11-24 16:04:51.851309"], ["updated_at", "2021-11-24 16:04:51.851309"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("cash_balance", "stock_balance", "total_balance", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["cash_balance", 2000], ["stock_balance", 9566], ["total_balance", 12000], ["created_at", "2021-11-24 16:04:51.891241"], ["updated_at", "2021-11-24 16:04:51.891241"], ["user_id", 1]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.6ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "AAPL"], ["quantity", 20.0], ["current_spot_price", 158], ["created_at", "2021-11-24 16:04:51.907493"], ["updated_at", "2021-11-24 16:04:51.907493"], ["account_id", 1]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.4ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "ETH-USD"], ["quantity", 1.5], ["current_spot_price", 4271], ["created_at", "2021-11-24 16:04:51.913682"], ["updated_at", "2021-11-24 16:04:51.913682"], ["account_id", 1]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "AAPL"], ["trade", 1], ["quantity", 20.0], ["settled_price", 158], ["created_at", "2021-11-24 16:04:51.926362"], ["updated_at", "2021-11-24 16:04:51.926362"], ["account_id", 1]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "ETH-USD"], ["trade", 1], ["quantity", 1.5], ["settled_price", 4271], ["created_at", "2021-11-24 16:04:51.944330"], ["updated_at", "2021-11-24 16:04:51.944330"], ["account_id", 1]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "adriana@wealthify.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Adriana"], ["last_name", "Calvo-Matos"], ["email", "adriana@wealthify.com"], ["password_digest", "$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS"], ["created_at", "2021-11-24 16:04:51.950403"], ["updated_at", "2021-11-24 16:04:51.950403"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("cash_balance", "stock_balance", "total_balance", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["cash_balance", 150], ["stock_balance", 9850], ["total_balance", 10000], ["created_at", "2021-11-24 16:04:51.956432"], ["updated_at", "2021-11-24 16:04:51.956432"], ["user_id", 2]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.4ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "SHOP"], ["quantity", 3.0], ["current_spot_price", 2140], ["created_at", "2021-11-24 16:04:51.962669"], ["updated_at", "2021-11-24 16:04:51.962669"], ["account_id", 2]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.4ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "MSFT"], ["quantity", 10.0], ["current_spot_price", 343], ["created_at", "2021-11-24 16:04:51.968864"], ["updated_at", "2021-11-24 16:04:51.968864"], ["account_id", 2]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "SHOP"], ["trade", 1], ["quantity", 3.0], ["settled_price", 2140], ["created_at", "2021-11-24 16:04:51.974973"], ["updated_at", "2021-11-24 16:04:51.974973"], ["account_id", 2]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "MSFT"], ["trade", 1], ["quantity", 10.0], ["settled_price", 343], ["created_at", "2021-11-24 16:04:51.981220"], ["updated_at", "2021-11-24 16:04:51.981220"], ["account_id", 2]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "aaron@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Aaron"], ["last_name", "Tenn"], ["email", "aaron@gmail.com"], ["password_digest", "$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS"], ["created_at", "2021-11-24 16:04:51.986971"], ["updated_at", "2021-11-24 16:04:51.986971"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("cash_balance", "stock_balance", "total_balance", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["cash_balance", 4515], ["stock_balance", 5485], ["total_balance", 10000], ["created_at", "2021-11-24 16:04:51.993056"], ["updated_at", "2021-11-24 16:04:51.993056"], ["user_id", 3]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.6ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "WISH"], ["quantity", 50.0], ["current_spot_price", 4], ["created_at", "2021-11-24 16:04:52.005892"], ["updated_at", "2021-11-24 16:04:52.005892"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.5ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "AMSC"], ["quantity", 5.0], ["current_spot_price", 15], ["created_at", "2021-11-24 16:04:52.016067"], ["updated_at", "2021-11-24 16:04:52.016067"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.4ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "AAPL"], ["quantity", 20.0], ["current_spot_price", 158], ["created_at", "2021-11-24 16:04:52.024330"], ["updated_at", "2021-11-24 16:04:52.024330"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "AMC"], ["quantity", 50.0], ["current_spot_price", 41], ["created_at", "2021-11-24 16:04:52.030988"], ["updated_at", "2021-11-24 16:04:52.030988"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "WISH"], ["trade", 1], ["quantity", 50.0], ["settled_price", 4], ["created_at", "2021-11-24 16:04:52.037284"], ["updated_at", "2021-11-24 16:04:52.037284"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "AMSC"], ["trade", 1], ["quantity", 5.0], ["settled_price", 15], ["created_at", "2021-11-24 16:04:52.043849"], ["updated_at", "2021-11-24 16:04:52.043849"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "AAPL"], ["trade", 1], ["quantity", 20.0], ["settled_price", 158], ["created_at", "2021-11-24 16:04:52.049448"], ["updated_at", "2021-11-24 16:04:52.049448"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "AMC"], ["trade", 1], ["quantity", 50.0], ["settled_price", 41], ["created_at", "2021-11-24 16:04:52.055284"], ["updated_at", "2021-11-24 16:04:52.055284"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "niubrandon@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Brandon"], ["last_name", "Niu"], ["email", "niubrandon@gmail.com"], ["password_digest", "$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS"], ["created_at", "2021-11-24 16:04:52.061416"], ["updated_at", "2021-11-24 16:04:52.061416"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.1ms)[0m  [1m[32mINSERT INTO "accounts" ("cash_balance", "stock_balance", "total_balance", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["cash_balance", 5], ["stock_balance", 9994], ["total_balance", 10000], ["created_at", "2021-11-24 16:04:52.074076"], ["updated_at", "2021-11-24 16:04:52.074076"], ["user_id", 4]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.6ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "ETH-USD"], ["quantity", 0.5], ["current_spot_price", 3999], ["created_at", "2021-11-24 16:04:52.087085"], ["updated_at", "2021-11-24 16:04:52.087085"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.5ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "BTC-USD"], ["quantity", 0.01], ["current_spot_price", 57500], ["created_at", "2021-11-24 16:04:52.096621"], ["updated_at", "2021-11-24 16:04:52.096621"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "DOT1-USD"], ["quantity", 100.0], ["current_spot_price", 38], ["created_at", "2021-11-24 16:04:52.105598"], ["updated_at", "2021-11-24 16:04:52.105598"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "TLRY"], ["quantity", 300.0], ["current_spot_price", 10], ["created_at", "2021-11-24 16:04:52.112244"], ["updated_at", "2021-11-24 16:04:52.112244"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "CGC"], ["quantity", 30.0], ["current_spot_price", 12], ["created_at", "2021-11-24 16:04:52.117624"], ["updated_at", "2021-11-24 16:04:52.117624"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "ETH-USD"], ["trade", 1], ["quantity", 0.5], ["settled_price", 3999], ["created_at", "2021-11-24 16:04:52.123433"], ["updated_at", "2021-11-24 16:04:52.123433"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "BTC-USD"], ["trade", 1], ["quantity", 0.01], ["settled_price", 57500], ["created_at", "2021-11-24 16:04:52.140138"], ["updated_at", "2021-11-24 16:04:52.140138"], ["account_id", 4]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "DOT1-USD"], ["trade", 1], ["quantity", 100.0], ["settled_price", 38], ["created_at", "2021-11-24 16:04:52.147252"], ["updated_at", "2021-11-24 16:04:52.147252"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "TLRY"], ["trade", 1], ["quantity", 300.0], ["settled_price", 10], ["created_at", "2021-11-24 16:04:52.153261"], ["updated_at", "2021-11-24 16:04:52.153261"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "CGC"], ["trade", 1], ["quantity", 30.0], ["settled_price", 12], ["created_at", "2021-11-24 16:04:52.167037"], ["updated_at", "2021-11-24 16:04:52.167037"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users/login
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users/login
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/users/login" for ::1 at 2021-11-24 11:48:25 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as HTML
+  Parameters: {"user"=>{"email"=>"adriana@wealthify.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "adriana@wealthify.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `login'
+Completed 200 OK in 226ms (Views: 0.2ms | ActiveRecord: 3.0ms | Allocations: 9116)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/2" for ::1 at 2021-11-24 11:48:26 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:93:in `set_account'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:73:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.4ms)[0m  [1m[33mUPDATE "accounts" SET "total_balance" = $1, "updated_at" = $2 WHERE "accounts"."id" = $3[0m  [["total_balance", 11566], ["updated_at", "2021-11-24 16:48:26.170711"], ["id", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.3ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 9734], ["total_balance", 9739], ["updated_at", "2021-11-24 16:48:26.190122"], ["id", 4]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE (account_id = 2)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE (account_id = 2)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+Completed 200 OK in 71ms (Views: 6.2ms | ActiveRecord: 14.8ms | Allocations: 31194)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts" for ::1 at 2021-11-24 11:48:28 -0500
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:73:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (1.1ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (1.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.7ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:12:in `index'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/accounts_controller.rb:12:in `index'
+Completed 200 OK in 90ms (Views: 5.2ms | ActiveRecord: 11.0ms | Allocations: 12501)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/users" for ::1 at 2021-11-24 12:37:04 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"first_name"=>"A", "last_name"=>"A", "email"=>"a@gmail.com", "password"=>"[FILTERED]", "referral_code"=>""}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:47:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "a@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:47:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at", "referral_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "A"], ["last_name", "A"], ["email", "a@gmail.com"], ["password_digest", "$2a$12$.gqGmcK/n6/qe4qqC2T9eeJDHklrliDj1DWjqX3oDp6hAMybAJPom"], ["created_at", "2021-11-24 17:37:04.898210"], ["updated_at", "2021-11-24 17:37:04.898210"], ["referral_code", ""]]
+  ↳ app/controllers/users_controller.rb:47:in `create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:47:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:49:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:49:in `create'
+  [1m[36mAccount Create (0.5ms)[0m  [1m[32mINSERT INTO "accounts" ("cash_balance", "stock_balance", "total_balance", "created_at", "updated_at", "user_id", "referral_bonus", "signup_bonus") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["cash_balance", 10000], ["stock_balance", 0], ["total_balance", 10000], ["created_at", "2021-11-24 17:37:04.930051"], ["updated_at", "2021-11-24 17:37:04.930051"], ["user_id", 5], ["referral_bonus", 0], ["signup_bonus", false]]
+  ↳ app/controllers/users_controller.rb:49:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:49:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:85:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."id" != $2 LIMIT $3[0m  [["email", "a@gmail.com"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85:in `create'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "referral_code" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2021-11-24 17:37:04.936809"], ["referral_code", "ouTTQh"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:85:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:85:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:87:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."id" != $2 LIMIT $3[0m  [["email", "a@gmail.com"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:87:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:87:in `create'
+Completed 201 Created in 271ms (Views: 0.2ms | ActiveRecord: 13.7ms | Allocations: 28085)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/5
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/5" for ::1 at 2021-11-24 12:37:04 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:93:in `set_account'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:73:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 5]]
+  ↳ app/controllers/accounts_controller.rb:77:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:82:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE (account_id = 5)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+Completed 200 OK in 42ms (Views: 1.9ms | ActiveRecord: 6.8ms | Allocations: 19467)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
