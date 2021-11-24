@@ -1,5 +1,9 @@
 import { useEffect, useState, createContext } from 'react';
+<<<<<<< HEAD
 import { Routes, Route, Link } from 'react-router-dom';
+=======
+import { Routes, Route, Link } from "react-router-dom";
+>>>>>>> 1e21e71f6a8f4e0c9e57ddee2c5cbff542909764
 import './App.scss';
 import axios from 'axios';
 import React from 'react';
@@ -27,7 +31,7 @@ function App() {
 
   return (
     <div className='App'>
-      <NavBar authUser={authUser} setAuthUser={setAuthUser} />
+      <NavBar authUser={authUser} setAuthUser={setAuthUser} account={account} setAccount={setAccount} />
       {/* <Sidebar /> */}
       <Routes>
         <Route

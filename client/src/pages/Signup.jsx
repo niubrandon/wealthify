@@ -14,8 +14,13 @@ import {
 } from 'react-router-dom';
 
 const Signup = (props) => {
+<<<<<<< HEAD
   console.log(props.authUser);
   const [user, setUser] = useState(null);
+=======
+  console.log(props.authUser)
+  const [ user, setUser ] = useState(null);
+>>>>>>> 1e21e71f6a8f4e0c9e57ddee2c5cbff542909764
   //const [ jwt, setJWT ] = useState({jwt: null});
 
   let navigate = useNavigate();
@@ -24,12 +29,22 @@ const Signup = (props) => {
   //let from = "/portfolio"
 
   useEffect(() => {
+<<<<<<< HEAD
     console.log('user is', user);
     if (!user) {
       return;
     }
 
     console.log(`printing the current state of ${user.user.email}`);
+=======
+    console.log("user is", user)
+    if (!user) {
+      return
+    }
+
+
+    console.log(`printing the current state of ${user.user.email}`)
+>>>>>>> 1e21e71f6a8f4e0c9e57ddee2c5cbff542909764
     axios({
       method: 'post',
       url: 'http://localhost:3000/users',
@@ -81,60 +96,37 @@ const Signup = (props) => {
 
   return (
     <div style={flexWrapperVertical}>
-      <Form className='w-50' onSubmit={(e) => onSignUp(e)}>
-        <Form.Group className='mb-3' controlId='formFristName'>
-          <Form.Label>First Name</Form.Label>
-          <Form.Control
-            type='text'
-            name='first_name'
-            placeholder='Frist Name'
-            required
-          />
-        </Form.Group>
+    <Form className="w-50" onSubmit={ (e) => onSignUp(e) }>
+      <Form.Group className="mb-3" controlId="formFristName">
+        <Form.Label >First Name</Form.Label>
+        <Form.Control type="text" name="first_name" placeholder="Frist Name" required />
+      </Form.Group>
 
-        <Form.Group className='mb-3' controlId='formLastName'>
-          <Form.Label>Last Name</Form.Label>
-          <Form.Control
-            type='text'
-            name='last_name'
-            placeholder='Last Name'
-            required
-          />
-        </Form.Group>
+      <Form.Group className="mb-3" controlId="formLastName">
+        <Form.Label>Last Name</Form.Label>
+        <Form.Control type="text" name="last_name" placeholder="Last Name" required/>
+      </Form.Group>
 
-        <Form.Group className='mb-3' controlId='formBasicEmail'>
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type='email'
-            name='email'
-            placeholder='Enter email'
-            required
-          />
-        </Form.Group>
 
-        <Form.Group className='mb-3' controlId='formBasicPassword'>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type='password'
-            name='password'
-            placeholder='Password'
-            required
-          />
-        </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" name="email" placeholder="Enter email" required />
+      </Form.Group>
 
-        <Form.Group className='mb-3' controlId='formReferralCode'>
-          <Form.Label>Referral code</Form.Label>
-          <Form.Control
-            type='text'
-            name='referral_code'
-            placeholder='Refferal code'
-          />
-        </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" name="password" placeholder="Password" required/>
+      </Form.Group>
 
-        <Button variant='primary' type='submit'>
-          SignUp
-        </Button>
-      </Form>
+      <Form.Group className="mb-3" controlId="formReferralCode">
+        <Form.Label>Referral code</Form.Label>
+        <Form.Control type="text" name="referral_code" placeholder="Refferal code" />
+      </Form.Group>
+    
+      <Button variant="primary" type="submit">
+        SignUp
+      </Button>
+    </Form>
     </div>
   );
 };
