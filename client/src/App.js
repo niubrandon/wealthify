@@ -1,5 +1,9 @@
 import { useEffect, useState, createContext } from 'react';
+<<<<<<< HEAD
+import { Routes, Route, Link } from 'react-router-dom';
+=======
 import { Routes, Route, Link } from "react-router-dom";
+>>>>>>> 1e21e71f6a8f4e0c9e57ddee2c5cbff542909764
 import './App.scss';
 import axios from 'axios';
 import React from 'react';
@@ -14,32 +18,51 @@ import Modal from './components/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar';
 
-
 let AuthContext = React.createContext();
 
 function App() {
   //authUser set to null when it is logout, set to jwt when it's login
-  const [ authUser, setAuthUser ] = useState(null);
-  const [ account, setAccount ] = useState(null)
+  const [authUser, setAuthUser] = useState(null);
+  const [account, setAccount] = useState(null);
   useEffect(() => {
-    console.log(`%%%%%%%verify state from homepage ${ authUser }%%%%%%%%%`)
+    console.log(`%%%%%%%verify state from homepage ${authUser}%%%%%%%%%`);
     console.log('authUser', authUser);
-    console.log('account', account)
-  },[authUser, account])
-
+  }, [authUser]);
 
   return (
     <div className='App'>
       <NavBar authUser={authUser} setAuthUser={setAuthUser} account={account} setAccount={setAccount} />
       {/* <Sidebar /> */}
       <Routes>
-        <Route path='/' element={<Home authUser={authUser} setAuthUser={setAuthUser} />} />
-        <Route path="/login" element={<Login authUser={authUser} setAuthUser={setAuthUser} />} />
-        <Route path="/signup" element={<Signup authUser={authUser} setAuthUser={setAuthUser} />} />
-        <Route path='/portfolio' element={<Portfolio authUser={authUser} setAuthUser={setAuthUser} account={account} setAccount={setAccount} />} />
+        <Route
+          path='/'
+          element={<Home authUser={authUser} setAuthUser={setAuthUser} />}
+        />
+        <Route
+          path='/login'
+          element={<Login authUser={authUser} setAuthUser={setAuthUser} />}
+        />
+        <Route
+          path='/signup'
+          element={<Signup authUser={authUser} setAuthUser={setAuthUser} />}
+        />
+        <Route
+          path='portfolio'
+          element={
+            <Portfolio
+              authUser={authUser}
+              setAuthUser={setAuthUser}
+              account={account}
+              setAccount={setAccount}
+            />
+          }
+        />
         <Route path='search' element={<Search authUser={authUser} />} />
         <Route path='stock'>
-          <Route path=':name' element={<Stock authUser={authUser} />} />
+          <Route
+            path=':name'
+            element={<Stock authUser={authUser} account={account} />}
+          />
         </Route>
       </Routes>
     </div>

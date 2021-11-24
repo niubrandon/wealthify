@@ -1,0 +1,50 @@
+@import '../_variables';
+
+#referral-portfolio {
+  @include flex-center(column);
+  width: 100%;
+  min-height: 200px;
+  color: $black;
+  padding: 10px;
+  border-radius: 8px;
+  border-radius: 20px;
+  border: 2px solid $logo;
+  box-shadow: 3px 6px 20px rgba(22, 19, 24, 0.2);
+
+  p {
+    font-size: 1.5em;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  .highlight {
+    color: $logo;
+    font-size: 1.2em;
+  }
+
+  .code {
+    @include flex-center(row);
+    margin-top: 1rem;
+    .user-code {
+      margin: 0 1rem;
+      padding: 5px 40px;
+      border: 2px solid $logo;
+      border-radius: 8px;
+    }
+    .icon {
+      font-size: 2em;
+      color: $logo;
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+    }
+    .copy {
+      width: 1px;
+      font-size: 1em;
+      margin-left: 1em;
+      color: $logo;
+      font-size: 0.8em;
+    }
+  }
+}

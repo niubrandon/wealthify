@@ -1,6 +1,8 @@
 class Transaction < ApplicationRecord
 
   belongs_to :account, foreign_key: :account_id
+<<<<<<< HEAD
+=======
 
   # after_create do
      
@@ -43,4 +45,5 @@ class Transaction < ApplicationRecord
   #   end
 
   # end
+>>>>>>> 1e21e71f6a8f4e0c9e57ddee2c5cbff542909764
 end

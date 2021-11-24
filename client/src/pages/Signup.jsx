@@ -10,21 +10,33 @@ import {
   useNavigate,
   useLocation,
   Navigate,
-  Outlet
-} from "react-router-dom";
-
+  Outlet,
+} from 'react-router-dom';
 
 const Signup = (props) => {
+<<<<<<< HEAD
+  console.log(props.authUser);
+  const [user, setUser] = useState(null);
+=======
   console.log(props.authUser)
   const [ user, setUser ] = useState(null);
+>>>>>>> 1e21e71f6a8f4e0c9e57ddee2c5cbff542909764
   //const [ jwt, setJWT ] = useState({jwt: null});
-  
+
   let navigate = useNavigate();
   let location = useLocation();
   //let from = location.state?.from?.pathname || "/";
   //let from = "/portfolio"
 
   useEffect(() => {
+<<<<<<< HEAD
+    console.log('user is', user);
+    if (!user) {
+      return;
+    }
+
+    console.log(`printing the current state of ${user.user.email}`);
+=======
     console.log("user is", user)
     if (!user) {
       return
@@ -32,60 +44,58 @@ const Signup = (props) => {
 
 
     console.log(`printing the current state of ${user.user.email}`)
+>>>>>>> 1e21e71f6a8f4e0c9e57ddee2c5cbff542909764
     axios({
       method: 'post',
       url: 'http://localhost:3000/users',
-      data: user
-  })
-  .then(function (response) {
-      console.log(response.data);
-      //setJWT({jwt: response.data.auth_token})
-      props.setAuthUser({
-        jwt: response.data.auth_token,
-        user_id: response.data.user_id,
-        user_email: response.data.user_email
+      data: user,
+    })
+      .then(function (response) {
+        console.log('**********RESPONSE:', response.data);
+        //setJWT({jwt: response.data.auth_token})
+        props.setAuthUser({
+          jwt: response.data.auth_token,
+          user_id: response.data.user_id,
+          user_email: response.data.user_email,
+          referral_code: response.data.referral_code,
+        });
+
+        //reset user to null
+
+        //navigate to page
+        //navigate(from, { replace: true });
+        navigate('/portfolio');
       })
-
-      //reset user to null
- 
-      //navigate to page
-      //navigate(from, { replace: true });
-      navigate('/portfolio')
-  
-  })
-  .catch(function (error) {
-      console.log(error);
-  });
-  }, [user])
-
-
-
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, [user]);
 
   const onSignUp = (e) => {
-    console.log("onSignUp invoked")
+    console.log('onSignUp invoked');
     e.preventDefault();
 
-    setUser({ user: {
-      first_name: e.target.first_name.value,
-      last_name: e.target.last_name.value,
-      email: e.target.email.value,
-      password: e.target.password.value,
-      referral_code: e.target.referral_code.value
-    }
-    })
+    setUser({
+      user: {
+        first_name: e.target.first_name.value,
+        last_name: e.target.last_name.value,
+        email: e.target.email.value,
+        password: e.target.password.value,
+        referral_code: e.target.referral_code.value,
+      },
+    });
   };
 
   const flexWrapperVertical = {
-    display:'flex', 
-    flexDirection:'column', 
-    justifyContent:'center', 
-    alignItems:'center', 
-    gap:'10px'
-  }
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '10px',
+  };
 
   return (
     <div style={flexWrapperVertical}>
-
     <Form className="w-50" onSubmit={ (e) => onSignUp(e) }>
       <Form.Group className="mb-3" controlId="formFristName">
         <Form.Label >First Name</Form.Label>
@@ -118,7 +128,7 @@ const Signup = (props) => {
       </Button>
     </Form>
     </div>
-  )
-}
+  );
+};
 
 export default Signup;

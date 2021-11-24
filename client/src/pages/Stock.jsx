@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 const axios = require('axios').default;
 
 const Stock = (props) => {
+  const { authUser, account } = props;
   const [graphx, setGraphx] = useState([]);
   const [graphy, setGraphy] = useState([]);
   const [detail, setDetail] = useState([]);
@@ -90,24 +91,29 @@ const Stock = (props) => {
 
   return (
     <>
-      <StockHeader name={name} regMP={155.07} />
+      <StockHeader
+        name={name}
+        regMP={detail.regularMarketPrice}
+        authUser={authUser}
+        account={account}
+      />
       <button
         type='button'
-        class='btn btn-outline-info'
+        className='btn btn-outline-info'
         onClick={(e) => daily(e)}
       >
         Daily
       </button>
       <button
         type='button'
-        class='btn btn-outline-info'
+        className='btn btn-outline-info'
         onClick={(e) => weekly(e)}
       >
         Weekly
       </button>
       <button
         type='button'
-        class='btn btn-outline-info'
+        className='btn btn-outline-info'
         onClick={(e) => yearly(e)}
       >
         Yearly
