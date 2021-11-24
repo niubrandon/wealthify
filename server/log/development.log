@@ -24199,3 +24199,1779 @@ FOREIGN KEY ("account_id")
   [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
   [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "CGC"], ["trade", 1], ["quantity", 30.0], ["settled_price", 12.0], ["created_at", "2021-11-24 18:42:15.038491"], ["updated_at", "2021-11-24 18:42:15.038491"], ["account_id", 4]]
   [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users/login
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users/login
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/users/login" for ::1 at 2021-11-24 13:59:42 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as HTML
+  Parameters: {"user"=>{"email"=>"adriana@wealthify.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "adriana@wealthify.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `login'
+Completed 200 OK in 225ms (Views: 0.2ms | ActiveRecord: 2.9ms | Allocations: 9123)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/2" for ::1 at 2021-11-24 13:59:43 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:96:in `set_account'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "portfolios"."ticker" FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:136:in `each_with_index'
+  [1m[36mPortfolio Load (1.0ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:62:in `adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (1.8ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 160.9961], ["updated_at", "2021-11-24 18:59:43.526050"], ["id", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.4ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 4229.133], ["updated_at", "2021-11-24 18:59:43.538172"], ["id", 2]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.4ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 1626.85], ["updated_at", "2021-11-24 18:59:43.545816"], ["id", 3]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 336.285], ["updated_at", "2021-11-24 18:59:43.552619"], ["id", 4]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 3.9301], ["updated_at", "2021-11-24 18:59:43.559806"], ["id", 5]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 13.59], ["updated_at", "2021-11-24 18:59:43.567236"], ["id", 6]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 160.9961], ["updated_at", "2021-11-24 18:59:43.572599"], ["id", 7]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.7ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 38.8505], ["updated_at", "2021-11-24 18:59:43.583147"], ["id", 8]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.5ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 4229.133], ["updated_at", "2021-11-24 18:59:43.591807"], ["id", 9]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 56803.945], ["updated_at", "2021-11-24 18:59:43.600673"], ["id", 10]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 38.707573], ["updated_at", "2021-11-24 18:59:43.609464"], ["id", 11]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 11.79], ["updated_at", "2021-11-24 18:59:43.619332"], ["id", 13]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:76:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.3ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 9563.621500000001], ["total_balance", 11563.621500000001], ["updated_at", "2021-11-24 18:59:43.631180"], ["id", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (9.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.8ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (1.2ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 8243.4], ["total_balance", 10013.4], ["updated_at", "2021-11-24 18:59:43.661842"], ["id", 2]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.7ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.6ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 5426.902], ["total_balance", 9941.902], ["updated_at", "2021-11-24 18:59:43.679333"], ["id", 3]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.4ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 10117.063250000001], ["total_balance", 10122.563250000001], ["updated_at", "2021-11-24 18:59:43.691300"], ["id", 4]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE (account_id = 2)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+  [1m[36mTransaction Load (1.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE (account_id = 2)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+Completed 200 OK in 504ms (Views: 14.5ms | ActiveRecord: 62.8ms | Allocations: 71809)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/2" for ::1 at 2021-11-24 14:20:16 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:96:in `set_account'
+  [1m[36mPortfolio Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "portfolios"."ticker" FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:136:in `each_with_index'
+Completed 500 Internal Server Error in 218ms (ActiveRecord: 5.5ms | Allocations: 7808)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/accounts_controller.rb:120:in `get_live_price'
+app/controllers/accounts_controller.rb:60:in `adjust_portfolio_spot_price'
+app/controllers/accounts_controller.rb:72:in `adjust_accounts_balance_from_updated_portfolios'
+app/controllers/accounts_controller.rb:22:in `show'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-24 14:20:22 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"SHOP", "trade"=>-1, "quantity"=>2, "settled_price"=>1626.85, "account_id"=>2}}
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:26:in `create'
+  [1m[36mTransaction Load (1.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["trade", 1]]
+  ↳ app/controllers/transactions_controller.rb:32:in `create'
+  [1m[36mTransaction Load (0.9ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["trade", -1]]
+  ↳ app/controllers/transactions_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mAccount Update (1.0ms)[0m  [1m[33mUPDATE "accounts" SET "cash_balance" = $1, "stock_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["cash_balance", 5023.7], ["stock_balance", 4989.7], ["updated_at", "2021-11-24 19:20:23.030545"], ["id", 2]]
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mPortfolio Load (0.5ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:65:in `create'
+  [1m[36mCACHE Portfolio Load (0.0ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:67:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mPortfolio Update (0.6ms)[0m  [1m[33mUPDATE "portfolios" SET "quantity" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["quantity", 1.0], ["updated_at", "2021-11-24 19:20:23.051394"], ["id", 3]]
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "SHOP"], ["trade", -1], ["quantity", 2.0], ["settled_price", 1626.85], ["created_at", "2021-11-24 19:20:23.063325"], ["updated_at", "2021-11-24 19:20:23.063325"], ["account_id", 2]]
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+Completed 201 Created in 87ms (Views: 14.5ms | ActiveRecord: 14.8ms | Allocations: 11708)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts" for ::1 at 2021-11-24 14:21:00 -0500
+Processing by AccountsController#index as HTML
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "portfolios"."ticker" FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:136:in `each_with_index'
+Completed 500 Internal Server Error in 231ms (ActiveRecord: 0.3ms | Allocations: 4152)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/accounts_controller.rb:120:in `get_live_price'
+app/controllers/accounts_controller.rb:60:in `adjust_portfolio_spot_price'
+app/controllers/accounts_controller.rb:72:in `adjust_accounts_balance_from_updated_portfolios'
+app/controllers/accounts_controller.rb:8:in `index'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/2" for ::1 at 2021-11-24 14:21:01 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:96:in `set_account'
+  [1m[36mPortfolio Load (0.8ms)[0m  [1m[34mSELECT DISTINCT "portfolios"."ticker" FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:136:in `each_with_index'
+Completed 500 Internal Server Error in 177ms (ActiveRecord: 1.4ms | Allocations: 4585)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/accounts_controller.rb:120:in `get_live_price'
+app/controllers/accounts_controller.rb:60:in `adjust_portfolio_spot_price'
+app/controllers/accounts_controller.rb:72:in `adjust_accounts_balance_from_updated_portfolios'
+app/controllers/accounts_controller.rb:22:in `show'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts" for ::1 at 2021-11-24 14:21:04 -0500
+Processing by AccountsController#index as HTML
+  [1m[36mPortfolio Load (1.1ms)[0m  [1m[34mSELECT DISTINCT "portfolios"."ticker" FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:136:in `each_with_index'
+Completed 500 Internal Server Error in 201ms (ActiveRecord: 1.1ms | Allocations: 4089)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/accounts_controller.rb:120:in `get_live_price'
+app/controllers/accounts_controller.rb:60:in `adjust_portfolio_spot_price'
+app/controllers/accounts_controller.rb:72:in `adjust_accounts_balance_from_updated_portfolios'
+app/controllers/accounts_controller.rb:8:in `index'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/2" for ::1 at 2021-11-24 14:21:08 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:96:in `set_account'
+  [1m[36mPortfolio Load (0.5ms)[0m  [1m[34mSELECT DISTINCT "portfolios"."ticker" FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:136:in `each_with_index'
+Completed 500 Internal Server Error in 182ms (ActiveRecord: 1.1ms | Allocations: 4541)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/accounts_controller.rb:120:in `get_live_price'
+app/controllers/accounts_controller.rb:60:in `adjust_portfolio_spot_price'
+app/controllers/accounts_controller.rb:72:in `adjust_accounts_balance_from_updated_portfolios'
+app/controllers/accounts_controller.rb:22:in `show'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (35.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "server_development"[0m
+  [1m[35m (40.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "server_test"[0m
+  [1m[35m (357.1ms)[0m  [1m[35mCREATE DATABASE "server_development" ENCODING = 'unicode'[0m
+  [1m[35m (357.3ms)[0m  [1m[35mCREATE DATABASE "server_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "accounts" CASCADE[0m
+  [1m[35m (16.3ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "cash_balance" float, "stock_balance" float, "total_balance" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL, "referral_bonus" integer, "signup_bonus" boolean)[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_user_id" ON "accounts" ("user_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "portfolios" CASCADE[0m
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE TABLE "portfolios" ("id" bigserial primary key, "ticker" character varying, "quantity" float, "current_spot_price" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "account_id" bigint NOT NULL)[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE INDEX "index_portfolios_on_account_id" ON "portfolios" ("account_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "referrals" CASCADE[0m
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "referrals" ("id" bigserial primary key, "recipient_id" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE INDEX "index_referrals_on_user_id" ON "referrals" ("user_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "transactions" CASCADE[0m
+  [1m[35m (13.8ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "ticker" character varying, "trade" integer, "quantity" float, "settled_price" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "account_id" bigint NOT NULL)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_account_id" ON "transactions" ("account_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (15.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "referral_code" character varying)[0m
+  [1m[35m (5.3ms)[0m  [1m[35mALTER TABLE "accounts" ADD CONSTRAINT "fk_rails_b1e30bebc8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.8ms)[0m  [1m[35mALTER TABLE "portfolios" ADD CONSTRAINT "fk_rails_ccd37f55ab"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  [1m[35m (3.5ms)[0m  [1m[35mALTER TABLE "referrals" ADD CONSTRAINT "fk_rails_1bb2ba0c15"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.8ms)[0m  [1m[35mALTER TABLE "transactions" ADD CONSTRAINT "fk_rails_01f020e267"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20211124171346)[0m
+  [1m[35m (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20211119163009),
+(20211119163542),
+(20211119163721),
+(20211119163903),
+(20211119170947),
+(20211119184501),
+(20211119185026),
+(20211120012622),
+(20211120013655),
+(20211120014208),
+(20211120014456),
+(20211123011257);
+
+[0m
+  [1m[35m (11.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-11-24 19:21:31.077489"], ["updated_at", "2021-11-24 19:21:31.077489"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "d4eaab624edaf629f2f8d74893500ba2aa2eae8b"], ["created_at", "2021-11-24 19:21:31.095996"], ["updated_at", "2021-11-24 19:21:31.095996"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "accounts" CASCADE[0m
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "cash_balance" float, "stock_balance" float, "total_balance" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL, "referral_bonus" integer, "signup_bonus" boolean)[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_user_id" ON "accounts" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "portfolios" CASCADE[0m
+  [1m[35m (12.1ms)[0m  [1m[35mCREATE TABLE "portfolios" ("id" bigserial primary key, "ticker" character varying, "quantity" float, "current_spot_price" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "account_id" bigint NOT NULL)[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE INDEX "index_portfolios_on_account_id" ON "portfolios" ("account_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "referrals" CASCADE[0m
+  [1m[35m (14.1ms)[0m  [1m[35mCREATE TABLE "referrals" ("id" bigserial primary key, "recipient_id" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL)[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE INDEX "index_referrals_on_user_id" ON "referrals" ("user_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "transactions" CASCADE[0m
+  [1m[35m (14.1ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "ticker" character varying, "trade" integer, "quantity" float, "settled_price" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "account_id" bigint NOT NULL)[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_account_id" ON "transactions" ("account_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (14.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "referral_code" character varying)[0m
+  [1m[35m (5.0ms)[0m  [1m[35mALTER TABLE "accounts" ADD CONSTRAINT "fk_rails_b1e30bebc8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.7ms)[0m  [1m[35mALTER TABLE "portfolios" ADD CONSTRAINT "fk_rails_ccd37f55ab"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  [1m[35m (3.6ms)[0m  [1m[35mALTER TABLE "referrals" ADD CONSTRAINT "fk_rails_1bb2ba0c15"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "transactions" ADD CONSTRAINT "fk_rails_01f020e267"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  [1m[35m (14.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20211124171346)[0m
+  [1m[35m (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20211119163009),
+(20211119163542),
+(20211119163721),
+(20211119163903),
+(20211119170947),
+(20211119184501),
+(20211119185026),
+(20211120012622),
+(20211120013655),
+(20211120014208),
+(20211120014456),
+(20211123011257);
+
+[0m
+  [1m[35m (12.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-11-24 19:21:31.315225"], ["updated_at", "2021-11-24 19:21:31.315225"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.7ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2021-11-24 19:21:31.330506"], ["key", "environment"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "d4eaab624edaf629f2f8d74893500ba2aa2eae8b"], ["created_at", "2021-11-24 19:21:31.344189"], ["updated_at", "2021-11-24 19:21:31.344189"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "admin@wealthify.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at", "referral_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "wealthify"], ["last_name", "wealthify"], ["email", "admin@wealthify.com"], ["password_digest", "$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS"], ["created_at", "2021-11-24 19:21:31.390407"], ["updated_at", "2021-11-24 19:21:31.390407"], ["referral_code", "aX6b7e"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.8ms)[0m  [1m[32mINSERT INTO "accounts" ("cash_balance", "stock_balance", "total_balance", "created_at", "updated_at", "user_id", "referral_bonus", "signup_bonus") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["cash_balance", 2000.0], ["stock_balance", 9566.0], ["total_balance", 12000.0], ["created_at", "2021-11-24 19:21:31.439888"], ["updated_at", "2021-11-24 19:21:31.439888"], ["user_id", 1], ["referral_bonus", 0], ["signup_bonus", false]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.8ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "AAPL"], ["quantity", 20.0], ["current_spot_price", 158.0], ["created_at", "2021-11-24 19:21:31.464049"], ["updated_at", "2021-11-24 19:21:31.464049"], ["account_id", 1]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.4ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "ETH-USD"], ["quantity", 1.5], ["current_spot_price", 4271.0], ["created_at", "2021-11-24 19:21:31.471331"], ["updated_at", "2021-11-24 19:21:31.471331"], ["account_id", 1]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "AAPL"], ["trade", 1], ["quantity", 20.0], ["settled_price", 158.0], ["created_at", "2021-11-24 19:21:31.494592"], ["updated_at", "2021-11-24 19:21:31.494592"], ["account_id", 1]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "ETH-USD"], ["trade", 1], ["quantity", 1.5], ["settled_price", 4271.0], ["created_at", "2021-11-24 19:21:31.501709"], ["updated_at", "2021-11-24 19:21:31.501709"], ["account_id", 1]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "adriana@wealthify.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at", "referral_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Adriana"], ["last_name", "Calvo-Matos"], ["email", "adriana@wealthify.com"], ["password_digest", "$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS"], ["created_at", "2021-11-24 19:21:31.507510"], ["updated_at", "2021-11-24 19:21:31.507510"], ["referral_code", "ac6b9h"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("cash_balance", "stock_balance", "total_balance", "created_at", "updated_at", "user_id", "referral_bonus", "signup_bonus") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["cash_balance", 1770.0], ["stock_balance", 8230.0], ["total_balance", 10000.0], ["created_at", "2021-11-24 19:21:31.513472"], ["updated_at", "2021-11-24 19:21:31.513472"], ["user_id", 2], ["referral_bonus", 0], ["signup_bonus", false]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "SHOP"], ["quantity", 3.0], ["current_spot_price", 1600.0], ["created_at", "2021-11-24 19:21:31.519729"], ["updated_at", "2021-11-24 19:21:31.519729"], ["account_id", 2]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.4ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "MSFT"], ["quantity", 10.0], ["current_spot_price", 343.0], ["created_at", "2021-11-24 19:21:31.534963"], ["updated_at", "2021-11-24 19:21:31.534963"], ["account_id", 2]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "SHOP"], ["trade", 1], ["quantity", 3.0], ["settled_price", 1600.0], ["created_at", "2021-11-24 19:21:31.541593"], ["updated_at", "2021-11-24 19:21:31.541593"], ["account_id", 2]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "MSFT"], ["trade", 1], ["quantity", 10.0], ["settled_price", 343.0], ["created_at", "2021-11-24 19:21:31.547837"], ["updated_at", "2021-11-24 19:21:31.547837"], ["account_id", 2]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "aaron@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at", "referral_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Aaron"], ["last_name", "Tenn"], ["email", "aaron@gmail.com"], ["password_digest", "$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS"], ["created_at", "2021-11-24 19:21:31.553870"], ["updated_at", "2021-11-24 19:21:31.553870"], ["referral_code", "hz6b9e"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("cash_balance", "stock_balance", "total_balance", "created_at", "updated_at", "user_id", "referral_bonus", "signup_bonus") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["cash_balance", 4515.0], ["stock_balance", 5485.0], ["total_balance", 10000.0], ["created_at", "2021-11-24 19:21:31.560048"], ["updated_at", "2021-11-24 19:21:31.560048"], ["user_id", 3], ["referral_bonus", 0], ["signup_bonus", false]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.4ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "WISH"], ["quantity", 50.0], ["current_spot_price", 4.0], ["created_at", "2021-11-24 19:21:31.566968"], ["updated_at", "2021-11-24 19:21:31.566968"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "AMSC"], ["quantity", 5.0], ["current_spot_price", 15.0], ["created_at", "2021-11-24 19:21:31.572748"], ["updated_at", "2021-11-24 19:21:31.572748"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "AAPL"], ["quantity", 20.0], ["current_spot_price", 158.0], ["created_at", "2021-11-24 19:21:31.578098"], ["updated_at", "2021-11-24 19:21:31.578098"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "AMC"], ["quantity", 50.0], ["current_spot_price", 41.0], ["created_at", "2021-11-24 19:21:31.583775"], ["updated_at", "2021-11-24 19:21:31.583775"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "WISH"], ["trade", 1], ["quantity", 50.0], ["settled_price", 4.0], ["created_at", "2021-11-24 19:21:31.590097"], ["updated_at", "2021-11-24 19:21:31.590097"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "AMSC"], ["trade", 1], ["quantity", 5.0], ["settled_price", 15.0], ["created_at", "2021-11-24 19:21:31.596240"], ["updated_at", "2021-11-24 19:21:31.596240"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.6ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "AAPL"], ["trade", 1], ["quantity", 20.0], ["settled_price", 158.0], ["created_at", "2021-11-24 19:21:31.608043"], ["updated_at", "2021-11-24 19:21:31.608043"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "AMC"], ["trade", 1], ["quantity", 50.0], ["settled_price", 41.0], ["created_at", "2021-11-24 19:21:31.617924"], ["updated_at", "2021-11-24 19:21:31.617924"], ["account_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "niubrandon@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at", "referral_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Brandon"], ["last_name", "Niu"], ["email", "niubrandon@gmail.com"], ["password_digest", "$2a$12$8YSWbJd/Yy5ykN.9t/Q90.SrtHX10q1j.2ougPE/x6adjrqVCDzJS"], ["created_at", "2021-11-24 19:21:31.626955"], ["updated_at", "2021-11-24 19:21:31.626955"], ["referral_code", "z16b7z"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("cash_balance", "stock_balance", "total_balance", "created_at", "updated_at", "user_id", "referral_bonus", "signup_bonus") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["cash_balance", 5.5], ["stock_balance", 9994.5], ["total_balance", 10000.0], ["created_at", "2021-11-24 19:21:31.633206"], ["updated_at", "2021-11-24 19:21:31.633206"], ["user_id", 4], ["referral_bonus", 0], ["signup_bonus", false]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "ETH-USD"], ["quantity", 0.5], ["current_spot_price", 3999.0], ["created_at", "2021-11-24 19:21:31.639037"], ["updated_at", "2021-11-24 19:21:31.639037"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "BTC-USD"], ["quantity", 0.01], ["current_spot_price", 57500.0], ["created_at", "2021-11-24 19:21:31.644333"], ["updated_at", "2021-11-24 19:21:31.644333"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "DOT1-USD"], ["quantity", 100.0], ["current_spot_price", 38.5], ["created_at", "2021-11-24 19:21:31.649839"], ["updated_at", "2021-11-24 19:21:31.649839"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.3ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "TLRY"], ["quantity", 300.0], ["current_spot_price", 10.7], ["created_at", "2021-11-24 19:21:31.655168"], ["updated_at", "2021-11-24 19:21:31.655168"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPortfolio Create (0.2ms)[0m  [1m[32mINSERT INTO "portfolios" ("ticker", "quantity", "current_spot_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ticker", "CGC"], ["quantity", 30.0], ["current_spot_price", 12.0], ["created_at", "2021-11-24 19:21:31.660314"], ["updated_at", "2021-11-24 19:21:31.660314"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "ETH-USD"], ["trade", 1], ["quantity", 0.5], ["settled_price", 3999.0], ["created_at", "2021-11-24 19:21:31.665792"], ["updated_at", "2021-11-24 19:21:31.665792"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.6ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "BTC-USD"], ["trade", 1], ["quantity", 0.01], ["settled_price", 57500.0], ["created_at", "2021-11-24 19:21:31.676869"], ["updated_at", "2021-11-24 19:21:31.676869"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.5ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "DOT1-USD"], ["trade", 1], ["quantity", 100.0], ["settled_price", 38.5], ["created_at", "2021-11-24 19:21:31.686346"], ["updated_at", "2021-11-24 19:21:31.686346"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.5ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "TLRY"], ["trade", 1], ["quantity", 300.0], ["settled_price", 10.7], ["created_at", "2021-11-24 19:21:31.695721"], ["updated_at", "2021-11-24 19:21:31.695721"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "CGC"], ["trade", 1], ["quantity", 30.0], ["settled_price", 12.0], ["created_at", "2021-11-24 19:21:31.704341"], ["updated_at", "2021-11-24 19:21:31.704341"], ["account_id", 4]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users/login
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users/login
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/users/login" for ::1 at 2021-11-24 14:22:18 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as HTML
+  Parameters: {"user"=>{"email"=>"adriana@wealthify.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "adriana@wealthify.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `login'
+Completed 200 OK in 225ms (Views: 0.2ms | ActiveRecord: 3.4ms | Allocations: 9123)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/2" for ::1 at 2021-11-24 14:22:19 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:96:in `set_account'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "portfolios"."ticker" FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:136:in `each_with_index'
+Completed 500 Internal Server Error in 428ms (ActiveRecord: 5.9ms | Allocations: 15975)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/accounts_controller.rb:120:in `get_live_price'
+app/controllers/accounts_controller.rb:60:in `adjust_portfolio_spot_price'
+app/controllers/accounts_controller.rb:72:in `adjust_accounts_balance_from_updated_portfolios'
+app/controllers/accounts_controller.rb:22:in `show'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts" for ::1 at 2021-11-24 14:22:47 -0500
+Processing by AccountsController#index as HTML
+  [1m[36mPortfolio Load (0.9ms)[0m  [1m[34mSELECT DISTINCT "portfolios"."ticker" FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:136:in `each_with_index'
+Completed 500 Internal Server Error in 445ms (ActiveRecord: 0.9ms | Allocations: 4257)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/accounts_controller.rb:120:in `get_live_price'
+app/controllers/accounts_controller.rb:60:in `adjust_portfolio_spot_price'
+app/controllers/accounts_controller.rb:72:in `adjust_accounts_balance_from_updated_portfolios'
+app/controllers/accounts_controller.rb:8:in `index'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/2" for ::1 at 2021-11-24 14:22:48 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:96:in `set_account'
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT DISTINCT "portfolios"."ticker" FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:136:in `each_with_index'
+Completed 500 Internal Server Error in 201ms (ActiveRecord: 0.8ms | Allocations: 4586)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/accounts_controller.rb:120:in `get_live_price'
+app/controllers/accounts_controller.rb:60:in `adjust_portfolio_spot_price'
+app/controllers/accounts_controller.rb:72:in `adjust_accounts_balance_from_updated_portfolios'
+app/controllers/accounts_controller.rb:22:in `show'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users/login
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /users/login
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/users/login" for ::1 at 2021-11-24 14:32:24 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as HTML
+  Parameters: {"user"=>{"email"=>"adriana@wealthify.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "adriana@wealthify.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `login'
+Completed 200 OK in 225ms (Views: 0.2ms | ActiveRecord: 3.2ms | Allocations: 9127)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/2" for ::1 at 2021-11-24 14:32:25 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (2.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:96:in `set_account'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "portfolios"."ticker" FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:136:in `each_with_index'
+  [1m[36mPortfolio Load (0.9ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:62:in `adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.8ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 160.85], ["updated_at", "2021-11-24 19:32:25.626266"], ["id", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.4ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 4211.7974], ["updated_at", "2021-11-24 19:32:25.638239"], ["id", 2]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.4ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 1619.73], ["updated_at", "2021-11-24 19:32:25.646053"], ["id", 3]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.4ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 336.02], ["updated_at", "2021-11-24 19:32:25.653213"], ["id", 4]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.7ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 3.931], ["updated_at", "2021-11-24 19:32:25.665879"], ["id", 5]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.6ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 13.48], ["updated_at", "2021-11-24 19:32:25.676231"], ["id", 6]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 160.85], ["updated_at", "2021-11-24 19:32:25.684688"], ["id", 7]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 38.58], ["updated_at", "2021-11-24 19:32:25.690991"], ["id", 8]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.5ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 4211.7974], ["updated_at", "2021-11-24 19:32:25.697441"], ["id", 9]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.4ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 56761.035], ["updated_at", "2021-11-24 19:32:25.704822"], ["id", 10]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.4ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 38.317127], ["updated_at", "2021-11-24 19:32:25.712013"], ["id", 11]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 11.74], ["updated_at", "2021-11-24 19:32:25.720083"], ["id", 13]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:76:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (1.5ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.5ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 9534.696100000001], ["total_balance", 11534.696100000001], ["updated_at", "2021-11-24 19:32:25.745456"], ["id", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.3ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 8219.39], ["total_balance", 9989.39], ["updated_at", "2021-11-24 19:32:25.758007"], ["id", 2]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.4ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 5409.95], ["total_balance", 9924.95], ["updated_at", "2021-11-24 19:32:25.769471"], ["id", 3]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.3ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 10067.421750000001], ["total_balance", 10072.921750000001], ["updated_at", "2021-11-24 19:32:25.779849"], ["id", 4]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE (account_id = 2)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE (account_id = 2)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+Completed 200 OK in 565ms (Views: 10.7ms | ActiveRecord: 51.8ms | Allocations: 71817)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-24 14:34:21 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"MSFT", "trade"=>-1, "quantity"=>1, "settled_price"=>336.02, "account_id"=>2}}
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:26:in `create'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "MSFT"], ["trade", 1]]
+  ↳ app/controllers/transactions_controller.rb:32:in `create'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "MSFT"], ["trade", -1]]
+  ↳ app/controllers/transactions_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mAccount Update (0.3ms)[0m  [1m[33mUPDATE "accounts" SET "cash_balance" = $1, "stock_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["cash_balance", 2106.02], ["stock_balance", 7883.369999999999], ["updated_at", "2021-11-24 19:34:21.886224"], ["id", 2]]
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 2], ["ticker", "MSFT"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:65:in `create'
+  [1m[36mCACHE Portfolio Load (0.0ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 2], ["ticker", "MSFT"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:67:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "quantity" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["quantity", 9.0], ["updated_at", "2021-11-24 19:34:21.896136"], ["id", 4]]
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mTransaction Create (0.5ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "MSFT"], ["trade", -1], ["quantity", 1.0], ["settled_price", 336.02], ["created_at", "2021-11-24 19:34:21.904865"], ["updated_at", "2021-11-24 19:34:21.904865"], ["account_id", 2]]
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+Completed 201 Created in 38ms (Views: 1.5ms | ActiveRecord: 8.1ms | Allocations: 11369)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-24 14:42:04 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"SHOP", "trade"=>1, "quantity"=>1, "settled_price"=>1619.73, "account_id"=>2}}
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:26:in `create'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["trade", 1]]
+  ↳ app/controllers/transactions_controller.rb:32:in `create'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["trade", -1]]
+  ↳ app/controllers/transactions_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mAccount Update (0.4ms)[0m  [1m[33mUPDATE "accounts" SET "cash_balance" = $1, "stock_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["cash_balance", 486.28999999999996], ["stock_balance", 9503.099999999999], ["updated_at", "2021-11-24 19:42:04.410918"], ["id", 2]]
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:65:in `create'
+  [1m[36mCACHE Portfolio Load (0.0ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:67:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "quantity" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["quantity", 4.0], ["updated_at", "2021-11-24 19:42:04.420807"], ["id", 3]]
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mTransaction Create (0.6ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "SHOP"], ["trade", 1], ["quantity", 1.0], ["settled_price", 1619.73], ["created_at", "2021-11-24 19:42:04.427689"], ["updated_at", "2021-11-24 19:42:04.427689"], ["account_id", 2]]
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+Completed 201 Created in 60ms (Views: 0.4ms | ActiveRecord: 13.7ms | Allocations: 13987)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-24 14:42:24 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"SHOP", "trade"=>-1, "quantity"=>1, "settled_price"=>1619.73, "account_id"=>2}}
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:26:in `create'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["trade", 1]]
+  ↳ app/controllers/transactions_controller.rb:32:in `create'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["trade", -1]]
+  ↳ app/controllers/transactions_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mAccount Update (0.4ms)[0m  [1m[33mUPDATE "accounts" SET "cash_balance" = $1, "stock_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["cash_balance", 2106.02], ["stock_balance", 7883.369999999999], ["updated_at", "2021-11-24 19:42:24.313389"], ["id", 2]]
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mPortfolio Load (0.5ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:65:in `create'
+  [1m[36mCACHE Portfolio Load (0.0ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:67:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mPortfolio Update (0.6ms)[0m  [1m[33mUPDATE "portfolios" SET "quantity" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["quantity", 3.0], ["updated_at", "2021-11-24 19:42:24.327931"], ["id", 3]]
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mTransaction Create (0.5ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "SHOP"], ["trade", -1], ["quantity", 1.0], ["settled_price", 1619.73], ["created_at", "2021-11-24 19:42:24.340094"], ["updated_at", "2021-11-24 19:42:24.340094"], ["account_id", 2]]
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+Completed 201 Created in 42ms (Views: 0.6ms | ActiveRecord: 10.0ms | Allocations: 10718)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-24 14:42:40 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"MSFT", "trade"=>1, "quantity"=>1, "settled_price"=>336.02, "account_id"=>2}}
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:26:in `create'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "MSFT"], ["trade", 1]]
+  ↳ app/controllers/transactions_controller.rb:32:in `create'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "MSFT"], ["trade", -1]]
+  ↳ app/controllers/transactions_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mAccount Update (1.2ms)[0m  [1m[33mUPDATE "accounts" SET "cash_balance" = $1, "stock_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["cash_balance", 1770.0], ["stock_balance", 8219.39], ["updated_at", "2021-11-24 19:42:40.561344"], ["id", 2]]
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 2], ["ticker", "MSFT"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:65:in `create'
+  [1m[36mCACHE Portfolio Load (0.0ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 2], ["ticker", "MSFT"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:67:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "quantity" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["quantity", 10.0], ["updated_at", "2021-11-24 19:42:40.575152"], ["id", 4]]
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mTransaction Create (0.5ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "MSFT"], ["trade", 1], ["quantity", 1.0], ["settled_price", 336.02], ["created_at", "2021-11-24 19:42:40.582638"], ["updated_at", "2021-11-24 19:42:40.582638"], ["account_id", 2]]
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+Completed 201 Created in 40ms (Views: 0.3ms | ActiveRecord: 13.2ms | Allocations: 10745)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-24 14:43:13 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"MSFT", "trade"=>-1, "quantity"=>12, "settled_price"=>336.02, "account_id"=>2}}
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:26:in `create'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "MSFT"], ["trade", 1]]
+  ↳ app/controllers/transactions_controller.rb:32:in `create'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "MSFT"], ["trade", -1]]
+  ↳ app/controllers/transactions_controller.rb:36:in `create'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.0ms | Allocations: 2417)
+
+
+  
+NoMethodError (undefined method `errors' for nil:NilClass):
+  
+app/controllers/transactions_controller.rb:52:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-24 14:43:21 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"MSFT", "trade"=>-1, "quantity"=>3, "settled_price"=>336.02, "account_id"=>2}}
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:26:in `create'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "MSFT"], ["trade", 1]]
+  ↳ app/controllers/transactions_controller.rb:32:in `create'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "MSFT"], ["trade", -1]]
+  ↳ app/controllers/transactions_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mAccount Update (0.6ms)[0m  [1m[33mUPDATE "accounts" SET "cash_balance" = $1, "stock_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["cash_balance", 2778.06], ["stock_balance", 7211.33], ["updated_at", "2021-11-24 19:43:21.763488"], ["id", 2]]
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:62:in `create'
+  [1m[36mPortfolio Load (0.5ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 2], ["ticker", "MSFT"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:65:in `create'
+  [1m[36mCACHE Portfolio Load (0.0ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 2], ["ticker", "MSFT"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:67:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mPortfolio Update (0.4ms)[0m  [1m[33mUPDATE "portfolios" SET "quantity" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["quantity", 7.0], ["updated_at", "2021-11-24 19:43:21.781089"], ["id", 4]]
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:72:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mTransaction Create (0.5ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "MSFT"], ["trade", -1], ["quantity", 3.0], ["settled_price", 336.02], ["created_at", "2021-11-24 19:43:21.790333"], ["updated_at", "2021-11-24 19:43:21.790333"], ["account_id", 2]]
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:84:in `create'
+Completed 201 Created in 51ms (Views: 0.6ms | ActiveRecord: 10.0ms | Allocations: 11127)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-24 14:52:14 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"SHOP", "trade"=>1, "quantity"=>3, "settled_price"=>1619.73, "account_id"=>2}}
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:28:in `create'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["trade", 1]]
+  ↳ app/controllers/transactions_controller.rb:38:in `create'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["trade", -1]]
+  ↳ app/controllers/transactions_controller.rb:42:in `create'
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 4.5ms | Allocations: 15409)
+
+
+  
+NoMethodError (undefined method `errors' for nil:NilClass):
+  
+app/controllers/transactions_controller.rb:56:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-24 14:52:54 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"SHOP", "trade"=>1, "quantity"=>2, "settled_price"=>1619.73, "account_id"=>2}}
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:28:in `create'
+  [1m[36mTransaction Load (1.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["trade", 1]]
+  ↳ app/controllers/transactions_controller.rb:38:in `create'
+  [1m[36mTransaction Load (1.0ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["trade", -1]]
+  ↳ app/controllers/transactions_controller.rb:42:in `create'
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 3.0ms | Allocations: 2487)
+
+
+  
+NoMethodError (undefined method `errors' for nil:NilClass):
+  
+app/controllers/transactions_controller.rb:56:in `create'
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: content-type
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: content-type
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/transactions
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started POST "/api/transactions" for ::1 at 2021-11-24 14:53:07 -0500
+Processing by TransactionsController#create as HTML
+  Parameters: {"transaction"=>{"ticker"=>"SHOP", "trade"=>-1, "quantity"=>3, "settled_price"=>1619.73, "account_id"=>2}}
+  [1m[36mAccount Load (5.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:28:in `create'
+  [1m[36mTransaction Load (0.7ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["trade", 1]]
+  ↳ app/controllers/transactions_controller.rb:38:in `create'
+  [1m[36mTransaction Load (0.5ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1 AND "transactions"."ticker" = $2 AND "transactions"."trade" = $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["trade", -1]]
+  ↳ app/controllers/transactions_controller.rb:42:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:76:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:76:in `create'
+  [1m[36mAccount Update (0.7ms)[0m  [1m[33mUPDATE "accounts" SET "cash_balance" = $1, "stock_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["cash_balance", 7637.25], ["stock_balance", 2352.1399999999994], ["updated_at", "2021-11-24 19:53:07.909904"], ["id", 2]]
+  ↳ app/controllers/transactions_controller.rb:76:in `create'
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:76:in `create'
+  [1m[36mPortfolio Load (1.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:80:in `create'
+  [1m[36mCACHE Portfolio Load (0.0ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1 AND "portfolios"."ticker" = $2 LIMIT $3[0m  [["account_id", 2], ["ticker", "SHOP"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:82:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:87:in `create'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:87:in `create'
+  [1m[36mPortfolio Update (0.4ms)[0m  [1m[33mUPDATE "portfolios" SET "quantity" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["quantity", 0.0], ["updated_at", "2021-11-24 19:53:07.937252"], ["id", 3]]
+  ↳ app/controllers/transactions_controller.rb:87:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:87:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:91:in `create'
+  [1m[36mPortfolio Destroy (0.2ms)[0m  [1m[31mDELETE FROM "portfolios" WHERE "portfolios"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/transactions_controller.rb:91:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:91:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:99:in `create'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:99:in `create'
+  [1m[36mTransaction Create (0.5ms)[0m  [1m[32mINSERT INTO "transactions" ("ticker", "trade", "quantity", "settled_price", "created_at", "updated_at", "account_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["ticker", "SHOP"], ["trade", -1], ["quantity", 3.0], ["settled_price", 1619.73], ["created_at", "2021-11-24 19:53:07.946703"], ["updated_at", "2021-11-24 19:53:07.946703"], ["account_id", 2]]
+  ↳ app/controllers/transactions_controller.rb:99:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:99:in `create'
+Completed 201 Created in 82ms (Views: 0.5ms | ActiveRecord: 17.9ms | Allocations: 22811)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts" for ::1 at 2021-11-24 14:54:01 -0500
+Processing by AccountsController#index as HTML
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "portfolios"."ticker" FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:136:in `each_with_index'
+  [1m[36mPortfolio Load (0.8ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:62:in `adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (1.0ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 10.775], ["updated_at", "2021-11-24 19:54:02.085753"], ["id", 12]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.6ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 161.125], ["updated_at", "2021-11-24 19:54:02.106866"], ["id", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.4ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 4212.281], ["updated_at", "2021-11-24 19:54:02.117731"], ["id", 2]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 3.9715], ["updated_at", "2021-11-24 19:54:02.124458"], ["id", 5]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 13.64], ["updated_at", "2021-11-24 19:54:02.131132"], ["id", 6]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 161.125], ["updated_at", "2021-11-24 19:54:02.136725"], ["id", 7]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 38.67], ["updated_at", "2021-11-24 19:54:02.142171"], ["id", 8]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 4212.281], ["updated_at", "2021-11-24 19:54:02.147350"], ["id", 9]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 56758.32], ["updated_at", "2021-11-24 19:54:02.152538"], ["id", 10]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 38.29293], ["updated_at", "2021-11-24 19:54:02.157883"], ["id", 11]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 11.75], ["updated_at", "2021-11-24 19:54:02.163186"], ["id", 13]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.2ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 336.56], ["updated_at", "2021-11-24 19:54:02.168435"], ["id", 4]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:76:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.4ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 9540.9215], ["total_balance", 11540.9215], ["updated_at", "2021-11-24 19:54:02.175933"], ["id", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.3ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 5422.775], ["total_balance", 9937.775], ["updated_at", "2021-11-24 19:54:02.182719"], ["id", 3]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.6ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.5ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 10088.0167], ["total_balance", 10093.5167], ["updated_at", "2021-11-24 19:54:02.196058"], ["id", 4]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.4ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 2355.92], ["total_balance", 9993.17], ["updated_at", "2021-11-24 19:54:02.206434"], ["id", 2]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:12:in `index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/accounts_controller.rb:12:in `index'
+Completed 200 OK in 451ms (Views: 3.3ms | ActiveRecord: 38.6ms | Allocations: 53909)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: GET
+  Access-Control-Request-Headers: authorization
+Preflight Headers:
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD
+  Access-Control-Expose-Headers: 
+  Access-Control-Max-Age: 0
+  Access-Control-Allow-Headers: authorization
+Incoming Headers:
+  Origin: http://localhost:3001
+  Path-Info: /api/accounts/2
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+Started GET "/api/accounts/2" for ::1 at 2021-11-24 14:54:19 -0500
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:96:in `set_account'
+  [1m[36mPortfolio Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "portfolios"."ticker" FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:136:in `each_with_index'
+  [1m[36mPortfolio Load (1.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios"[0m
+  ↳ app/controllers/accounts_controller.rb:62:in `adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (3.6ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 10.771], ["updated_at", "2021-11-24 19:54:19.890879"], ["id", 12]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (1.7ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 161.1], ["updated_at", "2021-11-24 19:54:19.919768"], ["id", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (1.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.7ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 3.97], ["updated_at", "2021-11-24 19:54:19.964506"], ["id", 5]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.5ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 161.1], ["updated_at", "2021-11-24 19:54:19.983648"], ["id", 7]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.4ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 38.71], ["updated_at", "2021-11-24 19:54:19.995661"], ["id", 8]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.3ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 11.745], ["updated_at", "2021-11-24 19:54:20.010953"], ["id", 13]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mPortfolio Update (0.6ms)[0m  [1m[33mUPDATE "portfolios" SET "current_spot_price" = $1, "updated_at" = $2 WHERE "portfolios"."id" = $3[0m  [["current_spot_price", 336.57], ["updated_at", "2021-11-24 19:54:20.020902"], ["id", 4]]
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:65:in `block in adjust_portfolio_spot_price'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:76:in `adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.3ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 9540.4215], ["total_balance", 11540.4215], ["updated_at", "2021-11-24 19:54:20.032735"], ["id", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 3]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.4ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 5424.2], ["total_balance", 9939.2], ["updated_at", "2021-11-24 19:54:20.043868"], ["id", 3]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 4]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.4ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 10086.6667], ["total_balance", 10092.1667], ["updated_at", "2021-11-24 19:54:20.053727"], ["id", 4]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."account_id" = $1[0m  [["account_id", 2]]
+  ↳ app/controllers/accounts_controller.rb:80:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mAccount Update (0.3ms)[0m  [1m[33mUPDATE "accounts" SET "stock_balance" = $1, "total_balance" = $2, "updated_at" = $3 WHERE "accounts"."id" = $4[0m  [["stock_balance", 2355.99], ["total_balance", 9993.24], ["updated_at", "2021-11-24 19:54:20.065653"], ["id", 2]]
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:85:in `block in adjust_accounts_balance_from_updated_portfolios'
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE (account_id = 2)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE (account_id = 2)[0m
+  ↳ app/controllers/accounts_controller.rb:28:in `show'
+Completed 200 OK in 518ms (Views: 5.4ms | ActiveRecord: 43.1ms | Allocations: 49048)
+
+
+{"Access-Control-Allow-Origin"=>"*", "Access-Control-Allow-Methods"=>"GET, POST, DELETE, PUT, PATCH, OPTIONS, HEAD", "Access-Control-Expose-Headers"=>"", "Access-Control-Max-Age"=>"0"}

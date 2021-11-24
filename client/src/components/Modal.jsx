@@ -29,7 +29,8 @@ const Modal = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let trade = modalType === 'buy' ? 1 : -1;
+
+    let trade = modalType === 'Buy' ? 1 : -1;
 
     setTransaction({
       transaction: {
