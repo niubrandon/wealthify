@@ -116,7 +116,7 @@ account3.portfolios.create!({
 })
 
 account3.portfolios.create!({
-  :ticker => 'APPL',
+  :ticker => 'AAPL',
   :quantity => 20,
   :current_spot_price => 158,
 })

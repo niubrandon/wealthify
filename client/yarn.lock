@@ -10863,17 +10863,6 @@
     "source-map-url" "^0.4.0"
     "urix" "^0.1.0"
 
-"react-slidedown@^2.4.5":
-  "integrity" "sha512-O6cJOQpTwleO4jRlw768dCOZ//K6tHZIjtEhGNcdHm4v5tWD/pFVuNfvBD0n3hnyeMcp9NR+nmHTF4W+VUKzeA=="
-  "resolved" "https://registry.npmjs.org/react-slidedown/-/react-slidedown-2.4.6.tgz"
-  "version" "2.4.6"
-  dependencies:
-    "tslib" "^1.9.0"
-
-"react-transition-group@^4.4.1":
-  "integrity" "sha512-/RNYfRAMlZwDSr6z4zNKV6xu53/e2BuaBbGhbyYIXTrmgu/bGHzmqOs7mJSJBHy9Ud+ApHx3QjrkKSp1pxvlFg=="
-  "resolved" "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.2.tgz"
-  "version" "4.4.2"
 "source-map-resolve@^0.6.0":
   "integrity" "sha512-KXBr9d/fO/bWo97NXsPIAW1bFSBOuCnjbNTBMO7N59hsv5i9yzRDfcYwwt0l04+VqnKC+EwzvJZIP/qkuMgR/w=="
   "resolved" "https://registry.npmjs.org/source-map-resolve/-/source-map-resolve-0.6.0.tgz"
