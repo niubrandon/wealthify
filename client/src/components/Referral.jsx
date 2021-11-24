@@ -27,7 +27,7 @@ const Referral = (props) => {
         <p>Code: </p>
         <p className='user-code'>{referralCode}</p>
         <RiFileCopyFill className='icon' onClick={copyToClipboard} />
-        <p className='copy'>{copy && <p>Copied!</p>}</p>
+        <div className='copy'>{copy && <p>Copied!</p>}</div>
       </div>
     </article>
   );

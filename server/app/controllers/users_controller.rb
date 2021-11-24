@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if user&.authenticate(user_params[:password])
       auth_token = JsonWebToken.encode(user_id: user.id)
       ########################## get referral code
-      render json: { auth_token: auth_token, user_id: user.id, user_email: user.email }, status: :ok
+      render json: { auth_token: auth_token, user_id: user.id, user_email: user.email, referral_code: user.referral_code }, status: :ok
     else
       render json: { error: 'Invalid username/password' }, status: :unauthorized
     end
