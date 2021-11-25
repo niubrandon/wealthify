@@ -7,6 +7,12 @@ import Referral from '../components/Referral';
 
 const Portfolio = (props) => {
   useEffect(() => {
+      if (localStorage.getItem('auth')) {
+        props.setAuthUser(JSON.parse(localStorage.getItem('auth')))
+      }
+  }, [])
+
+  useEffect(() => {
     if (!props.authUser) {
       return;
     }
@@ -38,12 +44,20 @@ const Portfolio = (props) => {
 
   return (
     <section className='page'>
+
+    
+
       <div style={flexWrapperVertical}>
         {!props.account && <p>you don't have any holdings</p>}
+<<<<<<< HEAD
         {props.account && <PortfolioDonutChart />}
         {props.account && (
           <PortfolioCard account={props.account} authUser={props.authUser} />
         )}
+=======
+        {props.account && <PortfolioDonutChart account={props.account} />}
+        {props.account && <PortfolioCard account={props.account} />}
+>>>>>>> 189b7cd (portfolio donut chart has live data)
         {props.account && <Transactions account={props.account} />}
         <Referral account={props.account} authUser={props.authUser} />
       </div>

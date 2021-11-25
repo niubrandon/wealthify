@@ -6,8 +6,10 @@ const NavBar = (props) => {
   console.log("print from navbar", props.authUser);
 
   const onLogout = ((e) => {
+    localStorage.clear()
     props.setAuthUser(null)
     props.setAccount(null)
+    
   });
 
   return (

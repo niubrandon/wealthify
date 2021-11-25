@@ -1,16 +1,9 @@
 import { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 import {
-  Routes,
-  Route,
-  Link,
   useNavigate,
-  useLocation,
-  Navigate,
-  Outlet,
 } from 'react-router-dom';
 
 const Signup = (props) => {
@@ -18,13 +11,7 @@ const Signup = (props) => {
   console.log(props.authUser);
   const [user, setUser] = useState(null);
 
-
-  //const [ jwt, setJWT ] = useState({jwt: null});
-
   let navigate = useNavigate();
-  let location = useLocation();
-  //let from = location.state?.from?.pathname || "/";
-  //let from = "/portfolio"
 
   useEffect(() => {
     console.log("user is", user)
@@ -40,8 +27,7 @@ const Signup = (props) => {
       data: user,
     })
       .then(function (response) {
-        console.log('**********RESPONSE:', response.data);
-        //setJWT({jwt: response.data.auth_token})
+  
         props.setAuthUser({
           jwt: response.data.auth_token,
           user_id: response.data.user_id,
@@ -49,10 +35,12 @@ const Signup = (props) => {
           referral_code: response.data.referral_code,
         });
 
-        //reset user to null
+        localStorage.setItem('auth', JSON.stringify({jwt: response.data.auth_token,
+          user_id: response.data.user_id,
+          user_email: response.data.user_email,
+          referral_code: response.data.referral_code,}))
 
-        //navigate to page
-        //navigate(from, { replace: true });
+    
         navigate('/portfolio');
       })
       .catch(function (error) {
