@@ -16,10 +16,10 @@ const Stock = (props) => {
   const [range, setRange] = useState('1d');
   const [interval, setInterval] = useState('15m');
 
-  const { name } = useParams();
-
   const API_KEY = `${process.env.REACT_APP_API_KEY}`;
   const API_HOST = `${process.env.REACT_APP_API_HOST}`;
+  const { name } = useParams();
+  
 
   var options = {
     method: 'GET',
@@ -63,6 +63,7 @@ const Stock = (props) => {
     axios
       .request(options2)
       .then(function (response) {
+        console.log(response.data.quoteResponse.result[0])
         setDetail(response.data.quoteResponse.result[0]);
       })
       .catch(function (error) {
@@ -123,7 +124,11 @@ const Stock = (props) => {
       >
         Yearly
       </button>
-      <StockGraph range={range} xAxis={graphx} yAxis={graphy} />
+      <StockGraph
+        range={range}
+        xAxis={graphx}
+        yAxis={graphy}
+      />
       <StockTable
         regularMarketPrice={detail.regularMarketPrice}
         regularMarketChange={detail.regularMarketChange}
@@ -133,7 +138,7 @@ const Stock = (props) => {
         regularMarketDayLow={detail.regularMarketDayLow}
         regularMarketVolume={detail.regularMarketVolume}
         regularMarketPreviousClose={detail.regularMarketPreviousClose}
-        exchangeTimezoneName={detail.exchangeTimezoneName}
+        exchange={detail.fullExchangeName}
         regularMarketOpen={detail.regularMarketOpen}
       />
     </>

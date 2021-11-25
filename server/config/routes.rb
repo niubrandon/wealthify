@@ -2,9 +2,13 @@ Rails.application.routes.draw do
     
   resources :referrals
   scope '/api' do
-  resources :portfolios
-  resources :transactions
-  resources :accounts
+    resources :portfolios
+    resources :transactions
+    resources :accounts do
+      collection do
+      get 'leaderboard'
+      end
+    end
   
   end
 

@@ -47,8 +47,9 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.15.1",
-    "identity-obj-proxy": "^3.0.0"
+    "@testing-library/jest-dom": "^5.15.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.6.0"
   },
   "jest": {
     "moduleNameMapper": {
