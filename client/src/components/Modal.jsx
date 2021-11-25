@@ -20,7 +20,7 @@ const Modal = (props) => {
   const { modalType, setIsOpen, name, regMP, authUser, account } = props;
 
   const [quantity, setQuantity] = useState(1);
-  const [time, setTime] = useState(null);
+  const [time, setTime] = useState(currentTime);
   const [totalPrice, setTotalPrice] = useState(regMP);
   const [responseStatus, setResponseStatus] = useState(null);
 
@@ -29,7 +29,8 @@ const Modal = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let trade = modalType === 'buy' ? 1 : -1;
+
+    let trade = modalType === 'Buy' ? 1 : -1;
 
     setTransaction({
       transaction: {
@@ -68,15 +69,15 @@ const Modal = (props) => {
       });
   }, [transaction]);
 
-  useEffect(() => {
-    setTime(currentTime);
+  // useEffect(() => {
+  //   setTime(currentTime);
 
-    const callTime = setInterval(() => {
-      setTime(currentTime);
-    }, 1000);
+  //   const callTime = setInterval(() => {
+  //     setTime(currentTime);
+  //   }, 1000);
 
-    return () => clearInterval(callTime);
-  }, [time]);
+  //   return () => clearInterval(callTime);
+  // }, [time]);
 
   useEffect(() => {
     setTotalPrice(calculatePrice(regMP, quantity));

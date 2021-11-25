@@ -4,11 +4,10 @@ import LeaderboardCard from "../components/LeaderboardCard";
 import '../styles/components/leaderboard.scss';
 
 const Leaderboard = (props) => {
-  const [accounts, setAccounts] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [data, setData] = useState([]);
   //use hardcoded jwt token first
   useEffect(() => {
-    const url = "http://localhost:3000/api/accounts";
+    const url = "http://localhost:3000/api/accounts/leaderboard";
     const config = {
       headers: {
         Authorization:
@@ -19,22 +18,23 @@ const Leaderboard = (props) => {
       .get(url, config)
       .then((response) => {
         console.log(response.data);
-        setAccounts(response.data.accounts);
-        setUsers(response.data.users);
+        // setAccounts(response.data.accounts);
+        // setUsers(response.data.users);
+        // setPortfolios(response.data.portfolios)
+        setData(response.data.leaderboard)
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  accounts.sort((a, b) => b.total_balance - a.total_balance);
+  data.sort((a, b) => b.total_balance - a.total_balance);
 
   return (
     <>
       <h1 id="leaderboard">Leaderboard</h1>
       <LeaderboardCard
-        accounts={accounts}
-        users={users}
+        data={data}
       />
     </>
   );

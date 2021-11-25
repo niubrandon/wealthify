@@ -13,8 +13,8 @@ const Stock = (props) => {
   const [graphx, setGraphx] = useState([]);
   const [graphy, setGraphy] = useState([]);
   const [detail, setDetail] = useState([]);
-  const [range, setRange] = useState('5d');
-  const [interval, setInterval] = useState('1d');
+  const [range, setRange] = useState('1d');
+  const [interval, setInterval] = useState('15m');
 
   const API_KEY = `${process.env.REACT_APP_API_KEY}`;
   const { name } = useParams();
@@ -34,9 +34,13 @@ const Stock = (props) => {
       .request(options)
       .then(function (response) {
         console.log('graph called');
-        
+
         setGraphx(response.data.chart.result[0].timestamp);
-        range === '1d' ? setGraphy(response.data.chart.result[0].indicators.quote[0].close) : setGraphy(response.data.chart.result[0].indicators.adjclose[0].adjclose);
+        range === '1d'
+          ? setGraphy(response.data.chart.result[0].indicators.quote[0].close)
+          : setGraphy(
+              response.data.chart.result[0].indicators.adjclose[0].adjclose
+            );
       })
       .catch(function (error) {
         console.error(error);

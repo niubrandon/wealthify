@@ -9,6 +9,7 @@ const Portfolio = (props) => {
   console.log('print authUser from portfolio', props.authUser);
   console.log('print account from portfolio', props.account);
 
+
   useEffect(() => {
     if (!props.authUser) {
       return;
@@ -44,7 +45,7 @@ const Portfolio = (props) => {
     <section className='page'>
       <div style={flexWrapperVertical}>
         {!props.account && <p>you don't have any holdings</p>}
-        {props.account && <PortfolioDonutChart />}
+        {props.account && <PortfolioDonutChart account={props.account} />}
         {props.account && <PortfolioCard account={props.account} />}
         {props.account && <Transactions account={props.account} />}
         <Referral account={props.account} authUser={props.authUser} />

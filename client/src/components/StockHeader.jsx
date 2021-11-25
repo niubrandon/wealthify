@@ -12,7 +12,7 @@ const StockHeader = (props) => {
   const [modal, setModal] = useState('');
 
   const openModal = (e) => {
-    setModal(e.target.className);
+    setModal(e.target.innerHTML);
     setIsOpen(true);
   };
 

@@ -1,28 +1,23 @@
 import Card from 'react-bootstrap/Card';
 import React from 'react';
 import Button from "react-bootstrap/Button";
-import PortfolioDonutChart from './PortfolioDonutChart';
-import { useState } from 'react';
+import LeaderboardDonutChart from './LeaderboardDonutChart';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const findEmailById = (id, users) => {
-  for (const user of users) {
-    if (user.id === id) {
-      return user.email;
-    }
-  }
-};
 
 const LeaderboardCard = ((props) => {
-  const { accounts, users } = props
+  const { data } = props
   const [donut, setDonut] = useState()
+
   
-  const leaderboardCards = accounts.map((account, index) => {
-    const onClick = () => donut === account.id ? setDonut(null) : setDonut(account.id)
+  const leaderboardCards = data.map((account, index) => {
+    const onClick = () => donut === account.account_id ? setDonut(null) : setDonut(account.account_id)
     const place = index + 1
-    const email = findEmailById(account.user_id, users)
+
     return (
     <Card key={index} className="w-70 text-center" >
-      <Card.Header as="h5">{place} {email}</Card.Header>
+      <Card.Header as="h5">{place} {account.email}</Card.Header>
       <Card.Body>
         <Card.Title>Total Balance: {account.total_balance}</Card.Title>
         <Card.Text>
@@ -30,7 +25,7 @@ const LeaderboardCard = ((props) => {
         </Card.Text>
         <Button variant="primary" onClick={onClick}>View Summary</Button>
       </Card.Body>
-    {donut === account.id ? <PortfolioDonutChart /> : null}
+    {donut === account.account_id ? <LeaderboardDonutChart stock_list={account.stock_list} market_value={account.market_value}/> : null}
     </Card>
     )
 

@@ -23,10 +23,22 @@ function App() {
   //authUser set to null when it is logout, set to jwt when it's login
   const [authUser, setAuthUser] = useState(null);
   const [account, setAccount] = useState(null);
+
+  useEffect(() => {
+    if (localStorage.getItem('auth')) {
+      setAuthUser(JSON.parse(localStorage.getItem('auth')))
+    }
+}, [])
+
+
+
+
   useEffect(() => {
     console.log(`%%%%%%%verify state from homepage ${authUser}%%%%%%%%%`);
     console.log('authUser', authUser);
   }, [authUser]);
+
+
 
   return (
     <div className='App'>
