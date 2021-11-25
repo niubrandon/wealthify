@@ -52,11 +52,11 @@ const Modal = (props) => {
       method: 'post',
       url: 'http://localhost:3000/api/transactions',
       data: transaction,
-      config: {
-        headers: {
-          Authorization: 'Bearer ' + authUser.jwt,
-        },
-      },
+      // config: {
+      //   headers: {
+      //     Authorization: 'Bearer ' + authUser.jwt,
+      //   },
+      // },
     })
       .then((response) => {
         if (response.status < 300 && response.status > 199) {

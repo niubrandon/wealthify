@@ -18,6 +18,9 @@ const Stock = (props) => {
 
   const { name } = useParams();
 
+  const API_KEY = `${process.env.REACT_APP_API_KEY}`;
+  const API_HOST = `${process.env.REACT_APP_API_HOST}`;
+
   var options = {
     method: 'GET',
     url: `https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/${name}`,
@@ -51,8 +54,8 @@ const Stock = (props) => {
     url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
     params: { symbols: name },
     headers: {
-      'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
-      'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct',
+      'x-rapidapi-host': API_HOST,
+      'x-rapidapi-key': API_KEY,
     },
   };
 
