@@ -1,22 +1,7 @@
-import { useState } from 'react';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Modal from '../components/Modal';
+import { Link } from 'react-router-dom';
 
 const PortfolioCard = (props) => {
-  const { account, authUser } = props;
-  const [isOpen, setIsOpen] = useState(false);
-  const [modal, setModal] = useState('');
-  const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
-
-  const generateModal = (e) => {
-    setName(e.currentTarget.getAttribute('ticker'));
-    setPrice(e.currentTarget.getAttribute('price'));
-    setModal(e.target.innerHTML);
-    setIsOpen(true);
-  };
-
   const portfolioCards =
     props.account &&
     props.account.portfolio.map((item, index) => {
@@ -27,48 +12,28 @@ const PortfolioCard = (props) => {
               {item.ticker}
             </Card.Header>
             <Card.Body>
-            <Card.Title>quantity: {item.quantity}</Card.Title>
-            <Card.Title>{`spot price: $${Number(item.current_spot_price).toFixed(2)} USD`}</Card.Title>
-            <Card.Text>
-              {`Current market value is $${Number(item.quantity * item.current_spot_price).toFixed(2)} , representing  ${Number(item.quantity * item.current_spot_price / props.account.account.total_balance * 100).toFixed(2)}% of your total portfolio`}
-            </Card.Text>
-              <Button
-                variant='primary'
-                onClick={generateModal}
-                ticker={item.ticker}
-                price={item.current_spot_price}
-              >
-                Buy
-              </Button>
-              <Button
-                style={{ marginLeft: '2em' }}
-                variant='danger'
-                onClick={generateModal}
-                ticker={item.ticker}
-                price={item.current_spot_price}
-              >
-                Sell
-              </Button>
+              <Card.Title>quantity: {item.quantity}</Card.Title>
+              <Card.Title>{`spot price: $${Number(
+                item.current_spot_price
+              ).toFixed(2)} USD`}</Card.Title>
+              <Card.Text>
+                {`Current market value is $${Number(
+                  item.quantity * item.current_spot_price
+                ).toFixed(2)} , representing  ${Number(
+                  ((item.quantity * item.current_spot_price) /
+                    props.account.account.total_balance) *
+                    100
+                ).toFixed(2)}% of your total portfolio`}
+              </Card.Text>
+              <Link class='trade' to={`/stock/${item.ticker}`}>
+                Trade
+              </Link>
             </Card.Body>
           </Card>
         </>
       );
     });
-  return (
-    <>
-      {props.account && portfolioCards}
-      {isOpen && (
-        <Modal
-          modalType={modal}
-          setIsOpen={setIsOpen}
-          name={name}
-          regMP={price}
-          authUser={authUser}
-          account={account}
-        />
-      )}
-    </>
-  );
+  return <>{props.account && portfolioCards}</>;
 };
 
 export default PortfolioCard;

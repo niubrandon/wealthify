@@ -6,6 +6,7 @@ import Transactions from '../components/Transactions';
 import Referral from '../components/Referral';
 
 const Portfolio = (props) => {
+  console.log('acccount from portfolio:', props.account);
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       props.setAuthUser(JSON.parse(localStorage.getItem('auth')));

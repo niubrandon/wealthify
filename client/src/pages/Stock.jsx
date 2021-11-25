@@ -26,8 +26,8 @@ const Stock = (props) => {
     url: `https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/${name}`,
     params: { range: range, interval: interval },
     headers: {
-      'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
-      'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct',
+      'x-rapidapi-host': API_HOST,
+      'x-rapidapi-key': API_KEY,
     },
   };
 
