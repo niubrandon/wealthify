@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import LeaderboardCard from "../components/LeaderboardCard";
+import '../styles/components/leaderboard.scss';
 
 const Leaderboard = (props) => {
   const [accounts, setAccounts] = useState([]);
@@ -28,23 +29,9 @@ const Leaderboard = (props) => {
 
   accounts.sort((a, b) => b.total_balance - a.total_balance);
 
-  // const sortedAccounts = accounts.map((account) => {
-  //   const email = findEmailById(account.user_id, users);
-  //   return (
-  //     <tr>
-  //       <td>
-  //       <Link to={`/account/${account.user_id}`}>
-  //       {email}
-  //       </Link>
-  //       </td>
-  //       <td>{account.total_balance}</td>
-  //     </tr>
-  //   );
-  // });
-
   return (
     <>
-      <h1>Leaderboard</h1>
+      <h1 id="leaderboard">Leaderboard</h1>
       <LeaderboardCard
         accounts={accounts}
         users={users}

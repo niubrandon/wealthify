@@ -16,6 +16,7 @@ const Stock = (props) => {
   const [range, setRange] = useState('5d');
   const [interval, setInterval] = useState('1d');
 
+  const API_KEY = `${process.env.REACT_APP_API_KEY}`;
   const { name } = useParams();
 
   var options = {
@@ -24,7 +25,7 @@ const Stock = (props) => {
     params: { range: range, interval: interval },
     headers: {
       'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
-      'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct',
+      'x-rapidapi-key': API_KEY,
     },
   };
 
@@ -48,7 +49,7 @@ const Stock = (props) => {
     params: { symbols: name },
     headers: {
       'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
-      'x-rapidapi-key': 'rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct',
+      'x-rapidapi-key': API_KEY,
     },
   };
 
@@ -116,7 +117,11 @@ const Stock = (props) => {
       >
         Yearly
       </button>
-      <StockGraph range={range} xAxis={graphx} yAxis={graphy} />
+      <StockGraph
+        range={range}
+        xAxis={graphx}
+        yAxis={graphy}
+      />
       <StockTable
         regularMarketPrice={detail.regularMarketPrice}
         regularMarketChange={detail.regularMarketChange}

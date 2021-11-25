@@ -85,7 +85,7 @@ class PortfoliosController < ApplicationController
           #'X-RapidAPI-Host' => URI.parse(url).host,
           #'X-RapidAPI-Key' => ENV.fetch('RAPIDAPI_API_KEY')
           "x-rapidapi-host": "stock-data-yahoo-finance-alternative.p.rapidapi.com",
-		      "x-rapidapi-key": "rw9oV5YAcGmshkCGpJdkhwRAXbnAp1HofApjsntB8od230Yqct"
+		      "x-rapidapi-key": "50021f6fa7msh7c5aa3a1b99700dp1fad37jsn02095460d420"
         }
       )
       data = JSON.parse(response.body)
