@@ -9,7 +9,7 @@ const StockTable = (props) => {
     regularMarketDayLow,
     regularMarketVolume,
     regularMarketPreviousClose,
-    exchangeTimezoneName,
+    exchange,
     regularMarketOpen,
   } = props;
   return (
@@ -49,8 +49,8 @@ const StockTable = (props) => {
             <td>{regularMarketPreviousClose}</td>
           </tr>
           <tr>
-            <td>exchangeTimezoneName</td>
-            <td colSpan="2">{exchangeTimezoneName}</td>
+            <td>exchange</td>
+            <td colSpan="2">{exchange}</td>
           </tr>
           <tr>
             <td>regularMarketOpen</td>

@@ -4,12 +4,15 @@ import { RiFileCopyFill } from 'react-icons/ri';
 
 const Referral = (props) => {
   const { account, authUser } = props;
-  const [referralCode, setReferralCode] = useState(authUser?.referral_code);
-  const [copy, setCopy] = useState(false);
+  const [referralCode, setReferralCode] = useState(
+    authUser ? authUser.referral_code : null
+  );
 
   useEffect(() => {
-    setReferralCode(authUser?.referral_code);
-  }, []);
+    setReferralCode(authUser ? authUser.referral_code : null);
+  }, [authUser]);
+
+  const [copy, setCopy] = useState(false);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(referralCode);
