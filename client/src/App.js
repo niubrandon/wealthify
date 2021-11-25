@@ -1,9 +1,8 @@
 import { useEffect, useState, createContext } from 'react';
 
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import './App.scss';
-import axios from 'axios';
 import React from 'react';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -11,7 +10,6 @@ import Portfolio from './pages/Portfolio';
 import Signup from './pages/Signup';
 import Search from './pages/Search';
 import Stock from './pages/Stock';
-import Modal from './components/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar';
 import Leaderboard from './pages/Leaderboard';
@@ -36,7 +34,7 @@ function App() {
   }, [authUser]);
 
   return (
-    <div className='App'>
+    <>
       <Container fluid>
         <Row>
           <Col xs={2} className='nav-column'>
@@ -93,7 +91,7 @@ function App() {
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 }
 
