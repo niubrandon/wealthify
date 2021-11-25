@@ -8,7 +8,7 @@ const Referral = (props) => {
   const [copy, setCopy] = useState(false);
 
   useEffect(() => {
-    setReferralCode(authUser.referral_code);
+    setReferralCode(authUser?.referral_code);
   }, []);
 
   const copyToClipboard = () => {
