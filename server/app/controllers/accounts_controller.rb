@@ -41,9 +41,6 @@ class AccountsController < ApplicationController
     @accounts = Account.all
     @users = User.all
     @portfolios = Portfolio.all
-<<<<<<< HEAD
-    render json: {accounts: @accounts, users: @users, portfolios: @portfolios}
-=======
     render json: {accounts: @accounts, users: @users, portfolios: @portfiolios}
   end
 
@@ -78,7 +75,6 @@ class AccountsController < ApplicationController
     end
 
     render json: {leaderboard: leaderboard_data}
->>>>>>> 0301ababb80ce60c7b67c6d3d1858566322d1e7a
   end
 
   
