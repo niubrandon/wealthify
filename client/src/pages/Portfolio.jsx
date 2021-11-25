@@ -26,6 +26,7 @@ const Portfolio = (props) => {
     axios
       .get(url, config)
       .then((response) => {
+        // console.log(response.data);
         props.setAccount(response.data);
       })
       .catch((err) => {
