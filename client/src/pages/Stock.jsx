@@ -17,14 +17,16 @@ const Stock = (props) => {
   const [interval, setInterval] = useState('15m');
 
   const API_KEY = `${process.env.REACT_APP_API_KEY}`;
+  const API_HOST = `${process.env.REACT_APP_API_HOST}`;
   const { name } = useParams();
+  
 
   var options = {
     method: 'GET',
     url: `https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/${name}`,
     params: { range: range, interval: interval },
     headers: {
-      'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
+      'x-rapidapi-host': API_HOST,
       'x-rapidapi-key': API_KEY,
     },
   };
@@ -52,7 +54,7 @@ const Stock = (props) => {
     url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
     params: { symbols: name },
     headers: {
-      'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
+      'x-rapidapi-host': API_HOST,
       'x-rapidapi-key': API_KEY,
     },
   };
@@ -61,6 +63,7 @@ const Stock = (props) => {
     axios
       .request(options2)
       .then(function (response) {
+        console.log(response.data.quoteResponse.result[0])
         setDetail(response.data.quoteResponse.result[0]);
       })
       .catch(function (error) {
@@ -135,7 +138,7 @@ const Stock = (props) => {
         regularMarketDayLow={detail.regularMarketDayLow}
         regularMarketVolume={detail.regularMarketVolume}
         regularMarketPreviousClose={detail.regularMarketPreviousClose}
-        exchangeTimezoneName={detail.exchangeTimezoneName}
+        exchange={detail.fullExchangeName}
         regularMarketOpen={detail.regularMarketOpen}
       />
     </>
