@@ -1,15 +1,47 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :update, :destroy]
 
+
+  def leaderboard
+    
+    @users = User.all;
+    @accounts = Account.all;
+    @portfolios = Portfolio.all;
+    
+    leaderboard_data = {}
+
+    @accounts.each do |account|
+    
+      email = @users.find_by(id: account.user_id)
+      stockListArray = ["cash balance"]
+      stockMarketValueArray = [account.cash_balance]
+      account_portfolios = @portfolios.where(account_id: account.id)
+
+      account_portfolios.each do |portfolio|
+        stockListArray.push(portfolio.ticker)
+        stockMarketValueArray.push(portfolio.quantity * portfolio.current_spot_price)
+      end
+
+      leaderboard_data[account.id] = {
+        :email => email.email,
+        :account_id => account.id, 
+        :total_balance => account.total_balance,
+        :stock_list => stockListArray,
+        :market_value => stockMarketValueArray}
+    end
+
+    render json: {leaderboard: leaderboard_data}
+  end
+
+
   # GET /accounts
   def index
-
-#testing mutations
     adjust_accounts_balance_from_updated_portfolios
 
     @accounts = Account.all
     @users = User.all
-    render json: {accounts: @accounts, users: @users}
+    @portfolios = Portfolio.all
+    render json: {accounts: @accounts, users: @users, portfolios: @portfolios}
   end
 
   
