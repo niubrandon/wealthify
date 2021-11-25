@@ -1,0 +1,18 @@
+@import '../_variables';
+
+#nouser {
+  @include flex-center(column);
+  height: 100vh;
+
+  h1 {
+    font-size: 2em;
+    a {
+      color: $logo;
+    }
+  }
+
+  img {
+    max-width: 600px;
+    height: auto;
+  }
+}

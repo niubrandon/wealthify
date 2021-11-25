@@ -13,6 +13,7 @@ import Stock from './pages/Stock';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar';
 import Leaderboard from './pages/Leaderboard';
+import NoUser from './pages/NoUser';
 import { Container, Row, Col } from 'react-bootstrap';
 
 let AuthContext = React.createContext();
@@ -87,6 +88,7 @@ function App() {
                   element={<Stock authUser={authUser} account={account} />}
                 />
               </Route>
+              <Route path='401' element={<NoUser />} />
             </Routes>
           </Col>
         </Row>
