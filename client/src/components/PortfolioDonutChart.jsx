@@ -2,48 +2,57 @@ import { Doughnut } from 'react-chartjs-2';
 
 const PortfolioDonutChart = (props) => {
 
-  const state = {
-    labels: ['ETH-USD', 'BTC-USD', 'DOT1-USD',
-             'TLRY', 'CGC'],
+const stockListArray = ["cash balance"]
+const stockMarketValueArray = [Number(props.account.account.cash_balance).toFixed(2)]
+for (const item of props.account.portfolio) {
+  
+  stockListArray.push(item.ticker)
+  stockMarketValueArray.push(Number(Number(item.quantity) * Number(item.current_spot_price)).toFixed(2))
+}  
+const backgroundColor = [];
+const hoverBackgroundColor = [];
+const randomColor = (() => {
+  return Math.floor(Math.random()*16777215).toString(16);
+}) 
+for (let i = 0; i < stockListArray.length; i++) {
+  backgroundColor.push("#" + randomColor())
+  hoverBackgroundColor.push("#" + randomColor())
+}
+console.log("color are", backgroundColor, hoverBackgroundColor)
+console.log("portfolio data are", stockListArray, stockMarketValueArray)
+  const graphData = {
+    labels: stockListArray,
     datasets: [
       {
         label: 'Portfolio',
-        backgroundColor: [
-          '#B21F00',
-          '#C9DE00',
-          '#2FDE00',
-          '#00A6B4',
-          '#6800B4'
-        ],
-        hoverBackgroundColor: [
-        '#501800',
-        '#4B5000',
-        '#175000',
-        '#003350',
-        '#35014F'
-        ],
-        data: [3999, 575, 3800, 3000, 360]
+        backgroundColor: backgroundColor,
+        hoverBackgroundColor: hoverBackgroundColor,
+        data: stockMarketValueArray
       }
     ]
   }
   return (
     <div style={{width:'400px', height: '400px'}}>
-    <Doughnut 
-      data={state}
+    {props.account && <Doughnut 
+      data={graphData}
       options={{
         title:{
           display:true,
-          text:'Average Rainfall per month',
+          text:'Portfolio % of each investment',
           fontSize:20
         },
         legend:{
           display:true,
           position:'right'
+        },
+        animation:{
+          animateScale: true
         }
       }}
-    />
+    />}
     </div>
   ) 
 }
 
 export default PortfolioDonutChart;
+
