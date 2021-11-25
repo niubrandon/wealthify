@@ -7,6 +7,12 @@ import Referral from '../components/Referral';
 
 const Portfolio = (props) => {
   useEffect(() => {
+      if (localStorage.getItem('auth')) {
+        props.setAuthUser(JSON.parse(localStorage.getItem('auth')))
+      }
+  }, [])
+
+  useEffect(() => {
     if (!props.authUser) {
       return;
     }

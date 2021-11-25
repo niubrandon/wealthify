@@ -35,7 +35,10 @@ const Login = (props) => {
           user_email: response.data.user_email,
           referral_code: response.data.referral_code,
         });
-
+        localStorage.setItem('auth', JSON.stringify({jwt: response.data.auth_token,
+        user_id: response.data.user_id,
+        user_email: response.data.user_email,
+        referral_code: response.data.referral_code,}))
         //navigate
         //navigate(from, { replace: true });
         navigate('/portfolio');

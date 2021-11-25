@@ -4,7 +4,7 @@ import { RiFileCopyFill } from 'react-icons/ri';
 
 const Referral = (props) => {
   const { account, authUser } = props;
-  const [referralCode, setReferralCode] = useState(null);
+  const [referralCode, setReferralCode] = useState(authUser?.referral_code);
   const [copy, setCopy] = useState(false);
 
   useEffect(() => {
