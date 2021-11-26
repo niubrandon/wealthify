@@ -18,6 +18,12 @@ const Portfolio = (props) => {
 
   useEffect(() => {
     if (!props.authUser) {
+      <Navigate to='/401' />;
+    }
+  }, [props.userAuth]);
+
+  useEffect(() => {
+    if (!props.authUser) {
       return;
     }
     const url = `http://localhost:3000/api/accounts/${props.authUser.user_id}`;
@@ -49,7 +55,7 @@ const Portfolio = (props) => {
 
   return (
     <>
-      {!props.authUser ? (
+      {/* {!props.authUser ? (
         <Navigate to='/401' />
       ) : (
         <section className='page'>
@@ -63,6 +69,17 @@ const Portfolio = (props) => {
           </div>
         </section>
       )}
+      ) : ( */}
+      <section className='page'>
+        <div style={flexWrapperVertical}>
+          {!props.account && <p>you don't have any holdings</p>}
+          {props.account && <PortfolioDonutChart account={props.account} />}
+          {props.account && <PortfolioCard account={props.account} />}
+          {props.account && <Transactions account={props.account} />}
+          <Referral account={props.account} authUser={props.authUser} />
+        </div>
+      </section>
+      {/* )} */}
     </>
   );
 };
