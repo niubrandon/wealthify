@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import PortfolioDonutChart from '../components/PortfolioDonutChart';
 import PortfolioCard from '../components/PortfolioCard';
+import PortfolioBarChart from '../components/PortfolioBarChart';
 import Transactions from '../components/Transactions';
 import Referral from '../components/Referral';
 import NoUser from '../pages/NoUser';
@@ -54,6 +55,7 @@ const Portfolio = (props) => {
         <section className='page'>
           <div style={flexWrapperVertical}>
             {!props.account && <p>you don't have any holdings</p>}
+            {props.account && <PortfolioBarChart account={props.account} />}
             {props.account && <PortfolioDonutChart account={props.account} />}
             {props.account && <PortfolioCard account={props.account} />}
             {props.account && <Transactions account={props.account} />}
