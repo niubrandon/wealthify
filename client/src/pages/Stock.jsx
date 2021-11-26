@@ -30,7 +30,7 @@ const Stock = (props) => {
     params: { range: range, interval: interval },
     headers: {
       'x-rapidapi-host': API_HOST,
-      'x-rapidapi-key': API_KEY,
+      // 'x-rapidapi-key': API_KEY,
     },
   };
 
@@ -65,7 +65,7 @@ const Stock = (props) => {
     params: { symbols: name },
     headers: {
       'x-rapidapi-host': API_HOST,
-      'x-rapidapi-key': API_KEY,
+      // 'x-rapidapi-key': API_KEY,
     },
   };
 
@@ -172,9 +172,6 @@ const Stock = (props) => {
         >
           Yearly
         </button>
-      </div>
-      <div>
-        {/* {detail.} */}
       </div>
       <StockTable
         regularMarketPrice={detail.regularMarketPrice}

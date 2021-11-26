@@ -18,7 +18,7 @@ const NavBar = (props) => {
 
   return (
     <>
-      <Nav variant='pills' className='flex-column nav-container'>
+      <Nav variant='pills' className='flex-column nav-container' data-testid="nav-bar">
         <div className='links'>
           <div className='nav-title'>
             <h1>Wealthify</h1>
@@ -47,10 +47,10 @@ const NavBar = (props) => {
         <div className='actions'>
           {props.authUser && (
             <>
-              <p>
+              <div data-testid="nav-bar-welcome">
                 Welcome, <br />
                 {props.authUser.user_email}
-              </p>
+              </div>
               <NavLink onClick={onLogout} to='/' className='userauth'>
                 <h3>Logout</h3>
               </NavLink>
