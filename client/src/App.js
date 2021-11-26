@@ -1,9 +1,8 @@
 import { useEffect, useState, createContext } from 'react';
 
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import './App.scss';
-import axios from 'axios';
 import React from 'react';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -11,11 +10,11 @@ import Portfolio from './pages/Portfolio';
 import Signup from './pages/Signup';
 import Search from './pages/Search';
 import Stock from './pages/Stock';
-import Modal from './components/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar';
 import Leaderboard from './pages/Leaderboard';
 import Watchlist from './pages/Watchlist';
+import NoUser from './pages/NoUser';
 import { Container, Row, Col } from 'react-bootstrap';
 
 let AuthContext = React.createContext();
@@ -37,7 +36,7 @@ function App() {
   }, [authUser]);
 
   return (
-    <div className='App'>
+    <>
       <Container fluid>
         <Row>
           <Col xs={2} className='nav-column'>
@@ -107,11 +106,12 @@ function App() {
                   }
                 />
               </Route>
+              <Route path='401' element={<NoUser />} />
             </Routes>
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 }
 

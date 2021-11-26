@@ -164,6 +164,7 @@ const Home = (props) => {
         regMP={item.regularMarketPrice}
         regMCP={item.regularMarketChangePercent}
         quoteType={item.quoteType}
+        authUser={authUser}
       />
     );
   });
