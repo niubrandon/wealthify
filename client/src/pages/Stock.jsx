@@ -189,6 +189,7 @@ const Stock = (props) => {
           regularMarketOpen={detail.regularMarketOpen}
         />
       </>
+  );
 
 };
 

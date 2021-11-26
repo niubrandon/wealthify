@@ -1,22 +1,23 @@
 import { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert';
+import Error from '../components/Error'
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const Login = (props) => {
-  const [user, setUser] = useState(null);
-  //const [ jwt, setJWT ] = useState({jwt: null});
+  const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  //navigate react routers
   let navigate = useNavigate();
   let location = useLocation();
-  //let from = location.state?.from?.pathname || "/";
+
   let from = '/portfolio';
 
   useEffect(() => {
-    //console.log("user is", user)
+
     if (!user) {
       return;
     }
@@ -27,8 +28,7 @@ const Login = (props) => {
       data: user,
     })
       .then(function (response) {
-        // console.log(response);
-        //setJWT({jwt: response.data.auth_token})
+
         props.setAuthUser({
           jwt: response.data.auth_token,
           user_id: response.data.user_id,
@@ -39,12 +39,11 @@ const Login = (props) => {
         user_id: response.data.user_id,
         user_email: response.data.user_email,
         referral_code: response.data.referral_code,}))
-        //navigate
-        //navigate(from, { replace: true });
         navigate('/portfolio');
       })
       .catch(function (error) {
         console.log(error);
+        setError("Wrong credential, please try again!")
       });
   }, [user]);
 
@@ -54,8 +53,8 @@ const Login = (props) => {
 
     setUser({
       user: {
-        email: e.target.email.value,
-        password: e.target.password.value,
+        email: email,
+        password: password
       },
     });
   };
@@ -70,13 +69,19 @@ const Login = (props) => {
 
   return (
     <div style={flexWrapperVertical}>
-      <Form className='w-50' onSubmit={(e) => onLogIn(e)}>
+      { error && <Error errorMessage={error} variant="warning" />}
+      <Form className='w-50' onSubmit={(e) => onLogIn(e)} data-testid="signin-form"  >
         <Form.Group className='mb-3' controlId='formBasicEmail'>
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type='email'
             name='email'
             placeholder='Enter email'
+            data-testid="input-email"
+            value={email}
+            onChange={e => {
+              setError("")
+              setEmail(e.target.value)}}
             required
           />
         </Form.Group>
@@ -87,11 +92,16 @@ const Login = (props) => {
             type='password'
             name='password'
             placeholder='Password'
+            data-testid="input-password"
+            value={password}
+            onChange={e => {
+              setError("")
+              setPassword(e.target.value)}}
             required
           />
         </Form.Group>
 
-        <Button variant='primary' type='submit'>
+        <Button variant='primary' type='submit' data-testid="login-button">
           Login
         </Button>
       </Form>

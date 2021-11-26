@@ -1,7 +1,7 @@
 @import '../_variables';
 
 #leaderboard-card {
-  @include card(160px, 700px)
+  @include card(160px, 700px);
   @include flex-center(column);
   h2{
     font-size: 1.5em;
