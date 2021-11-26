@@ -17,13 +17,16 @@ class WatchlistsController < ApplicationController
 
   # POST /watchlists
   def create
-    @watchlist = Watchlist.new(watchlist_params)
+
+    #@watchlist = Watchlist.new(watchlist_params)
+    @watchlist = Watchlist.find_or_create_by!(watchlist_params)
     # is_present = Watchlist.where(ticker: params[:ticker], user_id: params[:user_id]).exists?
     if @watchlist.save
       render json: @watchlist, status: :created, location: @watchlist
     else
       render json: @watchlist.errors, status: :unprocessable_entity
     end
+    
   end
 
   # PATCH/PUT /watchlists/1

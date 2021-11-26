@@ -167,6 +167,12 @@ const Stock = (props) => {
           >
             Yearly
           </button>
+          <button  type='button'
+            className='btn btn-outline-info'
+            onClick={onFavourite}>
+            Add to watchlist
+            </button>
+
           <StockGraph range={range} xAxis={graphx} yAxis={graphy} />
           <StockTable
             regularMarketPrice={detail.regularMarketPrice}
