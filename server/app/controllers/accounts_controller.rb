@@ -1,3 +1,5 @@
+require 'excon'
+require 'json'
 class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :update, :destroy]
 
@@ -188,7 +190,6 @@ class AccountsController < ApplicationController
      
     end
     current_market_price 
-    
 
     end
 

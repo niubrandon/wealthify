@@ -8,6 +8,7 @@ import WatchlistItem from '../components/WatchlistItem'
 const Watchlist = (props) => {
   const {authUser, setAuthUser, account, setAccount} = props
   const [watchlist, setWatchlist] = useState([])
+  const [prices, setPrices] = useState([])
   const [deleteId, setDeleteId] = useState("")
   console.log("&&&&&&&&&&printing from watchlist page, authUser", authUser)
   
@@ -31,9 +32,10 @@ const Watchlist = (props) => {
       .then(function (response) {
         console.log("deleted")
         console.log("server response for watchlist data after deleting", response.data, authUser.user_id)
-        const filteredWatchlist = response.data.filter(item => item.user_id === authUser.user_id);
+        const filteredWatchlist = response.data.watchlists.filter(item => item.user_id === authUser.user_id);
         console.log("filtered data", filteredWatchlist)
         setWatchlist(filteredWatchlist);
+        setPrices(response.data.prices)
       })
       .catch(function (error) {
         console.log(error);
@@ -52,9 +54,10 @@ const Watchlist = (props) => {
       .get(url)
       .then((response) => {
         console.log("server response for watchlist data", response.data, authUser.user_id)
-        const filteredWatchlist = response.data.filter(item => item.user_id === authUser.user_id);
+        const filteredWatchlist = response.data.watchlists.filter(item => item.user_id === authUser.user_id);
         console.log("filtered data", filteredWatchlist)
         setWatchlist(filteredWatchlist);
+        setPrices(response.data.prices)
        
         
       })
@@ -77,10 +80,22 @@ const Watchlist = (props) => {
     console.log("deleting", e.target.id)
     setDeleteId(e.target.id)
   
-  } 
+  }
+
+/*   const findPriceFromTicker = (ticker, arr) => {
+    for (const element of arr) {
+      if (element.ticker) {
+        return element.ticker
+      }
+    }
+  }
+ */
   const WatchlistItems = watchlist.map((item) => {
+    const stockPrice = prices[item.ticker]
+    console.log("stock price is ", stockPrice)
      return (
-     <WatchlistItem key={item.id} item={item} authUser={authUser} onDelete={onDelete}/>
+     
+     <WatchlistItem key={item.id} item={item} authUser={authUser} onDelete={onDelete} price={stockPrice}/>
      )
       
     
