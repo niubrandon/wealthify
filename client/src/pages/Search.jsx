@@ -112,6 +112,7 @@ const Search = (props) => {
         regMP={null}
         regMCP={null}
         quoteType={null}
+        authUser={authUser}
       />
     );
   });
@@ -121,7 +122,7 @@ const Search = (props) => {
       <form>
         <input
           id='search-bar'
-          placeholder='begin typing to search...'
+          placeholder='Begin typing to search...'
           type='search'
           onChange={handleInput}
           autoFocus

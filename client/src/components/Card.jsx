@@ -6,13 +6,13 @@ import React from 'react';
 // name, symbol, exchDisp, regMP, regMCP
 
 const Card = (props) => {
-  const { name, symbol, exchDisp, regMP, regMCP, quoteType } = props;
+  const { name, symbol, exchDisp, regMP, regMCP, quoteType, authUser } = props;
 
   const regMPRound = regMP && regMP.toFixed(2);
   const regMCPRound = regMCP && regMCP.toFixed(2);
 
   return (
-    <Link to={`/stock/${symbol}`} className='card-link'>
+    <Link to={authUser ? `/stock/${symbol}` : '/401'} className='card-link'>
       <div className='card-container'>
         <div className='card-name'>
           <div className='text'>

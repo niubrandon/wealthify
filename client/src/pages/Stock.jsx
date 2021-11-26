@@ -1,7 +1,7 @@
 import StockGraph from '../components/StockGraph';
 import StockHeader from '../components/StockHeader';
 import './Stock.scss';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import StockTable from '../components/StockTable';
 import Button from 'react-bootstrap/Button';
@@ -10,6 +10,7 @@ const axios = require('axios').default;
 
 const Stock = (props) => {
   const { authUser, account } = props;
+  console.log('authUser on Stock:', authUser);
   const [graphx, setGraphx] = useState([]);
   const [graphy, setGraphy] = useState([]);
   const [detail, setDetail] = useState([]);
@@ -19,7 +20,6 @@ const Stock = (props) => {
   const API_KEY = `${process.env.REACT_APP_API_KEY}`;
   const API_HOST = `${process.env.REACT_APP_API_HOST}`;
   const { name } = useParams();
-  
 
   var options = {
     method: 'GET',
@@ -27,7 +27,7 @@ const Stock = (props) => {
     params: { range: range, interval: interval },
     headers: {
       'x-rapidapi-host': API_HOST,
-      'x-rapidapi-key': API_KEY,
+      // 'x-rapidapi-key': API_KEY,
     },
   };
 
@@ -55,7 +55,7 @@ const Stock = (props) => {
     params: { symbols: name },
     headers: {
       'x-rapidapi-host': API_HOST,
-      'x-rapidapi-key': API_KEY,
+      // 'x-rapidapi-key': API_KEY,
     },
   };
 
@@ -63,7 +63,7 @@ const Stock = (props) => {
     axios
       .request(options2)
       .then(function (response) {
-        console.log(response.data.quoteResponse.result[0])
+        console.log(response.data.quoteResponse.result[0]);
         setDetail(response.data.quoteResponse.result[0]);
       })
       .catch(function (error) {
@@ -97,50 +97,52 @@ const Stock = (props) => {
 
   return (
     <>
-      <StockHeader
-        name={name}
-        regMP={detail.regularMarketPrice}
-        authUser={authUser}
-        account={account}
-      />
-      <button
-        type='button'
-        className='btn btn-outline-info'
-        onClick={(e) => daily(e)}
-      >
-        Daily
-      </button>
-      <button
-        type='button'
-        className='btn btn-outline-info'
-        onClick={(e) => weekly(e)}
-      >
-        Weekly
-      </button>
-      <button
-        type='button'
-        className='btn btn-outline-info'
-        onClick={(e) => yearly(e)}
-      >
-        Yearly
-      </button>
-      <StockGraph
-        range={range}
-        xAxis={graphx}
-        yAxis={graphy}
-      />
-      <StockTable
-        regularMarketPrice={detail.regularMarketPrice}
-        regularMarketChange={detail.regularMarketChange}
-        regularMarketChangePercent={detail.regularMarketChangePercent}
-        marketCap={detail.marketCap}
-        regularMarketDayHigh={detail.regularMarketDayHigh}
-        regularMarketDayLow={detail.regularMarketDayLow}
-        regularMarketVolume={detail.regularMarketVolume}
-        regularMarketPreviousClose={detail.regularMarketPreviousClose}
-        exchange={detail.fullExchangeName}
-        regularMarketOpen={detail.regularMarketOpen}
-      />
+      {!authUser ? (
+        <Navigate to='/401' />
+      ) : (
+        <>
+          <StockHeader
+            name={name}
+            regMP={detail.regularMarketPrice}
+            authUser={authUser}
+            account={account}
+          />
+          <button
+            type='button'
+            className='btn btn-outline-info'
+            onClick={(e) => daily(e)}
+          >
+            Daily
+          </button>
+          <button
+            type='button'
+            className='btn btn-outline-info'
+            onClick={(e) => weekly(e)}
+          >
+            Weekly
+          </button>
+          <button
+            type='button'
+            className='btn btn-outline-info'
+            onClick={(e) => yearly(e)}
+          >
+            Yearly
+          </button>
+          <StockGraph range={range} xAxis={graphx} yAxis={graphy} />
+          <StockTable
+            regularMarketPrice={detail.regularMarketPrice}
+            regularMarketChange={detail.regularMarketChange}
+            regularMarketChangePercent={detail.regularMarketChangePercent}
+            marketCap={detail.marketCap}
+            regularMarketDayHigh={detail.regularMarketDayHigh}
+            regularMarketDayLow={detail.regularMarketDayLow}
+            regularMarketVolume={detail.regularMarketVolume}
+            regularMarketPreviousClose={detail.regularMarketPreviousClose}
+            exchange={detail.fullExchangeName}
+            regularMarketOpen={detail.regularMarketOpen}
+          />
+        </>
+      )}
     </>
   );
 };
