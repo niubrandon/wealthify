@@ -19,7 +19,7 @@ const LeaderboardCard = ((props) => {
     <Card key={index} className="w-70 text-center" >
       <Card.Header as="h5">{place} {account.email}</Card.Header>
       <Card.Body>
-        <Card.Title>Total Balance: {account.total_balance}</Card.Title>
+        <Card.Title>{`Total Balance: $${Number(account.total_balance).toFixed(2)}`}</Card.Title>
         <Card.Text>
           {/* {`Current market value is ${item.quantity * item.current_spot_price} , representing  ${Number(item.quantity * item.current_spot_price / props.account.account.total_balance * 100).toFixed(2)}% of your total portfolio`} */}
         </Card.Text>

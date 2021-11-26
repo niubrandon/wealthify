@@ -15,6 +15,7 @@ import Modal from './components/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar';
 import Leaderboard from './pages/Leaderboard';
+import Watchlist from './pages/Watchlist';
 import { Container, Row, Col } from 'react-bootstrap';
 
 let AuthContext = React.createContext();
@@ -72,6 +73,16 @@ function App() {
                 }
               />
               <Route
+                path='watchlist'
+                element={
+                <Watchlist
+                  authUser={authUser}
+                  setAuthUser={setAuthUser}
+                  account={account}
+                  setAccount={setAccount}
+                />}
+              />
+              <Route
                 path='leaderboard'
                 element={
                   <Leaderboard
@@ -86,7 +97,14 @@ function App() {
               <Route path='stock'>
                 <Route
                   path=':name'
-                  element={<Stock authUser={authUser} account={account} />}
+                  element={
+                    <Stock
+                      authUser={authUser}
+                      setAuthUser={setAuthUser}
+                      account={account}
+                      setAccount={setAccount}
+                    />
+                  }
                 />
               </Route>
             </Routes>

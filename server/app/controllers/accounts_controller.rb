@@ -14,6 +14,7 @@ class AccountsController < ApplicationController
   end
 
   def leaderboard
+    adjust_accounts_balance_from_updated_portfolios
     
     @users = User.all;
     @accounts = Account.all;

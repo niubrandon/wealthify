@@ -253,6 +253,18 @@ account4.transactions.create!({
   :settled_price => 12
 })
 
+watchlist1 = user3.watchlists.create!({
+  :ticker => 'CGC'
+})
+
+watchlist2 = user3.watchlists.create!({
+  :ticker => 'AAPL'
+})
+
+watchlist3 = user3.watchlists.create!({
+  :ticker => 'TLRY'
+})
+
 
 
 puts "DONE!"

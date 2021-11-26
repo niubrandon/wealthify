@@ -23,6 +23,8 @@ const NavBar = (props) => {
 
         <NavLink to="/portfolio">Portfolio</NavLink>
 
+        {props.authUser ? <NavLink to="/watchlist">Watchlist</NavLink> : null}
+
         {props.authUser ? (
           <NavLink onClick={onLogout} to="/">
             Logout
