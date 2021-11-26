@@ -45,6 +45,7 @@ class AccountsController < ApplicationController
   end
 
   def leaderboard
+    adjust_accounts_balance_from_updated_portfolios
     
     @users = User.all;
     @accounts = Account.all;
@@ -178,7 +179,7 @@ class AccountsController < ApplicationController
           #'X-RapidAPI-Host' => URI.parse(url).host,
           #'X-RapidAPI-Key' => ENV.fetch('RAPIDAPI_API_KEY')
           "x-rapidapi-host": "stock-data-yahoo-finance-alternative.p.rapidapi.com",
-		      "x-rapidapi-key": "50021f6fa7msh7c5aa3a1b99700dp1fad37jsn02095460d420"
+		      "x-rapidapi-key": "e670bfeee5msh2c4237e9a815b1dp1134f5jsn284ac3e82968"
         }
       )
       data = JSON.parse(response.body)
