@@ -4,6 +4,8 @@ import PortfolioDonutChart from '../components/PortfolioDonutChart';
 import PortfolioCard from '../components/PortfolioCard';
 import Transactions from '../components/Transactions';
 import Referral from '../components/Referral';
+import NoUser from '../pages/NoUser';
+import { Navigate } from 'react-router-dom';
 
 const Portfolio = (props) => {
   console.log('print authUser from portfolio', props.authUser);
@@ -43,15 +45,21 @@ const Portfolio = (props) => {
   };
 
   return (
-    <section className='page'>
-      <div style={flexWrapperVertical}>
-        {!props.account && <p>you don't have any holdings</p>}
-        {props.account && <PortfolioDonutChart account={props.account} />}
-        {props.account && <PortfolioCard account={props.account} />}
-        {props.account && <Transactions account={props.account} />}
-        <Referral account={props.account} authUser={props.authUser} />
-      </div>
-    </section>
+    <>
+      {!props.authUser ? (
+        <Navigate to='/401' />
+      ) : (
+        <section className='page'>
+          <div style={flexWrapperVertical}>
+            {!props.account && <p>you don't have any holdings</p>}
+            {props.account && <PortfolioDonutChart account={props.account} />}
+            {props.account && <PortfolioCard account={props.account} />}
+            {props.account && <Transactions account={props.account} />}
+            <Referral account={props.account} authUser={props.authUser} />
+          </div>
+        </section>
+      )}
+    </>
   );
 };
 

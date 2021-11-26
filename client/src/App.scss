@@ -11,6 +11,12 @@
   // width: 90%;
 }
 
-.nav-column {
-  // background-color: blueviolet;
+body {
+  .container-fluid,
+  .row,
+  .col,
+  .col-2 {
+    margin: 0;
+    padding: 0;
+  }
 }
