@@ -39,6 +39,10 @@ const NavBar = (props) => {
             <RiTeamFill />
             <h2>Leaderboard</h2>
           </NavLink>
+          <NavLink to='/watchlist' className='nav-item'>
+            <RiTeamFill />
+            <h2>Watchlist</h2>
+          </NavLink>
         </div>
         <div className='actions'>
           {props.authUser && (

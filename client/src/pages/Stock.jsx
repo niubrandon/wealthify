@@ -16,6 +16,8 @@ const Stock = (props) => {
   const [detail, setDetail] = useState([]);
   const [range, setRange] = useState('1d');
   const [interval, setInterval] = useState('15m');
+  const [favourite, setFavourite] = useState();
+  const [activeButton, setActiveButton] = useState('');
 
   const API_KEY = `${process.env.REACT_APP_API_KEY}`;
   const API_HOST = `${process.env.REACT_APP_API_HOST}`;
@@ -55,6 +57,7 @@ const Stock = (props) => {
       });
   }, [range]);
 
+
   const options2 = {
     method: 'GET',
     url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
@@ -65,17 +68,54 @@ const Stock = (props) => {
     },
   };
 
+  // useEffect(() => {
+  //   axios
+  //     .request(options2)
+  //     .then(function (response) {
+  //       console.log(response.data.quoteResponse.result[0])
+  //       setDetail(response.data.quoteResponse.result[0]);
+  //     })
+  //     .catch(function (error) {
+  //       console.error(error);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    axios
-      .request(options2)
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/api/watchlists',
+      data: favourite,
+    })
       .then(function (response) {
+        console.log("hey")
         console.log(response.data.quoteResponse.result[0]);
         setDetail(response.data.quoteResponse.result[0]);
       })
       .catch(function (error) {
-        console.error(error);
+        console.log(error);
       });
-  }, []);
+
+  }, [favourite])
+
+  // useEffect(() => {
+  //   axios({
+  //     method: 'delete',
+  //     url: 'http://localhost:3000/api/watchlists/4',
+  //   })
+  //     .then(function (response) {
+  //       console.log("deleted")
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+
+  // }, [])
+
+  const onFavourite = (e) => {
+    e.preventDefault();
+    activeButton === '' ? setActiveButton(' active') : setActiveButton('')
+    setFavourite({watchlist: {ticker: name, user_id: authUser.user_id}})
+  }
 
   const daily = (e) => {
     console.log('onClick invoked');
@@ -103,7 +143,6 @@ const Stock = (props) => {
 
   return (
     <>
-      <>
         <StockHeader
           name={name}
           regMP={detail.regularMarketPrice}
@@ -131,6 +170,11 @@ const Stock = (props) => {
         >
           Yearly
         </button>
+         <button  type='button'
+            className='btn btn-outline-info'
+            onClick={onFavourite}>
+            Add to watchlist
+            </button>
         <StockGraph range={range} xAxis={graphx} yAxis={graphy} />
         <StockTable
           regularMarketPrice={detail.regularMarketPrice}
@@ -145,8 +189,7 @@ const Stock = (props) => {
           regularMarketOpen={detail.regularMarketOpen}
         />
       </>
-    </>
-  );
+
 };
 
 export default Stock;
@@ -194,3 +237,6 @@ export default Stock;
 // }).catch(function (error) {
 //   console.error(error);
 // });
+
+
+//setFavourite({watchlist: {ticker: name, user_id: authUser.user_id}})
