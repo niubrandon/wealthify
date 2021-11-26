@@ -5,9 +5,13 @@
   letter-spacing: 1.5px;
 }
 
+#root {
+  width: 100%;
+}
+
 .page {
   // margin: auto;
-  margin: 3em 0;
+  margin: 2em 0;
   // width: 90%;
 }
 
@@ -15,7 +19,8 @@ body {
   .container-fluid,
   .row,
   .col,
-  .col-2 {
+  .col-2,
+  .col-10 {
     margin: 0;
     padding: 0;
   }

@@ -1,6 +1,7 @@
 // V A R I A B L E S
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@500&display=swap');
 // font
-$font-title: 'Retrocycles';
+$font-title: 'Merriweather Sans', sans-serif;
 $font-main: 'Open Sans', sans-serif;
 
 // colours
@@ -21,6 +22,10 @@ $greylight: #e2e2e2;
 
 $logodark: rgb(65, 138, 110);
 
+// styles
+$soft:  4px 2px 7px rgba(5, 2, 1, 0.10);
+
+
 // MIXINS
 //  flex center
 @mixin flex-center($direction) {
@@ -32,7 +37,7 @@ $logodark: rgb(65, 138, 110);
 
 @mixin title {
   font-size: 2em;
-  font-family: $font-main;
+  font-family: $font-title;
   color: $black;
   letter-spacing: 2px;
 }
@@ -41,4 +46,14 @@ $logodark: rgb(65, 138, 110);
   background-color: $greylight;
   padding: 8px 10px;
   border-radius: 8px;
+}
+
+
+@mixin card($min-height, $width) {
+  border-radius: 20px;
+  margin: 25px;
+  padding: 15px;
+  min-height: $min-height;
+  width: $width;
+  box-shadow: 3px 6px 30px rgba(22, 19, 24, 0.2);
 }

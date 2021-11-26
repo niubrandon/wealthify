@@ -6,6 +6,7 @@ import { BiTrendingUp } from 'react-icons/bi';
 import '../styles/components/navbar.scss';
 
 const NavBar = (props) => {
+  const { authUser } = props;
   let navigate = useNavigate();
 
   const onLogout = (e) => {
@@ -22,7 +23,7 @@ const NavBar = (props) => {
           <div className='nav-title'>
             <h1>Wealthify</h1>
           </div>
-          <NavLink to='/portfolio' className='nav-item'>
+          <NavLink to={authUser ? '/portfolio' : '401'} className='nav-item'>
             <GoGraph />
             <h2>Portfolio</h2>
           </NavLink>

@@ -33,23 +33,30 @@ const Stock = (props) => {
     },
   };
 
-  // useEffect(() => {
-  //   axios
-  //     .request(options)
-  //     .then(function (response) {
-  //       console.log('graph called');
+  useEffect(() => {
+    if (!props.authUser) {
+      <Navigate to='/401' />;
+    }
+  }, [props.userAuth]);
 
-  //       setGraphx(response.data.chart.result[0].timestamp);
-  //       range === '1d'
-  //         ? setGraphy(response.data.chart.result[0].indicators.quote[0].close)
-  //         : setGraphy(
-  //             response.data.chart.result[0].indicators.adjclose[0].adjclose
-  //           );
-  //     })
-  //     .catch(function (error) {
-  //       console.error(error);
-  //     });
-  // }, [range]);
+  useEffect(() => {
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log('graph called');
+
+        setGraphx(response.data.chart.result[0].timestamp);
+        range === '1d'
+          ? setGraphy(response.data.chart.result[0].indicators.quote[0].close)
+          : setGraphy(
+              response.data.chart.result[0].indicators.adjclose[0].adjclose
+            );
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, [range]);
+
 
   const options2 = {
     method: 'GET',
@@ -136,60 +143,53 @@ const Stock = (props) => {
 
   return (
     <>
-      {!authUser ? (
-        <Navigate to='/401' />
-      ) : (
-        <>
-          <StockHeader
-            name={name}
-            regMP={detail.regularMarketPrice}
-            authUser={authUser}
-            account={account}
-          />
-          <button
-            type='button'
-            className='btn btn-outline-info'
-            onClick={(e) => daily(e)}
-          >
-            Daily
-          </button>
-          <button
-            type='button'
-            className='btn btn-outline-info'
-            onClick={(e) => weekly(e)}
-          >
-            Weekly
-          </button>
-          <button
-            type='button'
-            className='btn btn-outline-info'
-            onClick={(e) => yearly(e)}
-          >
-            Yearly
-          </button>
-          <button  type='button'
+        <StockHeader
+          name={name}
+          regMP={detail.regularMarketPrice}
+          authUser={authUser}
+          account={account}
+        />
+        <button
+          type='button'
+          className='btn btn-outline-info'
+          onClick={(e) => daily(e)}
+        >
+          Daily
+        </button>
+        <button
+          type='button'
+          className='btn btn-outline-info'
+          onClick={(e) => weekly(e)}
+        >
+          Weekly
+        </button>
+        <button
+          type='button'
+          className='btn btn-outline-info'
+          onClick={(e) => yearly(e)}
+        >
+          Yearly
+        </button>
+         <button  type='button'
             className='btn btn-outline-info'
             onClick={onFavourite}>
             Add to watchlist
             </button>
+        <StockGraph range={range} xAxis={graphx} yAxis={graphy} />
+        <StockTable
+          regularMarketPrice={detail.regularMarketPrice}
+          regularMarketChange={detail.regularMarketChange}
+          regularMarketChangePercent={detail.regularMarketChangePercent}
+          marketCap={detail.marketCap}
+          regularMarketDayHigh={detail.regularMarketDayHigh}
+          regularMarketDayLow={detail.regularMarketDayLow}
+          regularMarketVolume={detail.regularMarketVolume}
+          regularMarketPreviousClose={detail.regularMarketPreviousClose}
+          exchange={detail.fullExchangeName}
+          regularMarketOpen={detail.regularMarketOpen}
+        />
+      </>
 
-          <StockGraph range={range} xAxis={graphx} yAxis={graphy} />
-          <StockTable
-            regularMarketPrice={detail.regularMarketPrice}
-            regularMarketChange={detail.regularMarketChange}
-            regularMarketChangePercent={detail.regularMarketChangePercent}
-            marketCap={detail.marketCap}
-            regularMarketDayHigh={detail.regularMarketDayHigh}
-            regularMarketDayLow={detail.regularMarketDayLow}
-            regularMarketVolume={detail.regularMarketVolume}
-            regularMarketPreviousClose={detail.regularMarketPreviousClose}
-            exchange={detail.fullExchangeName}
-            regularMarketOpen={detail.regularMarketOpen}
-          />
-        </>
-      )}
-    </>
-  );
 };
 
 export default Stock;

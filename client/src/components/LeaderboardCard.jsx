@@ -1,9 +1,10 @@
-import Card from 'react-bootstrap/Card';
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import LeaderboardDonutChart from './LeaderboardDonutChart';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles/components/leaderboardCard.scss'
+import {FaTrophy} from 'react-icons/fa';
+import {GrDown} from 'react-icons/gr'
 
 const LeaderboardCard = (props) => {
   console.log('leaderboard props:', props);
@@ -15,31 +16,34 @@ const LeaderboardCard = (props) => {
       donut === account.account_id
         ? setDonut(null)
         : setDonut(account.account_id);
-    const place = index + 1;
+    const rank = index + 1;
 
     return (
-      <Card key={index} className='w-70 text-center'>
-        <Card.Header as='h5'>
-          {place} {account.email}
-        </Card.Header>
-        <Card.Body>
-          <Card.Title>{`Total Balance: $${Number(account.total_balance).toFixed(
+      <article key={index} id='leaderboard-card'>
+        <div className='user-info'>
+          <h2 className='rank'>{rank}</h2> 
+          <h2 className='email'>{account.email}</h2>
+          <FaTrophy className='icon'/>
+        </div>
+        <div className='card-body'>
+          <h2><strong>{`$${Number(account.total_balance).toFixed(
             2
-          )}`}</Card.Title>{' '}
-          <Card.Text>
+          )}`}</strong></h2>
+          <p>
             {/* {`Current market value is ${item.quantity * item.current_spot_price} , representing  ${Number(item.quantity * item.current_spot_price / props.account.account.total_balance * 100).toFixed(2)}% of your total portfolio`} */}
-          </Card.Text>
-          <Button variant='primary' onClick={onClick}>
-            View Summary
-          </Button>
-        </Card.Body>
+          </p>
+          <button className='summary-btn' onClick={onClick}> 
+            <p>View Summary</p>
+            <GrDown className='down'/>
+          </button>
+        </div>
         {donut === account.account_id ? (
           <LeaderboardDonutChart
             stock_list={account.stock_list}
             market_value={account.market_value}
           />
         ) : null}
-      </Card>
+      </article>
     );
   });
   return <>{leaderboardCards}</>;

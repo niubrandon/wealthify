@@ -4,13 +4,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-  min-width: 275px;
+  height: 100vh;
+  min-width: 20em;
   position: fixed;
   background-color: $logo;
   color: $white;
   padding: 1rem;
   margin: 0;
+  font-family: $font-title;
 
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
     0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
@@ -18,7 +19,7 @@
 
   .nav-title,
   .actions {
-    text-shadow: 4px 2px 7px rgba(5, 2, 1, 0.05);
+    text-shadow: $soft;
     padding: 1em 1.5em;
   }
   .nav-item {
@@ -47,6 +48,8 @@
     .userauth {
       text-decoration: none;
       color: $white;
+      text-shadow: $soft;
+
       h3 {
         margin-top: 1em;
         font-size: 1.5em;
