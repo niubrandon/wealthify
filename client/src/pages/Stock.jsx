@@ -189,7 +189,7 @@ const Stock = (props) => {
           regularMarketOpen={detail.regularMarketOpen}
         />
       </>
-
+  );
 };
 
 export default Stock;

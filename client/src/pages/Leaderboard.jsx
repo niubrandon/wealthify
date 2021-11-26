@@ -6,6 +6,7 @@ import '../styles/pages/leaderboard.scss';
 const Leaderboard = (props) => {
   const [data, setData] = useState([]);
   //use hardcoded jwt token first
+  
   useEffect(() => {
     const url = "http://localhost:3000/api/accounts/leaderboard";
     const config = {

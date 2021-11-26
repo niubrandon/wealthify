@@ -1,6 +1,8 @@
 import { Doughnut } from 'react-chartjs-2';
 
 const PortfolioDonutChart = (props) => {
+  console.log("priting from donut chart", props.account)
+
 
 const stockListArray = ["cash balance"]
 const stockMarketValueArray = [Number(props.account.account.cash_balance).toFixed(2)]
