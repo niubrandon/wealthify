@@ -1,15 +1,15 @@
 import Nav from 'react-bootstrap/Nav';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate, Navigate } from 'react-router-dom';
 import { RiTeamFill } from 'react-icons/ri';
 import { GoSearch, GoGraph } from 'react-icons/go';
 import { BiTrendingUp } from 'react-icons/bi';
-// import { HiDocumentReport } from 'react-icons/hi';
 import '../styles/components/navbar.scss';
 
 const NavBar = (props) => {
-  console.log('print from navbar', props.authUser);
+  let navigate = useNavigate();
 
   const onLogout = (e) => {
+    navigate('/');
     localStorage.clear();
     props.setAuthUser(null);
     props.setAccount(null);
@@ -40,19 +40,18 @@ const NavBar = (props) => {
           </NavLink>
         </div>
         <div className='actions'>
-          {props.authUser ? (
+          {props.authUser && (
             <>
-              {props.authUser && (
-                <p>
-                  Welcome, <br />
-                  {props.authUser.user_email}
-                </p>
-              )}
+              <p>
+                Welcome, <br />
+                {props.authUser.user_email}
+              </p>
               <NavLink onClick={onLogout} to='/' className='userauth'>
                 <h3>Logout</h3>
               </NavLink>
             </>
-          ) : (
+          )}
+          {!props.authUser && (
             <>
               <NavLink to='/login' className='userauth'>
                 <h3>Login</h3>

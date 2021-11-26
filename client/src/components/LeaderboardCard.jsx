@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const LeaderboardCard = (props) => {
+  console.log('leaderboard props:', props);
   const { data } = props;
   const [donut, setDonut] = useState();
 
