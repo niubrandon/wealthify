@@ -1,0 +1,21 @@
+@import '../_variables';
+
+header {
+  @include flex-center(row);
+  width: 90%;
+  margin: auto;
+
+  button {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    height: 100%;
+    .watching {
+      color: $logodark;
+    }
+
+    .not-watching {
+      color: $logolight;
+    }
+  }
+}

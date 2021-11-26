@@ -4,9 +4,14 @@
   @include title();
   display: flex;
   justify-content: space-between;
-  width: 60%;
+  align-items: center;
+  width: 100%;
   margin: auto;
-  padding: 20px;
+  padding: 0 20px;
+
+  h1 {
+    margin-bottom: 0;
+  }
 
   button {
     border: none;
@@ -14,7 +19,7 @@
     font-size: 1.2rem;
     margin-left: 1em;
     border-radius: 8px;
-    color: white;
+    color: $white;
     background-color: $logo;
 
     &:hover {
