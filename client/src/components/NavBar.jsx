@@ -1,7 +1,7 @@
 import Nav from 'react-bootstrap/Nav';
 import { NavLink, useNavigate, Navigate } from 'react-router-dom';
 import { RiTeamFill } from 'react-icons/ri';
-import { GoSearch, GoGraph } from 'react-icons/go';
+import { GoSearch, GoGraph, GoEye } from 'react-icons/go';
 import { BiTrendingUp } from 'react-icons/bi';
 import '../styles/components/navbar.scss';
 
@@ -31,6 +31,10 @@ const NavBar = (props) => {
             <GoSearch />
             <h2>Search</h2>
           </NavLink>
+          <NavLink to='/watchlist' className='nav-item'>
+            <GoEye />
+            <h2>Watchlist</h2>
+          </NavLink>
           <NavLink to='/' className='nav-item'>
             <BiTrendingUp />
             <h2>Trending</h2>
@@ -38,10 +42,6 @@ const NavBar = (props) => {
           <NavLink to='/leaderboard' className='nav-item'>
             <RiTeamFill />
             <h2>Leaderboard</h2>
-          </NavLink>
-          <NavLink to='/watchlist' className='nav-item'>
-            <RiTeamFill />
-            <h2>Watchlist</h2>
           </NavLink>
         </div>
         <div className='actions'>
