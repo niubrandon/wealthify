@@ -2,20 +2,25 @@ import { Doughnut } from 'react-chartjs-2';
 
 const PortfolioDonutChart = (props) => {
 
-const stockListArray = ["cash balance"]
+const stockListArray = ["cash balance", "stock balance", "crypto balance"]
 const stockMarketValueArray = [Number(props.account.account.cash_balance).toFixed(2)]
 const stocks = []
+const stocksValue = []
 const crypto = []
+const cryptoValue = []
 for (const item of props.account.portfolio) {
   if (item.ticker.includes('-USD')) {
     crypto.push(item.ticker)
+    cryptoValue.push(Number(Number(item.quantity) * Number(item.current_spot_price)).toFixed(2))
   }
   else {
     stocks.push(item.ticker)
+    stocksValue.push(Number(Number(item.quantity) * Number(item.current_spot_price)).toFixed(2))
   }
-  stockListArray.push(item.ticker)
-  stockMarketValueArray.push(Number(Number(item.quantity) * Number(item.current_spot_price)).toFixed(2))
-}  
+}
+
+
+
 const backgroundColor = [];
 const hoverBackgroundColor = [];
 const randomColor = (() => {
