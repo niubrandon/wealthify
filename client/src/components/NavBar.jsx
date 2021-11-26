@@ -18,7 +18,7 @@ const NavBar = (props) => {
 
   return (
     <>
-      <Nav variant='pills' className='flex-column position-fixed nav-container'>
+      <Nav variant='pills' className='flex-column nav-container'>
         <div className='links'>
           <div className='nav-title'>
             <h1>Wealthify</h1>

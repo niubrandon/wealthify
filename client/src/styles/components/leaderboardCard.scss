@@ -1,0 +1,48 @@
+@import '../_variables';
+
+#leaderboard-card {
+  @include card(160px, 700px)
+  @include flex-center(column);
+  h2{
+    font-size: 1.5em;
+    margin-bottom: 0;
+    font-family: $font-main
+  }
+  .user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .rank {
+      box-shadow: $soft;
+      background-color: $logo;
+      color: $white;
+      padding: 5px 10px;
+      border-radius: 12px;
+      font-size: 1.5em;
+    }
+
+    .icon {
+      font-size: 1.7em;
+      color: #E9B872
+    }
+  }
+
+  .card-body {
+    @include flex-center(column);
+    padding: 0;
+    .summary-btn {
+      @include flex-center(row);
+      background-color: transparent;
+      border: none;
+     
+      p {
+        margin-bottom: 0;
+        margin-right: 10px;
+      }
+      
+    }
+  }
+
+}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import LeaderboardCard from "../components/LeaderboardCard";
-import '../styles/components/leaderboard.scss';
+import '../styles/pages/leaderboard.scss';
 
 const Leaderboard = (props) => {
   const [data, setData] = useState([]);
@@ -31,12 +31,12 @@ const Leaderboard = (props) => {
   data.sort((a, b) => b.total_balance - a.total_balance);
 
   return (
-    <>
-      <h1 id="leaderboard">Leaderboard</h1>
+    <section id="leaderboard" class='page'>
+      <h1 className='leaderboard-title'>Leading on <span>Wealthify</span></h1>
       <LeaderboardCard
         data={data}
       />
-    </>
+    </section>
   );
 };
 

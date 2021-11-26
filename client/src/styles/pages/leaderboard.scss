@@ -1,0 +1,13 @@
+@import '../_variables';
+
+#leaderboard {
+  @include flex-center(column);
+  .leaderboard-title {
+    @include title;
+    margin-bottom: 2rem;
+
+    span {
+      color: $logo;
+    }
+  }
+}
