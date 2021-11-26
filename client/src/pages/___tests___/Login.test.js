@@ -1,34 +1,62 @@
 import React from "react";
-
-import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, getByAltText, getByPlaceholderText, prettyDOM, queryByText, queryByAltText } from "@testing-library/react";
-
-
+import userEvent from '@testing-library/user-event';
+import { render, act, screen, cleanup, prettyDOM, waitFor} from "@testing-library/react";
 import Login from '../Login.jsx'
 import { MemoryRouter } from "react-router";
+import { rest } from 'msw';
+import { setupServer } from 'msw/node'
+
+
+const server = setupServer(
+  rest.get('/greeting', (req, res, ctx) => {
+    return res(ctx.json(ctx.status(201)))
+  }),
+)
+beforeAll(() => server.listen())
+afterEach(() => {
+  server.resetHandlers()
+  cleanup()
+})
+afterAll(() => server.close())
 
 
 afterEach(cleanup);
-
+jest.mock('axios');
 describe("Login", () => {
  
-  it("render without crashing", async() => {
-  //const onSubmit = jest.fn();
-   const { getByText, getByPlaceholderText} = render(
+  it("login user", async() => {
+
+
+    render(
       <MemoryRouter>
         <Login />
       </MemoryRouter>)
-
-      //get email
-      const email = getByPlaceholderText("Enter email")
-      fireEvent.change(email, {target: {value: "niubrandon@gmail.com"}})
+      console.log("printing initial",prettyDOM())
+      const form = screen.getByTestId("signin-form").querySelectorAll("input")[0];
+      const form1 = screen.getByTestId("signin-form").querySelectorAll("input")[1];
+      const button = screen.getByTestId("signin-form").querySelector("button")
+      
+      //console.log("printing",prettyDOM(form))
+      //const email = form.querySelector("input")
+      
+      userEvent.type(form, "niubrandon@gmail.com")
+      
+      
+      //fireEvent.change(email, {target: {value: "niubrandon@gmail.com"}})
       //get password
-      const password = getByPlaceholderText("Password")
-      fireEvent.change(password, {target: {value: "Super12345"}})
-      //click the login button
-      fireEvent.click(getByText("Login"))
-      //expect email render on nav
-      //await waitForElement(() => getByText("Logout"))
-      //expect(getByText("Logout")).toBeInTheDocument();
-      //expect(onSubmit).toHaveBeenCalledTimes(1)
+  
+      userEvent.type(form1, "Super12345")
+      console.log("printing",prettyDOM(form))
+      console.log("printing",prettyDOM(form1))
+      console.log("printing",prettyDOM(button))
+ 
+      userEvent.click(button)
+      await waitFor(() => screen.getByTestId("nav-bar"))
+      await waitFor(() => screen.getByTestId("nav-bar-welcome"))
+
+      expect(screen.getByText("Welcome")).toBeInTheDocument();
+     
+      
+     
   })
 })

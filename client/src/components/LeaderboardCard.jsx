@@ -18,7 +18,7 @@ const LeaderboardCard = (props) => {
     const place = index + 1;
 
     return (
-      <Card key={index} className='w-70 text-center'>
+      <Card key={index} className='w-50 text-center'>
         <Card.Header as='h5'>
           {place} {account.email}
         </Card.Header>
