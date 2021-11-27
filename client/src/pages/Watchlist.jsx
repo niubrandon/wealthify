@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Card } from 'react-bootstrap';
-
+import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import WatchlistItem from '../components/WatchlistItem'
+import '../styles/pages/watchlist.scss'
 
 const Watchlist = (props) => {
   const {authUser, setAuthUser, account, setAccount} = props
@@ -15,6 +14,12 @@ const Watchlist = (props) => {
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setAuthUser(JSON.parse(localStorage.getItem('auth')));
+    }
+  }, []);
+
+   useEffect(() => {
+    if (!authUser) {
+      <Navigate to='/401' />;
     }
   }, []);
 
@@ -102,9 +107,14 @@ const Watchlist = (props) => {
   })
 
   return (
-    <div style={flexWrapperVertical}>
-      {WatchlistItems}
-    </div>
+    <section id='watchlist' className='page'>
+      <h1 className='watchlist-title'>
+        Watching on <span>Wealthify</span>
+      </h1>
+      <div className='watchlist-container'>
+        {WatchlistItems}
+      </div>
+    </section>
   );
 };
 

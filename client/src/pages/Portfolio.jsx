@@ -17,7 +17,7 @@ const Portfolio = (props) => {
     if (!props.authUser) {
       <Navigate to='/401' />;
     }
-  }, [props.userAuth]);
+  }, [props.authUser]);
 
   useEffect(() => {
     if (!props.authUser) {
