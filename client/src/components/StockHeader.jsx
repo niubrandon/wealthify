@@ -18,7 +18,7 @@ const StockHeader = (props) => {
 
   return (
     <>
-      <header id='stock-header'>
+      <div id='stock-header'>
         <h1>{name}</h1>
         <div className='buttons'>
           <button className='buy' onClick={openModal}>
@@ -28,7 +28,7 @@ const StockHeader = (props) => {
             Sell
           </button>
         </div>
-      </header>
+      </div>
       {isOpen && (
         <Modal
           modalType={modal}

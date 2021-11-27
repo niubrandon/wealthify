@@ -1,4 +1,4 @@
-import { Table } from "react-bootstrap";
+import '../styles/components/stockTable.scss'
 const StockTable = (props) => {
   const {
     regularMarketPrice,
@@ -13,52 +13,51 @@ const StockTable = (props) => {
     regularMarketOpen,
   } = props;
   return (
-    <div>
-      <Table striped bordered hover size="sm">
-        <tbody>
-          <tr>
-            <td>regularMarketPrice</td>
-            <td>{regularMarketPrice}</td>
-          </tr>
-          <tr>
-            <td>regularMarketChange</td>
-            <td>{regularMarketChange}</td>
-          </tr>
-          <tr>
-            <td>regularMarketChangePercent</td>
-            <td colSpan="2">{regularMarketChangePercent}</td>
-          </tr>
-          <tr>
-            <td>marketCap</td>
-            <td>{marketCap}</td>
-          </tr>
-          <tr>
-            <td>regularMarketDayHigh</td>
-            <td>{regularMarketDayHigh}</td>
-          </tr>
-          <tr>
-            <td>regularMarketDayLow</td>
-            <td colSpan="2">{regularMarketDayLow}</td>
-          </tr>
-          <tr>
-            <td>regularMarketVolume</td>
-            <td>{regularMarketVolume}</td>
-          </tr>
-          <tr>
-            <td>regularMarketPreviousClose</td>
-            <td>{regularMarketPreviousClose}</td>
-          </tr>
-          <tr>
-            <td>exchange</td>
-            <td colSpan="2">{exchange}</td>
-          </tr>
-          <tr>
-            <td>regularMarketOpen</td>
-            <td colSpan="2">{regularMarketOpen}</td>
-          </tr>
-        </tbody>
-      </Table>
-    </div>
+    <article id='stock-table'>
+      <h2 className='title'>Key Performance Indicators</h2>
+      <table className='info'>
+        <tr>
+          <td>Regular Market Price</td>
+          <td>{regularMarketPrice}</td>
+        </tr>
+        <tr>
+          <td>Regular Market Change</td>
+          <td>{regularMarketChange}</td>
+        </tr>
+        <tr>
+          <td>Regular MarketChange Percent</td>
+          <td>{regularMarketChangePercent}</td>
+        </tr>
+        <tr>
+          <td>Market Cap</td>
+          <td>{marketCap}</td>
+        </tr>
+        <tr>
+          <td>Regular Market Day High</td>
+          <td>{regularMarketDayHigh}</td>
+        </tr>
+        <tr>
+          <td>Regular Market Day Low</td>
+          <td>{regularMarketDayLow}</td>
+        </tr>
+        <tr>
+          <td>Regular Market Volume</td>
+          <td>{regularMarketVolume}</td>
+        </tr>
+        <tr>
+          <td>Regular Market Previous Close</td>
+          <td>{regularMarketPreviousClose}</td>
+        </tr>
+        <tr>
+          <td>Exchange</td>
+          <td>{exchange}</td>
+        </tr>
+        <tr>
+          <td>Regular Market Open</td>
+          <td>{regularMarketOpen}</td>
+        </tr>
+      </table>
+    </article>
   );
 };
 
