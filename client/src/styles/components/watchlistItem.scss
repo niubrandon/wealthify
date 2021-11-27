@@ -1,0 +1,39 @@
+@import '../_variables';
+
+.watchlist-card {
+  @include card(100px, 275px)
+  @include flex-center(column);
+  justify-content: space-between;
+  height: 100%;
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+
+    .link {
+      @include title();
+      text-decoration: none;
+      color: $black;
+      &:hover {
+        color: $black;
+      }
+    }
+    button {
+      border-radius: 50%;
+      padding: 5px;
+      font-size: 1.5em;
+      background-color: $danger;
+    }
+  }
+  footer {
+    display: flex;
+    text-align: left;
+    width: 100%;
+    p {    
+    margin-bottom: 0;
+    }
+  }
+}

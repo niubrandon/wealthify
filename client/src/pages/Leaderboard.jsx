@@ -32,7 +32,7 @@ const Leaderboard = (props) => {
   data.sort((a, b) => b.total_balance - a.total_balance);
 
   return (
-    <section id="leaderboard" class='page'>
+    <section id="leaderboard" className='page'>
       <h1 className='leaderboard-title'>Leading on <span>Wealthify</span></h1>
       <LeaderboardCard
         data={data}

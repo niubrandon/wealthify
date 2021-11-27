@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Card } from 'react-bootstrap';
-
 import WatchlistItem from '../components/WatchlistItem'
+import '../styles/pages/watchlist.scss'
 
 const Watchlist = (props) => {
   const {authUser, setAuthUser, account, setAccount} = props
@@ -12,12 +11,13 @@ const Watchlist = (props) => {
   const [deleteId, setDeleteId] = useState("")
   console.log("&&&&&&&&&&printing from watchlist page, authUser", authUser)
   
+  let navigate = useNavigate();
+
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setAuthUser(JSON.parse(localStorage.getItem('auth')));
     }
   }, []);
-
 
   useEffect(() => {
 
@@ -45,10 +45,11 @@ const Watchlist = (props) => {
  
 //fetch all the data
   useEffect(() => {
-    if (!authUser) {
-      console.log("user is not login!")
+    if (!localStorage.getItem('auth')) {
+      navigate('/401');
       return
     }
+
     const url = `http://localhost:3000/api/watchlists`;
     axios
       .get(url)
@@ -102,9 +103,14 @@ const Watchlist = (props) => {
   })
 
   return (
-    <div style={flexWrapperVertical}>
-      {WatchlistItems}
-    </div>
+    <section id='watchlist' className='page'>
+      <h1 className='watchlist-title'>
+        Watching on <span>Wealthify</span>
+      </h1>
+      <div className='watchlist-container'>
+        {WatchlistItems}
+      </div>
+    </section>
   );
 };
 
