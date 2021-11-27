@@ -31,7 +31,7 @@ const NavBar = (props) => {
             <GoSearch />
             <h2>Search</h2>
           </NavLink>
-          <NavLink to='/watchlist' className='nav-item'>
+          <NavLink to={authUser ? '/watchlist' : '401'} className='nav-item'>
             <GoEye />
             <h2>Watchlist</h2>
           </NavLink>

@@ -19,7 +19,6 @@ const Watchlist = (props) => {
     }
   }, []);
 
-
   useEffect(() => {
 
     if (!deleteId) {
@@ -47,10 +46,10 @@ const Watchlist = (props) => {
 //fetch all the data
   useEffect(() => {
     if (!authUser) {
-      console.log("user is not login!");
       navigate('/401');
-      return
+      return;
     }
+
     const url = `http://localhost:3000/api/watchlists`;
     axios
       .get(url)

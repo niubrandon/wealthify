@@ -5,15 +5,18 @@ import PortfolioCard from '../components/PortfolioCard';
 import Transactions from '../components/Transactions';
 import Referral from '../components/Referral';
 import NoUser from '../pages/NoUser';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Portfolio = (props) => {
   console.log('print authUser from portfolio', props.authUser);
   console.log('print account from portfolio', props.account);
 
+  let navigate = useNavigate();
+
+
   useEffect(() => {
     if (!props.authUser) {
-      <Navigate to='/401' />;
+      navigate('/401');
       return;
     }
     const url = `http://localhost:3000/api/accounts/${props.authUser.user_id}`;

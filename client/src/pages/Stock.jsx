@@ -1,6 +1,6 @@
 import StockGraph from '../components/StockGraph';
 import StockHeader from '../components/StockHeader';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import StockTable from '../components/StockTable';
 import '../styles/pages/stock.scss';
@@ -23,6 +23,7 @@ const Stock = (props) => {
   const API_KEY = `${process.env.REACT_APP_API_KEY}`;
   const API_HOST = `${process.env.REACT_APP_API_HOST}`;
   const { name } = useParams();
+  let navigate = useNavigate();
 
   var options = {
     method: 'GET',
@@ -36,7 +37,8 @@ const Stock = (props) => {
 
   useEffect(() => {
     if (!props.authUser) {
-      <Navigate to='/401' />;
+      navigate('/401');
+      return
     }
   }, [props.authUser]);
 
