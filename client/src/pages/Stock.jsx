@@ -144,10 +144,11 @@ const Stock = (props) => {
   return (
     <section id='stock' className='page'>
       <header>
-       <button 
-          onClick={onFavourite}>
-          {activeButton ? <GoEyeClosed className='watching'/> : <GoEye className='not-watching'/>}
-        </button>
+       {authUser && 
+          <button onClick={onFavourite}>
+            {activeButton ? <GoEyeClosed className='watching'/> : <GoEye className='not-watching'/>}
+          </button>
+        }
         <StockHeader
           name={name}
           regMP={detail.regularMarketPrice}
