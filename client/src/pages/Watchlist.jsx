@@ -15,12 +15,7 @@ const Watchlist = (props) => {
 
   useEffect(() => {
     if (localStorage.getItem('auth')) {
-                  console.log('seting authUser in watchlist!!!!!!!!!!!!!!!!!!!!!!!!')
-
       setAuthUser(JSON.parse(localStorage.getItem('auth')));
-      console.log('what is this JSON thing:', JSON.parse(localStorage.getItem('auth')))
-                  console.log('set authUser !!!!!!!!!!!!!!!', authUser)
-
     }
   }, []);
 
@@ -50,7 +45,6 @@ const Watchlist = (props) => {
  
 //fetch all the data
   useEffect(() => {
-    // if (!authUser) {
     if (!JSON.parse(localStorage.getItem('auth'))) {
       console.log('noooo user found in watchlist::', authUser)
       navigate('/401');

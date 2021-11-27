@@ -10,7 +10,7 @@ import {GoEye, GoEyeClosed} from 'react-icons/go'
 const axios = require('axios').default;
 
 const Stock = (props) => {
-  const { authUser, account } = props;
+  const { authUser, account, setAuthUser } = props;
   console.log('authUser on Stock:', authUser);
   const [graphx, setGraphx] = useState([]);
   const [graphy, setGraphy] = useState([]);
@@ -25,6 +25,13 @@ const Stock = (props) => {
   const { name } = useParams();
   let navigate = useNavigate();
 
+  useEffect(() => {
+    if (localStorage.getItem('auth')) {
+      setAuthUser(JSON.parse(localStorage.getItem('auth')));
+    }
+  }, []);
+
+
   var options = {
     method: 'GET',
     url: `https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/${name}`,
@@ -36,11 +43,11 @@ const Stock = (props) => {
   };
 
   useEffect(() => {
-    if (!props.authUser) {
+    if (!localStorage.getItem('auth')) {
       navigate('/401');
       return
     }
-  }, [props.authUser]);
+  }, [authUser]);
 
   useEffect(() => {
     axios
