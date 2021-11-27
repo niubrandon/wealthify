@@ -10,17 +10,10 @@ import { Navigate } from 'react-router-dom';
 const Portfolio = (props) => {
   console.log('print authUser from portfolio', props.authUser);
   console.log('print account from portfolio', props.account);
-  
-
 
   useEffect(() => {
     if (!props.authUser) {
       <Navigate to='/401' />;
-    }
-  }, [props.authUser]);
-
-  useEffect(() => {
-    if (!props.authUser) {
       return;
     }
     const url = `http://localhost:3000/api/accounts/${props.authUser.user_id}`;
@@ -32,7 +25,6 @@ const Portfolio = (props) => {
     axios
       .get(url, config)
       .then((response) => {
-        // console.log(response.data);
         props.setAccount(response.data);
       })
       .catch((err) => {
@@ -51,21 +43,15 @@ const Portfolio = (props) => {
   };
 
   return (
-    <>
-      {/* {!props.authUser ? (
-        <Navigate to='/401' />
-      ) : ( */}
-      <section className='page'>
-        <div style={flexWrapperVertical}>
-          {!props.account && <p>you don't have any holdings</p>}
-          {props.account && <PortfolioDonutChart account={props.account} />}
-          {props.account && <PortfolioCard account={props.account} />}
-          {props.account && <Transactions account={props.account} />}
-          <Referral account={props.account} authUser={props.authUser} />
-        </div>
-      </section>
-      {/* )} */}
-    </>
+    <section className='page'>
+      <div style={flexWrapperVertical}>
+        {!props.account && <p>you don't have any holdings</p>}
+        {props.account && <PortfolioDonutChart account={props.account} />}
+        {props.account && <PortfolioCard account={props.account} />}
+        {props.account && <Transactions account={props.account} />}
+        <Referral account={props.account} authUser={props.authUser} />
+      </div>
+    </section>
   );
 };
 

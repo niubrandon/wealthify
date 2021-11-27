@@ -38,7 +38,7 @@ const Stock = (props) => {
     if (!props.authUser) {
       <Navigate to='/401' />;
     }
-  }, [props.userAuth]);
+  }, [props.authUser]);
 
   useEffect(() => {
     axios

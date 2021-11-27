@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import WatchlistItem from '../components/WatchlistItem'
 import '../styles/pages/watchlist.scss'
 
@@ -11,15 +11,11 @@ const Watchlist = (props) => {
   const [deleteId, setDeleteId] = useState("")
   console.log("&&&&&&&&&&printing from watchlist page, authUser", authUser)
   
+  let navigate = useNavigate();
+
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setAuthUser(JSON.parse(localStorage.getItem('auth')));
-    }
-  }, []);
-
-   useEffect(() => {
-    if (!authUser) {
-      <Navigate to='/401' />;
     }
   }, []);
 
@@ -51,7 +47,8 @@ const Watchlist = (props) => {
 //fetch all the data
   useEffect(() => {
     if (!authUser) {
-      console.log("user is not login!")
+      console.log("user is not login!");
+      navigate('/401');
       return
     }
     const url = `http://localhost:3000/api/watchlists`;
