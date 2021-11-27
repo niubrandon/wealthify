@@ -25,7 +25,7 @@ const PortfolioCard = (props) => {
                     100
                 ).toFixed(2)}% of your total portfolio`}
               </Card.Text>
-              <Link class='trade' to={`/stock/${item.ticker}`}>
+              <Link className='trade' to={`/stock/${item.ticker}`}>
                 Trade
               </Link>
             </Card.Body>

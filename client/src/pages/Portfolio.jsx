@@ -5,28 +5,17 @@ import PortfolioCard from '../components/PortfolioCard';
 import Transactions from '../components/Transactions';
 import Referral from '../components/Referral';
 import NoUser from '../pages/NoUser';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const Portfolio = (props) => {
+  console.log('print authUser from portfolio', props.authUser);
   console.log('print account from portfolio', props.account);
 
-  let navigate = useNavigate();
-
-  // useEffect(() => {
-  //   console.log('what is in localstorage????????:', localStorage)
-  //   if (localStorage.getItem('auth')) {
-  //     props.setAuthUser(JSON.parse(localStorage.getItem('auth')));
-  //   }
-  // }, []);
-
-
   useEffect(() => {
-    // if (!localStorage.getItem('auth')) {
-    //   navigate('/401');
-    //   return
-    // }
-    console.log('print authUser from portfolio', props.authUser);
-
+    if (!props.authUser) {
+      <Navigate to='/401' />;
+      return;
+    }
     const url = `http://localhost:3000/api/accounts/${props.authUser.user_id}`;
     const config = {
       headers: {
@@ -54,15 +43,17 @@ const Portfolio = (props) => {
   };
 
   return (
-    <section className='page'>
-      <div style={flexWrapperVertical}>
-        {!props.account && <p>you don't have any holdings</p>}
-        {props.account && <PortfolioDonutChart account={props.account} />}
-        {props.account && <PortfolioCard account={props.account} />}
-        {props.account && <Transactions account={props.account} />}
-        <Referral account={props.account} authUser={props.authUser} />
-      </div>
-    </section>
+    <>
+      <section className='page'>
+        <div style={flexWrapperVertical}>
+          {!props.account && <p>you don't have any holdings</p>}
+          {props.account && <PortfolioDonutChart account={props.account} />}
+          {props.account && <PortfolioCard account={props.account} />}
+          {props.account && <Transactions account={props.account} />}
+          <Referral account={props.account} authUser={props.authUser} />
+        </div>
+      </section>
+    </>
   );
 };
 
