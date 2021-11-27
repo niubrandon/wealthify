@@ -35,6 +35,7 @@ class AccountsController < ApplicationController
     render json: {leaderboard: leaderboard_data}
   end
 
+ 
 
   # GET /accounts
   def index
