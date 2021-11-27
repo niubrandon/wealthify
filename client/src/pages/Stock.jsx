@@ -1,10 +1,11 @@
 import StockGraph from '../components/StockGraph';
 import StockHeader from '../components/StockHeader';
-import './Stock.scss';
 import { useParams, Navigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import StockTable from '../components/StockTable';
-import Button from 'react-bootstrap/Button';
+import '../styles/pages/stock.scss';
+import './Stock.scss';
+import {GoEye, GoEyeClosed} from 'react-icons/go'
 
 const axios = require('axios').default;
 
@@ -68,17 +69,17 @@ const Stock = (props) => {
     },
   };
 
-  // useEffect(() => {
-  //   axios
-  //     .request(options2)
-  //     .then(function (response) {
-  //       console.log(response.data.quoteResponse.result[0])
-  //       setDetail(response.data.quoteResponse.result[0]);
-  //     })
-  //     .catch(function (error) {
-  //       console.error(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .request(options2)
+      .then(function (response) {
+        console.log(response.data)
+        setDetail(response.data.quoteResponse.result[0]);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, []);
 
   useEffect(() => {
     axios({
@@ -87,8 +88,7 @@ const Stock = (props) => {
       data: favourite,
     })
       .then(function (response) {
-        console.log("hey")
-        console.log(response.data.quoteResponse.result[0]);
+        console.log(response.data);
         setDetail(response.data.quoteResponse.result[0]);
       })
       .catch(function (error) {
@@ -142,54 +142,51 @@ const Stock = (props) => {
   };
 
   return (
-    <>
+    <section id='stock' className='page'>
+      <header>
+       <button 
+          onClick={onFavourite}>
+          {activeButton ? <GoEyeClosed className='watching'/> : <GoEye className='not-watching'/>}
+        </button>
         <StockHeader
           name={name}
           regMP={detail.regularMarketPrice}
           authUser={authUser}
           account={account}
         />
-        <button
-          type='button'
-          className='btn btn-outline-info'
+      </header>
+      <StockGraph range={range} xAxis={graphx} yAxis={graphy} />
+      <div className='buttons'>
+        <button className='time-interval'
           onClick={(e) => daily(e)}
         >
           Daily
         </button>
-        <button
-          type='button'
-          className='btn btn-outline-info'
+        <button className='time-interval'
           onClick={(e) => weekly(e)}
         >
           Weekly
         </button>
-        <button
-          type='button'
-          className='btn btn-outline-info'
+        <button className='time-interval'
           onClick={(e) => yearly(e)}
         >
           Yearly
         </button>
-         <button  type='button'
-            className='btn btn-outline-info'
-            onClick={onFavourite}>
-            Add to watchlist
-            </button>
-        <StockGraph range={range} xAxis={graphx} yAxis={graphy} />
-        <StockTable
-          regularMarketPrice={detail.regularMarketPrice}
-          regularMarketChange={detail.regularMarketChange}
-          regularMarketChangePercent={detail.regularMarketChangePercent}
-          marketCap={detail.marketCap}
-          regularMarketDayHigh={detail.regularMarketDayHigh}
-          regularMarketDayLow={detail.regularMarketDayLow}
-          regularMarketVolume={detail.regularMarketVolume}
-          regularMarketPreviousClose={detail.regularMarketPreviousClose}
-          exchange={detail.fullExchangeName}
-          regularMarketOpen={detail.regularMarketOpen}
-        />
-      </>
-  );
+      </div>
+      <StockTable
+        regularMarketPrice={detail.regularMarketPrice}
+        regularMarketChange={detail.regularMarketChange}
+        regularMarketChangePercent={detail.regularMarketChangePercent}
+        marketCap={detail.marketCap}
+        regularMarketDayHigh={detail.regularMarketDayHigh}
+        regularMarketDayLow={detail.regularMarketDayLow}
+        regularMarketVolume={detail.regularMarketVolume}
+        regularMarketPreviousClose={detail.regularMarketPreviousClose}
+        exchange={detail.fullExchangeName}
+        regularMarketOpen={detail.regularMarketOpen}
+      />
+    </section>
+  )
 };
 
 export default Stock;

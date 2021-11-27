@@ -1,0 +1,22 @@
+@import '../_variables';
+
+#stock-table {
+  @include flex-center(column);
+  margin-top: 2em;
+  .title {
+    @include title();
+  }
+  .info {
+    width: 70%;
+    margin-top: 1em;
+    font-size: 1.3em;
+    font-family: $font-main;
+    tr {
+      padding: 3em 0;
+      &:nth-child(even){background-color: #f2f2f2;}
+    }
+    td {
+      padding: 10px;
+    }
+  }
+}

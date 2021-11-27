@@ -1,0 +1,36 @@
+@import '../_variables';
+
+header {
+  @include flex-center(row);
+  width: 90%;
+  margin: auto;
+
+  button {
+    @include flex-center(column);
+    background-color: $logo;
+    border: none;
+    font-size: 2rem;
+    height: 100%;
+    color: $white;
+    padding: 10px;
+    border-radius: 8px;
+    &:hover {
+      background-color: $logodark;
+    }
+  }
+}
+
+.buttons {
+  @include flex-center(row);
+  .time-interval {
+    background-color: $logo;
+    color: $white;
+    border-radius: 20px;
+    border: none;
+    padding: 5px 25px;
+    margin: 1rem;
+    &:hover {
+      background-color: $logodark;
+    }
+  }
+}
