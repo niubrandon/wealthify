@@ -265,11 +265,8 @@ watchlist3 = user3.watchlists.create!({
   :ticker => 'TLRY'
 })
 
-
+Transaction.update_all "created_at = '2021-11-17 17:17:17.7777'"
 
 puts "DONE!"
-
-
-
 
 
