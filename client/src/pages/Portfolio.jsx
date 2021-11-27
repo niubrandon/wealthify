@@ -9,12 +9,10 @@ import NoUser from '../pages/NoUser';
 import { Navigate } from 'react-router-dom';
 
 const Portfolio = (props) => {
-  console.log('acccount from portfolio:', props.account);
-  useEffect(() => {
-    if (localStorage.getItem('auth')) {
-      props.setAuthUser(JSON.parse(localStorage.getItem('auth')));
-    }
-  }, []);
+  console.log('print authUser from portfolio', props.authUser);
+  console.log('print account from portfolio', props.account);
+  
+
 
   useEffect(() => {
     if (!props.authUser) {

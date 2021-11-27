@@ -190,7 +190,6 @@ const Stock = (props) => {
         />
       </>
   );
-
 };
 
 export default Stock;

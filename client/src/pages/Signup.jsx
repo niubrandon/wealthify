@@ -112,7 +112,7 @@ const Signup = (props) => {
           <Form.Control type="text" name="referral_code" placeholder="Refferal code" onChange={e => setReferralCode(e.target.value)} />
         </Form.Group>
       
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" data-testid="signup-button">
           SignUp
         </Button>
       </Form>
