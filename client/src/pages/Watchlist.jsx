@@ -45,10 +45,9 @@ const Watchlist = (props) => {
  
 //fetch all the data
   useEffect(() => {
-    if (!JSON.parse(localStorage.getItem('auth'))) {
-      console.log('noooo user found in watchlist::', authUser)
+    if (!localStorage.getItem('auth')) {
       navigate('/401');
-      return;
+      return
     }
 
     const url = `http://localhost:3000/api/watchlists`;

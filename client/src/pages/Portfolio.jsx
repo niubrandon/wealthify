@@ -8,17 +8,25 @@ import NoUser from '../pages/NoUser';
 import { useNavigate } from 'react-router-dom';
 
 const Portfolio = (props) => {
-  console.log('print authUser from portfolio', props.authUser);
   console.log('print account from portfolio', props.account);
 
   let navigate = useNavigate();
 
+  // useEffect(() => {
+  //   console.log('what is in localstorage????????:', localStorage)
+  //   if (localStorage.getItem('auth')) {
+  //     props.setAuthUser(JSON.parse(localStorage.getItem('auth')));
+  //   }
+  // }, []);
+
 
   useEffect(() => {
-    if (!props.authUser) {
-      navigate('/401');
-      return;
-    }
+    // if (!localStorage.getItem('auth')) {
+    //   navigate('/401');
+    //   return
+    // }
+    console.log('print authUser from portfolio', props.authUser);
+
     const url = `http://localhost:3000/api/accounts/${props.authUser.user_id}`;
     const config = {
       headers: {
