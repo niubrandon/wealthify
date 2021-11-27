@@ -1,0 +1,26 @@
+@import '../_variables';
+
+#portfolio {
+  @include flex-center(column);
+  width: 90%;
+  h1 {
+    @include title();
+    span {
+      color: $logo;
+    }
+  }
+
+  .holdings {
+    @include flex-center(row);
+    height: auto;
+
+    .card {
+      flex: 2;
+    }
+
+    .donut {
+      flex: 1;
+    }
+  }
+
+}

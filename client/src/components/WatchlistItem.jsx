@@ -14,7 +14,7 @@ const WatchlistItem = (props) => {
         <button><MdOutlineClose id={props.item.id} className='watchlist-delete' onClick={props.onDelete}/></button>      
       </header>
       <footer>
-        <p>{`$${Number(props.price).toFixed(2)} USD`}</p>
+        <p>{`$${Number(props.price).toFixed(2)} `}<span>/share</span></p>
       </footer>
     </article>
   )
