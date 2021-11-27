@@ -5,6 +5,7 @@
   @include flex-center(column);
   justify-content: space-between;
   height: 100%;
+  
   header {
     display: flex;
     justify-content: space-between;
@@ -12,13 +13,19 @@
     margin: 0;
     width: 100%;
 
-    h2 {
+    .link {
       @include title();
+      text-decoration: none;
+      color: $black;
+      &:hover {
+        color: $black;
+      }
     }
     button {
       border-radius: 50%;
       padding: 5px;
       font-size: 1.5em;
+      background-color: $danger;
     }
   }
   footer {
