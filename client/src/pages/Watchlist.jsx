@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import WatchlistItem from '../components/WatchlistItem'
 import '../styles/pages/watchlist.scss'
 
 const Watchlist = (props) => {
-  const {authUser, setAuthUser, account, setAccount} = props
+  const {authUser, setAuthUser } = props
   const [watchlist, setWatchlist] = useState([])
   const [prices, setPrices] = useState([])
   const [deleteId, setDeleteId] = useState("")
-  console.log("&&&&&&&&&&printing from watchlist page, authUser", authUser)
+
   
   let navigate = useNavigate();
 

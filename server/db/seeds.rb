@@ -18,9 +18,9 @@ user1 = User.create!({
 
 
 account1 = user1.accounts.create!({
-  :cash_balance => 2000,
-  :stock_balance => 9566,
-  :total_balance => 12000,
+  :cash_balance => 6840,
+  :stock_balance => 3160,
+  :total_balance => 10000,
   :referral_bonus => false,
   :signup_bonus => 0  
 })
@@ -31,12 +31,7 @@ account1.portfolios.create!({
   :current_spot_price => 158,
 })
 
-account1.portfolios.create!({
-  :ticker => 'ETH-USD',
-  :quantity => 1.5,
-  :current_spot_price => 4271,
- 
-})
+
 
 account1.transactions.create!({
   :ticker => 'AAPL',
@@ -45,12 +40,7 @@ account1.transactions.create!({
   :settled_price => 158
 })
 
-account1.transactions.create!({
-  :ticker => 'ETH-USD',
-  :trade => 1,
-  :quantity => 1.5,
-  :settled_price => 4271
-})
+
 
 #seed for Adriana
 
@@ -175,8 +165,8 @@ user4 = User.create!({
 
 
 account4 = user4.accounts.create!({
-  :cash_balance => 5.5,
-  :stock_balance => 9994.5,
+  :cash_balance => 1275.5,
+  :stock_balance => 8724.5,
   :total_balance => 10000,
   :referral_bonus => false,
   :signup_bonus => 0
@@ -190,7 +180,7 @@ account4.portfolios.create!({
 
 account4.portfolios.create!({
   :ticker => 'BTC-USD',
-  :quantity => 0.01,
+  :quantity => 0.05,
   :current_spot_price => 57500,
  
 })
@@ -199,21 +189,6 @@ account4.portfolios.create!({
   :ticker => 'DOT1-USD',
   :quantity => 100,
   :current_spot_price => 38.5,
- 
-})
-
-account4.portfolios.create!({
-  :ticker => 'TLRY',
-  :quantity => 300,
-  :current_spot_price => 10.7,
- 
-})
-
-
-account4.portfolios.create!({
-  :ticker => 'CGC',
-  :quantity => 30,
-  :current_spot_price => 12,
  
 })
 
@@ -228,7 +203,7 @@ account4.transactions.create!({
 account4.transactions.create!({
   :ticker => 'BTC-USD',
   :trade => 1,
-  :quantity => 0.01,
+  :quantity => 0.05,
   :settled_price => 57500
 })
 
@@ -239,31 +214,61 @@ account4.transactions.create!({
   :settled_price => 38.5
 })
 
-account4.transactions.create!({
-  :ticker => 'TLRY',
-  :trade => 1,
-  :quantity => 300,
-  :settled_price => 10.7
-})
 
-account4.transactions.create!({
-  :ticker => 'CGC',
-  :trade => 1,
-  :quantity => 30,
-  :settled_price => 12
-})
-
-watchlist1 = user3.watchlists.create!({
+watchlist1 = user1.watchlists.create!({
   :ticker => 'CGC'
 })
 
-watchlist2 = user3.watchlists.create!({
+watchlist2 = user1.watchlists.create!({
   :ticker => 'AAPL'
 })
 
-watchlist3 = user3.watchlists.create!({
+watchlist3 = user1.watchlists.create!({
   :ticker => 'TLRY'
 })
+
+
+
+watchlist4 = user2.watchlists.create!({
+  :ticker => 'SHOP'
+})
+
+watchlist5 = user2.watchlists.create!({
+  :ticker => 'MSFT'
+})
+
+watchlist6 = user2.watchlists.create!({
+  :ticker => 'TLRY'
+})
+
+
+watchlist7 = user3.watchlists.create!({
+  :ticker => 'CGC'
+})
+
+watchlist8 = user3.watchlists.create!({
+  :ticker => 'AAPL'
+})
+
+watchlist9 = user3.watchlists.create!({
+  :ticker => 'TLRY'
+})
+
+watchlist10 = user4.watchlists.create!({
+  :ticker => 'CGC'
+})
+
+watchlist11 = user4.watchlists.create!({
+  :ticker => 'AAPL'
+})
+
+watchlist12 = user4.watchlists.create!({
+  :ticker => 'TLRY'
+})
+
+
+
+
 
 Transaction.update_all "created_at = '2021-11-17 17:17:17.7777'"
 
