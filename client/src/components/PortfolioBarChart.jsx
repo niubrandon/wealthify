@@ -1,7 +1,7 @@
 import {Bar} from 'react-chartjs-2';
 
 const PortfolioBarChart = (props) => {
-
+  console.log("debug from portfolio bar chart", props.data)
   const xAxis = [];
 
   const yAxis = [];

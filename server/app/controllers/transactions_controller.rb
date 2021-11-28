@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-  before_action :authenticate_request!
+  #before_action :authenticate_request!
   before_action :set_transaction, only: [:show, :update, :destroy]
 
   # GET /transactions

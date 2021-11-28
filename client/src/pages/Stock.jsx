@@ -90,9 +90,20 @@ const Stock = (props) => {
   }, []);
 
   useEffect(() => {
+    if (!authUser) {
+      return
+    }
+
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + authUser.jwt,
+      }
+    }
+
     axios({
       method: 'post',
       url: 'http://localhost:3000/api/watchlists',
+      config,
       data: favourite,
     })
       .then(function (response) {
