@@ -49,6 +49,10 @@
 
 @media only screen and (max-width: 1024px) {
   #portfolio {
+
+    .table {
+      width: 60%;
+    }
     .holdings {
       @include flex-center(column);
       .donut {

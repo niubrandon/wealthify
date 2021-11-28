@@ -36,7 +36,7 @@ const PortfolioBarChart = (props) => {
     labels: xAxis,
     datasets: [
       {
-        label: 'Daily stocks/crypto investment balance',
+        label: 'Daily Balance',
         backgroundColor: 'rgb(97, 190, 155)',
         borderColor: 'rgb(97, 190, 155)',
         borderWidth: 2,
@@ -52,7 +52,7 @@ const PortfolioBarChart = (props) => {
           options={{
             title:{
               display:true,
-              text:'Average Rainfall per month',
+              text:'Daily Portfolio Performance',
               fontSize:20
             },
             legend:{
