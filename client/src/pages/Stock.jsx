@@ -106,20 +106,6 @@ const Stock = (props) => {
 
   }, [favourite])
 
-  // useEffect(() => {
-  //   axios({
-  //     method: 'delete',
-  //     url: 'http://localhost:3000/api/watchlists/4',
-  //   })
-  //     .then(function (response) {
-  //       console.log("deleted")
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-
-  // }, [])
-
   const onFavourite = (e) => {
     e.preventDefault();
     activeButton === '' ? setActiveButton(' active') : setActiveButton('')
