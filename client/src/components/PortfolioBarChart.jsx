@@ -36,7 +36,7 @@ const PortfolioBarChart = (props) => {
     labels: xAxis,
     datasets: [
       {
-        label: 'Daily stocks/crptos investment balance',
+        label: 'Daily stocks/crypto investment balance',
         backgroundColor: 'rgb(97, 190, 155)',
         borderColor: 'rgb(97, 190, 155)',
         borderWidth: 2,
