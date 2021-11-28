@@ -1,0 +1,45 @@
+@import '../_variables';
+
+#portfolio {
+  @include flex-center(column);
+
+  h1 {
+    @include title();
+    span {
+      color: $logo;
+    }
+  }
+
+  h2 {
+    @include title();
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+  }
+  .portfoliobarchart {
+    height: auto;
+    width: 60%;
+    margin: auto;
+
+  }
+  .holdings {
+    @include flex-center(row);
+    .cards {
+      flex: 1;
+      @include flex-center(row);
+      flex-wrap: wrap;
+    }
+
+    .donut {
+      flex: 1;
+      @include flex-center(row);
+
+    }
+  }
+
+  .table, .referral, .holdings {
+    height: auto;
+    width: 70%;
+    margin: auto;
+  }
+
+}

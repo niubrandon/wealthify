@@ -1,36 +1,28 @@
-import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import '../styles/components/portfolioCard.scss'
 
 const PortfolioCard = (props) => {
   const portfolioCards =
     props.account &&
     props.account.portfolio.map((item, index) => {
       return (
-        <>
-          <Card key={index} className='w-50 text-center'>
-            <Card.Header as='h5' id='ticker'>
-              {item.ticker}
-            </Card.Header>
-            <Card.Body>
-              <Card.Title>quantity: {item.quantity}</Card.Title>
-              <Card.Title>{`spot price: $${Number(
-                item.current_spot_price
-              ).toFixed(2)} USD`}</Card.Title>
-              <Card.Text>
-                {`Current market value is $${Number(
-                  item.quantity * item.current_spot_price
-                ).toFixed(2)} , representing  ${Number(
-                  ((item.quantity * item.current_spot_price) /
-                    props.account.account.total_balance) *
-                    100
-                ).toFixed(2)}% of your total portfolio`}
-              </Card.Text>
-              <Link class='trade' to={`/stock/${item.ticker}`}>
-                Trade
-              </Link>
-            </Card.Body>
-          </Card>
-        </>
+        <div key={index} className='portfolio-card'>
+          <header>
+            <Link to={props.authUser ? `/stock/${item.ticker}`: '/401'} className='link'>{item.ticker}</Link>
+          </header>
+          <footer>
+            <p>{item.quantity} <span>shares</span></p>
+            <p>{`$${Number(
+              item.current_spot_price
+            ).toFixed(2)} `}<span>/share</span></p>
+            <p>{`${Number(
+                ((item.quantity * item.current_spot_price) /
+                  props.account.account.total_balance) *
+                  100
+              ).toFixed(2)}`}<span>% of portfolio</span></p>
+            <Link to={props.authUser ? `/stock/${item.ticker}`: '/401'} className='trade'>Trade</Link>
+          </footer>
+        </div>
       );
     });
   return <>{props.account && portfolioCards}</>;

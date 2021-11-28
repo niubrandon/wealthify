@@ -40,6 +40,7 @@ $soft:  4px 2px 7px rgba(5, 2, 1, 0.10);
   font-family: $font-title;
   color: $black;
   letter-spacing: 2px;
+  margin-bottom: 0;
 }
 
 @mixin form-field {
@@ -57,3 +58,4 @@ $soft:  4px 2px 7px rgba(5, 2, 1, 0.10);
   width: $width;
   box-shadow: 3px 6px 30px rgba(22, 19, 24, 0.2);
 }
+

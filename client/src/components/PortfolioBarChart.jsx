@@ -2,56 +2,67 @@ import {Bar} from 'react-chartjs-2';
 
 const PortfolioBarChart = (props) => {
 
-  const stockListArray = []
-  const stockMarketValueArray = []
-  for (const item of props.account.portfolio) {
-    
-    stockListArray.push(item.ticker)
-    stockMarketValueArray.push(Number(Number(item.quantity) * Number(item.current_spot_price)).toFixed(2))
-  }  
-  const backgroundColor = [];
-  const hoverBackgroundColor = [];
-  const randomColor = (() => {
-    return Math.floor(Math.random()*16777215).toString(16);
-  }) 
-  for (let i = 0; i < stockListArray.length; i++) {
-    backgroundColor.push("#" + randomColor())
-    hoverBackgroundColor.push("#" + randomColor())
+  const xAxis = [];
+
+  const yAxis = [];
+
+  const priceHistoryArray = Object.values(props.data.history_prices);
+
+  const transactionsArray = Object.values(props.data.transactions);
+ 
+  const timeStampArray = priceHistoryArray[0].timestamp;
+  for (const t of timeStampArray) {
+    xAxis.push((new Date(Number(t) * 1000)).toLocaleDateString('en-US'));
   }
-  console.log("color are", backgroundColor, hoverBackgroundColor)
-  console.log("portfolio data are", stockListArray, stockMarketValueArray)
-    const graphData = {
-      labels: stockListArray,
-      datasets: [
-        {
-          label: 'Portfolio',
-          backgroundColor: backgroundColor,
-          hoverBackgroundColor: hoverBackgroundColor,
-          data: stockMarketValueArray
+
+  for (let i = 0; i < timeStampArray.length; i++) {
+    
+    let marketValue = 0;
+ 
+    for (const transaction of transactionsArray) {
+      if (Date.parse(transaction.created_at) <= (Number(timeStampArray[i]) * 1000)) {
+        //edge case if price value is not available
+        if (props.data.history_prices[transaction.ticker].close[i]) {
+          marketValue += Number(transaction.quantity) * Number(transaction.trade) * props.data.history_prices[transaction.ticker].close[i];
         }
-      ]
+      
+      }
+      
     }
-    return (
-      <div style={{width:'400px', height: '400px'}}>
-      {props.account && <Bar 
-        data={graphData}
-        options={{
-          title:{
-            display:true,
-            text:'Portfolio % of each investment',
-            fontSize:20
-          },
-          legend:{
-            display:true,
-            position:'right'
-          },
-          animation:{
-            animateScale: true
-          }
-        }}
-      />}
-      </div>
-    ) 
+    yAxis.push(Number(marketValue.toFixed(2)));
+  }
+
+  const graphData = {
+    labels: xAxis,
+    datasets: [
+      {
+        label: 'Daily stocks/crptos investment balance',
+        backgroundColor: 'rgb(97, 190, 155)',
+        borderColor: 'rgb(97, 190, 155)',
+        borderWidth: 2,
+        data: yAxis
+      }
+    ]
   }
   
-  export default PortfolioBarChart;
+  return (
+    <div>
+      <Bar
+          data={graphData}
+          options={{
+            title:{
+              display:true,
+              text:'Average Rainfall per month',
+              fontSize:20
+            },
+            legend:{
+              display:true,
+              position:'right'
+            }
+          }}
+        />
+      </div>
+  )
+}
+
+export default PortfolioBarChart;

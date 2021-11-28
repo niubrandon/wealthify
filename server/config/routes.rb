@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   resources :referrals
   scope '/api' do
     resources :watchlists
-    resources :portfolios
+    resources :portfolios 
     resources :transactions
     resources :accounts do
       collection do
       get 'leaderboard'
+      get 'balances/:id', to: 'balances#show'
       end
     end
   

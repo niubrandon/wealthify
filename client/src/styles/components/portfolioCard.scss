@@ -1,0 +1,41 @@
+@import '../_variables';
+
+.portfolio-card {
+  @include card(150px, 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  header {
+    .link {
+      @include title();
+      text-decoration: none;
+      align-items: flex-start;
+    }
+    
+  }
+  footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    p {
+      margin: 0;
+      span {
+        color: $grey;
+        font-size: 0.8rem;
+      }
+    }
+    .trade {
+      padding: 2px 8px;
+      margin-top: 5px;
+      background-color: $logo;
+      color: $white;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      &:hover {
+        background-color: $logodark;
+      }
+    }
+  }
+}

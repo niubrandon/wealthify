@@ -6,6 +6,7 @@ import axios from 'axios';
 import {
   useNavigate,
 } from 'react-router-dom';
+import '../styles/pages/signup.scss';
 
 const Signup = (props) => {
 
@@ -72,6 +73,7 @@ const Signup = (props) => {
     justifyContent: 'center',
     alignItems: 'center',
     gap: '10px',
+    height: "70vh"
   };
 
   return (
@@ -112,7 +114,7 @@ const Signup = (props) => {
           <Form.Control type="text" name="referral_code" placeholder="Refferal code" onChange={e => setReferralCode(e.target.value)} />
         </Form.Group>
       
-        <Button variant="primary" type="submit" data-testid="signup-button">
+        <Button id="signup-button" variant="primary" type="submit" data-testid="signup-button">
           SignUp
         </Button>
       </Form>

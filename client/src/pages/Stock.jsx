@@ -1,6 +1,6 @@
 import StockGraph from '../components/StockGraph';
 import StockHeader from '../components/StockHeader';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import StockTable from '../components/StockTable';
 import '../styles/pages/stock.scss';
@@ -10,7 +10,7 @@ import {GoEye, GoEyeClosed} from 'react-icons/go'
 const axios = require('axios').default;
 
 const Stock = (props) => {
-  const { authUser, account } = props;
+  const { authUser, account, setAuthUser } = props;
   console.log('authUser on Stock:', authUser);
   const [graphx, setGraphx] = useState([]);
   const [graphy, setGraphy] = useState([]);
@@ -23,6 +23,14 @@ const Stock = (props) => {
   const API_KEY = `${process.env.REACT_APP_API_KEY}`;
   const API_HOST = `${process.env.REACT_APP_API_HOST}`;
   const { name } = useParams();
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('auth')) {
+      setAuthUser(JSON.parse(localStorage.getItem('auth')));
+    }
+  }, []);
+
 
   var options = {
     method: 'GET',
@@ -35,10 +43,11 @@ const Stock = (props) => {
   };
 
   useEffect(() => {
-    if (!props.authUser) {
-      <Navigate to='/401' />;
+    if (!localStorage.getItem('auth')) {
+      navigate('/401');
+      return
     }
-  }, [props.userAuth]);
+  }, [authUser]);
 
   useEffect(() => {
     axios
@@ -144,10 +153,11 @@ const Stock = (props) => {
   return (
     <section id='stock' className='page'>
       <header>
-       <button 
-          onClick={onFavourite}>
-          {activeButton ? <GoEyeClosed className='watching'/> : <GoEye className='not-watching'/>}
-        </button>
+       {authUser && 
+          <button onClick={onFavourite}>
+            {activeButton ? <GoEyeClosed className='watching'/> : <GoEye className='not-watching'/>}
+          </button>
+        }
         <StockHeader
           name={name}
           regMP={detail.regularMarketPrice}

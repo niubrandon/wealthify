@@ -1,21 +1,20 @@
 import { useState, useEffect } from 'react';
-import {Card, Button} from 'react-bootstrap';
-
+import { Link } from 'react-router-dom';
+import '../styles/components/watchlistItem.scss'
+import { MdOutlineClose } from 'react-icons/md';
 
 const WatchlistItem = (props) => {
 
   return (
-    <div>
-      <Card key={props.id} className="w-30 text-center" >
-        <Card.Header as="h5">{props.item.ticker}</Card.Header>
-        <Card.Header as="h4">{`spot price: $${Number(
-                props.price
-              ).toFixed(2)} USD`}</Card.Header>
-        <Card.Body>
-          <Button id={props.item.id} variant="primary" onClick={props.onDelete} >Delete</Button>
-        </Card.Body>
-      </Card>
-    </div>
+    <article key={props.id} className="watchlist-card" >
+      <header>
+        <Link to={props.authUser ? `/stock/${props.item.ticker}`: '/401'} className='link'>{props.item.ticker}</Link>
+        <button><MdOutlineClose id={props.item.id} className='watchlist-delete' onClick={props.onDelete}/></button>      
+      </header>
+      <footer>
+        <p>{`$${Number(props.price).toFixed(2)} `}<span>/share</span></p>
+      </footer>
+    </article>
   )
 }
 
