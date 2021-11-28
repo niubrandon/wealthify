@@ -14,3 +14,13 @@
     }
   }
 }
+
+// responsive styles
+@media only screen and (max-width: 1024px) {
+  #search {
+    #search-bar {
+      font-size: 1em;
+      max-width:300px;
+    }
+  }
+}

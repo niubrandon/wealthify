@@ -52,7 +52,7 @@ $soft:  4px 2px 7px rgba(5, 2, 1, 0.10);
 
 @mixin card($min-height, $width) {
   border-radius: 20px;
-  margin: 25px;
+  margin: 15px;
   padding: 15px;
   min-height: $min-height;
   width: $width;
