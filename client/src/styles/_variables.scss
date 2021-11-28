@@ -41,6 +41,9 @@ $soft:  4px 2px 7px rgba(5, 2, 1, 0.10);
   color: $black;
   letter-spacing: 2px;
   margin-bottom: 0;
+  @media only screen and (max-width: 1024px) {
+    font-size: 1.5em;
+  }
 }
 
 @mixin form-field {
