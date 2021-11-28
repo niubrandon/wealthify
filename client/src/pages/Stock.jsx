@@ -4,7 +4,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import StockTable from '../components/StockTable';
 import '../styles/pages/stock.scss';
-import './Stock.scss';
 import {GoEye, GoEyeClosed} from 'react-icons/go'
 
 const axios = require('axios').default;
@@ -38,7 +37,7 @@ const Stock = (props) => {
     params: { range: range, interval: interval },
     headers: {
       'x-rapidapi-host': API_HOST,
-      // 'x-rapidapi-key': API_KEY,
+      'x-rapidapi-key': API_KEY,
     },
   };
 
@@ -74,7 +73,7 @@ const Stock = (props) => {
     params: { symbols: name },
     headers: {
       'x-rapidapi-host': API_HOST,
-      // 'x-rapidapi-key': API_KEY,
+      'x-rapidapi-key': API_KEY,
     },
   };
 

@@ -3,6 +3,7 @@ import { NavLink, useNavigate, Navigate } from 'react-router-dom';
 import { RiTeamFill } from 'react-icons/ri';
 import { GoSearch, GoGraph, GoEye } from 'react-icons/go';
 import { BiTrendingUp } from 'react-icons/bi';
+import {FiUserPlus, FiLogIn, FiLogOut} from 'react-icons/fi'
 import '../styles/components/navbar.scss';
 
 const NavBar = (props) => {
@@ -17,7 +18,7 @@ const NavBar = (props) => {
   };
 
   return (
-    <Nav variant='pills' className=' nav-container' data-testid="nav-bar">
+    <Nav variant='pills' className='nav-container' data-testid="nav-bar">
       <div className='links'>
         <div className='nav-title'>
           <h1>Wealthify</h1>
@@ -46,11 +47,12 @@ const NavBar = (props) => {
       <div className='actions'>
         {props.authUser && (
           <>
-            <div data-testid="nav-bar-welcome">
+            <div className='user-welcome' data-testid="nav-bar-welcome">
               Welcome, <br />
               {props.authUser.user_email}
             </div>
             <NavLink onClick={onLogout} to='/' className='userauth'>
+              <FiLogOut className='icon'/>
               <h3>Logout</h3>
             </NavLink>
           </>
@@ -58,9 +60,11 @@ const NavBar = (props) => {
         {!props.authUser && (
           <>
             <NavLink to='/login' className='userauth'>
+              <FiLogIn className='icon'/>
               <h3>Login</h3>
             </NavLink>
             <NavLink to='/signup' className='userauth'>
+              <FiUserPlus className='icon'/>
               <h3>Sign Up</h3>
             </NavLink>
           </>

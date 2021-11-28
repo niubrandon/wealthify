@@ -105,7 +105,7 @@ const Modal = (props) => {
                   Transaction complete
                 </h2>
                 <p className='summary'>
-                  You just {modalType === 'buy' ? 'bought' : 'sold'} {quantity}{' '}
+                  You just {modalType === 'Buy' ? 'bought' : 'sold'} {quantity}{' '}
                   {quantity === 1 ? 'share' : 'shares'} of {name}.
                 </p>
               </div>

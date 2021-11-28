@@ -11,8 +11,8 @@ import Table from 'react-bootstrap/Table';
         <td>{item.ticker}</td>
         <td>{item.quantity}</td>
         <td>{item.trade === 1 ? "Buy" : "Sell"}</td>
-        <td>{item.settled_price}</td>
-        <td>{item.quantity * item.settled_price}</td>
+        <td>{`$${(item.settled_price).toFixed(2)}`}</td>
+        <td>{`$${(item.quantity * item.settled_price).toFixed(2)}`}</td>
       </tr>
       )
     })
@@ -22,9 +22,9 @@ import Table from 'react-bootstrap/Table';
         <tr>
           <th>#</th>
           <th>Name</th>
-          <th>Quantity</th>
+          <th>Qty</th>
           <th>Trade</th>
-          <th>Settled Price</th>
+          <th>@ Price</th>
           <th>Total</th>
         </tr>
         </thead>

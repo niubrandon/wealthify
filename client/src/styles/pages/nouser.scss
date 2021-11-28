@@ -6,8 +6,9 @@
 
   h1 {
     font-size: 2em;
-    margin-bottom: 2em;
+    margin: 2em;
     font-family: $font-title;
+    text-align: center;
     a {
       color: $logo;
     }
@@ -16,5 +17,19 @@
   img {
     max-width: 600px;
     height: auto;
+  }
+}
+
+
+// responsive styles
+@media only screen and (max-width: 1024px) {
+  #nouser {
+    h1 {
+      font-size: 1.2em;
+      line-height: 1.5em;
+    }
+    img {
+      max-width: 275px;
+    }
   }
 }
