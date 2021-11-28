@@ -31,7 +31,7 @@ const PortfolioDonutChart = (props) => {
       ]
     }
   return (
-    <div style={{width:'450px', height: '450px'}}>
+    <div style={{width:'350px', height: '350px'}}>
     {props.account && <Doughnut 
       data={graphData}
       options={{

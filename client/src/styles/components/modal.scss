@@ -49,6 +49,8 @@
         text-transform: capitalize;
         margin-top: 1em;
         width: 100%;
+        text-align: center;
+
 
         .check {
           color: $success;
@@ -142,6 +144,15 @@
           background-color: $logodark;
         }
       }
+    }
+  }
+}
+
+// responsive styles
+@media only screen and (max-width: 767px) {
+  #modal {
+    .modal-container {
+      width: 300px;
     }
   }
 }

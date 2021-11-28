@@ -9,7 +9,6 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 #DOTENV gem
 gem 'dotenv-rails', groups: [:development, :test]
 
-
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server

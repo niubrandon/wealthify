@@ -24,7 +24,7 @@ const LeaderboardDonutChart = (props) => {
     ]
   }
   return (
-    <div style={{width:'400px', height: '400px'}}>
+    <div style={{width:'300px', height: '300px'}}>
     {<Doughnut 
       data={graphData}
       options={{

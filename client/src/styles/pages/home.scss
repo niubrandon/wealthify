@@ -13,3 +13,12 @@
     margin-top: 10px;
   }
 }
+
+// responsive styles
+@media only screen and (max-width: 1024px) {
+  #home {
+    .message {
+      font-size: 1.1em;
+    }
+  }
+}
