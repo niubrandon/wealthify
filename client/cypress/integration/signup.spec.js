@@ -6,6 +6,7 @@ describe("Signup", () => {
     cy.get('[name=last_name]').type("Account")
     cy.get('[name=email]').type("NewAccount@gmail.com")
     cy.get('[name=password]').type("Super12345")
-    cy.get("[data-testid=signup-button]")
+    // cy.get("[data-testid=signup-button]").click()
+    // cy.contains("10,250")
   });
 })
