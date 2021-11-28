@@ -1,7 +1,7 @@
 @import '../_variables';
 
 .watchlist-card {
-  @include card(100px, 275px)
+  @include card(100px, 275px);
   @include flex-center(column);
   justify-content: space-between;
   height: 100%;

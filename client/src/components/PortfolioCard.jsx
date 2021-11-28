@@ -6,7 +6,7 @@ const PortfolioCard = (props) => {
     props.account &&
     props.account.portfolio.map((item, index) => {
       return (
-        <>
+        
           <Card key={index} className='w-50 text-center'>
             <Card.Header as='h5' id='ticker'>
               {item.ticker}
@@ -30,7 +30,7 @@ const PortfolioCard = (props) => {
               </Link>
             </Card.Body>
           </Card>
-        </>
+        
       );
     });
   return <>{props.account && portfolioCards}</>;
