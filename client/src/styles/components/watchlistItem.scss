@@ -1,7 +1,11 @@
 @import '../_variables';
 
 .watchlist-card {
+<<<<<<< HEAD
   @include card(100px, 275px);
+=======
+  @include card(150px, 275px);
+>>>>>>> 89ced68bd5d162fefe8482ff9bea036f558bed4d
   @include flex-center(column);
   justify-content: space-between;
   height: 100%;
@@ -34,6 +38,10 @@
     width: 100%;
     p {    
     margin-bottom: 0;
+      span {
+        font-size: 0.8rem;
+        color: $grey;
+      }
     }
   }
 }

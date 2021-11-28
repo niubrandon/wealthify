@@ -39,10 +39,10 @@ function App() {
     <>
       <Container fluid>
         <Row>
-          <Col xs={2} className='nav-column'>
+          <Col xs={2} className='nav'>
             <NavBar authUser={authUser} setAuthUser={setAuthUser} />
           </Col>
-          <Col xs={10}>
+          <Col xs={10} className='main'>
             <Routes>
               <Route
                 path='/'

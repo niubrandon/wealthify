@@ -10,30 +10,28 @@ import Table from 'react-bootstrap/Table';
         <td>{index + 1}</td>
         <td>{item.ticker}</td>
         <td>{item.quantity}</td>
-        <td>{item.trade === 1 ? "buy" : "sell"}</td>
+        <td>{item.trade === 1 ? "Buy" : "Sell"}</td>
         <td>{item.settled_price}</td>
         <td>{item.quantity * item.settled_price}</td>
       </tr>
       )
     })
     return (
-
-         <Table responsive="sm" className="w-50" hover>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Quantity</th>
-              <th>Trade</th>
-              <th>Settled price</th>
-              <th>Total</th>
-            </tr>
-            </thead>
-            <tbody>
-              { props.account && tableRows }
-              </tbody>
-            </Table>
-  
+      <Table responsive="xs" className="w-100" hover>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Trade</th>
+          <th>Settled Price</th>
+          <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+          { props.account && tableRows }
+          </tbody>
+        </Table>
     )
   }
 
