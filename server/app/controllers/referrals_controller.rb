@@ -1,4 +1,5 @@
 class ReferralsController < ApplicationController
+  
   before_action :set_referral, only: [:show, :update, :destroy]
 
   # GET /referrals

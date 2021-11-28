@@ -3,11 +3,16 @@ require 'json'
 require 'date'
 
 class BalancesController < AccountsController
+  before_action :authenticate_request!
   #GET /accounts/balances/:id
   def show
     @id = params[:id]
+    puts "####debug after selling all holding####"
     @history_prices = get_history_price
+    puts @history_prices
+    
     @transactions = Transaction.all.where(account_id: @id)
+    puts @transactions
     render json: {history_prices: @history_prices, transactions: @transactions}
   end
 
@@ -39,10 +44,8 @@ class BalancesController < AccountsController
       response = Excon.get(
         url,
         headers: {
-          #'X-RapidAPI-Host' => URI.parse(url).host,
-          #'X-RapidAPI-Key' => ENV.fetch('RAPIDAPI_API_KEY')
           "x-rapidapi-host": "stock-data-yahoo-finance-alternative.p.rapidapi.com",
-		      "x-rapidapi-key" => ENV["STOCK_API_KEY"]
+		      "x-rapidapi-key": ENV["STOCK_API_KEY"]
         }
       )
       data = JSON.parse(response.body)
@@ -54,20 +57,25 @@ class BalancesController < AccountsController
       stocks_list = []
       stocks_string = ""
       serialized_string = ""
-      # find distinct stocks from portfolio
-      #@distinct_stocks = Portfolio.select(:ticker).distinct
-      ###only get the users stocks
-      @distinct_stocks = Portfolio.where("account_id=#{params[:id]}")
+      # find distinct stocks from transactions
+
+      #@distinct_stocks = Transaction.select(:ticker).distinct
+      @distinct_stocks = Transaction.where(account_id: params[:id])
+      #@distinct_stocks_from_user = @distict_stocks.where("account_id=#{params[:id]}")
       # create a list of all the distinct stocks
       @distinct_stocks.each_with_index do |val, index|
         #only take top 10 distinct stocks 
-        if index < 10
-        stocks_list.push(val.ticker)
-        stocks_string = stocks_string + val.ticker.to_s
-        stocks_string = stocks_string + "%2C"
-        serialized_string = stocks_string[0,stocks_string.length - 3]
+        if stocks_list.size <= 10
+          puts stocks_list.size
+          if !stocks_list.include?(val.ticker)
+            puts "#########"
+            puts val.inspect
+          stocks_list.push(val.ticker)
+          stocks_string = stocks_string + val.ticker.to_s
+          stocks_string = stocks_string + "%2C"
+          end
         end
-
+        serialized_string = stocks_string[0,stocks_string.length - 3]
       end
       puts serialized_string
       return serialized_string

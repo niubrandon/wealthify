@@ -1,6 +1,7 @@
 require 'excon'
 require 'json'
 class WatchlistsController < ApplicationController
+  #before_action :authenticate_request!
   before_action :set_watchlist, only: [:show, :update, :destroy]
 
   # GET /watchlists
@@ -98,10 +99,10 @@ class WatchlistsController < ApplicationController
         stocks_list.push(val.ticker)
         stocks_string = stocks_string + val.ticker.to_s
         stocks_string = stocks_string + "%2C"
-        serialized_string = stocks_string[0,stocks_string.length - 3]
+        #serialized_string = stocks_string[0,stocks_string.length - 3]
         end
-
       end
+      serialized_string = stocks_string[0,stocks_string.length - 3]
       return serialized_string
     end
 

@@ -5,17 +5,31 @@ import PortfolioCard from '../components/PortfolioCard';
 import PortfolioBarChart from '../components/PortfolioBarChart';
 import Transactions from '../components/Transactions';
 import Referral from '../components/Referral';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import '../styles/pages/portfolio.scss'
 
 const Portfolio = (props) => {
 
   const [balanceData, setBalanceData] = useState("");
+  let navigate = useNavigate();
+
+
+  useEffect(() => {
+    if (localStorage.getItem('auth')) {
+      props.setAuthUser(JSON.parse(localStorage.getItem('auth')));
+    } else {
+      navigate('/401');
+    }
+    
+  }, []);
+
+
 
   console.log('Props:', props)
+
   useEffect(() => {
     if (!props.authUser) {
-      <Navigate to='/401' />;
+    //  <Navigate to='/401' />;
       return;
     }
     const config = {

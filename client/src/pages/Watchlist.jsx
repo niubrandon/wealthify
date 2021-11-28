@@ -16,7 +16,10 @@ const Watchlist = (props) => {
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setAuthUser(JSON.parse(localStorage.getItem('auth')));
+    } else {
+      navigate('/401');
     }
+    
   }, []);
 
   useEffect(() => {
@@ -25,9 +28,16 @@ const Watchlist = (props) => {
       return
     }
 
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + props.authUser.jwt,
+      }
+    }
+
     axios({
       method: 'delete',
       url: `http://localhost:3000/api/watchlists/${deleteId}`,
+      config
     })
       .then(function (response) {
         console.log("deleted")
@@ -45,14 +55,24 @@ const Watchlist = (props) => {
  
 //fetch all the data
   useEffect(() => {
-    if (!localStorage.getItem('auth')) {
+ /*    if (!localStorage.getItem('auth')) {
       navigate('/401');
       return
+    } */
+    if (!authUser) {
+      //navigate('/401');
+      return
+    }
+
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + props.authUser.jwt,
+      }
     }
 
     const url = `http://localhost:3000/api/watchlists`;
     axios
-      .get(url)
+      .get(url, config)
       .then((response) => {
         console.log("server response for watchlist data", response.data, authUser.user_id)
         const filteredWatchlist = response.data.watchlists.filter(item => item.user_id === authUser.user_id);

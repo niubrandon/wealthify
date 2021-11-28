@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   require 'securerandom'  
 
   #jwt implementation, except crete or login
-  before_action :authenticate_request!, except: [:create, :login, :index] 
+  before_action :authenticate_request!, except: [:create, :login] 
 
   before_action :set_user, only: [:show, :update, :destroy]
 
