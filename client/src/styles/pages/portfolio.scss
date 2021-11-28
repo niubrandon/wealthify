@@ -2,7 +2,8 @@
 
 #portfolio {
   @include flex-center(column);
-  width: 90%;
+
+
   h1 {
     @include title();
     span {
@@ -10,17 +11,29 @@
     }
   }
 
+  h2 {
+    @include title();
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+  }
+
   .holdings {
     @include flex-center(row);
-    height: auto;
-
-    .card {
-      flex: 2;
+    .cards {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
     }
 
     .donut {
       flex: 1;
     }
+  }
+
+  .table, .referral, .holdings {
+    height: auto;
+    width: 70%;
+    margin: auto;
   }
 
 }

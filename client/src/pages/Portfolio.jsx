@@ -35,15 +35,18 @@ const Portfolio = (props) => {
     <section id='portfolio' className='page'>
       <h1>Your Portfolio Balance is <span>{props.account && `$${Number(props.account.account.total_balance).toFixed(2)}`}</span></h1>
       <div>Bar Chart Will Go Here</div>
+      <h2>Current Holdings</h2>
       <div className='holdings'>
           {!props.account && <p>you don't have any holdings</p>}
-          <div className='card'>{props.account && <PortfolioCard account={props.account} authUser={props.authUser}/>}</div>
+          <div className='cards'>{props.account && <PortfolioCard account={props.account} authUser={props.authUser}/>}</div>
           <div className='donut'>{props.account && <PortfolioDonutChart account={props.account} />}</div>
       </div>
-      <div >
-        
-        
+      <h2>Transaction History</h2>
+      <div className='table'>
         {props.account && <Transactions account={props.account} />}
+      </div>
+      <h2>Referral Code</h2>
+      <div className='referral'>
         <Referral account={props.account} authUser={props.authUser} />
       </div>
     </section>

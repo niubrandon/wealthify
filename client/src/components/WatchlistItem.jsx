@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/components/watchlistItem.scss'
 import { MdOutlineClose } from 'react-icons/md';
-import {Card, Button} from 'react-bootstrap';
-
 
 const WatchlistItem = (props) => {
 
