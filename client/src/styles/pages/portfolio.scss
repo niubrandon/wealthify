@@ -3,7 +3,6 @@
 #portfolio {
   @include flex-center(column);
 
-
   h1 {
     @include title();
     span {
@@ -21,12 +20,14 @@
     @include flex-center(row);
     .cards {
       flex: 1;
-      display: flex;
+      @include flex-center(row);
       flex-wrap: wrap;
     }
 
     .donut {
       flex: 1;
+      @include flex-center(row);
+
     }
   }
 
