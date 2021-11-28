@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Error from '../components/Error'
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
+import '../styles/pages/login.scss';
 
 const Login = (props) => {
   const [user, setUser] = useState("");
@@ -65,6 +66,7 @@ const Login = (props) => {
     justifyContent: 'center',
     alignItems: 'center',
     gap: '10px',
+    height: "70vh"
   };
 
   return (
@@ -73,7 +75,7 @@ const Login = (props) => {
       <Form className='w-50' onSubmit={(e) => onLogIn(e)} data-testid="signin-form"  >
         <Form.Group className='mb-3' controlId='formBasicEmail'>
           <Form.Label>Email address</Form.Label>
-          <Form.Control
+          <Form.Control  
             type='email'
             name='email'
             placeholder='Enter email'
@@ -101,7 +103,7 @@ const Login = (props) => {
           />
         </Form.Group>
 
-        <Button variant='primary' type='submit' data-testid="login-button">
+        <Button id="login-button" variant='primary' type='submit' data-testid="login-button">
           Login
         </Button>
       </Form>
