@@ -15,7 +15,12 @@
     margin-top: 2em;
     margin-bottom: 0.5em;
   }
+  .portfoliobarchart {
+    height: auto;
+    width: 60%;
+    margin: auto;
 
+  }
   .holdings {
     @include flex-center(row);
     .cards {

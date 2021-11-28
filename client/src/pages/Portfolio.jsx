@@ -5,7 +5,6 @@ import PortfolioCard from '../components/PortfolioCard';
 import PortfolioBarChart from '../components/PortfolioBarChart';
 import Transactions from '../components/Transactions';
 import Referral from '../components/Referral';
-import NoUser from '../pages/NoUser';
 import { Navigate } from 'react-router-dom';
 import '../styles/pages/portfolio.scss'
 
@@ -31,7 +30,6 @@ const Portfolio = (props) => {
 
     ]).then((all) => {
       const [first, second] = all;
-      console.log("###all###", first.data, second.data)
       props.setAccount(first.data);
       setBalanceData(second.data);
     }).catch(err => console.log(err))
@@ -42,7 +40,7 @@ const Portfolio = (props) => {
   return (
     <section id='portfolio' className='page'>
       <h1>Your Portfolio Balance is <span>{props.account && `$${Number(props.account.account.total_balance).toFixed(2)}`}</span></h1>
-      <div>{balanceData && <PortfolioBarChart data={balanceData}/>}</div>
+      <div className='portfoliobarchart'>{balanceData && <PortfolioBarChart data={balanceData}/>}</div>
       <h2>Current Holdings</h2>
       <div className='holdings'>
           {!props.account && <p>you don't have any holdings</p>}

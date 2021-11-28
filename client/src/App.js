@@ -17,10 +17,9 @@ import Watchlist from './pages/Watchlist';
 import NoUser from './pages/NoUser';
 import { Container, Row, Col } from 'react-bootstrap';
 
-let AuthContext = React.createContext();
 
 function App() {
-  //authUser set to null when it is logout, set to jwt when it's login
+
   const [authUser, setAuthUser] = useState(null);
   const [account, setAccount] = useState(null);
 
@@ -32,7 +31,7 @@ function App() {
 
   useEffect(() => {
     console.log(`%%%%%%%verify state from homepage ${authUser}%%%%%%%%%`);
-    console.log('authUser', authUser);
+  
   }, [authUser]);
 
   return (
