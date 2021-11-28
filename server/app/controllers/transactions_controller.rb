@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+  before_action :authenticate_request!
   before_action :set_transaction, only: [:show, :update, :destroy]
 
   # GET /transactions
@@ -15,7 +16,6 @@ class TransactionsController < ApplicationController
 
   # POST /transactions
   def create
-    puts "%%%receving post request from front end%%%%"
 
     trade_type = transaction_params[:trade]
     settled_price = transaction_params[:settled_price]
@@ -68,17 +68,12 @@ class TransactionsController < ApplicationController
     new_cash_balance = account_to_modify.cash_balance - settled_price * quantity * trade_type
     new_stock_balance = account_to_modify.stock_balance + settled_price * quantity * trade_type
 
-    puts "***** new cash balance ** #{new_cash_balance}****"
-    puts "***** new stock balance ** #{new_stock_balance}****"
-
-
     # modify account
     account_to_modify.update({:cash_balance => new_cash_balance, :stock_balance => new_stock_balance })
-    puts "*** updated account to modify #{account_to_modify}"
+
 
     # check if portfolio exists
     if Portfolio.find_by(account_id: account_id, ticker: ticker)
-      puts "****** portfolio exists. Update or destroy ******"
       account_portfolio = Portfolio.find_by(account_id: account_id, ticker: ticker)
 
       new_quantity = account_portfolio.quantity + quantity * trade_type
@@ -91,7 +86,7 @@ class TransactionsController < ApplicationController
         account_portfolio.destroy
       end
     else 
-      puts "****** No portfolio. Create new****"
+
       # create
       Portfolio.create({ticker: ticker, quantity: quantity, current_spot_price: settled_price, account_id: account_id})
     end

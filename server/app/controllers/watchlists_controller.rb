@@ -1,6 +1,7 @@
 require 'excon'
 require 'json'
 class WatchlistsController < ApplicationController
+  before_action :authenticate_request!
   before_action :set_watchlist, only: [:show, :update, :destroy]
 
   # GET /watchlists
@@ -73,7 +74,7 @@ class WatchlistsController < ApplicationController
           #'X-RapidAPI-Host' => URI.parse(url).host,
           #'X-RapidAPI-Key' => ENV.fetch('RAPIDAPI_API_KEY')
           "x-rapidapi-host": "stock-data-yahoo-finance-alternative.p.rapidapi.com",
-		      "x-rapidapi-key": "e670bfeee5msh2c4237e9a815b1dp1134f5jsn284ac3e82968"
+		      "x-rapidapi-key": ENV["STOCK_API_KEY"]
         }
       )
       data = JSON.parse(response.body)

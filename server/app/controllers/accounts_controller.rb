@@ -1,8 +1,8 @@
 require 'excon'
 require 'json'
 class AccountsController < ApplicationController
+  before_action :authenticate_request!, except: [:index, :leaderboard]
   before_action :set_account, only: [:show, :update, :destroy]
-
 
   def leaderboard
     
@@ -83,14 +83,9 @@ class AccountsController < ApplicationController
 
   
   # GET /accounts/1
-  #also show all the transactions and portforlio for account 1
-  #add auth process later verify jwt
   def show
 
-    #update the portfolio spot price
     adjust_accounts_balance_from_updated_portfolios
-
-    #update the account balance based on new spot price
  
     @account_portfolios = Portfolio.all.where("account_id = #{params[:id]}" )
     @account_transactions = Transaction.all.where("account_id = #{params[:id]}")
@@ -122,10 +117,8 @@ class AccountsController < ApplicationController
     @account.destroy
   end
 
-
   def adjust_portfolio_spot_price
     
-
     @live_price = get_live_price
     @portfolios = Portfolio.all
     @portfolios.each do |portfolio|
@@ -143,7 +136,6 @@ class AccountsController < ApplicationController
     @accounts = Account.all
 
     @accounts.each do |account|
-      #calculate the total portfolio market value and update price
       portfolio_belongs_to_account = Portfolio.where(account_id: account.id)
       current_market_value = 0;
       portfolio_belongs_to_account.each do |portfolio|
@@ -156,8 +148,6 @@ class AccountsController < ApplicationController
     end
 
   end
-
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -179,10 +169,8 @@ class AccountsController < ApplicationController
       response = Excon.get(
         url,
         headers: {
-          #'X-RapidAPI-Host' => URI.parse(url).host,
-          #'X-RapidAPI-Key' => ENV.fetch('RAPIDAPI_API_KEY')
           "x-rapidapi-host": "stock-data-yahoo-finance-alternative.p.rapidapi.com",
-		      "x-rapidapi-key": "e670bfeee5msh2c4237e9a815b1dp1134f5jsn284ac3e82968"
+		      "x-rapidapi-key": ENV["STOCK_API_KEY"]
         }
       )
       data = JSON.parse(response.body)
@@ -202,7 +190,7 @@ class AccountsController < ApplicationController
       @distinct_stocks = Portfolio.select(:ticker).distinct
       # create a list of all the distinct stocks
       @distinct_stocks.each_with_index do |val, index|
-        #only take top 10 distinct stocks 
+        #only take top 10 distinct stocks due to api call limits
         if index < 10
         stocks_list.push(val.ticker)
         stocks_string = stocks_string + val.ticker.to_s
