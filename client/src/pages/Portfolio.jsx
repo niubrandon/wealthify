@@ -11,48 +11,29 @@ import { Navigate } from 'react-router-dom';
 const Portfolio = (props) => {
   console.log('print authUser from portfolio', props.authUser);
   console.log('print account from portfolio', props.account);
-  const [balanceData, setBalanceData] = useState([]);
+  const [balanceData, setBalanceData] = useState("");
 
   useEffect(() => {
     if (!props.authUser) {
       <Navigate to='/401' />;
       return;
     }
-
-
-    const url = `http://localhost:3000/api/accounts/${props.authUser.user_id}`;
     const config = {
       headers: {
         Authorization: 'Bearer ' + props.authUser.jwt,
-      },
-    };
-    axios
-      .get(url, config)
-      .then((response) => {
-        props.setAccount(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      }
+    }
+    Promise.all([
+    
+      Promise.resolve(axios.get(`http://localhost:3000/api/accounts/${props.authUser.user_id}`,config)),
+      Promise.resolve(axios.get(`http://localhost:3000/api/accounts/balances/${props.authUser.user_id}`, config))
 
-
-      const urlBalance = `http://localhost:3000/api/accounts/balances/${props.authUser.user_id}`;
-      const configBlance = {
-        headers: {
-          Authorization: 'Bearer ' + props.authUser.jwt,
-        },
-      };
-      axios
-        .get(urlBalance, configBlance)
-        .then((response) => {
-          setBalanceData(response.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-
-
-
+    ]).then((all) => {
+      const [first, second] = all;
+      console.log("###all###", first.data, second.data)
+      props.setAccount(first.data);
+      setBalanceData(second.data);
+    }).catch(err => console.log(err))
 
 
   }, [props.authUser]);
@@ -72,7 +53,7 @@ const Portfolio = (props) => {
       <section className='page'>
         <div style={flexWrapperVertical}>
           {!props.account && <p>you don't have any holdings</p>}
-          {props.account && <PortfolioBarChart data={balanceData}/>}
+          {balanceData && <PortfolioBarChart data={balanceData}/>}
           {props.account && <PortfolioDonutChart account={props.account} />}
           {props.account && <PortfolioCard account={props.account} />}
           {props.account && <Transactions account={props.account} />}

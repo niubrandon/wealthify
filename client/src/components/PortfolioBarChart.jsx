@@ -1,7 +1,7 @@
 import {Bar} from 'react-chartjs-2';
 
 const PortfolioBarChart = (props) => {
-  console.log("printing from barchar ", props.data)
+  console.log("######printing from barchar ", props.data)
 
     //create xAxis with time for one week range
   const xAxis = [];
@@ -37,7 +37,7 @@ const PortfolioBarChart = (props) => {
   console.log("finsihed data", xAxis, yAxis)
 
 
-  const state = {
+  const graphData = {
     labels: xAxis,
     datasets: [
       {
@@ -53,7 +53,7 @@ const PortfolioBarChart = (props) => {
   return (
     <div>
       <Bar
-          data={state}
+          data={graphData}
           options={{
             title:{
               display:true,
@@ -70,4 +70,4 @@ const PortfolioBarChart = (props) => {
   )
 }
 
-export default PortfolioBarChart
+export default PortfolioBarChart;
