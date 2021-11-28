@@ -145,3 +145,12 @@
     }
   }
 }
+
+// responsive styles
+@media only screen and (max-width: 767px) {
+  #modal {
+    .modal-container {
+      width: 300px;
+    }
+  }
+}

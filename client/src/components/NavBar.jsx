@@ -47,7 +47,7 @@ const NavBar = (props) => {
       <div className='actions'>
         {props.authUser && (
           <>
-            <div data-testid="nav-bar-welcome">
+            <div className='user-welcome' data-testid="nav-bar-welcome">
               Welcome, <br />
               {props.authUser.user_email}
             </div>

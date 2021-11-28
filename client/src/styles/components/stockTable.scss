@@ -5,6 +5,7 @@
   margin-top: 2em;
   .title {
     @include title();
+    text-align: center;
   }
   .info {
     width: 70%;
@@ -17,6 +18,16 @@
     }
     td {
       padding: 10px;
+    }
+  }
+}
+
+
+// responsive styles
+@media only screen and (max-width: 1024px) {
+  #stock-table {
+    .info {
+      font-size: 1em;
     }
   }
 }
