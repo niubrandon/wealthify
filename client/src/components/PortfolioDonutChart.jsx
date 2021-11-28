@@ -34,7 +34,7 @@ console.log("portfolio data are", stockListArray, stockMarketValueArray)
     ]
   }
   return (
-    <div style={{width:'450px', height: '450px'}}>
+    <div style={{width:'400px', height: '400px'}}>
     {props.account && <Doughnut 
       data={graphData}
       options={{
