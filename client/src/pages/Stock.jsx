@@ -27,6 +27,8 @@ const Stock = (props) => {
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setAuthUser(JSON.parse(localStorage.getItem('auth')));
+    } else {
+      navigate('/401');
     }
   }, []);
 
@@ -41,13 +43,8 @@ const Stock = (props) => {
     },
   };
 
-  useEffect(() => {
-    if (!localStorage.getItem('auth')) {
-      navigate('/401');
-      return
-    }
-  }, [authUser]);
 
+  // get request for chart
   useEffect(() => {
     axios
       .request(options)
@@ -66,7 +63,7 @@ const Stock = (props) => {
       });
   }, [range]);
 
-
+  // get request for table data
   const options2 = {
     method: 'GET',
     url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
@@ -89,6 +86,8 @@ const Stock = (props) => {
       });
   }, []);
 
+
+  // add stock to watchlist
   useEffect(() => {
     if (!authUser) {
       return
@@ -168,12 +167,12 @@ const Stock = (props) => {
             {activeButton ? <GoEyeClosed className='watching'/> : <GoEye className='not-watching'/>}
           </button>
         }
-        <StockHeader
+      { detail &&  <StockHeader
           name={name}
           regMP={detail.regularMarketPrice}
           authUser={authUser}
           account={account}
-        />
+        />}
       </header>
       <StockGraph range={range} xAxis={graphx} yAxis={graphy} />
       <div className='buttons'>
@@ -193,7 +192,7 @@ const Stock = (props) => {
           Yearly
         </button>
       </div>
-      <StockTable
+      { detail && <StockTable
         regularMarketPrice={detail.regularMarketPrice}
         regularMarketChange={detail.regularMarketChange}
         regularMarketChangePercent={detail.regularMarketChangePercent}
@@ -204,7 +203,7 @@ const Stock = (props) => {
         regularMarketPreviousClose={detail.regularMarketPreviousClose}
         exchange={detail.fullExchangeName}
         regularMarketOpen={detail.regularMarketOpen}
-      />
+      />}
     </section>
   )
 };

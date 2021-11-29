@@ -2,6 +2,25 @@ import {Bar} from 'react-chartjs-2';
 
 const PortfolioBarChart = (props) => {
   console.log("debug from portfolio bar chart", props.data)
+  
+  let graphData = {};
+
+  if (props.data.transactions.length === 0) {
+
+  graphData = {
+    labels: [1, 2, 3, 4, 5],
+    datasets: [
+      {
+        label: 'Daily Balance',
+        backgroundColor: 'rgb(97, 190, 155)',
+        borderColor: 'rgb(97, 190, 155)',
+        borderWidth: 2,
+        data: [0, 0, 0, 0, 0]
+      }
+    ]
+  }
+  } else {
+
   const xAxis = [];
 
   const yAxis = [];
@@ -32,7 +51,7 @@ const PortfolioBarChart = (props) => {
     yAxis.push(Number(marketValue.toFixed(2)));
   }
 
-  const graphData = {
+    graphData = {
     labels: xAxis,
     datasets: [
       {
@@ -44,6 +63,8 @@ const PortfolioBarChart = (props) => {
       }
     ]
   }
+  }
+  
   
   return (
     <div>

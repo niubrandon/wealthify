@@ -62,7 +62,7 @@ const Search = (props) => {
   const API_HOST = `${process.env.REACT_APP_API_HOST}`;
   const API_AUTOCOMPLETE = `${process.env.REACT_APP_API_AUTOCOMPLETE}`;
 
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('a');
   const [response, setResponse] = useState([]);
 
   const handleInput = (e) => {
@@ -80,9 +80,9 @@ const Search = (props) => {
   };
 
   // set the query to trigger the api call.
-  useEffect(() => {
+/*   useEffect(() => {
     setQuery('a');
-  }, []);
+  }, []); */
 
   useEffect(() => {
     if (authUser) {
