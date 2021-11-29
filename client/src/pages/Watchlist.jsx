@@ -85,7 +85,7 @@ const Watchlist = (props) => {
       .catch((err) => {
         console.log(err);
       });
-  }, [authUser]); 
+  }, [authUser]);
 
   const flexWrapperVertical = {
     display: 'flex',
@@ -97,7 +97,7 @@ const Watchlist = (props) => {
 
   // console.log("b", watchlist)
 
-   const onDelete= (e) => {
+  const onDelete= (e) => {
     console.log("deleting", e.target.id)
     setDeleteId(e.target.id)
   
