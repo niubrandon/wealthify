@@ -18,18 +18,26 @@ user1 = User.create!({
 
 
 account1 = user1.accounts.create!({
-  :cash_balance => 6840,
-  :stock_balance => 3160,
+  :cash_balance => 4365,
+  :stock_balance => 5635,
   :total_balance => 10000,
   :referral_bonus => false,
   :signup_bonus => 0  
 })
+
 
 account1.portfolios.create!({
   :ticker => 'AAPL',
   :quantity => 20,
   :current_spot_price => 158,
 })
+
+account1.portfolios.create!({
+  :ticker => 'SHOP',
+  :quantity => 1.5,
+  :current_spot_price => 1650,
+})
+
 
 
 
@@ -38,6 +46,13 @@ account1.transactions.create!({
   :trade => 1,
   :quantity => 20,
   :settled_price => 158
+})
+
+account1.transactions.create!({
+  :ticker => 'SHOP',
+  :trade => 1,
+  :quantity => 1.5,
+  :settled_price => 1650
 })
 
 

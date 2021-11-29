@@ -31,54 +31,51 @@ const Stock = (props) => {
     }
   }, []);
 
-  var options = {
-    method: 'GET',
-    url: `https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/${name}`,
-    params: { range: range, interval: graphInterval },
-    headers: {
-      'x-rapidapi-host': API_HOST,
-      'x-rapidapi-key': API_KEY,
-    },
-  };
-
-  // get request for chart
   useEffect(() => {
-    axios
-      .request(options)
-      .then(function (response) {
-        setGraphx(response.data.chart.result[0].timestamp);
+    if (!authUser) {
+      //  <Navigate to='/401' />;
+      return;
+    }
+    // get request for graph data
+    let options = {
+      method: 'GET',
+      url: `https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/${name}`,
+      params: { range: range, interval: graphInterval },
+      headers: {
+        'x-rapidapi-host': API_HOST,
+        'x-rapidapi-key': API_KEY,
+      },
+    };
+
+    // get request for table data
+    let options2 = {
+      method: 'GET',
+      url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
+      params: { symbols: name },
+      headers: {
+        'x-rapidapi-host': API_HOST,
+        'x-rapidapi-key': API_KEY,
+      },
+    };
+
+    Promise.all([
+      Promise.resolve(axios.request(options)),
+      Promise.resolve(axios.request(options2)),
+    ])
+      .then((all) => {
+        const [first, second] = all;
+        //set graph
+        setGraphx(first.data.chart.result[0].timestamp);
         range === '1d'
-          ? setGraphy(response.data.chart.result[0].indicators.quote[0].close)
+          ? setGraphy(first.data.chart.result[0].indicators.quote[0].close)
           : setGraphy(
-              response.data.chart.result[0].indicators.adjclose[0].adjclose
+              first.data.chart.result[0].indicators.adjclose[0].adjclose
             );
+        //set table
+        setDetail(second.data.quoteResponse.result[0]);
       })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, [range]);
-
-  // get request for table data
-  const options2 = {
-    method: 'GET',
-    url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
-    params: { symbols: name },
-    headers: {
-      'x-rapidapi-host': API_HOST,
-      'x-rapidapi-key': API_KEY,
-    },
-  };
-
-  useEffect(() => {
-    axios
-      .request(options2)
-      .then(function (response) {
-        setDetail(response.data.quoteResponse.result[0]);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, []);
+      .catch((err) => console.log(err));
+  }, [authUser, range]);
 
   // add stock to watchlist
   useEffect(() => {
@@ -109,20 +106,6 @@ const Stock = (props) => {
         console.log(error);
       });
   }, [favourite]);
-
-  // useEffect(() => {
-  //   axios({
-  //     method: 'delete',
-  //     url: 'http://localhost:3000/api/watchlists/4',
-  //   })
-  //     .then(function (response) {
-  //       console.log("deleted")
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-
-  // }, [])
 
   const onFavourite = (e) => {
     e.preventDefault();

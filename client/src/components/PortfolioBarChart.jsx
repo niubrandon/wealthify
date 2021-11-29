@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 
 const PortfolioBarChart = (props) => {
-  console.log('debug from portfolio bar chart', props.data);
   const [graphData, setGraphData] = useState('');
   //let graphData = {};
   useEffect(() => {
@@ -57,7 +56,6 @@ const PortfolioBarChart = (props) => {
         }
         yAxis.push(Number(marketValue.toFixed(2)));
       }
-      console.log('x and y', xAxis, yAxis);
 
       setGraphData({
         labels: xAxis,
@@ -77,7 +75,7 @@ const PortfolioBarChart = (props) => {
   return (
     <div>
       {graphData && (
-        <Bar
+        <Line
           data={graphData}
           options={{
             title: {

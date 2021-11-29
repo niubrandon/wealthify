@@ -42,6 +42,10 @@ const Modal = (props) => {
       return;
     }
 
+    if (!authUser) {
+      return
+    }
+
     axios({
       method: 'post',
       url: 'http://localhost:3000/api/transactions',

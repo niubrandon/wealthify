@@ -15,7 +15,7 @@ const Home = (props) => {
     method: 'GET',
     url: API_TOPSTOCKS,
     params: {
-      symbols: 'ETH-USD,AMSC,DOT1-USD,BTC-USD,SHOP,TLRY,CGC,TWLO,NEGG,DKNG',
+      symbols: 'AAPL,ETH-USD,SHOP,AMSC,DOT1-USD,BTC-USD,MSFT,AMC,TLRY,CGC',
       lang: 'en',
       region: 'US',
     },
@@ -25,13 +25,13 @@ const Home = (props) => {
     },
   };
 
-   if (authUser) {
-      options['config'] = {
-        headers: {
-          Authorization: 'Bearer ' + authUser.jwt,
-        },
-      };
-    }
+  if (authUser) {
+    options['config'] = {
+      headers: {
+        Authorization: 'Bearer ' + authUser.jwt,
+      },
+    };
+  }
 
   useEffect(() => {
     axios
