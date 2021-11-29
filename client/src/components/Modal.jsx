@@ -5,6 +5,7 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 import { BsCalendar4Week } from 'react-icons/bs';
 import { GoCheck } from 'react-icons/go';
 import { MdOutlineClose } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {
   currentTime,
@@ -12,12 +13,21 @@ import {
 } from '../helpers/transactionCalculations.js';
 
 const Modal = (props) => {
-  const { modalType, setIsOpen, name, regMP, authUser, account } = props;
+  const { modalType, setIsOpen, name, regMP, authUser, setAuthUser } = props;
 
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(regMP);
   const [responseStatus, setResponseStatus] = useState(null);
   const [transaction, setTransaction] = useState(null);
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('auth')) {
+      setAuthUser(JSON.parse(localStorage.getItem('auth')));
+    } else {
+      navigate('/401');
+    }
+  }, []);
 
   const time = currentTime();
 
@@ -32,7 +42,8 @@ const Modal = (props) => {
         trade: trade,
         quantity: Number(quantity),
         settled_price: Number(regMP),
-        account_id: account.account.id,
+        // account_id: account.account.id,
+        account_id: authUser.user_id,
       },
     });
   };
@@ -43,7 +54,7 @@ const Modal = (props) => {
     }
 
     if (!authUser) {
-      return
+      return;
     }
 
     axios({

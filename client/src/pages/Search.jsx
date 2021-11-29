@@ -26,14 +26,6 @@ const Search = (props) => {
     },
   };
 
-  if (authUser) {
-    options['config'] = {
-      headers: {
-        Authorization: 'Bearer ' + authUser.jwt,
-      },
-    };
-  }
-
   useEffect(() => {
     axios
       .request(options)

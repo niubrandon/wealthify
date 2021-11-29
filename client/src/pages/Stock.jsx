@@ -12,7 +12,7 @@ const Stock = (props) => {
   const { authUser, account, setAuthUser } = props;
   const [graphx, setGraphx] = useState([]);
   const [graphy, setGraphy] = useState([]);
-  const [detail, setDetail] = useState([]);
+  const [detail, setDetail] = useState('');
   const [range, setRange] = useState('1d');
   const [graphInterval, setGraphInterval] = useState('15m');
   const [favourite, setFavourite] = useState('');
@@ -33,7 +33,6 @@ const Stock = (props) => {
 
   useEffect(() => {
     if (!authUser) {
-      //  <Navigate to='/401' />;
       return;
     }
     // get request for graph data
@@ -100,7 +99,7 @@ const Stock = (props) => {
       data: favourite,
     })
       .then(function (response) {
-        setDetail(response.data.quoteResponse.result[0]);
+        console.log('success', response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -151,6 +150,7 @@ const Stock = (props) => {
             name={name}
             regMP={detail.regularMarketPrice}
             authUser={authUser}
+            setAuthUser={setAuthUser}
             account={account}
           />
         )}

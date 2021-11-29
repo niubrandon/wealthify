@@ -17,9 +17,7 @@ import Watchlist from './pages/Watchlist';
 import NoUser from './pages/NoUser';
 import { Container, Row, Col } from 'react-bootstrap';
 
-
 function App() {
-
   const [authUser, setAuthUser] = useState(null);
   const [account, setAccount] = useState(null);
 
@@ -68,12 +66,13 @@ function App() {
               <Route
                 path='watchlist'
                 element={
-                <Watchlist
-                  authUser={authUser}
-                  setAuthUser={setAuthUser}
-                  account={account}
-                  setAccount={setAccount}
-                />}
+                  <Watchlist
+                    authUser={authUser}
+                    setAuthUser={setAuthUser}
+                    account={account}
+                    setAccount={setAccount}
+                  />
+                }
               />
               <Route
                 path='leaderboard'
