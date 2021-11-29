@@ -8,15 +8,15 @@ export default {
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 };
 
-const Template = (args) => <MemoryRouter><Modal {...args} /></MemoryRouter>;
+// const Template = (args) => <MemoryRouter><Modal {...args} /></MemoryRouter>;
 
-export const Modal_Example = Template.bind({});
+// export const Modal_Example = Template.bind({});
 
-Modal_Example.args = {
-  modalType: null,
-  setIsOpen: null,
-  name: null,
-  regMP: null,
-  authUser: null,
-  account: null
-}
+// Modal_Example.args = {
+//   modalType: null,
+//   setIsOpen: null,
+//   name: null,
+//   regMP: null,
+//   authUser: null,
+//   account: null
+// }

@@ -16,7 +16,7 @@ const Stock = (props) => {
   const [graphy, setGraphy] = useState([]);
   const [detail, setDetail] = useState([]);
   const [range, setRange] = useState('1d');
-  const [interval, setInterval] = useState('15m');
+  const [frequency, setfrequency] = useState('15m');
   const [favourite, setFavourite] = useState();
   const [activeButton, setActiveButton] = useState('');
 
@@ -31,23 +31,22 @@ const Stock = (props) => {
     }
   }, []);
 
-
-  var options = {
-    method: 'GET',
-    url: `https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/${name}`,
-    params: { range: range, interval: interval },
-    headers: {
-      'x-rapidapi-host': API_HOST,
-      // 'x-rapidapi-key': API_KEY,
-    },
-  };
-
   useEffect(() => {
     if (!localStorage.getItem('auth')) {
       navigate('/401');
       return
     }
   }, [authUser]);
+
+  var options = {
+    method: 'GET',
+    url: `https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/${name}`,
+    params: { range: range, interval: frequency },
+    headers: {
+      'x-rapidapi-host': API_HOST,
+      // 'x-rapidapi-key': API_KEY,
+    },
+  };
 
   useEffect(() => {
     axios
@@ -117,7 +116,7 @@ const Stock = (props) => {
     e.preventDefault();
 
     setRange('1d');
-    setInterval('15m');
+    setfrequency('15m');
   };
 
   const weekly = (e) => {
@@ -125,7 +124,7 @@ const Stock = (props) => {
     e.preventDefault();
 
     setRange('5d');
-    setInterval('1d');
+    setfrequency('1d');
   };
 
   const yearly = (e) => {
@@ -133,7 +132,7 @@ const Stock = (props) => {
     e.preventDefault();
 
     setRange('1y');
-    setInterval('1mo');
+    setfrequency('1mo');
   };
 
   return (
@@ -153,17 +152,17 @@ const Stock = (props) => {
       </header>
       <StockGraph range={range} xAxis={graphx} yAxis={graphy} />
       <div className='buttons'>
-        <button className='time-interval'
+        <button className='time-frequency'
           onClick={(e) => daily(e)}
         >
           Daily
         </button>
-        <button className='time-interval'
+        <button className='time-frequency'
           onClick={(e) => weekly(e)}
         >
           Weekly
         </button>
-        <button className='time-interval'
+        <button className='time-frequency'
           onClick={(e) => yearly(e)}
         >
           Yearly
