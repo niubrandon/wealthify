@@ -16,7 +16,7 @@ const Stock = (props) => {
   const [detail, setDetail] = useState([]);
   const [range, setRange] = useState('1d');
   const [interval, setInterval] = useState('15m');
-  const [favourite, setFavourite] = useState();
+  const [favourite, setFavourite] = useState('');
   const [activeButton, setActiveButton] = useState('');
 
   const API_KEY = `${process.env.REACT_APP_API_KEY}`;
@@ -90,6 +90,10 @@ const Stock = (props) => {
   // add stock to watchlist
   useEffect(() => {
     if (!authUser) {
+      return
+    }
+
+    if (!favourite) {
       return
     }
 
