@@ -61,7 +61,7 @@ const Home = (props) => {
         .catch((error) => {
           console.error(error);
         });
-    }, 15000);
+    }, 5000);
 
     return () => clearInterval(callTopStocks);
   }, [response]);
