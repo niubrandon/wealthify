@@ -23,18 +23,12 @@ class TransactionsController < ApplicationController
     ticker = transaction_params[:ticker]
     account_id = transaction_params[:account_id]
 
-    puts transaction_params
-
     account_to_modify = Account.find_by(id: account_id)
-
-    puts "**account to modify #{account_to_modify}"
 
     # calculate qty of ticker
     buys = Transaction.where(account_id: account_id, ticker: ticker, trade: "1")
     sells = Transaction.where(account_id: account_id, ticker: ticker, trade: "-1")
-    puts "get all buys #{buys}"
-    puts "get all sells #{sells}"
-
+   
     total_buys = buys.sum do |item|
       item.quantity * item.trade
     end
@@ -43,22 +37,15 @@ class TransactionsController < ApplicationController
       item.quantity * item.trade
     end
 
-    ####################################
     total_quantity = total_buys + total_sells
-    puts "*** buys #{total_buys}"
-    puts "*** sells #{total_sells}"
-    puts "*** total qty #{total_quantity}"
-
-
+   
     # buy: check if there is enough cash balance
     if trade_type == 1 && (account_to_modify.cash_balance < settled_price * quantity)
-      puts "***BUY trade*** BUT not enough cash. Transaction failed"
       render json: @transaction.errors, status: :unprocessable_entity
     end
 
-    # trade: check if there is enough qty
+    # sell: check if there is enough qty
     if trade_type == -1 && (quantity > total_quantity)
-      puts "*** SELL trade **** BUT not enough qty. Transaction failed"
       render json: @transaction.errors, status: :unprocessable_entity
     end
 

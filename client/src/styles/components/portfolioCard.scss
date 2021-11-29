@@ -8,6 +8,7 @@
   header {
     .link {
       @include title();
+      font-size: 1.5em;
       text-decoration: none;
       align-items: flex-start;
     }

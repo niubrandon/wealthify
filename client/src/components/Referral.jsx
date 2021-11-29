@@ -3,7 +3,7 @@ import '../styles/components/referral.scss';
 import { RiFileCopyFill } from 'react-icons/ri';
 
 const Referral = (props) => {
-  const { account, authUser } = props;
+  const { authUser } = props;
   const [referralCode, setReferralCode] = useState(
     authUser ? authUser.referral_code : null
   );

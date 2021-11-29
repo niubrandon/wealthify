@@ -9,6 +9,7 @@ import {
 import '../styles/pages/signup.scss';
 
 const Signup = (props) => {
+  const {setAuthUser} = props;
 
   const [user, setUser] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -21,11 +22,10 @@ const Signup = (props) => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    
+
     if (!user) {
       return
     }
-    console.log(`printing the current state of ${user.user.email}`)
     axios({
       method: 'post',
       url: 'http://localhost:3000/users',
@@ -33,7 +33,7 @@ const Signup = (props) => {
     })
       .then(function (response) {
   
-        props.setAuthUser({
+        setAuthUser({
           jwt: response.data.auth_token,
           user_id: response.data.user_id,
           user_email: response.data.user_email,
@@ -52,7 +52,7 @@ const Signup = (props) => {
         console.log(error);
         setError("Email address is taken! Please try a different one!")
       });
-  }, [user]);
+  }, [user, navigate, setAuthUser]);
 
   const onSignUp = (e) => {
     e.preventDefault();

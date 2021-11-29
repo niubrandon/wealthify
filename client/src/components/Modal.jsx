@@ -5,28 +5,31 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 import { BsCalendar4Week } from 'react-icons/bs';
 import { GoCheck } from 'react-icons/go';
 import { MdOutlineClose } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {
   currentTime,
   calculatePrice,
 } from '../helpers/transactionCalculations.js';
 
-// props
-// needs the stock name
-// modal type (buy or sell)
-// setIsOpen
-
 const Modal = (props) => {
-  const { modalType, setIsOpen, name, regMP, authUser, account } = props;
-  console.log('account from modal:', account);
+  const { modalType, setIsOpen, name, regMP, authUser, setAuthUser } = props;
 
   const [quantity, setQuantity] = useState(1);
-  const [time, setTime] = useState(currentTime);
   const [totalPrice, setTotalPrice] = useState(regMP);
   const [responseStatus, setResponseStatus] = useState(null);
-
-  // Post request
   const [transaction, setTransaction] = useState(null);
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('auth')) {
+      setAuthUser(JSON.parse(localStorage.getItem('auth')));
+    } else {
+      navigate('/401');
+    }
+  }, []);
+
+  const time = currentTime();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +42,8 @@ const Modal = (props) => {
         trade: trade,
         quantity: Number(quantity),
         settled_price: Number(regMP),
-        account_id: account.account.id,
+        // account_id: account.account.id,
+        account_id: authUser.user_id,
       },
     });
   };
@@ -50,7 +54,7 @@ const Modal = (props) => {
     }
 
     if (!authUser) {
-      return
+      return;
     }
 
     axios({
@@ -72,21 +76,11 @@ const Modal = (props) => {
         console.log(error);
         setResponseStatus('error');
       });
-  }, [transaction]);
-
-  // useEffect(() => {
-  //   setTime(currentTime);
-
-  //   const callTime = setInterval(() => {
-  //     setTime(currentTime);
-  //   }, 1000);
-
-  //   return () => clearInterval(callTime);
-  // }, [time]);
+  }, [transaction, authUser]);
 
   useEffect(() => {
     setTotalPrice(calculatePrice(regMP, quantity));
-  }, [quantity]);
+  }, [quantity, regMP]);
 
   return ReactDOM.createPortal(
     <aside id='modal'>

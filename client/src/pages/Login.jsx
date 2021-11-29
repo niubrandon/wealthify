@@ -3,22 +3,19 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Error from '../components/Error'
 import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/pages/login.scss';
 
 const Login = (props) => {
+  const {setAuthUser} = props;
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   let navigate = useNavigate();
-  let location = useLocation();
-
-  let from = '/portfolio';
 
   useEffect(() => {
-
     if (!user) {
       return;
     }
@@ -30,7 +27,7 @@ const Login = (props) => {
     })
       .then(function (response) {
 
-        props.setAuthUser({
+        setAuthUser({
           jwt: response.data.auth_token,
           user_id: response.data.user_id,
           user_email: response.data.user_email,
@@ -46,10 +43,9 @@ const Login = (props) => {
         console.log(error);
         setError("Wrong credential, please try again!")
       });
-  }, [user]);
+  }, [user, setAuthUser, navigate]);
 
   const onLogIn = (e) => {
-    console.log('onSignUp invoked');
     e.preventDefault();
 
     setUser({
