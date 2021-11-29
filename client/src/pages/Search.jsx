@@ -16,7 +16,7 @@ const Search = (props) => {
     setQuery(e.target.value);
   };
 
-  var options = {
+  const options = {
     method: 'GET',
     url: API_AUTOCOMPLETE,
     params: { query: `${query}`, lang: 'en', region: 'US' },

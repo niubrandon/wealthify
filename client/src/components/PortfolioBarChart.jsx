@@ -31,7 +31,7 @@ const PortfolioBarChart = (props) => {
     labels: xAxis,
     datasets: [
       {
-        label: 'Daily Balance',
+        label: 'Investments Balance',
         backgroundColor: 'rgb(97, 190, 155)',
         borderColor: 'rgb(97, 190, 155)',
         borderWidth: 2,

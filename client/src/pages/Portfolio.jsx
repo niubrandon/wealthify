@@ -21,10 +21,12 @@ const Portfolio = (props) => {
     } else {
       navigate('/401');
     }
-    
-  }, [navigate, setAuthUser]);
+  }, []);
 
   useEffect(() => {
+    if (!props.authUser) {
+      return;
+    }
     const config = {
       headers: {
         Authorization: 'Bearer ' + authUser.jwt,
@@ -40,7 +42,7 @@ const Portfolio = (props) => {
       setBalanceData(second.data);
     }).catch(err => console.log(err))
 
-  }, [authUser, setAccount]);
+  }, [authUser]);
 
   return (
     <section id='portfolio' className='page'>

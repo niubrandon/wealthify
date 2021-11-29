@@ -11,7 +11,7 @@ const Home = (props) => {
 
   const [response, setResponse] = useState([]);
 
-  var options = {
+  const options = {
     method: 'GET',
     url: API_TOPSTOCKS,
     params: {

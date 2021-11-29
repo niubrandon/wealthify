@@ -49,6 +49,9 @@ const Watchlist = (props) => {
  
 //fetch all the data
   useEffect(() => {
+    if (!props.authUser) {
+    return;
+    }
     const config = {
       headers: {
         Authorization: 'Bearer ' + props.authUser.jwt,

@@ -6,7 +6,6 @@ import {FaTrophy} from 'react-icons/fa';
 import {GrDown} from 'react-icons/gr'
 
 const LeaderboardCard = (props) => {
-  console.log('leaderboard props:', props);
   const { data } = props;
   const [donut, setDonut] = useState();
 

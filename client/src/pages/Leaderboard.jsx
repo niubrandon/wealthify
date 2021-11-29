@@ -18,7 +18,6 @@ const Leaderboard = (props) => {
     axios
       .get(url, config)
       .then((response) => {
-        console.log(response.data);
         // setAccounts(response.data.accounts);
         // setUsers(response.data.users);
         // setPortfolios(response.data.portfolios)
