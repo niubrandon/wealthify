@@ -40,12 +40,10 @@ class UsersController < ApplicationController
   def create
 
     signup_referral_code = user_params[:referral_code].strip
-    puts "***SIGNUP REFFERAL CODE :::: #{signup_referral_code}****"
 
     if signup_referral_code == ''
       @user = User.new(user_params)
       @user.save
-      puts "*****NO no code, no extra money**"
       @user.accounts.create!({
         :cash_balance => 10000,
         :stock_balance => 0,
@@ -56,7 +54,6 @@ class UsersController < ApplicationController
     elsif signup_referral_code != '' && User.find_by(referral_code: signup_referral_code)
       @user = User.new(user_params)
       @user.save
-      puts "*****YES signed up with a referral code*****"
       @user.accounts.create!({
         :cash_balance => 10250,
         :stock_balance => 0,
