@@ -163,17 +163,17 @@ const Stock = (props) => {
       </header>
       <StockGraph range={range} xAxis={graphx} yAxis={graphy} />
       <div className='buttons'>
-        <button className='time-frequency'
+        <button className='time-interval'
           onClick={(e) => daily(e)}
         >
           Daily
         </button>
-        <button className='time-frequency'
+        <button className='time-interval'
           onClick={(e) => weekly(e)}
         >
           Weekly
         </button>
-        <button className='time-frequency'
+        <button className='time-interval'
           onClick={(e) => yearly(e)}
         >
           Yearly
