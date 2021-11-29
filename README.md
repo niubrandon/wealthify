@@ -15,7 +15,7 @@
 
 
 ## Live demonstration:
-![demo](https://user-images.githubusercontent.com/16887712/demo.gif)
+![demo](https://github.com/niubrandon/wealthify/blob/master/app/public/demo.gif?raw=true)
 
 ## Cypress E2E testings:
 
