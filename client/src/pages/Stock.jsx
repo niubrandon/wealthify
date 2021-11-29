@@ -15,7 +15,7 @@ const Stock = (props) => {
   const [graphy, setGraphy] = useState([]);
   const [detail, setDetail] = useState([]);
   const [range, setRange] = useState('1d');
-  const [interval, setInterval] = useState('15m');
+  const [graphInterval, setGraphInterval] = useState('15m');
   const [favourite, setFavourite] = useState('');
   const [activeButton, setActiveButton] = useState('');
 
@@ -36,7 +36,7 @@ const Stock = (props) => {
   var options = {
     method: 'GET',
     url: `https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/${name}`,
-    params: { range: range, interval: interval },
+    params: { range: range, interval: graphInterval },
     headers: {
       'x-rapidapi-host': API_HOST,
       'x-rapidapi-key': API_KEY,
@@ -144,7 +144,7 @@ const Stock = (props) => {
     e.preventDefault();
 
     setRange('1d');
-    setInterval('15m');
+    setGraphInterval('15m');
   };
 
   const weekly = (e) => {
@@ -152,7 +152,7 @@ const Stock = (props) => {
     e.preventDefault();
 
     setRange('5d');
-    setInterval('1d');
+    setGraphInterval('1d');
   };
 
   const yearly = (e) => {
@@ -160,7 +160,7 @@ const Stock = (props) => {
     e.preventDefault();
 
     setRange('1y');
-    setInterval('1mo');
+    setGraphInterval('1mo');
   };
 
   return (
