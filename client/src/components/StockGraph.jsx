@@ -37,13 +37,13 @@ const StockGraph = (props) => {
 
   return (
     <>
-      <div style={{ position: "relative", margin: "auto", width: "90%"}}>
+      <div style={{ position: "relative", margin: "auto", width: "90%" }}>
       <Line
           data={state}
           options={{
             title:{
               display:true,
-              text:'Stock Price',
+              text:'Stock prices',
               fontSize:20
             },
             legend:{

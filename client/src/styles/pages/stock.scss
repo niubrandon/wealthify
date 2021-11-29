@@ -34,3 +34,22 @@ header {
     }
   }
 }
+
+
+// responsive styles
+@media only screen and (max-width: 1024px) {
+  header {
+    button {
+      font-size: 1em;
+      padding: 5px;
+
+    }
+  }
+  .buttons {
+    .time-interval {
+      padding: 5px 10px;
+      margin: 0.5rem;
+      font-size: 0.9em;
+    }
+  }
+}

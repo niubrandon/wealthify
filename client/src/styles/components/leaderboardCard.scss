@@ -46,3 +46,22 @@
   }
 
 }
+
+// responsive styles
+@media only screen and (max-width: 1024px) {
+  #leaderboard-card {
+    @include card(150px, 275px);
+    h2 {
+      font-size: 1em;
+    }
+    .user-info {  
+      .rank {
+        padding: 2px 8px;
+        font-size: 1em;
+      }
+      .icon {
+        display: none;
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@
 
   h1 {
     @include title();
+    text-align: center;
     span {
       color: $logo;
     }
@@ -12,6 +13,7 @@
 
   h2 {
     @include title();
+    text-align: center;
     margin-top: 2em;
     margin-bottom: 0.5em;
   }
@@ -19,6 +21,7 @@
     height: auto;
     width: 60%;
     margin: auto;
+    margin-top: 2em;
 
   }
   .holdings {
@@ -42,4 +45,20 @@
     margin: auto;
   }
 
+}
+
+@media only screen and (max-width: 1024px) {
+  #portfolio {
+
+    .table {
+      width: 60%;
+    }
+    .holdings {
+      @include flex-center(column);
+      .donut {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
 }
