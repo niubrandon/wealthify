@@ -15,8 +15,8 @@ const Stock = (props) => {
   const [graphy, setGraphy] = useState([]);
   const [detail, setDetail] = useState([]);
   const [range, setRange] = useState('1d');
-  const [interval, setInterval] = useState('15m');
-  const [favourite, setFavourite] = useState();
+  const [graphInterval, setGraphInterval] = useState('15m');
+  const [favourite, setFavourite] = useState('');
   const [activeButton, setActiveButton] = useState('');
 
   const API_KEY = `${process.env.REACT_APP_API_KEY}`;
@@ -27,6 +27,8 @@ const Stock = (props) => {
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setAuthUser(JSON.parse(localStorage.getItem('auth')));
+    } else {
+      navigate('/401');
     }
   }, []);
 
@@ -34,20 +36,15 @@ const Stock = (props) => {
   var options = {
     method: 'GET',
     url: `https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/${name}`,
-    params: { range: range, interval: interval },
+    params: { range: range, interval: graphInterval },
     headers: {
       'x-rapidapi-host': API_HOST,
       'x-rapidapi-key': API_KEY,
     },
   };
 
-  useEffect(() => {
-    if (!localStorage.getItem('auth')) {
-      navigate('/401');
-      return
-    }
-  }, [authUser]);
 
+  // get request for chart
   useEffect(() => {
     axios
       .request(options)
@@ -66,7 +63,7 @@ const Stock = (props) => {
       });
   }, [range]);
 
-
+  // get request for table data
   const options2 = {
     method: 'GET',
     url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
@@ -89,8 +86,14 @@ const Stock = (props) => {
       });
   }, []);
 
+
+  // add stock to watchlist
   useEffect(() => {
     if (!authUser) {
+      return
+    }
+
+    if (!favourite) {
       return
     }
 
@@ -141,7 +144,7 @@ const Stock = (props) => {
     e.preventDefault();
 
     setRange('1d');
-    setInterval('15m');
+    setGraphInterval('15m');
   };
 
   const weekly = (e) => {
@@ -149,7 +152,7 @@ const Stock = (props) => {
     e.preventDefault();
 
     setRange('5d');
-    setInterval('1d');
+    setGraphInterval('1d');
   };
 
   const yearly = (e) => {
@@ -157,7 +160,7 @@ const Stock = (props) => {
     e.preventDefault();
 
     setRange('1y');
-    setInterval('1mo');
+    setGraphInterval('1mo');
   };
 
   return (
@@ -168,12 +171,12 @@ const Stock = (props) => {
             {activeButton ? <GoEyeClosed className='watching'/> : <GoEye className='not-watching'/>}
           </button>
         }
-        <StockHeader
+      { detail &&  <StockHeader
           name={name}
           regMP={detail.regularMarketPrice}
           authUser={authUser}
           account={account}
-        />
+        />}
       </header>
       <StockGraph range={range} xAxis={graphx} yAxis={graphy} />
       <div className='buttons'>
@@ -193,7 +196,7 @@ const Stock = (props) => {
           Yearly
         </button>
       </div>
-      <StockTable
+      { detail && <StockTable
         regularMarketPrice={detail.regularMarketPrice}
         regularMarketChange={detail.regularMarketChange}
         regularMarketChangePercent={detail.regularMarketChangePercent}
@@ -204,7 +207,7 @@ const Stock = (props) => {
         regularMarketPreviousClose={detail.regularMarketPreviousClose}
         exchange={detail.fullExchangeName}
         regularMarketOpen={detail.regularMarketOpen}
-      />
+      />}
     </section>
   )
 };
