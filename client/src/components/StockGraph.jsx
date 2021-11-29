@@ -70,7 +70,7 @@ const StockGraph = (props) => {
           options={{
             title:{
               display:true,
-              text:'Average Rainfall per month',
+              text:'Stock prices',
               fontSize:20
             },
             legend:{

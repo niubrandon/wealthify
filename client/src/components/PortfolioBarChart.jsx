@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {Bar} from 'react-chartjs-2';
+import {Line} from 'react-chartjs-2';
 
 const PortfolioBarChart = (props) => {
   console.log("debug from portfolio bar chart", props.data)
@@ -80,7 +80,7 @@ const PortfolioBarChart = (props) => {
   
   return (
     <div>
-     { graphData && <Bar
+     { graphData && <Line
           data={graphData}
           options={{
             title:{
