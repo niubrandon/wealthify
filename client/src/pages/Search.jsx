@@ -3,59 +3,6 @@ import axios from 'axios';
 import Card from '../components/Card';
 import '../styles/pages/search.scss';
 
-const stockData = [
-  {
-    symbol: 'AAPL',
-    name: 'Apple',
-    exchDisp: 'TSX',
-  },
-  {
-    symbol: 'AMZ',
-    name: 'Amazon',
-    exchDisp: 'NASDQ',
-  },
-  {
-    symbol: 'AMC',
-    name: 'AMC Entertainment Holdings, Inc.',
-    exchDisp: 'NYSE',
-  },
-  {
-    symbol: 'JK',
-    name: 'Just Kidding',
-    exchDisp: 'TMI',
-  },
-  {
-    symbol: 'LOL',
-    name: 'laugh Out Loud',
-    exchDisp: 'HAH',
-  },
-  {
-    symbol: 'AWW',
-    name: 'Cute Stuff',
-  },
-  {
-    symbol: 'AAPL',
-    name: 'Apple',
-    exchDisp: 'TSX',
-  },
-  {
-    symbol: 'AMZ',
-    name: 'Amazon',
-    exchDisp: 'NSDQ',
-  },
-
-  {
-    symbol: 'JK',
-    name: 'Just Kidding',
-    exchDisp: 'TMI',
-  },
-  {
-    symbol: 'LOL',
-    name: 'laugh Out Loud',
-    exchDisp: 'HAH',
-  },
-];
-
 const Search = (props) => {
   const { authUser } = props;
   const API_KEY = `${process.env.REACT_APP_API_KEY}`;
@@ -79,19 +26,19 @@ const Search = (props) => {
     },
   };
 
-  // set the query to trigger the api call.
+  if (authUser) {
+    options['config'] = {
+      headers: {
+        Authorization: 'Bearer ' + authUser.jwt,
+      },
+    };
+  }
+
   useEffect(() => {
     setQuery('a');
   }, []);
 
   useEffect(() => {
-    if (authUser) {
-      options['config'] = {
-        headers: {
-          Authorization: 'Bearer ' + authUser.jwt,
-        },
-      };
-    }
     axios
       .request(options)
       .then((response) => {

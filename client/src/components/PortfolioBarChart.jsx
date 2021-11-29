@@ -1,15 +1,10 @@
 import {Bar} from 'react-chartjs-2';
 
 const PortfolioBarChart = (props) => {
-  console.log("debug from portfolio bar chart", props.data)
   const xAxis = [];
-
   const yAxis = [];
-
   const priceHistoryArray = Object.values(props.data.history_prices);
-
   const transactionsArray = Object.values(props.data.transactions);
- 
   const timeStampArray = priceHistoryArray[0].timestamp;
   for (const t of timeStampArray) {
     xAxis.push((new Date(Number(t) * 1000)).toLocaleDateString('en-US'));

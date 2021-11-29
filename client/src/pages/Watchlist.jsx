@@ -10,7 +10,6 @@ const Watchlist = (props) => {
   const [prices, setPrices] = useState([])
   const [deleteId, setDeleteId] = useState("")
 
-  
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -19,11 +18,9 @@ const Watchlist = (props) => {
     } else {
       navigate('/401');
     }
-    
   }, []);
 
   useEffect(() => {
-
     if (!deleteId) {
       return
     }
@@ -40,10 +37,7 @@ const Watchlist = (props) => {
       config
     })
       .then(function (response) {
-        console.log("deleted")
-        console.log("server response for watchlist data after deleting", response.data, authUser.user_id)
         const filteredWatchlist = response.data.watchlists.filter(item => item.user_id === authUser.user_id);
-        console.log("filtered data", filteredWatchlist)
         setWatchlist(filteredWatchlist);
         setPrices(response.data.prices)
       })
@@ -55,15 +49,6 @@ const Watchlist = (props) => {
  
 //fetch all the data
   useEffect(() => {
- /*    if (!localStorage.getItem('auth')) {
-      navigate('/401');
-      return
-    } */
-    if (!authUser) {
-      //navigate('/401');
-      return
-    }
-
     const config = {
       headers: {
         Authorization: 'Bearer ' + props.authUser.jwt,
@@ -74,31 +59,16 @@ const Watchlist = (props) => {
     axios
       .get(url, config)
       .then((response) => {
-        console.log("server response for watchlist data", response.data, authUser.user_id)
         const filteredWatchlist = response.data.watchlists.filter(item => item.user_id === authUser.user_id);
-        console.log("filtered data", filteredWatchlist)
         setWatchlist(filteredWatchlist);
-        setPrices(response.data.prices)
-       
-        
+        setPrices(response.data.prices) 
       })
       .catch((err) => {
         console.log(err);
       });
   }, [authUser]); 
 
-  const flexWrapperVertical = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '10px',
-  };
-
-  // console.log("b", watchlist)
-
-   const onDelete= (e) => {
-    console.log("deleting", e.target.id)
+  const onDelete= (e) => {
     setDeleteId(e.target.id)
   
   }
@@ -113,11 +83,9 @@ const Watchlist = (props) => {
  */
   const WatchlistItems = watchlist.map((item) => {
     const stockPrice = prices[item.ticker]
-    console.log("stock price is ", stockPrice)
      return (
-     
-     <WatchlistItem key={item.id} item={item} authUser={authUser} onDelete={onDelete} price={stockPrice}/>
-     )
+      <WatchlistItem key={item.id} item={item} authUser={authUser} onDelete={onDelete} price={stockPrice}/>
+    )
       
     
   })

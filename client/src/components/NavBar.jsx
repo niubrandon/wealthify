@@ -1,5 +1,5 @@
 import Nav from 'react-bootstrap/Nav';
-import { NavLink, useNavigate, Navigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { RiTeamFill } from 'react-icons/ri';
 import { GoSearch, GoGraph, GoEye } from 'react-icons/go';
 import { BiTrendingUp } from 'react-icons/bi';

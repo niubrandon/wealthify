@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Alert } from 'react-bootstrap';
 const Error = (props) => {
   

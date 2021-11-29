@@ -1,4 +1,4 @@
-import { useEffect, useState, createContext } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -28,11 +28,6 @@ function App() {
       setAuthUser(JSON.parse(localStorage.getItem('auth')));
     }
   }, []);
-
-  useEffect(() => {
-    console.log(`%%%%%%%verify state from homepage ${authUser}%%%%%%%%%`);
-  
-  }, [authUser]);
 
   return (
     <>

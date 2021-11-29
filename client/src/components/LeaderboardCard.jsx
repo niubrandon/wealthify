@@ -1,7 +1,6 @@
 import React from 'react';
 import LeaderboardDonutChart from './LeaderboardDonutChart';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 import '../styles/components/leaderboardCard.scss'
 import {FaTrophy} from 'react-icons/fa';
 import {GrDown} from 'react-icons/gr'

@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import '../styles/components/stockHeader.scss';
 import Modal from '../components/Modal';
 
-// props
-// name (aka ticker)
-
 const StockHeader = (props) => {
   const { name, regMP, authUser, account } = props;
 

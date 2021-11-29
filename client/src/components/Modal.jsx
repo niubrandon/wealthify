@@ -11,22 +11,15 @@ import {
   calculatePrice,
 } from '../helpers/transactionCalculations.js';
 
-// props
-// needs the stock name
-// modal type (buy or sell)
-// setIsOpen
-
 const Modal = (props) => {
   const { modalType, setIsOpen, name, regMP, authUser, account } = props;
-  console.log('account from modal:', account);
 
   const [quantity, setQuantity] = useState(1);
-  const [time, setTime] = useState(currentTime);
   const [totalPrice, setTotalPrice] = useState(regMP);
   const [responseStatus, setResponseStatus] = useState(null);
-
-  // Post request
   const [transaction, setTransaction] = useState(null);
+
+  const time = currentTime();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -68,21 +61,11 @@ const Modal = (props) => {
         console.log(error);
         setResponseStatus('error');
       });
-  }, [transaction]);
-
-  // useEffect(() => {
-  //   setTime(currentTime);
-
-  //   const callTime = setInterval(() => {
-  //     setTime(currentTime);
-  //   }, 1000);
-
-  //   return () => clearInterval(callTime);
-  // }, [time]);
+  }, [transaction, authUser]);
 
   useEffect(() => {
     setTotalPrice(calculatePrice(regMP, quantity));
-  }, [quantity]);
+  }, [quantity, regMP]);
 
   return ReactDOM.createPortal(
     <aside id='modal'>

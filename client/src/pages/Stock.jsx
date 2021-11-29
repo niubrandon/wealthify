@@ -10,7 +10,6 @@ const axios = require('axios').default;
 
 const Stock = (props) => {
   const { authUser, account, setAuthUser } = props;
-  console.log('authUser on Stock:', authUser);
   const [graphx, setGraphx] = useState([]);
   const [graphy, setGraphy] = useState([]);
   const [detail, setDetail] = useState([]);
@@ -27,6 +26,8 @@ const Stock = (props) => {
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setAuthUser(JSON.parse(localStorage.getItem('auth')));
+    } else {
+      navigate('/401');
     }
   }, []);
 
@@ -42,18 +43,9 @@ const Stock = (props) => {
   };
 
   useEffect(() => {
-    if (!localStorage.getItem('auth')) {
-      navigate('/401');
-      return
-    }
-  }, [authUser]);
-
-  useEffect(() => {
     axios
       .request(options)
       .then(function (response) {
-        console.log('graph called');
-
         setGraphx(response.data.chart.result[0].timestamp);
         range === '1d'
           ? setGraphy(response.data.chart.result[0].indicators.quote[0].close)
@@ -81,7 +73,6 @@ const Stock = (props) => {
     axios
       .request(options2)
       .then(function (response) {
-        console.log(response.data)
         setDetail(response.data.quoteResponse.result[0]);
       })
       .catch(function (error) {
@@ -107,7 +98,6 @@ const Stock = (props) => {
       data: favourite,
     })
       .then(function (response) {
-        console.log(response.data);
         setDetail(response.data.quoteResponse.result[0]);
       })
       .catch(function (error) {
@@ -137,7 +127,6 @@ const Stock = (props) => {
   }
 
   const daily = (e) => {
-    console.log('onClick invoked');
     e.preventDefault();
 
     setRange('1d');
@@ -145,7 +134,6 @@ const Stock = (props) => {
   };
 
   const weekly = (e) => {
-    console.log('onClick invoked');
     e.preventDefault();
 
     setRange('5d');
@@ -153,7 +141,6 @@ const Stock = (props) => {
   };
 
   const yearly = (e) => {
-    console.log('onClick invoked');
     e.preventDefault();
 
     setRange('1y');
