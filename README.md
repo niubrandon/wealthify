@@ -1,26 +1,32 @@
 # Wealthify
 
-## We are team Wealthify! We created a trading competition application allow users to buy and sell stocks/cryptos and build and share investment portfolios. 
+## We are team Wealthify! We created a trading simulation application which allows users to buy and sell stocks/crypto to build their own portfolio.
+
+Each user starts off with $10,000. You can browse through live financial data, store your favourite stocks on your watchlist, see which user has the top performing portfolio on the leaderboard, and invite friends to join to receive a $250 cash bonus!
 
 ## Team members:
+
 - Adriana https://github.com/wavyadri
-- Aaron   https://github.com/tennaaro
+- Aaron https://github.com/tennaaro
 - Brandon https://github.com/niubrandon
+
 ## Tech stacks:
+
 - React
 - Ruby on Rails
 - PostgreSQL
+- SCSS
 
 ## Project features:
 
-
 ## Live demonstration:
+
 ![image](https://github.com/niubrandon/wealthify/blob/main/public/demo.gif?raw=true)
 
 ## Cypress E2E testings:
 
-
 ## API Endpoints (REST):
+
 <table>
  <thead>
     <tr>
@@ -111,31 +117,34 @@
           <td>referrals#show</td>
         </tr>
 
-
    </tbody>
 </table>
 
 ## Dependencies:
+
 ### Client
+
 - axios
 - bootstrap
 - chart.js
 - react-bootstrap
 - node-sass
+- react-icons
 - jest
 - storybook
 - cypress
 - @testing-library/react
 
 ### Server
+
 - excon
 - dotenv-rails
 - bcrypt
 - jwt
 - rack-cors
+
 ## Getting Started:
+
 - clone this repo: git@github.com:niubrandon/wealthify.git
 - go to client folder install npm packages, => npm install => npm start
 - go to server folder install gems, => bundle install => rake db:reset => rails server
-
-
