@@ -66,7 +66,11 @@ const Portfolio = (props) => {
       </div>
       <h2>Current Holdings</h2>
       <div className='holdings'>
-        <div className={!account.portfolio.length ? 'cards-hide' : 'cards'}>
+        <div
+          className={
+            account && !account.portfolio.length ? 'cards-hide' : 'cards'
+          }
+        >
           {account && <PortfolioCard account={account} authUser={authUser} />}
         </div>
         <div className='donut'>
