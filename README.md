@@ -19,6 +19,16 @@ Each user starts off with $10,000. You can browse through live financial data, s
 
 ## Project features:
 
+- Autocomplete search
+- Dynamic portfolio charts
+- Transaction history
+- Referral code bonus
+- Save favourites to watchlist
+- Live financial data and graphs
+- Fractional buy and sell
+- Portfolio leaderboard
+- Trending stocks with live 5 second update
+
 ## Live demonstration:
 
 ![image](https://github.com/niubrandon/wealthify/blob/main/public/demo.gif?raw=true)
