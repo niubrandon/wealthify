@@ -22,10 +22,13 @@
     width: 60%;
     margin: auto;
     margin-top: 2em;
-
   }
   .holdings {
     @include flex-center(row);
+
+    .cards-hide {
+      display: none;
+    }
     .cards {
       flex: 1;
       @include flex-center(row);
@@ -35,21 +38,20 @@
     .donut {
       flex: 1;
       @include flex-center(row);
-
     }
   }
 
-  .table, .referral, .holdings {
+  .table,
+  .referral,
+  .holdings {
     height: auto;
     width: 70%;
     margin: auto;
   }
-
 }
 
 @media only screen and (max-width: 1024px) {
   #portfolio {
-
     .table {
       width: 60%;
     }
