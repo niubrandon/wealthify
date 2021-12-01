@@ -33,6 +33,9 @@ Each user starts off with $10,000. You can browse through live financial data, s
 
 ![image](https://github.com/niubrandon/wealthify/blob/main/public/demo.gif?raw=true)
 
+## Cypress End-to-End testings:
+![image](https://github.com/niubrandon/wealthify/blob/main/public/cypresse2e.gif?raw=true)
+
 
 ## API Endpoints (REST):
 
