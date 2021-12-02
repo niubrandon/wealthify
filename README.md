@@ -158,5 +158,15 @@ Each user starts off with $10,000. You can browse through live financial data, s
 ## Getting Started:
 
 - clone this repo: git@github.com:niubrandon/wealthify.git
+```
+git clone https://github.com/niubrandon/wealthify.git
+```
 - go to client folder install npm packages, => npm install => npm start
+```
+npm install
+```
+then run with
+```
+npm start
+```
 - go to server folder install gems, => bundle install => rake db:reset => rails server
