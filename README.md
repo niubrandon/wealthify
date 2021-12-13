@@ -28,6 +28,7 @@ Each user starts off with $10,000. You can browse through live financial data, s
 - Fractional buy and sell
 - Portfolio leaderboard
 - Trending stocks with live 5 second update
+- User authentication with JSON Web Token(JWT)
 
 ## Live demonstration:
 
@@ -158,5 +159,10 @@ Each user starts off with $10,000. You can browse through live financial data, s
 ## Getting Started:
 
 - clone this repo: git@github.com:niubrandon/wealthify.git
-- go to client folder install npm packages, => npm install => npm start
-- go to server folder install gems, => bundle install => rake db:reset => rails server
+- go to client folder install npm packages 
+- => npm install 
+- => npm start
+- go to server folder install gems 
+- => bundle install 
+- => rake db:reset 
+- => rails server
