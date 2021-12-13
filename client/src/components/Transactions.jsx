@@ -2,8 +2,6 @@ import Table from 'react-bootstrap/Table';
 
 
   const Transactions = (props) => {
-
-
     const tableRows = props.account && props.account.transactions.map((item, index) => {
       return (
         <tr key = {index} >
@@ -16,6 +14,7 @@ import Table from 'react-bootstrap/Table';
       </tr>
       )
     })
+
     return (
       <Table responsive="xs" className="w-100" hover>
       <thead>

@@ -1,19 +1,17 @@
 require 'excon'
 require 'json'
 class AccountsController < ApplicationController
-  #before_action :authenticate_request!, except: [:index, :leaderboard, :show]
+  # before_action :authenticate_request!, except: [:index, :leaderboard, :show]
   before_action :set_account, only: [:show, :update, :destroy]
 
   def leaderboard
-    
-    @users = User.all;
-    @accounts = Account.all;
-    @portfolios = Portfolio.all;
+    @users = User.all
+    @accounts = Account.all
+    @portfolios = Portfolio.all
     
     leaderboard_data = {}
 
     @accounts.each do |account|
-    
       email = @users.find_by(id: account.user_id)
       stockListArray = ["cash balance"]
       stockMarketValueArray = [account.cash_balance]
@@ -35,8 +33,6 @@ class AccountsController < ApplicationController
     render json: {leaderboard: leaderboard_data}
   end
 
- 
-
   # GET /accounts
   def index
     adjust_accounts_balance_from_updated_portfolios
@@ -50,9 +46,9 @@ class AccountsController < ApplicationController
   def leaderboard
     adjust_accounts_balance_from_updated_portfolios
     
-    @users = User.all;
-    @accounts = Account.all;
-    @portfolios = Portfolio.all;
+    @users = User.all
+    @accounts = Account.all
+    @portfolios = Portfolio.all
     
     leaderboard_data = []
 
@@ -84,7 +80,6 @@ class AccountsController < ApplicationController
   
   # GET /accounts/1
   def show
-
     adjust_accounts_balance_from_updated_portfolios
  
     @account_portfolios = Portfolio.all.where("account_id = #{params[:id]}" )
@@ -117,8 +112,7 @@ class AccountsController < ApplicationController
     @account.destroy
   end
 
-  def adjust_portfolio_spot_price
-    
+  def adjust_portfolio_spot_price   
     @live_price = get_live_price
     @portfolios = Portfolio.all
     @portfolios.each do |portfolio|
@@ -130,14 +124,13 @@ class AccountsController < ApplicationController
   end
 
   def adjust_accounts_balance_from_updated_portfolios
-
     adjust_portfolio_spot_price
     
     @accounts = Account.all
 
     @accounts.each do |account|
       portfolio_belongs_to_account = Portfolio.where(account_id: account.id)
-      current_market_value = 0;
+      current_market_value = 0
       portfolio_belongs_to_account.each do |portfolio|
         current_market_value = current_market_value + portfolio.current_spot_price * portfolio.quantity
       end
@@ -160,45 +153,47 @@ class AccountsController < ApplicationController
       params.require(:account).permit(:cash_balance, :stock_balance, :total_balance)
     end
 
-     # Use to fetch the latest stock price
-     def get_live_price
-      serialized_string = get_all_stocks
-      current_market_price = {}
-      url = "https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote?symbols=#{serialized_string}"
-      #url = "https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote?symbols=BTC-USD"
-      response = Excon.get(
-        url,
-        headers: {
-          "x-rapidapi-host": "stock-data-yahoo-finance-alternative.p.rapidapi.com",
-		      "x-rapidapi-key": ENV["STOCK_API_KEY"]
-        }
-      )
-      data = JSON.parse(response.body)
-      data["quoteResponse"]["result"].each do |item|
+    # Use to fetch the latest stock price
+    def get_live_price
+    serialized_string = get_all_stocks
+    current_market_price = {}
+    url = "https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote?symbols=#{serialized_string}"
+
+    response = Excon.get(
+      url,
+      headers: {
+        "x-rapidapi-host": "stock-data-yahoo-finance-alternative.p.rapidapi.com",
+        "x-rapidapi-key": ENV["STOCK_API_KEY"]
+      }
+    )
+    data = JSON.parse(response.body)
+    data["quoteResponse"]["result"].each do |item|
       current_market_price[item["symbol"]] = item["regularMarketPrice"]
-     
-    end
-    current_market_price 
-
     end
 
-    def get_all_stocks
-      stocks_list = []
-      stocks_string = ""
-      serialized_string = ""
-      # find distinct stocks from portfolio
-      @distinct_stocks = Portfolio.select(:ticker).distinct
-      # create a list of all the distinct stocks
-      @distinct_stocks.each_with_index do |val, index|
-        #only take top 10 distinct stocks due to api call limits
-        if index < 10
+    current_market_price
+  end
+
+  def get_all_stocks
+    stocks_list = []
+    stocks_string = ""
+    serialized_string = ""
+
+    # find distinct stocks from portfolio
+    @distinct_stocks = Portfolio.select(:ticker).distinct
+
+    # create a list of all the distinct stocks
+    @distinct_stocks.each_with_index do |val, index|
+      # only take top 10 distinct stocks due to api call limits
+      if index < 10
         stocks_list.push(val.ticker)
         stocks_string = stocks_string + val.ticker.to_s
         stocks_string = stocks_string + "%2C"
-        #serialized_string = stocks_string[0,stocks_string.length - 3]
-        end
+        # serialized_string = stocks_string[0,stocks_string.length - 3]
       end
-      serialized_string = stocks_string[0,stocks_string.length - 3]
-      return serialized_string
     end
+
+    serialized_string = stocks_string[0,stocks_string.length - 3]
+    serialized_string
+  end
 end

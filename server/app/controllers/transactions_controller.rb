@@ -16,13 +16,11 @@ class TransactionsController < ApplicationController
 
   # POST /transactions
   def create
-
     trade_type = transaction_params[:trade]
     settled_price = transaction_params[:settled_price]
     quantity = transaction_params[:quantity]
     ticker = transaction_params[:ticker]
     account_id = transaction_params[:account_id]
-
     account_to_modify = Account.find_by(id: account_id)
 
     # calculate qty of ticker

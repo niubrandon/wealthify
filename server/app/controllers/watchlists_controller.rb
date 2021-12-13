@@ -10,27 +10,22 @@ class WatchlistsController < ApplicationController
     @watchlists = Watchlist.all
 
     render json: {watchlists: @watchlists, prices: @prices }
-
   end
 
   # GET /watchlists/1
   def show
-    render json: @watchlist
-    
+    render json: @watchlist  
   end
 
   # POST /watchlists
   def create
-
-    #@watchlist = Watchlist.new(watchlist_params)
     @watchlist = Watchlist.find_or_create_by!(watchlist_params)
-    # is_present = Watchlist.where(ticker: params[:ticker], user_id: params[:user_id]).exists?
+
     if @watchlist.save
       render json: @watchlist, status: :created, location: @watchlist
     else
       render json: @watchlist.errors, status: :unprocessable_entity
     end
-    
   end
 
   # PATCH/PUT /watchlists/1
@@ -62,28 +57,25 @@ class WatchlistsController < ApplicationController
     end
 
 
-     # Use to fetch the latest stock price
-     def get_live_price
+    # Use to fetch the latest stock price
+    def get_live_price
       serialized_string = get_all_stocks_from_watchlist
       current_market_price = {}
       url = "https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote?symbols=#{serialized_string}"
-      #url = "https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote?symbols=BTC-USD"
+    
       response = Excon.get(
         url,
         headers: {
-          #'X-RapidAPI-Host' => URI.parse(url).host,
-          #'X-RapidAPI-Key' => ENV.fetch('RAPIDAPI_API_KEY')
           "x-rapidapi-host": "stock-data-yahoo-finance-alternative.p.rapidapi.com",
-		      "x-rapidapi-key": ENV["STOCK_API_KEY"]
+          "x-rapidapi-key": ENV["STOCK_API_KEY"]
         }
       )
       data = JSON.parse(response.body)
       data["quoteResponse"]["result"].each do |item|
-      current_market_price[item["symbol"]] = item["regularMarketPrice"]
-     
+        current_market_price[item["symbol"]] = item["regularMarketPrice"]    
       end
-    current_market_price 
-
+    
+      current_market_price
     end
 
     def get_all_stocks_from_watchlist
@@ -105,9 +97,5 @@ class WatchlistsController < ApplicationController
       serialized_string = stocks_string[0,stocks_string.length - 3]
       return serialized_string
     end
-
-
-
-
 
 end

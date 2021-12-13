@@ -6,14 +6,11 @@ class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :update, :destroy]
 
-
   # add a login
   def login
     user = User.find_by(email: user_params[:email].to_s.downcase)
-    #authenticate method from has_secure_password helper
     if user&.authenticate(user_params[:password])
       auth_token = JsonWebToken.encode(user_id: user.id)
-      ########################## get referral code
       render json: { auth_token: auth_token, user_id: user.id, user_email: user.email, referral_code: user.referral_code }, status: :ok
     else
       render json: { error: 'Invalid username/password' }, status: :unauthorized
@@ -38,7 +35,6 @@ class UsersController < ApplicationController
   
   # POST /users
   def create
-
     signup_referral_code = user_params[:referral_code].strip
 
     if signup_referral_code == ''
@@ -112,7 +108,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through. updated paramas to follow bcrypt style
     def user_params
-   
       params.require(:user).permit(:first_name, :last_name, :email, :password, :referral_code)
     end
 end

@@ -49,4 +49,5 @@ class ReferralsController < ApplicationController
     def referral_params
       params.require(:referral).permit(:recipient_id)
     end
+    
 end
